@@ -38,18 +38,6 @@ import EmailRead from '../pages/Email/email-read'
 import InvoicesList from '../pages/Invoices/invoices-list'
 import InvoiceDetail from '../pages/Invoices/invoices-detail'
 
-// Authentication related pages
-// import Login from '../pages/Authentication/Login'
-// import Logout from '../pages/Authentication/Logout'
-// import Register from '../pages/Authentication/Register'
-// import ForgetPwd from '../pages/Authentication/ForgetPassword'
-
-//  // Inner Authentication
-// import Login1 from '../pages/AuthenticationInner/Login'
-// import Register1 from '../pages/AuthenticationInner/Register'
-// import ForgetPwd1 from '../pages/AuthenticationInner/ForgetPassword'
-// import LockScreen from '../pages/AuthenticationInner/auth-lock-screen'
-
 // Dashboard
 import Dashboard from '../pages/Dashboard/index'
 import DashboardSaas from '../pages/Dashboard-saas/index'
