@@ -40,9 +40,6 @@ const Dashboard = (props) => {
         <React.Fragment>
             <div className="page-content">
                 <Container fluid>
-                    {/* Render Breadcrumb */}
-                    <Breadcrumbs title={props.t('Dashboard')} breadcrumbItem={props.t('Dashboard')} />
-
                     <Row>
                         <Col xl="4">
                             <WelcomeComp />

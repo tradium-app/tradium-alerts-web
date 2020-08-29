@@ -1,6 +1,6 @@
-// 
+//
 // _header.scss
-// 
+//
 
 #page-topbar {
     position: fixed;
@@ -74,10 +74,10 @@
 // Mega menu
 
 .megamenu-list {
-    li{
+    li {
         position: relative;
         padding: 5px 0px;
-        a{
+        a {
             color: $dropdown-color;
         }
     }
@@ -89,7 +89,6 @@
     }
 
     .logo {
-
         span.logo-lg {
             display: none;
         }
@@ -174,15 +173,15 @@
 
 // Full Screen
 .fullscreen-enable {
-    [data-toggle="fullscreen"] {
+    [data-toggle='fullscreen'] {
         .bx-fullscreen::before {
-            content: "\ea3f";
+            content: '\ea3f';
         }
     }
 }
 
-body[data-topbar="dark"] {
-    #page-topbar { 
+body[data-topbar='dark'] {
+    #page-topbar {
         background-color: $header-dark-bg;
     }
     .navbar-header {
@@ -199,7 +198,7 @@ body[data-topbar="dark"] {
 
     .header-item {
         color: $header-dark-item-color;
-    
+
         &:hover {
             color: $header-dark-item-color;
         }
@@ -208,7 +207,7 @@ body[data-topbar="dark"] {
     .header-profile-user {
         background-color: rgba($white, 0.25);
     }
-    
+
     .noti-icon {
         i {
             color: $header-dark-item-color;
@@ -224,19 +223,18 @@ body[data-topbar="dark"] {
     }
 
     .app-search {
-    
         .form-control {
-            background-color: rgba($topbar-search-bg,0.07);
+            background-color: rgba($topbar-search-bg, 0.07);
             color: $white;
         }
         span,
         input.form-control::-webkit-input-placeholder {
-            color: rgba($white,0.5);
+            color: rgba($white, 0.5);
         }
     }
 }
 
-body[data-sidebar="dark"] {
+body[data-sidebar='dark'] {
     .navbar-brand-box {
         background: $sidebar-dark-bg;
     }
@@ -269,20 +267,20 @@ body[data-sidebar="dark"] {
     }
 }
 
-body[data-layout="horizontal"] {
+body[data-layout='horizontal'] {
     .navbar-brand-box {
         width: auto;
     }
     .page-content {
-        margin-top: $header-height;
+        margin-top: 20px;
         padding: calc(55px + #{$grid-gutter-width}) calc(#{$grid-gutter-width} / 2) $footer-height calc(#{$grid-gutter-width} / 2);
-    }    
+    }
 }
 
-@media (max-width: 992px) { 
-    body[data-layout="horizontal"] {
+@media (max-width: 992px) {
+    body[data-layout='horizontal'] {
         .page-content {
             margin-top: 15px;
-        }    
+        }
     }
 }
