@@ -1,6 +1,3 @@
-import React from 'react'
-import { Redirect } from 'react-router-dom'
-
 import Home from '../pages/Home/index'
 
 // // Pages Component

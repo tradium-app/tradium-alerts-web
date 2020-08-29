@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-
+import ReactDOM from 'react-dom'
 import { Link } from 'react-router-dom'
-
+import GoogleLogin from 'react-google-login'
 import { Row, Col, Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap'
 
 import logo from '../../assets/images/logo-sm-light.png'
@@ -74,22 +74,35 @@ const Header = (props) => {
                             </DropdownToggle>
                         </Dropdown>
 
-                        <Dropdown className="d-none d-lg-inline-block ml-1">
-                            <DropdownToggle className="btn header-item waves-effect" caret tag="button">
-                                Sign Up
-                            </DropdownToggle>
-                        </Dropdown>
-
-                        <Dropdown className="d-none d-lg-inline-block ml-1">
-                            <DropdownToggle className="btn header-item waves-effect" caret tag="button">
-                                Login
-                            </DropdownToggle>
-                        </Dropdown>
+                        <GoogleLoginWebtutor text="Sign Up" />
+                        <GoogleLoginWebtutor text="Login" />
                     </div>
                 </div>
             </header>
         </React.Fragment>
     )
+}
+
+const GoogleLoginWebtutor = (props) => {
+    return (
+        <GoogleLogin
+            clientId="173892898030-lqdnujddqgv4j5kloa94lkmdsssfale5.apps.googleusercontent.com"
+            render={(renderProps) => (
+                <div class="d-none d-lg-inline-block ml-1">
+                    <button aria-haspopup="true" class="btn header-item waves-effect" onClick={renderProps.onClick} disabled={renderProps.disabled}>
+                        {props.text}
+                    </button>
+                </div>
+            )}
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            cookiePolicy={'single_host_origin'}
+        />
+    )
+}
+
+const responseGoogle = (response) => {
+    console.log(response)
 }
 
 export default withNamespaces()(Header)
