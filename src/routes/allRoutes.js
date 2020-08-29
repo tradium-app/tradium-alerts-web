@@ -266,7 +266,7 @@ const userRoutes = [
 ]
 
 const authRoutes = [
-    { path: '/home', component: Home },
+    { path: '/', component: Home },
     { path: '/logout', component: Logout },
     { path: '/login', component: Login },
     { path: '/forgot-password', component: ForgetPwd },
@@ -283,9 +283,6 @@ const authRoutes = [
     { path: '/pages-register', component: Register1 },
     { path: '/pages-forget-pwd', component: ForgetPwd1 },
     { path: '/auth-lock-screen', component: LockScreen },
-
-    // this route should be at the end of all other routes
-    { path: '/', exact: true, component: () => <Redirect to="/home" /> },
 ]
 
 export { userRoutes, authRoutes }

@@ -56,11 +56,11 @@ const App = (props) => {
             <Router>
                 <Switch>
                     {authRoutes.map((route, idx) => (
-                        <NonAuthmiddleware path={route.path} layout={HomeLayout} component={route.component} key={idx} />
+                        <NonAuthmiddleware path={route.path} layout={HomeLayout} component={route.component} key={idx} exact />
                     ))}
 
                     {userRoutes.map((route, idx) => (
-                        <Authmiddleware path={route.path} layout={HorizontalLayout} component={route.component} key={idx} />
+                        <Authmiddleware path={route.path} layout={HorizontalLayout} component={route.component} key={idx} exact />
                     ))}
                 </Switch>
             </Router>

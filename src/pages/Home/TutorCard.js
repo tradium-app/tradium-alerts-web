@@ -23,17 +23,15 @@ const CardProject = (props) => {
                                             {project.name}
                                         </Link>
                                     </h5>
-                                    <p>
-                                        <StarRatings
-                                            rating={4}
-                                            starRatedColor="#F1B44C"
-                                            starEmptyColor="#2D363F"
-                                            numberOfStars={5}
-                                            name="rating"
-                                            starDimension="14px"
-                                            starSpacing="3px"
-                                        />
-                                    </p>
+                                    <StarRatings
+                                        rating={4}
+                                        starRatedColor="#F1B44C"
+                                        starEmptyColor="#2D363F"
+                                        numberOfStars={5}
+                                        name="rating"
+                                        starDimension="14px"
+                                        starSpacing="3px"
+                                    />
                                     <p className="text-muted mb-4">{project.description}</p>
                                 </Media>
                             </Media>
