@@ -28,18 +28,6 @@ const Header = (props) => {
                             </Link>
                         </div>
 
-                        <button
-                            type="button"
-                            className="btn btn-sm px-3 font-size-16 d-lg-none header-item waves-effect waves-light"
-                            data-toggle="collapse"
-                            onClick={() => {
-                                props.toggleLeftmenu(!props.leftMenu)
-                            }}
-                            data-target="#topnav-menu-content"
-                        >
-                            <i className="fa fa-fw fa-bars"></i>
-                        </button>
-
                         <form className="app-search d-none d-lg-block">
                             <div className="position-relative">
                                 <input type="text" className="form-control" placeholder="Search..." />
@@ -49,7 +37,7 @@ const Header = (props) => {
                     </div>
 
                     <div className="d-flex">
-                        <Dropdown className="d-none d-lg-inline-block ml-1">
+                        <Dropdown className="d-lg-inline-block ml-1">
                             <DropdownToggle className="btn header-item waves-effect" caret tag="button">
                                 Find a Tutor
                             </DropdownToggle>
@@ -75,8 +63,13 @@ const GoogleLoginWebtutor = (props) => {
         <GoogleLogin
             clientId="173892898030-lqdnujddqgv4j5kloa94lkmdsssfale5.apps.googleusercontent.com"
             render={(renderProps) => (
-                <div class="d-none d-lg-inline-block ml-1">
-                    <button aria-haspopup="true" class="btn header-item waves-effect" onClick={renderProps.onClick} disabled={renderProps.disabled}>
+                <div className="d-lg-inline-block ml-1">
+                    <button
+                        aria-haspopup="true"
+                        className="btn header-item waves-effect"
+                        onClick={renderProps.onClick}
+                        disabled={renderProps.disabled}
+                    >
                         {props.text}
                     </button>
                 </div>
@@ -89,7 +82,7 @@ const GoogleLoginWebtutor = (props) => {
 }
 
 const responseGoogle = (response) => {
-    console.log(response)
+    console.log(response.profileObj)
 }
 
 export default withNamespaces()(Header)
