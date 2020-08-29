@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import ReactEcharts from 'echarts-for-react';
+import React, { Component } from 'react'
+import ReactEcharts from 'echarts-for-react'
 
 class Candlestick extends Component {
     getOption = () => {
         return {
             tooltip: {
-                trigger: 'axis'
+                trigger: 'axis',
             },
             toolbox: {
                 show: false,
                 feature: {
-                    saveAsImage: {}
-                }
+                    saveAsImage: {},
+                },
             },
             grid: {
                 zlevel: 0,
@@ -27,46 +27,45 @@ class Candlestick extends Component {
                 data: ['2017-10-24', '2017-10-25', '2017-10-26', '2017-10-27'],
                 axisLine: {
                     lineStyle: {
-                        color: "#74788d"
-                    }
-                }
+                        color: '#74788d',
+                    },
+                },
             },
             yAxis: {
                 axisLine: {
                     lineStyle: {
-                        color: "#74788d"
-                    }
-                }
+                        color: '#74788d',
+                    },
+                },
             },
-            series: [{
-                type: 'k',
-                data: [
-                    [20, 30, 10, 35],
-                    [40, 35, 30, 55],
-                    [33, 38, 33, 40],
-                    [40, 40, 32, 42]
-                ],
+            series: [
+                {
+                    type: 'k',
+                    data: [
+                        [20, 30, 10, 35],
+                        [40, 35, 30, 55],
+                        [33, 38, 33, 40],
+                        [40, 40, 32, 42],
+                    ],
 
-                itemStyle: {
-                    normal: {
-                        color: '#3c4ccf',
-                        color0: '#02a499',
-                        borderColor: '#3c4ccf',
-                        borderColor0: '#02a499'
-                    }
-                }
-            }]
-        };
-    };
+                    itemStyle: {
+                        normal: {
+                            color: '#3c4ccf',
+                            color0: '#02a499',
+                            borderColor: '#3c4ccf',
+                            borderColor0: '#02a499',
+                        },
+                    },
+                },
+            ],
+        }
+    }
     render() {
         return (
             <React.Fragment>
-                <ReactEcharts style={{ height: "350px" }}
-                    option={this.getOption()}
-                />
+                <ReactEcharts style={{ height: '350px' }} option={this.getOption()} />
             </React.Fragment>
-        );
+        )
     }
 }
-export default Candlestick;
-
+export default Candlestick

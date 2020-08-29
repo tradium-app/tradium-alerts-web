@@ -1,14 +1,14 @@
-import React from 'react';    
-import "tui-chart/dist/tui-chart.css";
-import { BubbleChart } from "@toast-ui/react-chart";
-import TuiChart from 'tui-chart';
-import "./toastui.scss";
+import React from 'react'
+import 'tui-chart/dist/tui-chart.css'
+import { BubbleChart } from '@toast-ui/react-chart'
+import TuiChart from 'tui-chart'
+import './toastui.scss'
 
 var theme = {
     chart: {
         background: {
             color: '#fff',
-            opacity: 0
+            opacity: 0,
         },
     },
     title: {
@@ -16,41 +16,38 @@ var theme = {
     },
     xAxis: {
         title: {
-            color: '#8791af'
+            color: '#8791af',
         },
         label: {
-            color: '#8791af'
+            color: '#8791af',
         },
-        tickColor: '#8791af'
+        tickColor: '#8791af',
     },
     yAxis: {
         title: {
-            color: '#8791af'
+            color: '#8791af',
         },
         label: {
-            color: '#8791af'
+            color: '#8791af',
         },
-        tickColor: '#8791af'
+        tickColor: '#8791af',
     },
     plot: {
-        lineColor: 'rgba(166, 176, 207, 0.1)'
+        lineColor: 'rgba(166, 176, 207, 0.1)',
     },
     legend: {
         label: {
-            color: '#8791af'
-        }
+            color: '#8791af',
+        },
     },
     series: {
-        colors: [
-            '#556ee6', '#34c38f', '#f1b44c', '#f46a6a'
-        ]
-    }
-};
-TuiChart.registerTheme('skoteTheme', theme);
+        colors: ['#556ee6', '#34c38f', '#f1b44c', '#f46a6a'],
+    },
+}
+TuiChart.registerTheme('skoteTheme', theme)
 
-    const BubbleChartToast = (props) => {
-
-     const data = {
+const BubbleChartToast = (props) => {
+    const data = {
         series: [
             {
                 name: 'Africa',
@@ -63,8 +60,8 @@ TuiChart.registerTheme('skoteTheme', theme);
                     { x: 7100, y: 74.66, r: 9974722, label: 'Tunisia' },
                     { x: 10500, y: 69.28, r: 1096585, label: 'Trinidad and Tobago' },
                     { x: 12800, y: 72.09, r: 1220481, label: 'Mauritius' },
-                    { x: 18200, y: 78.68, r: 396851, label: 'Malta' }
-                ]
+                    { x: 18200, y: 78.68, r: 396851, label: 'Malta' },
+                ],
             },
             {
                 name: 'America',
@@ -86,8 +83,8 @@ TuiChart.registerTheme('skoteTheme', theme);
                     { x: 17700, y: 65.63, r: 299697, label: 'Bahamas, The' },
                     { x: 17700, y: 77.49, r: 3897960, label: 'Puerto Rico' },
                     { x: 31500, y: 79.96, r: 32507874, label: 'Canada' },
-                    { x: 32100, y: 77.43, r: 89302754, label: 'United States' }
-                ]
+                    { x: 32100, y: 77.43, r: 89302754, label: 'United States' },
+                ],
             },
             {
                 name: 'Asia',
@@ -109,8 +106,8 @@ TuiChart.registerTheme('skoteTheme', theme);
                     { x: 25300, y: 77.06, r: 22749838, label: 'Taiwan' },
                     { x: 27800, y: 81.53, r: 4353893, label: 'Singapore' },
                     { x: 29400, y: 81.04, r: 52733300, label: 'Japan' },
-                    { x: 34200, y: 81.39, r: 6855125, label: 'Hong Kong' }
-                ]
+                    { x: 34200, y: 81.39, r: 6855125, label: 'Hong Kong' },
+                ],
             },
             {
                 name: 'Europe',
@@ -143,8 +140,8 @@ TuiChart.registerTheme('skoteTheme', theme);
                     { x: 31900, y: 77.36, r: 3969558, label: 'Ireland' },
                     { x: 31900, y: 80.18, r: 293966, label: 'Iceland' },
                     { x: 32200, y: 77.44, r: 5413392, label: 'Denmark' },
-                    { x: 33800, y: 80.31, r: 7450867, label: 'Switzerland' }
-                ]
+                    { x: 33800, y: 80.31, r: 7450867, label: 'Switzerland' },
+                ],
             },
             {
                 name: 'Oceania',
@@ -154,62 +151,73 @@ TuiChart.registerTheme('skoteTheme', theme);
                     { x: 5900, y: 69.2, r: 880874, label: 'Fiji' },
                     { x: 14500, y: 78.75, r: 108775, label: 'Virgin Islands' },
                     { x: 23200, y: 78.49, r: 1993817, label: 'New Zealand' },
-                    { x: 30700, y: 80.26, r: 5991314, label: 'Australia' }
-                ]
-            }
-        ]
-    };
+                    { x: 30700, y: 80.26, r: 5991314, label: 'Australia' },
+                ],
+            },
+        ],
+    }
 
     const options = {
-      chart: {
-        width: props.chartWidth,
-        height: 380,
-        title: 'Life Expectancy per GDP',
-        format: function (value, chartType, areaType, valueType) {
-            if (valueType === 'r' || valueType === 'x') {
-                if (valueType === 'x') {
-                    value = '$' + value;
+        chart: {
+            width: props.chartWidth,
+            height: 380,
+            title: 'Life Expectancy per GDP',
+            format: function (value, chartType, areaType, valueType) {
+                if (valueType === 'r' || valueType === 'x') {
+                    if (valueType === 'x') {
+                        value = '$' + value
+                    }
                 }
-            }
-            return value;
-        }
-    },
-    yAxis: {
-        title: 'Life Expectancy (years)'
-    },
-    xAxis: {
-        title: 'GDP'
-    },
-    tooltip: {
-        template: function (category, items) {
-            return '<div class="tui-chart-default-tooltip">' +
-                '<div class="tui-chart-tooltip-head">' +
-                    '<span class="tui-chart-legend-rect" style="' + items.cssText + '; width: 10px; height: 10px"></span>' +
-                    '<span>' + items.legend + '</span>' +
-                    '<span>' + items.label + '</span>' +
-                '</div>' +
-                '<table class="tui-chart-tooltip-body">' +
-                '<tr>' +
+                return value
+            },
+        },
+        yAxis: {
+            title: 'Life Expectancy (years)',
+        },
+        xAxis: {
+            title: 'GDP',
+        },
+        tooltip: {
+            template: function (category, items) {
+                return (
+                    '<div class="tui-chart-default-tooltip">' +
+                    '<div class="tui-chart-tooltip-head">' +
+                    '<span class="tui-chart-legend-rect" style="' +
+                    items.cssText +
+                    '; width: 10px; height: 10px"></span>' +
+                    '<span>' +
+                    items.legend +
+                    '</span>' +
+                    '<span>' +
+                    items.label +
+                    '</span>' +
+                    '</div>' +
+                    '<table class="tui-chart-tooltip-body">' +
+                    '<tr>' +
                     '<td>GDP</td>' +
-                    '<td class="tui-chart-tooltip-value">' + items.x + '</td>' +
-                '</tr>' +
-                '<tr>' +
+                    '<td class="tui-chart-tooltip-value">' +
+                    items.x +
+                    '</td>' +
+                    '</tr>' +
+                    '<tr>' +
                     '<td>Life Expectancy</td>' +
-                    '<td class="tui-chart-tooltip-value">' + items.y + '</td>' +
-                '</tr>' +
-                '<tr>' +
+                    '<td class="tui-chart-tooltip-value">' +
+                    items.y +
+                    '</td>' +
+                    '</tr>' +
+                    '<tr>' +
                     '<td>Population</td>' +
-                    '<td class="tui-chart-tooltip-value">' + items.r + '</td>' +
-                '</tr>' +
-                '</table>'+
-            '</div>';
-        }
+                    '<td class="tui-chart-tooltip-value">' +
+                    items.r +
+                    '</td>' +
+                    '</tr>' +
+                    '</table>' +
+                    '</div>'
+                )
+            },
+        },
     }
-    };
 
-
-      return (
-        <BubbleChart data={data} options={options} />
-      );
-    }
-export default BubbleChartToast;
+    return <BubbleChart data={data} options={options} />
+}
+export default BubbleChartToast

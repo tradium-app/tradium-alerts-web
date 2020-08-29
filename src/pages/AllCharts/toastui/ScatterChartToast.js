@@ -1,15 +1,15 @@
-    import React from 'react';
+import React from 'react'
 
-import "tui-chart/dist/tui-chart.css";
-import { ScatterChart } from "@toast-ui/react-chart";
-import TuiChart from 'tui-chart';
-import "./toastui.scss";
+import 'tui-chart/dist/tui-chart.css'
+import { ScatterChart } from '@toast-ui/react-chart'
+import TuiChart from 'tui-chart'
+import './toastui.scss'
 
 var theme = {
     chart: {
         background: {
             color: '#fff',
-            opacity: 0
+            opacity: 0,
         },
     },
     title: {
@@ -17,41 +17,38 @@ var theme = {
     },
     xAxis: {
         title: {
-            color: '#8791af'
+            color: '#8791af',
         },
         label: {
-            color: '#8791af'
+            color: '#8791af',
         },
-        tickColor: '#8791af'
+        tickColor: '#8791af',
     },
     yAxis: {
         title: {
-            color: '#8791af'
+            color: '#8791af',
         },
         label: {
-            color: '#8791af'
+            color: '#8791af',
         },
-        tickColor: '#8791af'
+        tickColor: '#8791af',
     },
     plot: {
-        lineColor: 'rgba(166, 176, 207, 0.1)'
+        lineColor: 'rgba(166, 176, 207, 0.1)',
     },
     legend: {
         label: {
-            color: '#8791af'
-        }
+            color: '#8791af',
+        },
     },
     series: {
-        colors: [
-            '#34c38f', '#556ee6'
-        ]
-    }
-};
-TuiChart.registerTheme('skoteTheme', theme);
+        colors: ['#34c38f', '#556ee6'],
+    },
+}
+TuiChart.registerTheme('skoteTheme', theme)
 
-
-    const ScatterChartToast = (props) => {
- const data = {
+const ScatterChartToast = (props) => {
+    const data = {
         series: [
             {
                 name: 'male',
@@ -302,8 +299,8 @@ TuiChart.registerTheme('skoteTheme', theme);
                     { x: 190.5, y: 98.2 },
                     { x: 177.8, y: 84.1 },
                     { x: 180.3, y: 83.2 },
-                    { x: 180.3, y: 83.2 }
-                ]
+                    { x: 180.3, y: 83.2 },
+                ],
             },
             {
                 name: 'female',
@@ -567,46 +564,54 @@ TuiChart.registerTheme('skoteTheme', theme);
                     { x: 164.4, y: 55.5 },
                     { x: 160.7, y: 48.6 },
                     { x: 174, y: 66.4 },
-                    { x: 163.8, y: 67.3 }
-                ]
-            }
-        ]
-    };
+                    { x: 163.8, y: 67.3 },
+                ],
+            },
+        ],
+    }
 
     const options = {
-      chart: {
-        width: props.chartWidth,
-        height: 380,
-        title: 'Height vs Weight'
-    },
-    yAxis: {
-        title: 'Weight (kg)'
-    },
-    xAxis: {
-        title: 'Height (cm)'
-    },
-    tooltip: {
-        template: function (category, items) {
-            return '<div class="tui-chart-default-tooltip">' +
-                '<div class="tui-chart-tooltip-head">' + items.legend + '</div>' +
+        chart: {
+            width: props.chartWidth,
+            height: 380,
+            title: 'Height vs Weight',
+        },
+        yAxis: {
+            title: 'Weight (kg)',
+        },
+        xAxis: {
+            title: 'Height (cm)',
+        },
+        tooltip: {
+            template: function (category, items) {
+                return (
+                    '<div class="tui-chart-default-tooltip">' +
+                    '<div class="tui-chart-tooltip-head">' +
+                    items.legend +
+                    '</div>' +
                     '<table class="tui-chart-tooltip-body">' +
-                        '<tr>' +
-                            '<td>Weight</td>' +
-                        '<td class="tui-chart-tooltip-value">' + items.x + 'kg</td>' +
+                    '<tr>' +
+                    '<td>Weight</td>' +
+                    '<td class="tui-chart-tooltip-value">' +
+                    items.x +
+                    'kg</td>' +
                     '</tr>' +
                     '<tr>' +
-                        '<td>Height</td>' +
-                            '<td class="tui-chart-tooltip-value">' + items.y + 'cm</td>' +
-                        '</tr>' +
+                    '<td>Height</td>' +
+                    '<td class="tui-chart-tooltip-value">' +
+                    items.y +
+                    'cm</td>' +
+                    '</tr>' +
                     '</table>' +
-                '</div>';
-        }
+                    '</div>'
+                )
+            },
+        },
     }
-    };
-      return (
-      <React.Fragment>
-        <ScatterChart data={data} options={options} />
-      </React.Fragment>
-      );
-    }
-export default ScatterChartToast;
+    return (
+        <React.Fragment>
+            <ScatterChart data={data} options={options} />
+        </React.Fragment>
+    )
+}
+export default ScatterChartToast

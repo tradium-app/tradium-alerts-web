@@ -1,15 +1,13 @@
-import React, { Component } from 'react';
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import React, { Component } from 'react'
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
 
 class SettingMenu extends Component {
-
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {}
     }
 
     render() {
-
         return (
             <React.Fragment>
                 <Dropdown isOpen={this.state.setting_menu} toggle={() => this.setState({ setting_menu: !this.state.setting_menu })}>
@@ -17,18 +15,24 @@ class SettingMenu extends Component {
                         <i className="mdi mdi-settings mr-2"></i> Settings
                     </DropdownToggle>
                     <DropdownMenu className="language-switch" right>
-                        <DropdownItem tag="a" href="#">Action</DropdownItem>
-                        <DropdownItem tag="a" href="#">Another action</DropdownItem>
-                        <DropdownItem tag="a" href="#">Something else here</DropdownItem>
+                        <DropdownItem tag="a" href="#">
+                            Action
+                        </DropdownItem>
+                        <DropdownItem tag="a" href="#">
+                            Another action
+                        </DropdownItem>
+                        <DropdownItem tag="a" href="#">
+                            Something else here
+                        </DropdownItem>
                         <div className="dropdown-divider"></div>
-                        <DropdownItem tag="a" href="#">Separated link</DropdownItem>
+                        <DropdownItem tag="a" href="#">
+                            Separated link
+                        </DropdownItem>
                     </DropdownMenu>
                 </Dropdown>
             </React.Fragment>
-        );
+        )
     }
 }
 
-export default SettingMenu;
-
-
+export default SettingMenu

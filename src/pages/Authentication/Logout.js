@@ -1,23 +1,15 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
-import { logoutUser } from '../../store/actions';
+import { logoutUser } from '../../store/actions'
 
 const Logout = (props) => {
-
     useEffect(() => {
-        props.logoutUser(props.history);
-      });
+        props.logoutUser(props.history)
+    })
 
-    return (
-            <></>
-          );
-    }
+    return <></>
+}
 
-export default withRouter(
-    connect(
-        null,
-        { logoutUser }
-    )(Logout)
-);
+export default withRouter(connect(null, { logoutUser })(Logout))

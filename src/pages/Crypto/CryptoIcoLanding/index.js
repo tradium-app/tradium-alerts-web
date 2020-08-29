@@ -1,74 +1,70 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 
 //Import Components
-import Navbar from "./Navbar/Navbar";
-import Section from "./HeroSection/Section";
-import CardsMini from "./HeroSection/cards-mini";
-import AboutUs from "./AboutUs/about-us";
-import Features from "./Features/features";
-import RoadMap from "./RoadMap/road-map";
-import OurTeam from "./Team/our-team";
-import Blog from "./Blog/blog";
-import FAQs from "./Faqs/FAQs";
-import Footer from "./Footer/footer";
+import Navbar from './Navbar/Navbar'
+import Section from './HeroSection/Section'
+import CardsMini from './HeroSection/cards-mini'
+import AboutUs from './AboutUs/about-us'
+import Features from './Features/features'
+import RoadMap from './RoadMap/road-map'
+import OurTeam from './Team/our-team'
+import Blog from './Blog/blog'
+import FAQs from './Faqs/FAQs'
+import Footer from './Footer/footer'
 
 const CryptoIcoLanding = (props) => {
+    const [imglight, setimglight] = useState(true)
+    const [navClass, setnavClass] = useState('')
 
-      const [imglight, setimglight] = useState(true);
-      const [navClass, setnavClass] = useState("");
+    // Use ComponentDidMount
+    useEffect(() => {
+        window.addEventListener('scroll', scrollNavigation, true)
+    })
 
-      // Use ComponentDidMount 
-     useEffect(() => {
-         window.addEventListener("scroll", scrollNavigation, true);
-      });
-
-    function scrollNavigation(){
-        var scrollup=document.documentElement.scrollTop;
-        if(scrollup > 80)
-        {
-            setimglight(false);
-            setnavClass("nav-sticky");
+    function scrollNavigation() {
+        var scrollup = document.documentElement.scrollTop
+        if (scrollup > 80) {
+            setimglight(false)
+            setnavClass('nav-sticky')
+        } else {
+            setimglight(true)
+            setnavClass('')
         }
-        else
-        {
-            setimglight(true);
-            setnavClass("");
-        }
-    };
+    }
 
     return (
-             <React.Fragment>
-                {/* import navbar */}
-                <Navbar navClass={navClass} imglight={imglight} />
+        <React.Fragment>
+            {/* import navbar */}
+            <Navbar navClass={navClass} imglight={imglight} />
 
-                {/* Hero section */}
-                <Section/>
+            {/* Hero section */}
+            <Section />
 
-                {/* mini cards */}
-                <CardsMini/>
+            {/* mini cards */}
+            <CardsMini />
 
-                {/* aboutus */}
-                <AboutUs/>
+            {/* aboutus */}
+            <AboutUs />
 
-                {/* features */}
-                <Features/>
+            {/* features */}
+            <Features />
 
-                {/* roadmap */}
-                <RoadMap/>   
+            {/* roadmap */}
+            <RoadMap />
 
-                {/* our team */}
-                <OurTeam/>
+            {/* our team */}
+            <OurTeam />
 
-                {/* blog */}
-                <Blog/>
+            {/* blog */}
+            <Blog />
 
-                {/* faqs */}
-                <FAQs/>
+            {/* faqs */}
+            <FAQs />
 
-                {/* footer */}
-                <Footer/>
-            </React.Fragment>
-          );
-    }
-        
-export default CryptoIcoLanding;
+            {/* footer */}
+            <Footer />
+        </React.Fragment>
+    )
+}
+
+export default CryptoIcoLanding
