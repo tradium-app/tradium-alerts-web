@@ -1,7 +1,7 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 
-import Home from '../pages/Home'
+import Home from '../pages/Home/index'
 
 // // Pages Component
 import Chat from '../pages/Chat/Chat'
