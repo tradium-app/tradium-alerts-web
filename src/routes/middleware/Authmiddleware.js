@@ -1,28 +1,21 @@
-import React from "react";
-import { Route,Redirect,withRouter } from "react-router-dom";
+import React from 'react'
+import { Route, Redirect, withRouter } from 'react-router-dom'
 
-const Authmiddleware = ({
-	component: Component,
-	layout: Layout
-}) => (
-		<Route
-			render={props => {
-			
-			// here you can apply condition
-			if (!localStorage.getItem("authUser")) {
-					return (
-						<Redirect to={{ pathname: "/login", state: { from: props.location } }} />
-					);
-				}
-				
-				return (
-		     	<Layout>
-						<Component {...props} />
-					</Layout>
-				);
-			}}
-		/>
-	);
+const Authmiddleware = ({ component: Component, layout: Layout }) => (
+    <Route
+        render={(props) => {
+            // here you can apply condition
+            if (!localStorage.getItem('authUser')) {
+                return <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
+            }
 
-export default withRouter(Authmiddleware);
+            return (
+                <Layout>
+                    <Component {...props} />
+                </Layout>
+            )
+        }}
+    />
+)
 
+export default withRouter(Authmiddleware)
