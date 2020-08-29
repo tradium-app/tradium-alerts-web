@@ -109,6 +109,9 @@
     color: $header-item-color;
     border: 0;
     border-radius: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &:hover {
         color: $header-item-color;
@@ -198,6 +201,9 @@ body[data-topbar='dark'] {
 
     .header-item {
         color: $header-dark-item-color;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         &:hover {
             color: $header-dark-item-color;

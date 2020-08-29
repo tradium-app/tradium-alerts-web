@@ -39,17 +39,17 @@ const Header = (props) => {
                     </div>
 
                     <div className="d-flex">
-                        <Dropdown className="d-lg-inline-block ml-1">
-                            <DropdownToggle className="btn header-item waves-effect" caret tag="button">
-                                Find a Tutor
-                            </DropdownToggle>
-                        </Dropdown>
-
-                        <Dropdown className="d-none d-lg-inline-block ml-1">
-                            <DropdownToggle className="btn header-item waves-effect" caret tag="button">
+                        <div className="d-lg-inline-block ml-1">
+                            <Link to="/find-tutors" className="btn header-item waves-effect">
                                 Become a Tutor
-                            </DropdownToggle>
-                        </Dropdown>
+                            </Link>
+                        </div>
+
+                        <div className="d-lg-inline-block ml-1">
+                            <Link to="/find-tutors" className="btn header-item waves-effect">
+                                Find a Tutor
+                            </Link>
+                        </div>
 
                         <NotificationDropdown />
 

@@ -150,7 +150,7 @@ const userRoutes = [
     { path: '/profile', component: UserProfile },
 
     //Ecommerce
-    { path: '/ecommerce-products', component: EcommerceProducts },
+    { path: '/find-tutors', component: EcommerceProducts },
     { path: '/ecommerce-product-detail', component: EcommerceProductDetail },
     { path: '/ecommerce-orders', component: EcommerceOrders },
     { path: '/ecommerce-customers', component: EcommerceCustomers },

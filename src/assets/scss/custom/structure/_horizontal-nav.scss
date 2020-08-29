@@ -291,6 +291,9 @@ body[data-layout='horizontal'][data-topbar='colored'] {
     }
     .header-item {
         color: $header-dark-item-color;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         &:hover {
             color: $header-dark-item-color;
