@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
-
-//i18n
-import { withNamespaces } from 'react-i18next'
-// Redux
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Button } from 'reactstrap'
+import { withNamespaces } from 'react-i18next'
+import { useGoogleLogout } from 'react-google-login'
 
 // users
 import user1 from '../../../assets/images/users/avatar-1.jpg'
@@ -27,6 +25,16 @@ const ProfileMenu = (props) => {
             }
         }
     }, [props.success])
+
+    const onLogoutSuccess = () => {
+        props.history.push('/')
+    }
+
+    const { signOut, loaded } = useGoogleLogout({
+        clientId: '173892898030-lqdnujddqgv4j5kloa94lkmdsssfale5.apps.googleusercontent.com',
+        uxMode: 'redirect',
+        onLogoutSuccess,
+    })
 
     return (
         <React.Fragment>
@@ -51,12 +59,8 @@ const ProfileMenu = (props) => {
                         <i className="mdi mdi-settings font-size-17 align-middle mr-1"></i>
                         {props.t('Settings')}
                     </DropdownItem>
-                    <DropdownItem tag="a" href="auth-lock-screen">
-                        <i className="bx bx-lock-open font-size-16 align-middle mr-1"></i>
-                        {props.t('Lock screen')}
-                    </DropdownItem>
                     <div className="dropdown-divider"></div>
-                    <Link to="/logout" className="dropdown-item">
+                    <Link onClick={signOut} className="dropdown-item btn-primary" to="#">
                         <i className="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i>
                         <span>{props.t('Logout')}</span>
                     </Link>
