@@ -39,16 +39,16 @@ import InvoicesList from '../pages/Invoices/invoices-list'
 import InvoiceDetail from '../pages/Invoices/invoices-detail'
 
 // Authentication related pages
-import Login from '../pages/Authentication/Login'
-import Logout from '../pages/Authentication/Logout'
-import Register from '../pages/Authentication/Register'
-import ForgetPwd from '../pages/Authentication/ForgetPassword'
+// import Login from '../pages/Authentication/Login'
+// import Logout from '../pages/Authentication/Logout'
+// import Register from '../pages/Authentication/Register'
+// import ForgetPwd from '../pages/Authentication/ForgetPassword'
 
 //  // Inner Authentication
-import Login1 from '../pages/AuthenticationInner/Login'
-import Register1 from '../pages/AuthenticationInner/Register'
-import ForgetPwd1 from '../pages/AuthenticationInner/ForgetPassword'
-import LockScreen from '../pages/AuthenticationInner/auth-lock-screen'
+// import Login1 from '../pages/AuthenticationInner/Login'
+// import Register1 from '../pages/AuthenticationInner/Register'
+// import ForgetPwd1 from '../pages/AuthenticationInner/ForgetPassword'
+// import LockScreen from '../pages/AuthenticationInner/auth-lock-screen'
 
 // Dashboard
 import Dashboard from '../pages/Dashboard/index'
@@ -264,22 +264,12 @@ const userRoutes = [
 
 const authRoutes = [
     { path: '/', component: Home },
-    { path: '/logout', component: Logout },
-    { path: '/login', component: Login },
-    { path: '/forgot-password', component: ForgetPwd },
-    { path: '/register', component: Register },
 
     { path: '/pages-maintenance', component: PagesMaintenance },
     { path: '/pages-comingsoon', component: PagesComingsoon },
     { path: '/pages-404', component: Pages404 },
     { path: '/pages-500', component: Pages500 },
     { path: '/crypto-ico-landing', component: CryptoIcoLanding },
-
-    // Authentication Inner
-    { path: '/pages-login', component: Login1 },
-    { path: '/pages-register', component: Register1 },
-    { path: '/pages-forget-pwd', component: ForgetPwd1 },
-    { path: '/auth-lock-screen', component: LockScreen },
 ]
 
 export { userRoutes, authRoutes }
