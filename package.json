@@ -90,8 +90,10 @@
     "styled-components": "^5.0.1",
     "toastr": "^2.1.4"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "devDependencies": {
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.1.1"
   },
   "browserslist": {
     "production": [
@@ -108,8 +110,8 @@
   "resolutions": {
     "moment": "2.24.0"
   },
-  "devDependencies": {
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-prettier": "^3.1.4"
+  "engines": {
+    "node": ">=v12.18.2",
+    "npm": ">=6.14.5"
   }
 }
