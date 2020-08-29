@@ -43,9 +43,9 @@ const App = (props) => {
         <Route
             render={(props) => {
                 return (
-                    <HorizontalLayout>
+                    <Layout>
                         <Component {...props} />
-                    </HorizontalLayout>
+                    </Layout>
                 )
             }}
         />
