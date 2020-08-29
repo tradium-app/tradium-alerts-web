@@ -16,9 +16,6 @@ import ActivityComp from './ActivityComp'
 import TopCities from './TopCities'
 import LatestTranaction from './LatestTranaction'
 
-//Import Breadcrumb
-import Breadcrumbs from '../../components/Common/Breadcrumb'
-
 //i18n
 import { withNamespaces } from 'react-i18next'
 
@@ -40,9 +37,6 @@ const Dashboard = (props) => {
         <React.Fragment>
             <div className="page-content">
                 <Container fluid>
-                    {/* Render Breadcrumb */}
-                    <Breadcrumbs title={props.t('Dashboard')} breadcrumbItem={props.t('Dashboard')} />
-
                     <Row>
                         <Col xl="4">
                             <WelcomeComp />
