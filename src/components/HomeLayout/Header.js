@@ -1,20 +1,16 @@
 import React, { useState } from 'react'
-import ReactDOM from 'react-dom'
 import { Link } from 'react-router-dom'
 import GoogleLogin from 'react-google-login'
-import { Row, Col, Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap'
+import { Dropdown, DropdownToggle } from 'reactstrap'
 
-import logo from '../../assets/images/logo-sm-light.png'
 import logoLight from '../../assets/images/logo-light.png'
 import logoLightSvg from '../../assets/images/logo-light.svg'
-import logoDark from '../../assets/images/logo-dark.png'
 
 //i18n
 import { withNamespaces } from 'react-i18next'
 
 const Header = (props) => {
-    const [menu, setMenu] = useState(false)
-    const [isSearch, setSearch] = useState(false)
+    // const [isSearch, setSearch] = useState(false)
 
     return (
         <React.Fragment>
@@ -22,21 +18,12 @@ const Header = (props) => {
                 <div className="navbar-header">
                     <div className="d-flex">
                         <div className="navbar-brand-box">
-                            <Link to="/" className="logo logo-dark">
-                                <span className="logo-sm">
-                                    <img src={logo} alt="" height="22" />
-                                </span>
-                                <span className="logo-lg">
-                                    <img src={logoDark} alt="" height="17" />
-                                </span>
-                            </Link>
-
                             <Link to="/" className="logo logo-light">
                                 <span className="logo-sm">
                                     <img src={logoLightSvg} alt="" height="22" />
                                 </span>
                                 <span className="logo-lg">
-                                    <img src={logoLight} alt="" height="19" />
+                                    <img src={logoLight} alt="" height="40" />
                                 </span>
                             </Link>
                         </div>
