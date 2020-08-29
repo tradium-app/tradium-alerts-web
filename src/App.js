@@ -10,8 +10,8 @@ import { userRoutes, authRoutes } from './routes/allRoutes'
 import Authmiddleware from './routes/middleware/Authmiddleware'
 
 // layouts Format
+import HomeLayout from './components/HomeLayout'
 import HorizontalLayout from './components/HorizontalLayout/'
-import NonAuthLayout from './components/NonAuthLayout'
 
 // Import scss
 import './assets/scss/theme.scss'
@@ -56,7 +56,7 @@ const App = (props) => {
             <Router>
                 <Switch>
                     {authRoutes.map((route, idx) => (
-                        <NonAuthmiddleware path={route.path} layout={NonAuthLayout} component={route.component} key={idx} />
+                        <NonAuthmiddleware path={route.path} layout={HomeLayout} component={route.component} key={idx} />
                     ))}
 
                     {userRoutes.map((route, idx) => (
