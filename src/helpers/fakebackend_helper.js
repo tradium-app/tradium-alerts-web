@@ -51,6 +51,7 @@ const postFakeLogin = (url, data) => {
             return response.data
         })
         .catch((err) => {
+            console.log('printing err', err)
             throw err[1]
         })
 }

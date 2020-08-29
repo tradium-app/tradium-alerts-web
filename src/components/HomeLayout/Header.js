@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { Link, withRouter } from 'react-router-dom'
 import GoogleLogin from 'react-google-login'
 import { Dropdown, DropdownToggle } from 'reactstrap'
+import { withNamespaces } from 'react-i18next'
 
 import logoLight from '../../assets/images/logo-light.png'
 import logoLightSvg from '../../assets/images/logo-light.svg'
 
-//i18n
-import { withNamespaces } from 'react-i18next'
+import { loginUser, apiError } from '../../store/actions'
 
 const Header = (props) => {
     // const [isSearch, setSearch] = useState(false)
@@ -49,8 +50,8 @@ const Header = (props) => {
                             </DropdownToggle>
                         </Dropdown>
 
-                        <GoogleLoginWebtutor text="Sign Up" />
-                        <GoogleLoginWebtutor text="Login" />
+                        <GoogleLoginWebtutor text="Sign Up" {...props} />
+                        <GoogleLoginWebtutor text="Login" {...props} />
                     </div>
                 </div>
             </header>
@@ -59,6 +60,11 @@ const Header = (props) => {
 }
 
 const GoogleLoginWebtutor = (props) => {
+    const handleGoogleLoginSuccess = (response) => {
+        console.log(response.profileObj)
+        props.loginUser(response.profileObj, props.history)
+    }
+
     return (
         <GoogleLogin
             clientId="173892898030-lqdnujddqgv4j5kloa94lkmdsssfale5.apps.googleusercontent.com"
@@ -74,15 +80,16 @@ const GoogleLoginWebtutor = (props) => {
                     </button>
                 </div>
             )}
-            onSuccess={responseGoogle}
-            onFailure={responseGoogle}
+            onSuccess={handleGoogleLoginSuccess}
+            onFailure={handleGoogleLoginSuccess}
             cookiePolicy={'single_host_origin'}
         />
     )
 }
 
-const responseGoogle = (response) => {
-    console.log(response.profileObj)
+const mapStatetoProps = (state) => {
+    const { error } = state.Login
+    return { error }
 }
 
-export default withNamespaces()(Header)
+export default withRouter(connect(mapStatetoProps, { loginUser, apiError })(withNamespaces()(Header)))
