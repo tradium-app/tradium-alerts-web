@@ -267,12 +267,6 @@ body[data-sidebar='dark'] {
     }
 }
 
-@media (max-width: 380px) {
-    .navbar-brand-box {
-        display: none;
-    }
-}
-
 body[data-layout='horizontal'] {
     .navbar-brand-box {
         width: auto;
