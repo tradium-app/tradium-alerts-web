@@ -21,14 +21,14 @@ import ProjectsOverview from '../pages/Projects/projects-overview'
 import ProjectsCreate from '../pages/Projects/projects-create'
 
 // //Ecommerce Pages
-import EcommerceProducts from '../pages/Ecommerce/EcommerceProducts'
-import EcommerceProductDetail from '../pages/Ecommerce/EcommerceProductDetail'
-import EcommerceOrders from '../pages/Ecommerce/EcommerceOrders'
-import EcommerceCustomers from '../pages/Ecommerce/EcommerceCustomers'
-import EcommerceCart from '../pages/Ecommerce/EcommerceCart'
-import EcommerceCheckout from '../pages/Ecommerce/EcommerceCheckout'
-import EcommerceShops from '../pages/Ecommerce/EcommerceShops'
-import EcommerceAddProduct from '../pages/Ecommerce/EcommerceAddProduct'
+import FindTutors from '../pages/Find-Tutors/Find-Tutors'
+import EcommerceProductDetail from '../pages/Find-Tutors/EcommerceProductDetail'
+import EcommerceOrders from '../pages/Find-Tutors/EcommerceOrders'
+import EcommerceCustomers from '../pages/Find-Tutors/EcommerceCustomers'
+import EcommerceCart from '../pages/Find-Tutors/EcommerceCart'
+import EcommerceCheckout from '../pages/Find-Tutors/EcommerceCheckout'
+import EcommerceShops from '../pages/Find-Tutors/EcommerceShops'
+import EcommerceAddProduct from '../pages/Find-Tutors/EcommerceAddProduct'
 
 //Email
 import EmailInbox from '../pages/Email/email-inbox'
@@ -150,7 +150,6 @@ const userRoutes = [
     { path: '/profile', component: UserProfile },
 
     //Ecommerce
-    { path: '/find-tutors', component: EcommerceProducts },
     { path: '/ecommerce-product-detail', component: EcommerceProductDetail },
     { path: '/ecommerce-orders', component: EcommerceOrders },
     { path: '/ecommerce-customers', component: EcommerceCustomers },
@@ -250,8 +249,9 @@ const userRoutes = [
     { path: '/pages-pricing', component: PagesPricing },
 ]
 
-const authRoutes = [
+const publicRoutes = [
     { path: '/', component: Home },
+    { path: '/find-tutors', component: FindTutors },
 
     { path: '/pages-maintenance', component: PagesMaintenance },
     { path: '/pages-comingsoon', component: PagesComingsoon },
@@ -260,4 +260,4 @@ const authRoutes = [
     { path: '/crypto-ico-landing', component: CryptoIcoLanding },
 ]
 
-export { userRoutes, authRoutes }
+export { userRoutes, publicRoutes }

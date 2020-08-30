@@ -21,14 +21,6 @@ class Layout extends Component {
         let currentage = title.charAt(1).toUpperCase() + title.slice(2)
 
         if (currentage !== '') document.title = currentage + ' | WebTutor - Live 1:1 Tutoring'
-
-        // this.props.changeLayout('horizontal')
-        // if (this.props.topbarTheme) {
-        //     this.props.changeTopbarTheme(this.props.topbarTheme)
-        // }
-        // if (this.props.layoutWidth) {
-        //     this.props.changeLayoutWidth(this.props.layoutWidth)
-        // }
     }
 
     /**

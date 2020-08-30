@@ -4,7 +4,7 @@ import { Switch, BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 // Import Routes all
-import { userRoutes, authRoutes } from './routes/allRoutes'
+import { userRoutes, publicRoutes } from './routes/allRoutes'
 
 // Import all middleware
 import Authmiddleware from './routes/middleware/Authmiddleware'
@@ -55,7 +55,7 @@ const App = (props) => {
         <React.Fragment>
             <Router>
                 <Switch>
-                    {authRoutes.map((route, idx) => (
+                    {publicRoutes.map((route, idx) => (
                         <NonAuthmiddleware path={route.path} layout={HomeLayout} component={route.component} key={idx} exact />
                     ))}
 

@@ -35,10 +35,7 @@ import product4 from '../../assets/images/product/img-4.png'
 import product5 from '../../assets/images/product/img-5.png'
 import product6 from '../../assets/images/product/img-6.png'
 
-//Import Breadcrumb
-import Breadcrumbs from '../../components/Common/Breadcrumb'
-
-const EcommerceProducts = (props) => {
+const FindTutors = (props) => {
     const [activeTab, setactiveTab] = useState(false)
 
     const FilterClothes = [
@@ -66,104 +63,113 @@ const EcommerceProducts = (props) => {
         <React.Fragment>
             <div className="page-content">
                 <Container fluid>
-                    <Breadcrumbs title="Ecommerce" breadcrumbItem="Product" />
                     <Row>
                         <Col lg="3">
                             <Card>
                                 <CardBody>
-                                    <CardTitle className="mb-4">Filter</CardTitle>
-                                    <div>
-                                        <h5 className="font-size-14 mb-3">Clothes</h5>
-                                        {/* Render Cloth Categories */}
-                                        <ul className="list-unstyled product-list">
-                                            {FilterClothes.map((cloth, key) => (
-                                                <li key={'_li_' + key}>
-                                                    <Link to={cloth.link}>
-                                                        <i className="mdi mdi-chevron-right mr-1"></i>
-                                                        {cloth.name}
-                                                    </Link>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
+                                    <CardTitle className="font-size-10 mb-2">Filter</CardTitle>
+
                                     <div className="mt-4 pt-3">
-                                        <h5 className="font-size-14 mb-4">Price</h5>
+                                        <h5 className="font-size-14 mb-4">Tutor Rate</h5>
                                         <br />
-
-                                        <Nouislider range={{ min: 0, max: 600 }} tooltips={true} start={[100, 500]} connect />
+                                        <br />
+                                        <Nouislider
+                                            range={{ min: 0, max: 100 }}
+                                            tooltips={true}
+                                            start={[0, 30]}
+                                            connect
+                                            step={1}
+                                            format={{
+                                                to: (value) => value,
+                                                from: (value) => value,
+                                            }}
+                                        />
+                                        <br />
                                     </div>
 
                                     <div className="mt-4 pt-3">
-                                        <h5 className="font-size-14 mb-3">Discount</h5>
+                                        <h5 className="font-size-14 mb-3">Number of sessions and jobs</h5>
                                         <div className="custom-control custom-checkbox mt-2">
                                             <Input type="checkbox" value="0" className="custom-control-input" id="productdiscountCheck1" />
                                             <Label className="custom-control-label" htmlFor="productdiscountCheck1">
-                                                Less than 10%
+                                                > 500
                                             </Label>
                                         </div>
                                         <div className="custom-control custom-checkbox mt-2">
                                             <Input type="checkbox" value="1" className="custom-control-input" id="productdiscountCheck2" />
                                             <Label className="custom-control-label" htmlFor="productdiscountCheck2">
-                                                10% or more
+                                                200 - 500
+                                            </Label>
+                                        </div>
+                                        <div className="custom-control custom-checkbox mt-2">
+                                            <Input type="checkbox" value="2" className="custom-control-input" id="productdiscountCheck3" />
+                                            <Label className="custom-control-label" htmlFor="productdiscountCheck3">
+                                                100 - 200
                                             </Label>
                                         </div>
                                         <div className="custom-control custom-checkbox mt-2">
                                             <Input
                                                 type="checkbox"
-                                                value="2"
+                                                value="3"
                                                 className="custom-control-input"
-                                                id="productdiscountCheck3"
+                                                id="productdiscountCheck4"
                                                 defaultChecked
                                             />
-                                            <Label className="custom-control-label" htmlFor="productdiscountCheck3">
-                                                20% or more
-                                            </Label>
-                                        </div>
-                                        <div className="custom-control custom-checkbox mt-2">
-                                            <Input type="checkbox" value="3" className="custom-control-input" id="productdiscountCheck4" />
                                             <Label className="custom-control-label" htmlFor="productdiscountCheck4">
-                                                30% or more
-                                            </Label>
-                                        </div>
-                                        <div className="custom-control custom-checkbox mt-2">
-                                            <Input type="checkbox" value="4" className="custom-control-input" id="productdiscountCheck5" />
-                                            <Label className="custom-control-label" htmlFor="productdiscountCheck5">
-                                                40% or more
-                                            </Label>
-                                        </div>
-                                        <div className="custom-control custom-checkbox mt-2">
-                                            <Input type="checkbox" value="5" className="custom-control-input" id="productdiscountCheck6" />
-                                            <Label className="custom-control-label" htmlFor="productdiscountCheck6">
-                                                50% or more
+                                                &lt; 100
                                             </Label>
                                         </div>
                                     </div>
 
                                     <div className="mt-4 pt-3">
-                                        <h5 className="font-size-14 mb-3">Customer Rating</h5>
+                                        <h5 className="font-size-14 mb-3">Language</h5>
                                         <div>
                                             <div className="custom-control custom-checkbox mt-2">
                                                 <Input type="checkbox" className="custom-control-input" id="productratingCheck1" />
                                                 <Label className="custom-control-label" htmlFor="productratingCheck1">
-                                                    4 <i className="bx bx-star text-warning"></i> & Above
+                                                    English
                                                 </Label>
                                             </div>
                                             <div className="custom-control custom-checkbox mt-2">
                                                 <Input type="checkbox" className="custom-control-input" id="productratingCheck2" />
                                                 <Label className="custom-control-label" htmlFor="productratingCheck2">
-                                                    3 <i className="bx bx-star text-warning"></i> & Above
+                                                    Spanish
                                                 </Label>
                                             </div>
                                             <div className="custom-control custom-checkbox mt-2">
                                                 <Input type="checkbox" className="custom-control-input" id="productratingCheck3" />
                                                 <Label className="custom-control-label" htmlFor="productratingCheck3">
-                                                    2 <i className="bx bx-star text-warning"></i> & Above
+                                                    French
                                                 </Label>
                                             </div>
                                             <div className="custom-control custom-checkbox mt-2">
                                                 <Input type="checkbox" className="custom-control-input" id="productratingCheck4" />
                                                 <Label className="custom-control-label" htmlFor="productratingCheck4">
-                                                    1 <i className="bx bx-star text-warning"></i>
+                                                    German
+                                                </Label>
+                                            </div>
+                                            <div className="custom-control custom-checkbox mt-2">
+                                                <Input type="checkbox" className="custom-control-input" id="productratingCheck5" />
+                                                <Label className="custom-control-label" htmlFor="productratingCheck5">
+                                                    Russian
+                                                </Label>
+                                            </div>
+                                            <div className="custom-control custom-checkbox mt-2">
+                                                <Input type="checkbox" className="custom-control-input" id="productratingCheck6" />
+                                                <Label className="custom-control-label" htmlFor="productratingCheck6">
+                                                    Chinese
+                                                </Label>
+                                            </div>
+                                            <div className="custom-control custom-checkbox mt-2">
+                                                <Input type="checkbox" className="custom-control-input" id="productratingCheck7" />
+                                                <Label className="custom-control-label" htmlFor="productratingCheck7">
+                                                    Japanese
+                                                </Label>
+                                            </div>
+                                            <div className="custom-control custom-checkbox mt-2">
+                                                <Input type="checkbox" className="custom-control-input" id="productratingCheck8" />
+                                                <Label className="custom-control-label" htmlFor="productratingCheck8">
+                                                    Portuguese
                                                 </Label>
                                             </div>
                                         </div>
@@ -291,4 +297,4 @@ const EcommerceProducts = (props) => {
     )
 }
 
-export default EcommerceProducts
+export default FindTutors

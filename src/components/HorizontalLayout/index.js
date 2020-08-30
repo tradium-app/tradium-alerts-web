@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import { changeLayout, changeTopbarTheme, changeLayoutWidth } from '../../store/actions'
-
 import Header from './Header'
 import Footer from './Footer'
 
@@ -36,14 +34,6 @@ class Layout extends Component {
         let currentage = title.charAt(1).toUpperCase() + title.slice(2)
 
         document.title = currentage + ' | Skote - Responsive Bootstrap 4 Admin Dashboard'
-
-        this.props.changeLayout('horizontal')
-        if (this.props.topbarTheme) {
-            this.props.changeTopbarTheme(this.props.topbarTheme)
-        }
-        if (this.props.layoutWidth) {
-            this.props.changeLayoutWidth(this.props.layoutWidth)
-        }
     }
 
     /**
@@ -77,13 +67,11 @@ class Layout extends Component {
         )
     }
 }
+
 const mapStatetoProps = (state) => {
     return {
         ...state.Layout,
     }
 }
-export default connect(mapStatetoProps, {
-    changeTopbarTheme,
-    changeLayout,
-    changeLayoutWidth,
-})(withRouter(Layout))
+
+export default connect(mapStatetoProps, {})(withRouter(Layout))
