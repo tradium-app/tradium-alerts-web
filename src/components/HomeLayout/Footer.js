@@ -9,7 +9,7 @@ const Footer = () => {
                     <Row>
                         <Col md={6}>{new Date().getFullYear()} © Webtutor.io</Col>
                         <Col md={6}>
-                            <div className="text-sm-right d-none d-sm-block">Developed by Webtutor Inc. Indianapolis, Indiana, USA</div>
+                            <div className="text-sm-right d-none d-sm-block">Developed by Webtutor Inc. Indiana, USA</div>
                         </Col>
                     </Row>
                 </Container>

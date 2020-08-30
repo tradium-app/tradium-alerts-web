@@ -1,13 +1,13 @@
 import React from 'react'
 import { Container } from 'reactstrap'
-import FAQs from './Faqs/FAQs'
+import ProfileEdit from './ProfileEdit/ProfileEdit'
 
 const Page = (props) => {
     return (
         <React.Fragment>
             <div className="page-content">
                 <Container fluid>
-                    <FAQs />
+                    <ProfileEdit />
                 </Container>
             </div>
         </React.Fragment>

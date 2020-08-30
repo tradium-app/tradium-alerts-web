@@ -48,9 +48,8 @@ const ProfileMenu = (props) => {
                 </DropdownToggle>
                 <DropdownMenu right>
                     <DropdownItem tag="a" href="/profile">
-                        {' '}
                         <i className="bx bx-user font-size-16 align-middle mr-1"></i>
-                        {props.t('Profile')}{' '}
+                        {props.t('Profile')}
                     </DropdownItem>
                     <DropdownItem tag="a" href="/crypto-wallet">
                         <i className="bx bx-wallet font-size-16 align-middle mr-1"></i>
