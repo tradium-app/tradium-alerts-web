@@ -3,9 +3,6 @@ import Home from '../pages/Home'
 // // Pages Component
 import Chat from '../pages/Chat/Chat'
 
-// Profile
-import UserProfile from '../pages/Authentication/user-profile'
-
 // Pages Calendar
 import Calendar from '../pages/Calendar/index'
 
@@ -50,7 +47,6 @@ import CryptoExchange from '../pages/Crypto/crypto-exchange'
 import CryptoLending from '../pages/Crypto/crypto-lending'
 import CryptoOrders from '../pages/Crypto/crypto-orders'
 import CryptoKYCApplication from '../pages/Crypto/crypto-kyc-application'
-import CryptoIcoLanding from '../pages/Crypto/CryptoIcoLanding/index'
 
 // Charts
 import ChartApex from '../pages/Charts/Apexcharts'
@@ -77,17 +73,6 @@ import BasicTables from '../pages/Tables/BasicTables'
 import DatatableTables from '../pages/Tables/DatatableTables'
 import ResponsiveTables from '../pages/Tables/ResponsiveTables'
 import EditableTables from '../pages/Tables/EditableTables'
-
-// Forms
-import FormElements from '../pages/Forms/FormElements'
-import FormAdvanced from '../pages/Forms/FormAdvanced'
-import FormEditors from '../pages/Forms/FormEditors'
-import FormValidations from '../pages/Forms/FormValidations'
-import FormMask from '../pages/Forms/FormMask'
-import FormRepeater from '../pages/Forms/FormRepeater'
-import FormUpload from '../pages/Forms/FormUpload'
-import FormWizard from '../pages/Forms/FormWizard'
-import FormXeditable from '../pages/Forms/FormXeditable'
 
 //Ui
 import UiAlert from '../pages/Ui/UiAlert'
@@ -126,6 +111,8 @@ import Pages500 from '../pages/Utility/pages-500'
 import ContactsGrid from '../pages/Contacts/contacts-grid'
 import ContactsList from '../pages/Contacts/contacts-list'
 import ContactsProfile from '../pages/Contacts/contacts-profile'
+
+import EditProfile from '../pages/Edit-Profile'
 
 const userRoutes = [
     { path: '/dashboard', component: Dashboard },
@@ -208,17 +195,6 @@ const userRoutes = [
     { path: '/maps-vector', component: MapsVector },
     { path: '/maps-leaflet', component: MapsLeaflet },
 
-    // Forms
-    { path: '/form-elements', component: FormElements },
-    { path: '/form-advanced', component: FormAdvanced },
-    { path: '/form-editors', component: FormEditors },
-    { path: '/form-mask', component: FormMask },
-    { path: '/form-repeater', component: FormRepeater },
-    { path: '/form-uploads', component: FormUpload },
-    { path: '/form-wizard', component: FormWizard },
-    { path: '/form-validation', component: FormValidations },
-    { path: '/form-xeditable', component: FormXeditable },
-
     // Ui
     { path: '/ui-alerts', component: UiAlert },
     { path: '/ui-buttons', component: UiButtons },
@@ -247,6 +223,7 @@ const userRoutes = [
     { path: '/pages-timeline', component: PagesTimeline },
     { path: '/pages-faqs', component: PagesFaqs },
     { path: '/pages-pricing', component: PagesPricing },
+    { path: '/edit-profile', component: EditProfile },
 ]
 
 const publicRoutes = [

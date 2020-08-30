@@ -45,7 +45,7 @@ const Header = (props) => {
                         </div>
 
                         <div className="d-none d-lg-inline-block ml-1">
-                            <Link to="/find-tutors" className="btn header-item waves-effect">
+                            <Link to="/edit-profile" className="btn header-item waves-effect">
                                 Become a Tutor
                             </Link>
                         </div>
