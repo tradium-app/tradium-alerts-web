@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
-import { Dropdown, DropdownToggle } from 'reactstrap'
 import { withNamespaces } from 'react-i18next'
 
 import logoLight from '../../assets/images/logo-light.png'
@@ -20,7 +19,7 @@ const Header = (props) => {
                 <div className="navbar-header">
                     <div className="d-flex">
                         <div className="navbar-brand-box">
-                            <Link to="/" className="logo logo-light">
+                            <Link to="/dashboard" className="logo logo-light">
                                 <span className="logo-sm">
                                     <img src={logoLightSvg} alt="" height="22" />
                                 </span>
@@ -48,6 +47,12 @@ const Header = (props) => {
                         <div className="d-none d-lg-inline-block ml-1">
                             <Link to="/find-tutors" className="btn header-item waves-effect">
                                 Become a Tutor
+                            </Link>
+                        </div>
+
+                        <div className="d-lg-inline-block ml-1">
+                            <Link to="/chat" className="btn header-item noti-icon waves-effect">
+                                <i className="bx bx-chat"></i>
                             </Link>
                         </div>
 

@@ -33,7 +33,7 @@ class Layout extends Component {
         const title = this.props.location.pathname
         let currentage = title.charAt(1).toUpperCase() + title.slice(2)
 
-        document.title = currentage + ' | Skote - Responsive Bootstrap 4 Admin Dashboard'
+        if (currentage !== '') document.title = currentage + ' | WebTutor - Live 1:1 Tutoring'
     }
 
     /**
