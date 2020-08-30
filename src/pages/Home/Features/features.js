@@ -5,8 +5,8 @@ import { Container, Row, Col } from 'reactstrap'
 import FeatureBox from './feature-box'
 
 //Import images
-import feature1 from '../../../../assets/images/crypto/features-img/img-1.png'
-import feature2 from '../../../../assets/images/crypto/features-img/img-2.png'
+import feature1 from '../../../assets/images/crypto/features-img/img-1.png'
+import feature2 from '../../../assets/images/crypto/features-img/img-2.png'
 
 const Features = (props) => {
     const features1 = [
@@ -26,7 +26,7 @@ const Features = (props) => {
                         <Col lg="12">
                             <div className="text-center mb-5">
                                 <div className="small-title">Features</div>
-                                <h4>Key features of the product</h4>
+                                <h4>How does it work?</h4>
                             </div>
                         </Col>
                     </Row>
@@ -39,24 +39,14 @@ const Features = (props) => {
                         </Col>
                         <Col md="5" className="ml-auto">
                             {/* featurebox */}
-                            <FeatureBox
-                                num="01"
-                                title="Lending"
-                                features={features1}
-                                desc="If several languages coalesce, the grammar of the resulting language is more simple and regular than of the individual will be more simple and regular than the existing."
-                            />
+                            <FeatureBox num="01" title="Sign Up" features={features1} desc="Sign up and fill the forms" />
                         </Col>
                     </Row>
 
                     <Row className="align-items-center mt-5 pt-md-5">
                         <Col md="5">
                             {/* featurebox */}
-                            <FeatureBox
-                                num="02"
-                                title="Wallet"
-                                features={features2}
-                                desc="It will be as simple as Occidental; in fact, it will be Occidental. To an English person, it will seem like simplified English, as a skeptical Cambridge friend."
-                            />
+                            <FeatureBox num="02" title="Find a Tutor" features={features2} desc="Search using all keywords" />
                         </Col>
                         <Col md="6" sm="8" className="ml-md-auto">
                             <div className="mt-4 mr-md-0">

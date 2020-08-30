@@ -1,4 +1,4 @@
-import Home from '../pages/Home/index'
+import Home from '../pages/Home'
 
 // // Pages Component
 import Chat from '../pages/Chat/Chat'
@@ -257,7 +257,6 @@ const publicRoutes = [
     { path: '/pages-comingsoon', component: PagesComingsoon },
     { path: '/pages-404', component: Pages404 },
     { path: '/pages-500', component: Pages500 },
-    { path: '/crypto-ico-landing', component: CryptoIcoLanding },
 ]
 
 export { userRoutes, publicRoutes }

@@ -3,11 +3,11 @@ import { Container, Row, Col } from 'reactstrap'
 
 //Import Images
 import { Link } from 'react-router-dom'
-import avatar2 from '../../../../assets/images/users/avatar-2.jpg'
-import avatar3 from '../../../../assets/images/users/avatar-3.jpg'
-import avatar8 from '../../../../assets/images/users/avatar-8.jpg'
-import avatar5 from '../../../../assets/images/users/avatar-5.jpg'
-import avatar1 from '../../../../assets/images/users/avatar-1.jpg'
+import avatar2 from '../../../assets/images/users/avatar-2.jpg'
+import avatar3 from '../../../assets/images/users/avatar-3.jpg'
+import avatar8 from '../../../assets/images/users/avatar-8.jpg'
+import avatar5 from '../../../assets/images/users/avatar-5.jpg'
+import avatar1 from '../../../assets/images/users/avatar-1.jpg'
 
 const OurTeam = (props) => {
     const [step1, setStep1] = useState(true)
@@ -20,8 +20,8 @@ const OurTeam = (props) => {
                     <Row>
                         <Col lg="12">
                             <div className="text-center mb-5">
-                                <div className="small-title">Team</div>
-                                <h4>Meet our team</h4>
+                                <div className="small-title">Tutors</div>
+                                <h4>Meet our Top Tutors</h4>
                             </div>
                         </Col>
                     </Row>
