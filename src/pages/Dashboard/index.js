@@ -77,16 +77,11 @@ const Dashboard = (props) => {
                                                         </div>
                                                     </div>
                                                 </Col>
-                                                <Col xl="2" className="text-right">
-                                                    <div className="mt-2">
-                                                        <Button className="btn btn-primary btn-lg">
-                                                            <i className="bx bx-calendar-plus"></i>
-                                                        </Button>
-                                                    </div>
-                                                    <div className="mt-2">
-                                                        <Button className="btn btn-primary btn-lg">
-                                                            <i className="bx bx-chat"></i>
-                                                        </Button>
+                                                <Col xl="2" className="d-flex align-items-center justify-content-end">
+                                                    <div>
+                                                        <button type="button" className="btn btn-primary waves-effect waves-light">
+                                                            <i className="bx bx-calendar-plus font-size-20 align-middle"></i>
+                                                        </button>
                                                     </div>
                                                 </Col>
                                             </Row>
@@ -118,16 +113,11 @@ const Dashboard = (props) => {
                                                         </div>
                                                     </div>
                                                 </Col>
-                                                <Col xl="2" className="text-right">
-                                                    <div className="mt-2">
-                                                        <Button className="btn btn-primary btn-lg">
-                                                            <i className="bx bx-calendar-plus"></i>
-                                                        </Button>
-                                                    </div>
-                                                    <div className="mt-2">
-                                                        <Button className="btn btn-primary btn-lg">
-                                                            <i className="bx bx-chat"></i>
-                                                        </Button>
+                                                <Col xl="2" className="d-flex align-items-center justify-content-end">
+                                                    <div>
+                                                        <button type="button" className="btn btn-primary waves-effect waves-light">
+                                                            <i className="bx bx-calendar-plus font-size-20 align-middle"></i>
+                                                        </button>
                                                     </div>
                                                 </Col>
                                             </Row>
