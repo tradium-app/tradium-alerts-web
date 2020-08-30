@@ -57,8 +57,7 @@ const ProfileMenu = (props) => {
                         {props.t('My Wallet')}
                     </DropdownItem>
                     <DropdownItem tag="a" href="#">
-                        <span className="badge badge-success float-right">11</span>
-                        <i className="mdi mdi-settings font-size-17 align-middle mr-1"></i>
+                        <i className="bx bx-cog font-size-16 align-middle mr-1"></i>
                         {props.t('Settings')}
                     </DropdownItem>
                     <div className="dropdown-divider"></div>

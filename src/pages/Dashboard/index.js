@@ -1,23 +1,18 @@
 import React, { useState } from 'react'
-import { Container, Row, Col, Button, Card, CardBody, CardTitle, Modal, ModalHeader, ModalBody, ModalFooter, Media, Table } from 'reactstrap'
+import { Container, Row, Col, Button, Card, CardBody, Modal, ModalHeader, ModalBody, ModalFooter, Media, Table } from 'reactstrap'
 import { Link } from 'react-router-dom'
-
-//import Charts
-import StackedColumnChart from './StackedColumnChart'
 
 import modalimage1 from '../../assets/images/product/img-7.png'
 import modalimage2 from '../../assets/images/product/img-4.png'
 
 // Pages Components
 import WelcomeComp from './WelcomeComp'
-import MonthlyEarning from './MonthlyEarning'
-import SocialSource from './SocialSource'
 import ActivityComp from './ActivityComp'
-import TopCities from './TopCities'
-import LatestTranaction from './LatestTranaction'
 
 //i18n
 import { withNamespaces } from 'react-i18next'
+import StarRatings from 'react-star-ratings'
+import avatar3 from '../../assets/images/users/avatar-3.jpg'
 
 const Dashboard = (props) => {
     const [modal, setmodal] = useState(false)
@@ -40,69 +35,126 @@ const Dashboard = (props) => {
                     <Row>
                         <Col xl="4">
                             <WelcomeComp />
-                            <MonthlyEarning />
+
+                            <Card className="mini-stats-wid">
+                                <CardBody>
+                                    <Media>
+                                        <Media body>
+                                            <p className="text-muted font-weight-medium">Balance</p>
+                                            <h4 className="mb-0">$200</h4>
+                                        </Media>
+                                        <div className="mini-stat-icon avatar-sm rounded-circle bg-primary align-self-center">
+                                            <span className="avatar-title">
+                                                <i className={'bx bx bx-dollar-circle font-size-24'}></i>
+                                            </span>
+                                        </div>
+                                    </Media>
+                                </CardBody>
+                            </Card>
+                            <ActivityComp />
                         </Col>
                         <Col xl="8">
                             <Row>
-                                {/* Reports Render */}
-                                {reports.map((report, key) => (
-                                    <Col md="4" key={'_col_' + key}>
-                                        <Card className="mini-stats-wid">
-                                            <CardBody>
-                                                <Media>
-                                                    <Media body>
-                                                        <p className="text-muted font-weight-medium">{report.title}</p>
-                                                        <h4 className="mb-0">{report.description}</h4>
-                                                    </Media>
-                                                    <div className="mini-stat-icon avatar-sm rounded-circle bg-primary align-self-center">
-                                                        <span className="avatar-title">
-                                                            <i className={'bx ' + report.iconClass + ' font-size-24'}></i>
-                                                        </span>
-                                                    </div>
-                                                </Media>
-                                            </CardBody>
-                                        </Card>
-                                    </Col>
-                                ))}
+                                <Col>
+                                    <div className="mb-2">
+                                        <h7>My Teachers</h7>
+                                    </div>
+                                    <Card>
+                                        <CardBody>
+                                            <div className="media mb-4">
+                                                <img className="d-flex align-self-start rounded mr-4" src={avatar3} alt="Skote" height="100" />
+                                                <div className="media-body">
+                                                    <h5 className="mt-0 font-16">Khagendra Shah</h5>
+                                                    <StarRatings
+                                                        rating={4}
+                                                        starRatedColor="#F1B44C"
+                                                        starEmptyColor="#2D363F"
+                                                        numberOfStars={5}
+                                                        name="rating"
+                                                        starDimension="12px"
+                                                        starSpacing="3px"
+                                                    />
+                                                    <p>
+                                                        I'm a full-stack developer with 15+ years of experience in web application development and
+                                                        code mentoring. Are you stuck? Let me help!
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div className="clearfix"></div>
+                                            <div className="media mb-4">
+                                                <img className="d-flex align-self-start rounded mr-4" src={avatar3} alt="Skote" height="100" />
+                                                <div className="media-body">
+                                                    <h5 className="mt-0 font-16">Khagendra Shah</h5>
+                                                    <StarRatings
+                                                        rating={4}
+                                                        starRatedColor="#F1B44C"
+                                                        starEmptyColor="#2D363F"
+                                                        numberOfStars={5}
+                                                        name="rating"
+                                                        starDimension="12px"
+                                                        starSpacing="3px"
+                                                    />
+                                                    <p>
+                                                        I'm a full-stack developer with 15+ years of experience in web application development and
+                                                        code mentoring. Are you stuck? Let me help!
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </CardBody>
+                                    </Card>
+                                </Col>
                             </Row>
 
-                            <Card>
-                                <CardBody>
-                                    <CardTitle className="mb-4 float-sm-left">Email Sent</CardTitle>
-                                    <div className="float-sm-right">
-                                        <ul className="nav nav-pills">
-                                            {email.map((mail, key) => (
-                                                <li className="nav-item" key={'_li_' + key}>
-                                                    <Link className={mail.isActive ? 'nav-link active' : 'nav-link'} to={mail.linkto}>
-                                                        {mail.title}
-                                                    </Link>
-                                                </li>
-                                            ))}
-                                        </ul>
+                            <Row>
+                                <Col>
+                                    <div className="mb-2">
+                                        <h7>Recommended Teachers</h7>
                                     </div>
-                                    <div className="clearfix"></div>
-                                    <StackedColumnChart />
-                                </CardBody>
-                            </Card>
-                        </Col>
-                    </Row>
-
-                    <Row>
-                        <Col xl="4">
-                            <SocialSource />
-                        </Col>
-                        <Col xl="4">
-                            <ActivityComp />
-                        </Col>
-
-                        <Col xl="4">
-                            <TopCities />
-                        </Col>
-                    </Row>
-
-                    <Row>
-                        <Col lg="12">
-                            <LatestTranaction />
+                                    <Card>
+                                        <CardBody>
+                                            <div className="media mb-4">
+                                                <img className="d-flex align-self-start rounded mr-4" src={avatar3} alt="Skote" height="100" />
+                                                <div className="media-body">
+                                                    <h5 className="mt-0 font-16">Khagendra Shah</h5>
+                                                    <StarRatings
+                                                        rating={4}
+                                                        starRatedColor="#F1B44C"
+                                                        starEmptyColor="#2D363F"
+                                                        numberOfStars={5}
+                                                        name="rating"
+                                                        starDimension="12px"
+                                                        starSpacing="3px"
+                                                    />
+                                                    <p>
+                                                        I'm a full-stack developer with 15+ years of experience in web application development and
+                                                        code mentoring. Are you stuck? Let me help!
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div className="clearfix"></div>
+                                            <div className="media mb-4">
+                                                <img className="d-flex align-self-start rounded mr-4" src={avatar3} alt="Skote" height="100" />
+                                                <div className="media-body">
+                                                    <h5 className="mt-0 font-16">Khagendra Shah</h5>
+                                                    <StarRatings
+                                                        rating={4}
+                                                        starRatedColor="#F1B44C"
+                                                        starEmptyColor="#2D363F"
+                                                        numberOfStars={5}
+                                                        name="rating"
+                                                        starDimension="12px"
+                                                        starSpacing="3px"
+                                                    />
+                                                    <p>
+                                                        I'm a full-stack developer with 15+ years of experience in web application development and
+                                                        code mentoring. Are you stuck? Let me help!
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </CardBody>
+                                    </Card>
+                                </Col>
+                            </Row>
                         </Col>
                     </Row>
                 </Container>
