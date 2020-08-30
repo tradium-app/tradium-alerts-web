@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Row, Col, Card, CardBody, Table } from 'reactstrap'
+import { Row, Col, Card, CardBody } from 'reactstrap'
 import { Link } from 'react-router-dom'
 
 import avatar1 from '../../assets/images/users/avatar-1.jpg'
@@ -24,15 +24,19 @@ const WelcomeComp = (props) => {
                 </div>
                 <CardBody className="pt-0">
                     <Row>
-                        <Col sm="4">
+                        <Col sm="3">
                             <div className="avatar-md profile-user-wid mb-4">
-                                <img src={avatar1} alt="" className="img-thumbnail rounded-circle" />
+                                <Link to="/profile">
+                                    <img src={avatar1} alt="" className="img-thumbnail rounded-circle" />
+                                </Link>
                             </div>
                         </Col>
 
-                        <Col sm="8">
+                        <Col sm="9">
                             <div className="pt-4">
-                                <h5 className="font-size-15 text-truncate">Suraj Shrestha</h5>
+                                <h5 className="font-size-15 text-truncate">
+                                    <Link to="/profile"> Suraj Shrestha</Link>
+                                </h5>
                                 <p className="text-muted mb-2 text-truncate">UI/UX Designer</p>
                                 <p className="text-muted mb-2 text-truncate">Classes: 10</p>
                             </div>

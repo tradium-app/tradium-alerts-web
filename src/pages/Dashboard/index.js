@@ -17,17 +17,6 @@ import avatar3 from '../../assets/images/users/avatar-3.jpg'
 const Dashboard = (props) => {
     const [modal, setmodal] = useState(false)
 
-    const reports = [
-        { title: 'Orders', iconClass: 'bx-copy-alt', description: '1,235' },
-        { title: 'Revenue', iconClass: 'bx-archive-in', description: '$35, 723' },
-        { title: 'Average Price', iconClass: 'bx-purchase-tag-alt', description: '$16.2' },
-    ]
-    const email = [
-        { title: 'Week', linkto: '#', isActive: false },
-        { title: 'Month', linkto: '#', isActive: false },
-        { title: 'Year', linkto: '#', isActive: true },
-    ]
-
     return (
         <React.Fragment>
             <div className="page-content">
