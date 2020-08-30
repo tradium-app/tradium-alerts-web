@@ -11,6 +11,7 @@ import img8 from '../../assets/images/product/img-8.png'
 import avatar1 from '../../assets/images/users/avatar-1.jpg'
 import avatar2 from '../../assets/images/users/avatar-2.jpg'
 import avatar3 from '../../assets/images/users/avatar-3.jpg'
+import { Link } from 'react-router-dom'
 
 const Home = (props) => {
     const [activeTab, setactiveTab] = useState('1')
@@ -62,132 +63,25 @@ const Home = (props) => {
     return (
         <React.Fragment>
             <div className="page-content">
+                <br />
+                <br />
+                <br />
+                <div className="text-center mt-8 mb-16">
+                    <div>
+                        <h1>
+                            Find a developer for <br /> live tutoring
+                        </h1>
+                        <div>
+                            <Link to="/find-tutors" color="primary" className="btn btn-primary waves-effect waves-light mt-2 mr-1">
+                                <i className="bx bx-search mr-2"></i> Search Now
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <br />
                 <Container fluid>
-                    <Row>
-                        <Col>
-                            <Card>
-                                <CardBody>
-                                    <Row>
-                                        <Col xl="6">
-                                            <div className="mt-4 mt-xl-3">
-                                                <h2 className="mt-1 mb-3">Find a developer for Live Tutoring</h2>
-                                                <p className="text-muted mb-4">Getting help has never been easier</p>
-                                            </div>
-                                        </Col>
-
-                                        <Col xl="6">
-                                            <div className="product-detai-imgs">
-                                                <Row>
-                                                    <Col md="2" xs="3">
-                                                        <Nav className="flex-column" pills>
-                                                            <NavItem>
-                                                                <NavLink
-                                                                    className={classnames({ active: activeTab === '1' })}
-                                                                    onClick={() => {
-                                                                        setactiveTab('1')
-                                                                    }}
-                                                                >
-                                                                    <img
-                                                                        src={img7}
-                                                                        alt=""
-                                                                        onClick={() => {
-                                                                            imageShow(img7, 1)
-                                                                        }}
-                                                                        className="img-fluid mx-auto d-block rounded"
-                                                                    />
-                                                                </NavLink>
-                                                            </NavItem>
-                                                            <NavItem>
-                                                                <NavLink
-                                                                    className={classnames({ active: activeTab === '2' })}
-                                                                    onClick={() => {
-                                                                        setactiveTab('2')
-                                                                    }}
-                                                                >
-                                                                    <img
-                                                                        src={img8}
-                                                                        alt=""
-                                                                        onClick={() => {
-                                                                            imageShow(img8, 2)
-                                                                        }}
-                                                                        className="img-fluid mx-auto d-block rounded"
-                                                                    />
-                                                                </NavLink>
-                                                            </NavItem>
-                                                            <NavItem>
-                                                                <NavLink
-                                                                    className={classnames({ active: activeTab === '3' })}
-                                                                    onClick={() => {
-                                                                        setactiveTab('3')
-                                                                    }}
-                                                                >
-                                                                    <img
-                                                                        src={img7}
-                                                                        alt=""
-                                                                        onClick={() => {
-                                                                            imageShow(img7, 3)
-                                                                        }}
-                                                                        className="img-fluid mx-auto d-block rounded"
-                                                                    />
-                                                                </NavLink>
-                                                            </NavItem>
-                                                            <NavItem>
-                                                                <NavLink
-                                                                    className={classnames({ active: activeTab === '4' })}
-                                                                    onClick={() => {
-                                                                        setactiveTab('4')
-                                                                    }}
-                                                                >
-                                                                    <img
-                                                                        src={img8}
-                                                                        alt=""
-                                                                        onClick={() => {
-                                                                            imageShow(img8, 4)
-                                                                        }}
-                                                                        className="img-fluid mx-auto d-block rounded"
-                                                                    />
-                                                                </NavLink>
-                                                            </NavItem>
-                                                        </Nav>
-                                                    </Col>
-                                                    <Col md={{ size: 7, offset: 1 }} xs="9">
-                                                        <TabContent activeTab={activeTab}>
-                                                            <TabPane tabId="1">
-                                                                <div>
-                                                                    <img src={img7} alt="" id="expandedImg1" className="img-fluid mx-auto d-block" />
-                                                                </div>
-                                                            </TabPane>
-                                                            <TabPane tabId="2">
-                                                                <div>
-                                                                    <img src={img8} id="expandedImg2" alt="" className="img-fluid mx-auto d-block" />
-                                                                </div>
-                                                            </TabPane>
-                                                            <TabPane tabId="3">
-                                                                <div>
-                                                                    <img src={img7} id="expandedImg3" alt="" className="img-fluid mx-auto d-block" />
-                                                                </div>
-                                                            </TabPane>
-                                                            <TabPane tabId="4">
-                                                                <div>
-                                                                    <img src={img8} id="expandedImg4" alt="" className="img-fluid mx-auto d-block" />
-                                                                </div>
-                                                            </TabPane>
-                                                        </TabContent>
-                                                        <div className="text-center">
-                                                            <Button type="button" color="primary" className="btn waves-effect waves-light mt-2 mr-1">
-                                                                <i className="bx bx-search mr-2"></i> Search Now
-                                                            </Button>
-                                                        </div>
-                                                    </Col>
-                                                </Row>
-                                            </div>
-                                        </Col>
-                                    </Row>
-                                </CardBody>
-                            </Card>
-                        </Col>
-                    </Row>
-
                     <Row className="mt-3">
                         <Col lg={12}>
                             <div>
