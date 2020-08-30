@@ -147,7 +147,7 @@ const userRoutes = [
     { path: '/calendar', component: Calendar },
 
     // //profile
-    { path: '/profile', component: UserProfile },
+    { path: '/profile', component: ContactsProfile },
 
     //Ecommerce
     { path: '/ecommerce-product-detail', component: EcommerceProductDetail },
