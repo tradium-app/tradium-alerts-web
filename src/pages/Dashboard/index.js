@@ -50,45 +50,87 @@ const Dashboard = (props) => {
                                     </div>
                                     <Card>
                                         <CardBody>
-                                            <div className="media mb-4">
-                                                <img className="d-flex align-self-start rounded mr-4" src={avatar3} alt="Skote" height="100" />
-                                                <div className="media-body">
-                                                    <h5 className="mt-0 font-16">Khagendra Shah</h5>
-                                                    <StarRatings
-                                                        rating={4}
-                                                        starRatedColor="#F1B44C"
-                                                        starEmptyColor="#2D363F"
-                                                        numberOfStars={5}
-                                                        name="rating"
-                                                        starDimension="12px"
-                                                        starSpacing="3px"
-                                                    />
-                                                    <p>
-                                                        I'm a full-stack developer with 15+ years of experience in web application development and
-                                                        code mentoring. Are you stuck? Let me help!
-                                                    </p>
-                                                </div>
-                                            </div>
+                                            <Row>
+                                                <Col xl="10">
+                                                    <div className="media mb-4">
+                                                        <img
+                                                            className="d-flex align-self-start rounded mr-4"
+                                                            src={avatar3}
+                                                            alt="Skote"
+                                                            height="100"
+                                                        />
+                                                        <div className="media-body">
+                                                            <h5 className="mt-0 font-16">Khagendra Shah</h5>
+                                                            <StarRatings
+                                                                rating={4}
+                                                                starRatedColor="#F1B44C"
+                                                                starEmptyColor="#2D363F"
+                                                                numberOfStars={5}
+                                                                name="rating"
+                                                                starDimension="12px"
+                                                                starSpacing="3px"
+                                                            />
+                                                            <p>
+                                                                I'm a full-stack developer with 15+ years of experience in web application development
+                                                                and code mentoring. Are you stuck? Let me help!
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </Col>
+                                                <Col xl="2" className="text-right">
+                                                    <div className="mt-2">
+                                                        <Button className="btn btn-primary btn-lg">
+                                                            <i className="bx bx-calendar-plus"></i>
+                                                        </Button>
+                                                    </div>
+                                                    <div className="mt-2">
+                                                        <Button className="btn btn-primary btn-lg">
+                                                            <i className="bx bx-chat"></i>
+                                                        </Button>
+                                                    </div>
+                                                </Col>
+                                            </Row>
                                             <div className="clearfix"></div>
-                                            <div className="media mb-4">
-                                                <img className="d-flex align-self-start rounded mr-4" src={avatar3} alt="Skote" height="100" />
-                                                <div className="media-body">
-                                                    <h5 className="mt-0 font-16">Khagendra Shah</h5>
-                                                    <StarRatings
-                                                        rating={4}
-                                                        starRatedColor="#F1B44C"
-                                                        starEmptyColor="#2D363F"
-                                                        numberOfStars={5}
-                                                        name="rating"
-                                                        starDimension="12px"
-                                                        starSpacing="3px"
-                                                    />
-                                                    <p>
-                                                        I'm a full-stack developer with 15+ years of experience in web application development and
-                                                        code mentoring. Are you stuck? Let me help!
-                                                    </p>
-                                                </div>
-                                            </div>
+                                            <Row>
+                                                <Col xl="10">
+                                                    <div className="media mb-4">
+                                                        <img
+                                                            className="d-flex align-self-start rounded mr-4"
+                                                            src={avatar3}
+                                                            alt="Skote"
+                                                            height="100"
+                                                        />
+                                                        <div className="media-body">
+                                                            <h5 className="mt-0 font-16">Khagendra Shah</h5>
+                                                            <StarRatings
+                                                                rating={4}
+                                                                starRatedColor="#F1B44C"
+                                                                starEmptyColor="#2D363F"
+                                                                numberOfStars={5}
+                                                                name="rating"
+                                                                starDimension="12px"
+                                                                starSpacing="3px"
+                                                            />
+                                                            <p>
+                                                                I'm a full-stack developer with 15+ years of experience in web application development
+                                                                and code mentoring. Are you stuck? Let me help!
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </Col>
+                                                <Col xl="2" className="text-right">
+                                                    <div className="mt-2">
+                                                        <Button className="btn btn-primary btn-lg">
+                                                            <i className="bx bx-calendar-plus"></i>
+                                                        </Button>
+                                                    </div>
+                                                    <div className="mt-2">
+                                                        <Button className="btn btn-primary btn-lg">
+                                                            <i className="bx bx-chat"></i>
+                                                        </Button>
+                                                    </div>
+                                                </Col>
+                                            </Row>
                                         </CardBody>
                                     </Card>
                                 </Col>
