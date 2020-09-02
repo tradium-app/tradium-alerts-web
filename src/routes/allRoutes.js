@@ -113,6 +113,7 @@ import ContactsList from '../pages/Contacts/contacts-list'
 import ContactsProfile from '../pages/Contacts/contacts-profile'
 
 import EditProfile from '../pages/Edit-Profile'
+import BookClass from '../pages/BookClass'
 
 const userRoutes = [
     { path: '/dashboard', component: Dashboard },
@@ -224,6 +225,7 @@ const userRoutes = [
     { path: '/pages-faqs', component: PagesFaqs },
     { path: '/pages-pricing', component: PagesPricing },
     { path: '/edit-profile', component: EditProfile },
+    { path: '/book-class', component: BookClass },
 ]
 
 const publicRoutes = [

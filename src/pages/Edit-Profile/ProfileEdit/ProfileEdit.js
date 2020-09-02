@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Row, Col, Card, CardBody, Nav, NavLink, TabContent, TabPane, CardTitle, Form, FormGroup, Label, Input, NavItem, Table } from 'reactstrap'
 import classnames from 'classnames'
 
-const FAQs = (props) => {
+const ProfileEdit = (props) => {
     const [activeTab, setactiveTab] = useState('1')
 
     return (
@@ -263,4 +263,4 @@ const FAQs = (props) => {
     )
 }
 
-export default FAQs
+export default ProfileEdit
