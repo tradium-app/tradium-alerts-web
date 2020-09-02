@@ -47,18 +47,18 @@ const ProfileMenu = (props) => {
                     <i className="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </DropdownToggle>
                 <DropdownMenu right>
-                    <DropdownItem tag="a" href="/profile">
+                    <Link className="dropdown-item" to="/profile">
                         <i className="bx bx-user font-size-16 align-middle mr-1"></i>
                         {props.t('Profile')}
-                    </DropdownItem>
-                    <DropdownItem tag="a" href="/crypto-wallet">
+                    </Link>
+                    <Link className="dropdown-item" to="/crypto-wallet">
                         <i className="bx bx-wallet font-size-16 align-middle mr-1"></i>
                         {props.t('My Wallet')}
-                    </DropdownItem>
-                    <DropdownItem tag="a" href="#">
+                    </Link>
+                    <Link className="dropdown-item" to="/edit-profile">
                         <i className="bx bx-cog font-size-16 align-middle mr-1"></i>
                         {props.t('Settings')}
-                    </DropdownItem>
+                    </Link>
                     <div className="dropdown-divider"></div>
                     <Link onClick={signOut} className="dropdown-item btn-primary" to="#">
                         <i className="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i>
