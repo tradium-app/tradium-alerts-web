@@ -79,9 +79,9 @@ const Dashboard = (props) => {
                                                 </Col>
                                                 <Col xl="2" className="d-flex align-items-center justify-content-end">
                                                     <div>
-                                                        <button type="button" className="btn btn-primary waves-effect waves-light">
+                                                        <Link to="/calendar" type="button" className="btn btn-primary waves-effect waves-light">
                                                             <i className="bx bx-calendar-plus font-size-20 align-middle"></i>
-                                                        </button>
+                                                        </Link>
                                                     </div>
                                                 </Col>
                                             </Row>

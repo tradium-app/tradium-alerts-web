@@ -8,9 +8,6 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin, { Draggable } from '@fullcalendar/interaction'
 import BootstrapTheme from '@fullcalendar/bootstrap'
 
-//Import Breadcrumb
-import Breadcrumbs from '../../components/Common/Breadcrumb'
-
 const DefaultEvents = [
     {
         id: 1,
@@ -195,9 +192,6 @@ const Index = (props) => {
         <React.Fragment>
             <div className="page-content">
                 <Container fluid>
-                    {/* Render Breadcrumbs */}
-                    <Breadcrumbs title="Dashboard" breadcrumbItem="Calendar" />
-
                     <Row>
                         <Col xs={12}>
                             <Card>
