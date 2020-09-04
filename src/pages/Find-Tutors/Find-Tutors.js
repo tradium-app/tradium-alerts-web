@@ -1,17 +1,27 @@
 import React, { useState } from 'react'
-
 import { Container, Row, Col, Card, CardBody, CardTitle, Form, Label, Input, Pagination, PaginationItem, PaginationLink } from 'reactstrap'
-
 import StarRatings from 'react-star-ratings'
-
-// RangeSlider
 import Nouislider from 'nouislider-react'
 import 'nouislider/distribute/nouislider.css'
-
+import Select, { components } from 'react-select'
+import makeAnimated from 'react-select/animated'
 import avatar3 from '../../assets/images/users/avatar-3.jpg'
 
 const FindTutors = (props) => {
     const [activeTab, setactiveTab] = useState(false)
+    const [selectedMulti3, setselectedMulti3] = useState(null)
+
+    const optionGroup2 = [
+        { label: 'Java', value: 'Java' },
+        { label: 'JavaScript', value: 'JavaScript' },
+        { label: 'C#', value: 'C#' },
+        { label: '.Net', value: '.Net' },
+        { label: 'Python', value: 'Python' },
+    ]
+
+    function handleMulti3(selectedMulti3) {
+        setselectedMulti3(selectedMulti3)
+    }
 
     return (
         <React.Fragment>
@@ -134,16 +144,25 @@ const FindTutors = (props) => {
 
                         <Col lg="9">
                             <Row className="mb-3">
-                                <Col>
-                                    <Form className="mt-6 form-inline">
-                                        <div className="search-box mr-0">
-                                            <div className="position-relative">
-                                                <Input type="text" className="form-control border-0" placeholder="Search..." />
-                                                <i className="bx bx-search-alt search-icon"></i>
-                                            </div>
-                                        </div>
+                                <Col lg="1"></Col>
+                                <Col lg="10">
+                                    <Form className="app-search mb-0 templating-select select2-container">
+                                        <Select
+                                            value={selectedMulti3}
+                                            options={optionGroup2}
+                                            placeholder="Select topics..."
+                                            onChange={() => {
+                                                handleMulti3()
+                                            }}
+                                            isMulti={true}
+                                            classNamePrefix="select2-selection"
+                                            closeMenuOnSelect={true}
+                                            defaultMenuIsOpen={false}
+                                            components={makeAnimated({ DropdownIndicator, IndicatorSeparator: () => null })}
+                                        />
                                     </Form>
                                 </Col>
+                                <Col lg="1"></Col>
                             </Row>
                             <div className="mb-2">
                                 <h7>3 results</h7>
@@ -208,6 +227,16 @@ const FindTutors = (props) => {
                 </Container>
             </div>
         </React.Fragment>
+    )
+}
+
+const DropdownIndicator = (props) => {
+    return (
+        components.DropdownIndicator && (
+            <components.DropdownIndicator {...props}>
+                <i className="bx bx-search-alt font-size-24" aria-hidden="true" />
+            </components.DropdownIndicator>
+        )
     )
 }
 
