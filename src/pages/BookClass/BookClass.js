@@ -80,6 +80,65 @@ const ProfileEdit = (props) => {
                                         <CardTitle className="mb-4">General Info</CardTitle>
                                         <Form>
                                             <FormGroup className="mb-4" row>
+                                                <div className="ml-2 mr-2">
+                                                    <label className="card-radio-label mb-2">
+                                                        <input
+                                                            type="radio"
+                                                            name="currency"
+                                                            id="buycurrencyoption1"
+                                                            className="card-radio-input"
+                                                            defaultChecked
+                                                            readOnly
+                                                        />
+
+                                                        <div className="card-radio">
+                                                            <div>
+                                                                <i className="bx bx-group font-size-24 text-warning align-middle mr-2"></i>
+                                                                <span>Pair Programming</span>
+                                                            </div>
+                                                        </div>
+                                                    </label>
+                                                </div>
+                                                <div className="ml-2 mr-2">
+                                                    <label className="card-radio-label mb-2">
+                                                        <input
+                                                            type="radio"
+                                                            name="currency"
+                                                            id="buycurrencyoption1"
+                                                            className="card-radio-input"
+                                                            defaultChecked
+                                                            readOnly
+                                                        />
+
+                                                        <div className="card-radio">
+                                                            <div>
+                                                                <i className="bx bx-group font-size-24 text-danger align-middle mr-2"></i>
+                                                                <span>Debug Session</span>
+                                                            </div>
+                                                        </div>
+                                                    </label>
+                                                </div>
+                                                <div className="ml-2 mr-2">
+                                                    <label className="card-radio-label mb-2">
+                                                        <input
+                                                            type="radio"
+                                                            name="currency"
+                                                            id="buycurrencyoption1"
+                                                            className="card-radio-input"
+                                                            defaultChecked
+                                                            readOnly
+                                                        />
+
+                                                        <div className="card-radio">
+                                                            <div>
+                                                                <i className="bx bx-group font-size-24 text-success align-middle mr-2"></i>
+                                                                <span>Live Tutoring</span>
+                                                            </div>
+                                                        </div>
+                                                    </label>
+                                                </div>
+                                            </FormGroup>
+                                            <FormGroup className="mb-4" row>
                                                 <Label htmlFor="billing-name" md="3" className="col-form-label">
                                                     What do you want to learn*
                                                 </Label>
