@@ -1,8 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Container, Row, Col, Card, CardBody, CardTitle, Media, Table } from 'reactstrap'
+import { Container, Row, Col, Card, CardBody, CardTitle, Media } from 'reactstrap'
 
-//Import Images
 import avatar2 from '../../assets/images/users/avatar-2.jpg'
 import avatar3 from '../../assets/images/users/avatar-3.jpg'
 
@@ -23,7 +22,7 @@ const ProfileMenu = (props) => {
                                 <CardBody className="pt-0">
                                     <Row>
                                         <Col className="text-center">
-                                            <div className=".avatar-md mt-2 mb-2">
+                                            <div className="avatar-xl mt-2 mb-2 d-inline-block">
                                                 <img src={avatar2} alt="" className="img-thumbnail rounded-circle" />
                                             </div>
                                             <h5 className="font-size-20 text-truncate">Suraj Shrestha</h5>
@@ -43,42 +42,36 @@ const ProfileMenu = (props) => {
                                                         <p className="text-muted mb-0">Per Hour</p>
                                                     </Col>
                                                 </Row>
+                                                <Row className="mt-4 mb-4">
+                                                    <Col className="align-self-center text-center">
+                                                        <img
+                                                            className="avatar-sm img-thumbnail d-inline-block rounded-circle ml-1 mr-1"
+                                                            src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+                                                            alt="Github"
+                                                            height="50"
+                                                        />
+                                                        <img
+                                                            className="avatar-sm img-thumbnail d-inline-block rounded-circle ml-1 mr-1"
+                                                            src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
+                                                            alt="LinkedIn"
+                                                            height="50"
+                                                        />
+                                                        <img
+                                                            className="avatar-sm img-thumbnail d-inline-block rounded-circle ml-1 mr-1"
+                                                            src="https://cdn.sstatic.net/Sites/stackoverflow/company/Img/logos/so/so-icon.svg?v=f13ebeedfa9e"
+                                                            alt="Stack Overflow"
+                                                            height="50"
+                                                        />
+                                                    </Col>
+                                                </Row>
                                                 <div className="mt-4">
-                                                    <Link to="" className="btn btn-primary waves-effect waves-light btn-sm">
+                                                    <Link to="/book-class" className="btn btn-primary waves-effect waves-light btn-sm">
                                                         Book a session <i className="mdi mdi-arrow-right ml-1"></i>
                                                     </Link>
                                                 </div>
                                             </div>
                                         </Col>
                                     </Row>
-                                </CardBody>
-                            </Card>
-
-                            <Card className="overflow-hidden">
-                                <CardBody>
-                                    <CardTitle className="mb-4">More about Suraj</CardTitle>
-                                    <div className="table-responsive">
-                                        <Table className="table-nowrap mb-0">
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">LinkedIn :</th>
-                                                    <td className="text-muted text-truncate">https://www.linkedin.com/in/surajshrestha</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Github :</th>
-                                                    <td className="text-muted text-truncate">https://github.com/syuraj</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Stack-Overflow :</th>
-                                                    <td>https://stackoverflow.com/users/291668/suraj-shrestha?tab=profile</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Location :</th>
-                                                    <td>California, United States</td>
-                                                </tr>
-                                            </tbody>
-                                        </Table>
-                                    </div>
                                 </CardBody>
                             </Card>
 
