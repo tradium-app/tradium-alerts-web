@@ -2,38 +2,6 @@ import React from 'react'
 import { Container, Row, Col, Card, CardBody, CardHeader, Button } from 'reactstrap'
 import { Link } from 'react-router-dom'
 
-//Import Countdown
-import Countdown from 'react-countdown'
-
-const renderer = ({ days, hours, minutes, seconds, completed }) => {
-    if (completed) {
-        // Render a completed state
-        return <span>You are good to go!</span>
-    } else {
-        // Render a countdown
-        return (
-            <>
-                <div className="coming-box">
-                    {days}
-                    <span>Days</span>
-                </div>
-                <div className="coming-box">
-                    {hours}
-                    <span>Hours</span>
-                </div>
-                <div className="coming-box">
-                    {minutes}
-                    <span>Minutes</span>
-                </div>
-                <div className="coming-box">
-                    {seconds}
-                    <span>Seconds</span>
-                </div>
-            </>
-        )
-    }
-}
-
 const Section = (props) => {
     return (
         <React.Fragment>
@@ -45,17 +13,16 @@ const Section = (props) => {
                             <div className="text-white-50">
                                 <h1 className="text-white font-weight-semibold mb-3 hero-title">Find a developer for live tutoring</h1>
                                 <p className="font-size-14">
-                                    It will be as simple as occidental in fact to an English person, it will seem like simplified as a skeptical
-                                    Cambridge
+                                    In any languages and technologies including JavaScript, React, Java, Spring, SQL Server, Postgres, Python, Keras
                                 </p>
 
                                 <div className="button-items mt-4">
-                                    <Link to="#" className="btn btn-success mr-1">
+                                    <Link to="/find-tutors" className="btn btn-success mr-1">
                                         Search Now
                                     </Link>
-                                    <Link to="#" className="btn btn-light">
+                                    <a href="#features" className="btn btn-light">
                                         How it works
-                                    </Link>
+                                    </a>
                                 </div>
                             </div>
                         </Col>

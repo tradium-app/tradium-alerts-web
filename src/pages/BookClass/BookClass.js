@@ -106,7 +106,6 @@ const ProfileEdit = (props) => {
                                                             name="currency"
                                                             id="buycurrencyoption1"
                                                             className="card-radio-input"
-                                                            defaultChecked
                                                             readOnly
                                                         />
 
@@ -125,7 +124,6 @@ const ProfileEdit = (props) => {
                                                             name="currency"
                                                             id="buycurrencyoption1"
                                                             className="card-radio-input"
-                                                            defaultChecked
                                                             readOnly
                                                         />
 

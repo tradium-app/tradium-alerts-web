@@ -164,9 +164,7 @@ const FindTutors = (props) => {
                                 </Col>
                                 <Col lg="1"></Col>
                             </Row>
-                            <div className="mb-2">
-                                <h7>3 results</h7>
-                            </div>
+                            <div className="mb-2">3 results</div>
                             <Row>
                                 <Col className="col-12">
                                     <Card>

@@ -45,9 +45,7 @@ const Dashboard = (props) => {
                         <Col xl="8">
                             <Row>
                                 <Col>
-                                    <div className="mb-2">
-                                        <h7>My Teachers</h7>
-                                    </div>
+                                    <div className="mb-2">My Teachers</div>
                                     <Card>
                                         <CardBody>
                                             <Row>
@@ -128,9 +126,7 @@ const Dashboard = (props) => {
 
                             <Row>
                                 <Col>
-                                    <div className="mb-2">
-                                        <h7>Recommended Teachers</h7>
-                                    </div>
+                                    <div className="mb-2">Recommended Teachers</div>
                                     <Card>
                                         <CardBody>
                                             <div className="media mb-4">
