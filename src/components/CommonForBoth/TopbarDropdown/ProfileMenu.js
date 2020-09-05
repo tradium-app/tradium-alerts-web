@@ -51,7 +51,7 @@ const ProfileMenu = (props) => {
                         <i className="bx bx-user font-size-16 align-middle mr-1"></i>
                         {props.t('Profile')}
                     </Link>
-                    <Link className="dropdown-item" to="/crypto-wallet">
+                    <Link className="dropdown-item" to="/wallet">
                         <i className="bx bx-wallet font-size-16 align-middle mr-1"></i>
                         {props.t('My Wallet')}
                     </Link>
