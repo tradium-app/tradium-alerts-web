@@ -45,19 +45,19 @@ const ProfileMenu = (props) => {
                                                 <Row className="mt-4 mb-4">
                                                     <Col className="align-self-center text-center">
                                                         <img
-                                                            className="avatar-sm img-thumbnail d-inline-block rounded-circle ml-1 mr-1"
+                                                            className="avatar-xs img-thumbnail d-inline-block rounded-circle ml-1 mr-1"
                                                             src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
                                                             alt="Github"
                                                             height="50"
                                                         />
                                                         <img
-                                                            className="avatar-sm img-thumbnail d-inline-block rounded-circle ml-1 mr-1"
+                                                            className="avatar-xs img-thumbnail d-inline-block rounded-circle ml-1 mr-1"
                                                             src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
                                                             alt="LinkedIn"
                                                             height="50"
                                                         />
                                                         <img
-                                                            className="avatar-sm img-thumbnail d-inline-block rounded-circle ml-1 mr-1"
+                                                            className="avatar-xs img-thumbnail d-inline-block rounded-circle ml-1 mr-1"
                                                             src="https://cdn.sstatic.net/Sites/stackoverflow/company/Img/logos/so/so-icon.svg?v=f13ebeedfa9e"
                                                             alt="Stack Overflow"
                                                             height="50"
