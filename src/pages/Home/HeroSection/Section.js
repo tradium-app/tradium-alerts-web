@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import { Link } from 'react-router-dom'
-import pic1 from '../../../assets/images/home/pair1.png'
+import pic1 from '../../../assets/images/home/pair1.svg'
 
 const Section = (props) => {
     return (

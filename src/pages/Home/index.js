@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
 
-//Import Components
 import Section from './HeroSection/Section'
 import Features from './Features/features'
 import TopTutors from './Top-Tutors/Top-Tutors'
-import FAQs from './Faqs/FAQs'
 import Footer from './Footer/footer'
 
 const Home = (props) => {
@@ -34,8 +32,6 @@ const Home = (props) => {
             <Features />
 
             <TopTutors />
-
-            <FAQs />
 
             <Footer />
         </React.Fragment>

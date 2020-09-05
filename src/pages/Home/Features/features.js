@@ -1,12 +1,11 @@
 import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
 
-//Import Components
 import FeatureBox from './feature-box'
 
-//Import images
-import feature1 from '../../../assets/images/crypto/features-img/img-1.png'
-import feature2 from '../../../assets/images/crypto/features-img/img-2.png'
+import signupImg from '../../../assets/images/home/sign-up-1.svg'
+import searchImg from '../../../assets/images/home/search-1.svg'
+import reserveImg from '../../../assets/images/home/reserve-1.svg'
 
 const Features = (props) => {
     const features1 = [
@@ -14,6 +13,10 @@ const Features = (props) => {
         { id: 2, desc: 'Aenean et nisl sagittis' },
     ]
     const features2 = [
+        { id: 1, desc: 'Donec pede justo vel aliquet' },
+        { id: 2, desc: 'Aenean et nisl sagittis' },
+    ]
+    const features3 = [
         { id: 1, desc: 'Donec pede justo vel aliquet' },
         { id: 2, desc: 'Aenean et nisl sagittis' },
     ]
@@ -34,24 +37,33 @@ const Features = (props) => {
                     <Row className="align-items-center pt-4">
                         <Col md="6" sm="8">
                             <div>
-                                <img src={feature1} alt="" className="img-fluid mx-auto d-block" />
+                                <img src={signupImg} alt="" className="img-fluid mx-auto d-block" />
                             </div>
                         </Col>
                         <Col md="5" className="ml-auto">
-                            {/* featurebox */}
                             <FeatureBox num="01" title="Sign Up" features={features1} desc="Sign up and fill the forms" />
                         </Col>
                     </Row>
 
                     <Row className="align-items-center mt-5 pt-md-5">
-                        <Col md="5">
-                            {/* featurebox */}
+                        <Col md="6">
                             <FeatureBox num="02" title="Find a Tutor" features={features2} desc="Search using all keywords" />
                         </Col>
-                        <Col md="6" sm="8" className="ml-md-auto">
+                        <Col md="5" sm="8" className="ml-md-auto">
                             <div className="mt-4 mr-md-0">
-                                <img src={feature2} alt="" className="img-fluid mx-auto d-block" />
+                                <img src={searchImg} alt="" className="img-fluid mx-auto d-block" />
                             </div>
+                        </Col>
+                    </Row>
+
+                    <Row className="align-items-center pt-4">
+                        <Col md="6" sm="8">
+                            <div>
+                                <img src={reserveImg} alt="" className="img-fluid mx-auto d-block" />
+                            </div>
+                        </Col>
+                        <Col md="5" className="ml-auto">
+                            <FeatureBox num="03" title="Book a class" features={features3} desc="Request a class from your preferred tutor" />
                         </Col>
                     </Row>
                 </Container>
