@@ -72,6 +72,31 @@ const employments = [
     },
 ]
 
+const projects = [
+    {
+        id: 1,
+        img: img1,
+        name: 'Journey Builder',
+        company: 'Salesforce',
+        location: 'Indianapolis',
+        description: 'Working on Marketing Software Projects. Developed Email Tracking Solutions.',
+        from: '2015 July',
+        to: '2019 June',
+        technologies: ['React', 'Redux'],
+    },
+    {
+        id: 2,
+        img: img2,
+        name: 'Email Marketing',
+        company: 'Salesforce',
+        location: 'Indianapolis',
+        description: 'Software Engineering Stuff',
+        from: '2015 July',
+        to: '2019 June',
+        technologies: ['React', 'Redux'],
+    },
+]
+
 const ProfileEdit = (props) => {
     const [activeTab, setactiveTab] = useState('1')
 
@@ -129,7 +154,7 @@ const ProfileEdit = (props) => {
                                     }}
                                 >
                                     <i className="bx bx-network-chart d-block check-nav-icon mt-4 mb-2"></i>
-                                    <p className="font-weight-bold mb-0">Social Presence</p>
+                                    <p className="font-weight-bold mb-0">Social</p>
                                 </NavLink>
                                 <NavLink
                                     className={classnames({ active: activeTab === '6' })}
@@ -186,6 +211,41 @@ const ProfileEdit = (props) => {
                                     <TabPane tabId="3" id="v-pills-confir" role="tabpanel">
                                         <CardTitle className="mb-4">Employment</CardTitle>
                                         <EmploymentCard employments={employments} />
+                                    </TabPane>
+                                    <TabPane tabId="4" id="v-pills-confir" role="tabpanel">
+                                        <CardTitle className="mb-4">Projects</CardTitle>
+                                        <EmploymentCard employments={projects} />
+                                    </TabPane>
+                                    <TabPane tabId="5">
+                                        <div>
+                                            <CardTitle className="mb-4">Social</CardTitle>
+                                            <Form>
+                                                <FormGroup className="mb-4" row>
+                                                    <Label htmlFor="billing-email-address" md="3" className="col-form-label">
+                                                        LinkedIn*
+                                                    </Label>
+                                                    <Col md="5">
+                                                        <Input type="text" className="form-control" id="billing-name" />
+                                                    </Col>
+                                                </FormGroup>
+                                                <FormGroup className="mb-4" row>
+                                                    <Label htmlFor="billing-name" md="3" className="col-form-label">
+                                                        Github
+                                                    </Label>
+                                                    <Col md="5">
+                                                        <Input type="text" className="form-control" id="billing-name" />
+                                                    </Col>
+                                                </FormGroup>
+                                                <FormGroup className="mb-4" row>
+                                                    <Label htmlFor="billing-email-address" md="3" className="col-form-label">
+                                                        Stack Overflow
+                                                    </Label>
+                                                    <Col md="5">
+                                                        <Input type="text" className="form-control" id="billing-name" />
+                                                    </Col>
+                                                </FormGroup>
+                                            </Form>
+                                        </div>
                                     </TabPane>
                                 </TabContent>
                             </CardBody>
