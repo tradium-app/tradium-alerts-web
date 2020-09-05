@@ -1,6 +1,50 @@
 import React, { useState } from 'react'
 import { Row, Col, Card, CardBody, Nav, NavLink, TabContent, TabPane, CardTitle, Form, FormGroup, Label, Input, NavItem, Table } from 'reactstrap'
 import classnames from 'classnames'
+import SkillCard from './SkillCard'
+
+import img1 from '../../../assets/images/companies/img-1.png'
+import img2 from '../../../assets/images/companies/img-2.png'
+import img3 from '../../../assets/images/companies/img-3.png'
+import img4 from '../../../assets/images/companies/img-4.png'
+import img5 from '../../../assets/images/companies/img-5.png'
+
+const skills = [
+    {
+        id: 1,
+        img: img1,
+        name: 'JavaScript',
+        experience: '10+ years',
+        related: ['React', 'Redux'],
+        color: 'primary',
+    },
+    {
+        id: 2,
+        img: img2,
+        name: 'Java',
+        experience: '2+ years',
+        related: ['Spring', 'Jongo'],
+    },
+    {
+        id: 3,
+        img: img3,
+        name: '.Net',
+        experience: '4+ years',
+        related: ['Entity Framework'],
+    },
+    {
+        id: 4,
+        img: img4,
+        name: 'SQL Server',
+        experience: '5+ years',
+    },
+    {
+        id: 5,
+        img: img5,
+        name: 'Mongo',
+        experience: '2+ years',
+    },
+]
 
 const ProfileEdit = (props) => {
     const [activeTab, setactiveTab] = useState('1')
@@ -108,98 +152,10 @@ const ProfileEdit = (props) => {
                                         </div>
                                     </TabPane>
                                     <TabPane tabId="2" id="v-pills-payment" role="tabpanel" aria-labelledby="v-pills-payment-tab">
-                                        <div>
-                                            <CardTitle>Payment information</CardTitle>
-                                            <div>
-                                                <div className="custom-control custom-radio custom-control-inline mr-4">
-                                                    <Input
-                                                        type="radio"
-                                                        value="1"
-                                                        id="customRadioInline1"
-                                                        name="customRadioInline1"
-                                                        className="custom-control-input"
-                                                    />
-                                                    <Label className="custom-control-label" htmlFor="customRadioInline1">
-                                                        <i className="fab fa-cc-mastercard mr-1 font-size-20 align-top"></i> Credit / Debit Card
-                                                    </Label>
-                                                </div>
-                                                <div className="custom-control custom-radio custom-control-inline mr-4">
-                                                    <Input
-                                                        type="radio"
-                                                        value="2"
-                                                        id="customRadioInline2"
-                                                        name="customRadioInline1"
-                                                        className="custom-control-input"
-                                                    />
-                                                    <Label className="custom-control-label" htmlFor="customRadioInline2">
-                                                        <i className="fab fa-cc-paypal mr-1 font-size-20 align-top"></i> Paypal
-                                                    </Label>
-                                                </div>
-                                                <div className="custom-control custom-radio custom-control-inline mr-4">
-                                                    <Input
-                                                        type="radio"
-                                                        value="3"
-                                                        id="customRadioInline3"
-                                                        defaultChecked
-                                                        name="customRadioInline1"
-                                                        className="custom-control-input"
-                                                    />
-                                                    <Label className="custom-control-label" htmlFor="customRadioInline3">
-                                                        <i className="far fa-money-bill-alt mr-1 font-size-20 align-top"></i> Cash on Delivery
-                                                    </Label>
-                                                </div>
-                                            </div>
-
-                                            <h5 className="mt-5 mb-3 font-size-15">For card Payment</h5>
-                                            <div className="p-4 border">
-                                                <Form>
-                                                    <FormGroup className="mb-0">
-                                                        <Label htmlFor="cardnumberInput">Card Number</Label>
-                                                        <Input
-                                                            type="text"
-                                                            className="form-control"
-                                                            id="cardnumberInput"
-                                                            placeholder="0000 0000 0000 0000"
-                                                        />
-                                                    </FormGroup>
-                                                    <Row>
-                                                        <Col lg="6">
-                                                            <FormGroup className="mt-4 mb-0">
-                                                                <Label htmlFor="cardnameInput">Name on card</Label>
-                                                                <Input
-                                                                    type="text"
-                                                                    className="form-control"
-                                                                    id="cardnameInput"
-                                                                    placeholder="Name on Card"
-                                                                />
-                                                            </FormGroup>
-                                                        </Col>
-                                                        <Col lg="3">
-                                                            <FormGroup className=" mt-4 mb-0">
-                                                                <Label htmlFor="expirydateInput">Expiry date</Label>
-                                                                <Input
-                                                                    type="text"
-                                                                    className="form-control"
-                                                                    id="expirydateInput"
-                                                                    placeholder="MM/YY"
-                                                                />
-                                                            </FormGroup>
-                                                        </Col>
-                                                        <Col lg="3">
-                                                            <FormGroup className="mt-4 mb-0">
-                                                                <Label htmlFor="cvvcodeInput">CVV Code</Label>
-                                                                <Input
-                                                                    type="text"
-                                                                    className="form-control"
-                                                                    id="cvvcodeInput"
-                                                                    placeholder="Enter CVV Code"
-                                                                />
-                                                            </FormGroup>
-                                                        </Col>
-                                                    </Row>
-                                                </Form>
-                                            </div>
-                                        </div>
+                                        <CardTitle>Skills</CardTitle>
+                                        <Row>
+                                            <SkillCard skills={skills} />
+                                        </Row>
                                     </TabPane>
                                     <TabPane tabId="3" id="v-pills-confir" role="tabpanel">
                                         <Card className="shadow-none border mb-0">
