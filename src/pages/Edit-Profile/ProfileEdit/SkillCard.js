@@ -4,7 +4,7 @@ import { Col, Card, CardBody, Media, Badge } from 'reactstrap'
 
 const SkillCard = (props) => {
     return (
-        <React.Fragment>
+        <React.Fragment className="mt-4">
             {props.skills.map((skill, key) => (
                 <Col xl="4" sm="6" key={'_project_' + key}>
                     <Card className="border">

@@ -8,6 +8,7 @@ import img2 from '../../../assets/images/companies/img-2.png'
 import img3 from '../../../assets/images/companies/img-3.png'
 import img4 from '../../../assets/images/companies/img-4.png'
 import img5 from '../../../assets/images/companies/img-5.png'
+import EmploymentCard from '../EmploymentCard'
 
 const skills = [
     {
@@ -43,6 +44,31 @@ const skills = [
         img: img5,
         name: 'Mongo',
         experience: '2+ years',
+    },
+]
+
+const employments = [
+    {
+        id: 1,
+        img: img1,
+        name: 'Senior Software Engineer',
+        company: 'Salesforce',
+        location: 'Indianapolis',
+        description: 'Working on Marketing Software Projects. Developed Email Tracking Solutions.',
+        from: '2015 July',
+        to: '2019 June',
+        technologies: ['React', 'Redux'],
+    },
+    {
+        id: 2,
+        img: img2,
+        name: 'Senior Software Engineer',
+        company: 'Salesforce',
+        location: 'Indianapolis',
+        description: 'Software Engineering Stuff',
+        from: '2015 July',
+        to: '2019 June',
+        technologies: ['React', 'Redux'],
     },
 ]
 
@@ -158,47 +184,8 @@ const ProfileEdit = (props) => {
                                         </Row>
                                     </TabPane>
                                     <TabPane tabId="3" id="v-pills-confir" role="tabpanel">
-                                        <Card className="shadow-none border mb-0">
-                                            <CardBody>
-                                                <CardTitle className="mb-4">Order Summary</CardTitle>
-
-                                                <div className="table-responsive">
-                                                    <Table className="table-centered mb-0 table-nowrap">
-                                                        <thead className="thead-light">
-                                                            <tr>
-                                                                <th scope="col">Product</th>
-                                                                <th scope="col">Product Desc</th>
-                                                                <th scope="col">Price</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td colSpan="2">
-                                                                    <h6 className="m-0 text-right">Sub Total:</h6>
-                                                                </td>
-                                                                <td>$ 675</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td colSpan="3">
-                                                                    <div className="bg-soft-primary p-3 rounded">
-                                                                        <h5 className="font-size-14 text-primary mb-0">
-                                                                            <i className="fas fa-shipping-fast mr-2"></i> Shipping{' '}
-                                                                            <span className="float-right">Free</span>
-                                                                        </h5>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td colSpan="2">
-                                                                    <h6 className="m-0 text-right">Total:</h6>
-                                                                </td>
-                                                                <td>$ 675</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </Table>
-                                                </div>
-                                            </CardBody>
-                                        </Card>
+                                        <CardTitle className="mb-4">Employment</CardTitle>
+                                        <EmploymentCard employments={employments} />
                                     </TabPane>
                                 </TabContent>
                             </CardBody>
