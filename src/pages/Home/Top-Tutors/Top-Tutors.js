@@ -3,11 +3,76 @@ import { Container, Row, Col } from 'reactstrap'
 
 //Import Images
 import { Link } from 'react-router-dom'
+import avatar1 from '../../../assets/images/users/avatar-1.jpg'
 import avatar2 from '../../../assets/images/users/avatar-2.jpg'
 import avatar3 from '../../../assets/images/users/avatar-3.jpg'
-import avatar8 from '../../../assets/images/users/avatar-8.jpg'
+import avatar4 from '../../../assets/images/users/avatar-4.jpg'
 import avatar5 from '../../../assets/images/users/avatar-5.jpg'
-import avatar1 from '../../../assets/images/users/avatar-1.jpg'
+import avatar8 from '../../../assets/images/users/avatar-8.jpg'
+import CardContact from './card-contact'
+
+const users = [
+    {
+        id: 1,
+        img: avatar1,
+        name: 'David McHenry',
+        designation: 'UI/UX Designer',
+        color: 'primary',
+        skills: [{ name: 'Photoshop' }, { name: 'illustrator' }],
+    },
+    {
+        id: 2,
+        img: avatar2,
+        name: 'Frank Kirk',
+        designation: 'Frontend Developer',
+        skills: [{ name: 'Html' }, { name: 'Css' }, { name: '2 + more' }],
+    },
+    {
+        id: 3,
+        img: avatar3,
+        name: 'Rafael Morales',
+        designation: 'Backend Developer',
+        skills: [{ name: 'Php' }, { name: 'Java' }, { name: 'Python' }],
+    },
+    {
+        id: 4,
+        img: avatar4,
+        name: 'Mark Ellison',
+        designation: 'Full Stack Developer',
+        color: 'success',
+        skills: [{ name: 'Ruby' }, { name: 'Php' }, { name: '2 + more' }],
+    },
+    {
+        id: 5,
+        img: avatar5,
+        name: 'Minnie Walter',
+        designation: 'Frontend Developer',
+        skills: [{ name: 'Html' }, { name: 'Css' }, { name: '2 + more' }],
+    },
+    {
+        id: 6,
+        img: avatar5,
+        name: 'Shirley Smith',
+        designation: 'UI/UX Designer',
+        skills: [{ name: 'Photoshop' }, { name: 'UI/UX Designer' }],
+    },
+    {
+        id: 7,
+        img: 'Null',
+        name: 'John Santiago',
+        designation: 'Full Stack Developer',
+        color: 'info',
+        skills: [{ name: 'Ruby' }, { name: 'Php' }, { name: '2 + more' }],
+    },
+    {
+        id: 8,
+        img: 'avatar7',
+        name: 'Colin Melton',
+        designation: 'Backend Developer',
+        color: '',
+        skills: [{ name: 'Php' }, { name: 'Java' }, { name: 'Python' }],
+    },
+]
 
 const OurTeam = (props) => {
     const [step1, setStep1] = useState(true)
@@ -30,226 +95,19 @@ const OurTeam = (props) => {
                         <div className="hori-timeline">
                             <div className="owl-carousel owl-theme  navs-carousel events" id="timeline-carousel">
                                 {step1 ? (
-                                    <>
-                                        <Row>
-                                            <Col md={4}>
-                                                <div className="item">
-                                                    <div className="card text-center team-box">
-                                                        <div className="card-body">
-                                                            <div>
-                                                                <img src={avatar2} alt="" className="rounded" />
-                                                            </div>
-
-                                                            <div className="mt-3">
-                                                                <h5>Mark Hurley</h5>
-                                                                <p className="text-muted mb-0">CEO & Lead</p>
-                                                            </div>
-                                                        </div>
-                                                        <div className="card-footer bg-transparent border-top">
-                                                            <div className="d-flex mb-0 team-social-links">
-                                                                <div className="flex-fill">
-                                                                    <Link to="#" data-toggle="tooltip" title="Facebook">
-                                                                        <i className="mdi mdi-facebook"></i>
-                                                                    </Link>
-                                                                </div>
-                                                                <div className="flex-fill">
-                                                                    <Link to="#" data-toggle="tooltip" title="Linkedin">
-                                                                        <i className="mdi mdi-linkedin"></i>
-                                                                    </Link>
-                                                                </div>
-                                                                <div className="flex-fill">
-                                                                    <Link to="#" data-toggle="tooltip" title="Google">
-                                                                        <i className="mdi mdi-google"></i>
-                                                                    </Link>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </Col>
-                                            <Col md={4}>
-                                                <div className="item">
-                                                    <div className="card text-center team-box">
-                                                        <div className="card-body">
-                                                            <div>
-                                                                <img src={avatar3} alt="" className="rounded" />
-                                                            </div>
-
-                                                            <div className="mt-3">
-                                                                <h5>Calvin Smith</h5>
-                                                                <p className="text-muted mb-0">Blockchain developer</p>
-                                                            </div>
-                                                        </div>
-                                                        <div className="card-footer bg-transparent border-top">
-                                                            <div className="d-flex mb-0 team-social-links">
-                                                                <div className="flex-fill">
-                                                                    <Link to="#" data-toggle="tooltip" title="Facebook">
-                                                                        <i className="mdi mdi-facebook"></i>
-                                                                    </Link>
-                                                                </div>
-                                                                <div className="flex-fill">
-                                                                    <Link to="#" data-toggle="tooltip" title="Linkedin">
-                                                                        <i className="mdi mdi-linkedin"></i>
-                                                                    </Link>
-                                                                </div>
-                                                                <div className="flex-fill">
-                                                                    <Link to="#" data-toggle="tooltip" title="Google">
-                                                                        <i className="mdi mdi-google"></i>
-                                                                    </Link>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </Col>
-                                            <Col md={4}>
-                                                <div className="item">
-                                                    <div className="card text-center team-box">
-                                                        <div className="card-body">
-                                                            <div>
-                                                                <img src={avatar8} alt="" className="rounded" />
-                                                            </div>
-                                                            <div className="mt-3">
-                                                                <h5>Vickie Sample</h5>
-                                                                <p className="text-muted mb-0">Designer</p>
-                                                            </div>
-                                                        </div>
-                                                        <div className="card-footer bg-transparent border-top">
-                                                            <div className="d-flex mb-0 team-social-links">
-                                                                <div className="flex-fill">
-                                                                    <Link to="#" data-toggle="tooltip" title="Facebook">
-                                                                        <i className="mdi mdi-facebook"></i>
-                                                                    </Link>
-                                                                </div>
-                                                                <div className="flex-fill">
-                                                                    <Link to="#" data-toggle="tooltip" title="Linkedin">
-                                                                        <i className="mdi mdi-linkedin"></i>
-                                                                    </Link>
-                                                                </div>
-                                                                <div className="flex-fill">
-                                                                    <Link to="#" data-toggle="tooltip" title="Google">
-                                                                        <i className="mdi mdi-google"></i>
-                                                                    </Link>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </Col>
-                                        </Row>
-                                    </>
+                                    <Row>
+                                        {users.slice(0, 4).map((user, key) => (
+                                            <CardContact user={user} key={'_user_' + key} />
+                                        ))}
+                                    </Row>
                                 ) : null}
 
                                 {step2 ? (
-                                    <>
-                                        <Row>
-                                            <Col md={4}>
-                                                <div className="item">
-                                                    <div className="card text-center team-box">
-                                                        <div className="card-body">
-                                                            <div>
-                                                                <img src={avatar8} alt="" className="rounded" />
-                                                            </div>
-                                                            <div className="mt-3">
-                                                                <h5>Vickie Sample</h5>
-                                                                <p className="text-muted mb-0">Designer</p>
-                                                            </div>
-                                                        </div>
-                                                        <div className="card-footer bg-transparent border-top">
-                                                            <div className="d-flex mb-0 team-social-links">
-                                                                <div className="flex-fill">
-                                                                    <Link to="#" data-toggle="tooltip" title="Facebook">
-                                                                        <i className="mdi mdi-facebook"></i>
-                                                                    </Link>
-                                                                </div>
-                                                                <div className="flex-fill">
-                                                                    <Link to="#" data-toggle="tooltip" title="Linkedin">
-                                                                        <i className="mdi mdi-linkedin"></i>
-                                                                    </Link>
-                                                                </div>
-                                                                <div className="flex-fill">
-                                                                    <Link to="#" data-toggle="tooltip" title="Google">
-                                                                        <i className="mdi mdi-google"></i>
-                                                                    </Link>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </Col>
-
-                                            <Col md={4}>
-                                                <div className="item">
-                                                    <div className="card text-center team-box">
-                                                        <div className="card-body">
-                                                            <div>
-                                                                <img src={avatar5} alt="" className="rounded" />
-                                                            </div>
-
-                                                            <div className="mt-3">
-                                                                <h5>Alma Farley</h5>
-                                                                <p className="text-muted mb-0">App developer</p>
-                                                            </div>
-                                                        </div>
-                                                        <div className="card-footer bg-transparent border-top">
-                                                            <div className="d-flex mb-0 team-social-links">
-                                                                <div className="flex-fill">
-                                                                    <Link to="#" data-toggle="tooltip" title="Facebook">
-                                                                        <i className="mdi mdi-facebook"></i>
-                                                                    </Link>
-                                                                </div>
-                                                                <div className="flex-fill">
-                                                                    <Link to="#" data-toggle="tooltip" title="Linkedin">
-                                                                        <i className="mdi mdi-linkedin"></i>
-                                                                    </Link>
-                                                                </div>
-                                                                <div className="flex-fill">
-                                                                    <Link to="#" data-toggle="tooltip" title="Google">
-                                                                        <i className="mdi mdi-google"></i>
-                                                                    </Link>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </Col>
-                                            <Col md={4}>
-                                                <div className="item">
-                                                    <div className="card text-center team-box">
-                                                        <div className="card-body">
-                                                            <div>
-                                                                <img src={avatar1} alt="" className="rounded" />
-                                                            </div>
-
-                                                            <div className="mt-3">
-                                                                <h5>Amy Hood </h5>
-                                                                <p className="text-muted mb-0">Designer</p>
-                                                            </div>
-                                                        </div>
-                                                        <div className="card-footer bg-transparent border-top">
-                                                            <div className="d-flex mb-0 team-social-links">
-                                                                <div className="flex-fill">
-                                                                    <Link to="#" data-toggle="tooltip" title="Facebook">
-                                                                        <i className="mdi mdi-facebook"></i>
-                                                                    </Link>
-                                                                </div>
-                                                                <div className="flex-fill">
-                                                                    <Link to="#" data-toggle="tooltip" title="Linkedin">
-                                                                        <i className="mdi mdi-linkedin"></i>
-                                                                    </Link>
-                                                                </div>
-                                                                <div className="flex-fill">
-                                                                    <Link to="#" data-toggle="tooltip" title="Google">
-                                                                        <i className="mdi mdi-google"></i>
-                                                                    </Link>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </Col>
-                                        </Row>
-                                    </>
+                                    <Row>
+                                        {users.slice(4, 8).map((user, key) => (
+                                            <CardContact user={user} key={'_user_' + key} />
+                                        ))}
+                                    </Row>
                                 ) : null}
 
                                 <div className="owl-nav" style={{ textAlign: 'center' }}>
