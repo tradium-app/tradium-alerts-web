@@ -10,12 +10,13 @@ const FeatureBox = (props) => {
                 </div>
                 <p className="text-muted">{props.desc}</p>
                 <div className="text-muted mt-4">
-                    {props.features.map((feature, key) => (
-                        <p key={key} className={feature.id === 1 ? 'mb-2' : ''}>
-                            <i className="mdi mdi-circle-medium text-success mr-1"></i>
-                            {feature.desc}
-                        </p>
-                    ))}
+                    {props.features &&
+                        props.features.map((feature, key) => (
+                            <p key={key} className={feature.id === 1 ? 'mb-2' : ''}>
+                                <i className="mdi mdi-circle-medium text-success mr-1"></i>
+                                {feature.desc}
+                            </p>
+                        ))}
                 </div>
             </div>
         </React.Fragment>
