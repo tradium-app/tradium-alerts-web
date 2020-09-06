@@ -53,7 +53,7 @@ const ProfileMenu = (props) => {
                     </Link>
                     <Link className="dropdown-item" to="/wallet">
                         <i className="bx bx-wallet font-size-16 align-middle mr-1"></i>
-                        {props.t('My Wallet')}
+                        {props.t('Wallet')}
                     </Link>
                     <Link className="dropdown-item" to="/edit-profile">
                         <i className="bx bx-cog font-size-16 align-middle mr-1"></i>
