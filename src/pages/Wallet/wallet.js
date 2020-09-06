@@ -187,17 +187,15 @@ class Wallet extends Component {
                                                 </div>
                                             </FormGroup>
                                         </Form>
-                                        <Row>
-                                            <Col></Col>
-                                            <Col></Col>
-                                            <Col>
+                                        <Row className="d-flex justify-content-end">
+                                            <Col lg="4" sm="6" className="align-self-end">
                                                 <div className="border-bottom text-right pb-2 mb-2">
                                                     <div>Processing Fee : $2.03</div>
                                                 </div>
                                                 <div className="text-right pb-2 mb-2">
                                                     <div>Total Fee : $202.03</div>
                                                 </div>
-                                                <div className="text-right mt-4 pb-2 mb-2">
+                                                <div className="text-right mt-4">
                                                     <Button type="submit" className="font-size-16" color="primary">
                                                         Pay using Paypal
                                                     </Button>
