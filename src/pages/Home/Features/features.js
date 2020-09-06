@@ -12,6 +12,7 @@ const Features = (props) => {
         { id: 1, desc: 'List your experencies & technologies' },
         { id: 2, desc: 'Link your LinkedIn & Github' },
     ]
+    const features2 = [{ id: 1, desc: 'Search using technologies & experencies' }]
     const features3 = [
         { id: 1, desc: 'Specify your requirements' },
         { id: 2, desc: 'Select technology and development tools' },
@@ -49,7 +50,7 @@ const Features = (props) => {
                             </div>
                         </Col>
                         <Col md="6" className="ml-auto">
-                            <FeatureBox num="02" title="Find a Tutor" desc="Search using technologies & experencies" />
+                            <FeatureBox num="02" title="Find a Tutor" features={features2} />
                         </Col>
                     </Row>
 

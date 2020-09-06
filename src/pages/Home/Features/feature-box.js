@@ -12,7 +12,7 @@ const FeatureBox = (props) => {
                 <div className="text-muted mt-4">
                     {props.features &&
                         props.features.map((feature, key) => (
-                            <p key={key} className={feature.id === 1 ? 'mb-2' : ''}>
+                            <p key={key} className="mb-2">
                                 <i className="mdi mdi-circle-medium text-success mr-1"></i>
                                 {feature.desc}
                             </p>
