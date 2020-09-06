@@ -33,9 +33,11 @@ const Dashboard = (props) => {
                                             <h4 className="mb-0">$200</h4>
                                         </Media>
                                         <div className="mini-stat-icon avatar-sm rounded-circle bg-primary align-self-center">
-                                            <span className="avatar-title">
-                                                <i className={'bx bx bx-dollar-circle font-size-24'}></i>
-                                            </span>
+                                            <Link to="/wallet">
+                                                <span className="avatar-title">
+                                                    <i className="bx bx bx-dollar-circle font-size-24"></i>
+                                                </span>
+                                            </Link>
                                         </div>
                                     </Media>
                                 </CardBody>
