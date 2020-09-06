@@ -44,31 +44,54 @@ const ProfileMenu = (props) => {
                                                 </Row>
                                                 <Row className="mt-4 mb-4">
                                                     <Col className="align-self-center text-center">
-                                                        <img
-                                                            className="avatar-xs img-thumbnail d-inline-block rounded-circle ml-1 mr-1"
-                                                            src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-                                                            alt="Github"
-                                                            height="50"
-                                                        />
-                                                        <img
-                                                            className="avatar-xs img-thumbnail d-inline-block rounded-circle ml-1 mr-1"
-                                                            src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
-                                                            alt="LinkedIn"
-                                                            height="50"
-                                                        />
-                                                        <img
-                                                            className="avatar-xs img-thumbnail d-inline-block rounded-circle ml-1 mr-1"
-                                                            src="https://cdn.sstatic.net/Sites/stackoverflow/company/Img/logos/so/so-icon.svg?v=f13ebeedfa9e"
-                                                            alt="Stack Overflow"
-                                                            height="50"
-                                                        />
+                                                        <a href="https://github.com/syuraj" target="_blank" rel="noreferrer noopener">
+                                                            <img
+                                                                className="avatar-xs img-thumbnail d-inline-block rounded-circle ml-1 mr-1"
+                                                                src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+                                                                alt="Github"
+                                                                height="50"
+                                                            />
+                                                        </a>
+                                                        <a
+                                                            href="https://www.linkedin.com/in/surajshrestha/"
+                                                            target="_blank"
+                                                            rel="noreferrer noopener"
+                                                        >
+                                                            <img
+                                                                className="avatar-xs img-thumbnail d-inline-block rounded-circle ml-1 mr-1"
+                                                                src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
+                                                                alt="LinkedIn"
+                                                                height="50"
+                                                            />
+                                                        </a>
+                                                        <a
+                                                            href="https://stackoverflow.com/users/291668/suraj-shrestha"
+                                                            target="_blank"
+                                                            rel="noreferrer noopener"
+                                                        >
+                                                            <img
+                                                                className="avatar-xs img-thumbnail d-inline-block rounded-circle ml-1 mr-1"
+                                                                src="https://cdn.sstatic.net/Sites/stackoverflow/company/Img/logos/so/so-icon.svg?v=f13ebeedfa9e"
+                                                                alt="Stack Overflow"
+                                                                height="50"
+                                                            />
+                                                        </a>
                                                     </Col>
                                                 </Row>
-                                                <div className="mt-4">
-                                                    <Link to="/book-class" className="btn btn-primary waves-effect waves-light btn-sm">
-                                                        Book a session <i className="mdi mdi-arrow-right ml-1"></i>
-                                                    </Link>
-                                                </div>
+                                                <Row className="mt-4">
+                                                    <Col className="align-self-center text-center">
+                                                        <div className="m-1 d-inline-block">
+                                                            <Link to="/book-class" className="btn btn-primary waves-effect waves-light">
+                                                                <i className="bx bx-calendar-plus font-size-16 align-middle mr-2"></i> Book a session
+                                                            </Link>
+                                                        </div>
+                                                        <div className="m-1 d-inline-block">
+                                                            <Link to="/chat" className="btn btn-success waves-effect waves-light">
+                                                                <i className="bx bx-chat font-size-16 align-middle mr-2"></i> Chat
+                                                            </Link>
+                                                        </div>
+                                                    </Col>
+                                                </Row>
                                             </div>
                                         </Col>
                                     </Row>
