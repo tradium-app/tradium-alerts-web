@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { Container, Row, Col, Card, CardBody, CardTitle, Form, Label, Input, Pagination, PaginationItem, PaginationLink } from 'reactstrap'
+import { Container, Row, Col, Card, CardBody, CardTitle, Form, Label, Input, Pagination, PaginationItem, PaginationLink, Badge } from 'reactstrap'
 import StarRatings from 'react-star-ratings'
 import Nouislider from 'nouislider-react'
 import 'nouislider/distribute/nouislider.css'
 import Select, { components } from 'react-select'
 import makeAnimated from 'react-select/animated'
 import avatar3 from '../../assets/images/users/avatar-3.jpg'
+import { Link } from 'react-router-dom'
 
 const FindTutors = (props) => {
     const [activeTab, setactiveTab] = useState(false)
@@ -33,7 +34,7 @@ const FindTutors = (props) => {
                                 <CardBody>
                                     <CardTitle className="font-size-10 mb-2">Filter</CardTitle>
 
-                                    <div className="mt-4 pt-3">
+                                    <div className="mt-2 pt-2">
                                         <h5 className="font-size-14 mb-4">Tutor Rate</h5>
                                         <br />
                                         <br />
@@ -169,25 +170,107 @@ const FindTutors = (props) => {
                                 <Col className="col-12">
                                     <Card>
                                         <CardBody>
-                                            <div className="media mb-4">
-                                                <img className="d-flex align-self-start rounded mr-4" src={avatar3} alt="Skote" height="100" />
-                                                <div className="media-body">
-                                                    <h5 className="mt-0 font-16">Khagendra Shah</h5>
-                                                    <StarRatings
-                                                        rating={4}
-                                                        starRatedColor="#F1B44C"
-                                                        starEmptyColor="#2D363F"
-                                                        numberOfStars={5}
-                                                        name="rating"
-                                                        starDimension="12px"
-                                                        starSpacing="3px"
-                                                    />
-                                                    <p>
-                                                        I'm a full-stack developer with 15+ years of experience in web application development and
-                                                        code mentoring. Are you stuck? Let me help!
-                                                    </p>
-                                                </div>
-                                            </div>
+                                            <Row>
+                                                <Col xl="10">
+                                                    <div className="media mb-2">
+                                                        <Link to="/profile">
+                                                            <img
+                                                                className="d-flex align-self-start rounded mr-4"
+                                                                src={avatar3}
+                                                                alt="Skote"
+                                                                height="100"
+                                                            />
+                                                        </Link>
+                                                        <div className="media-body">
+                                                            <Link to="/profile">
+                                                                <h5 className="mt-1 font-16 d-inline-block mr-2">Khagendra Shah</h5>
+                                                            </Link>
+                                                            <div className="d-inline-block">
+                                                                <StarRatings
+                                                                    rating={4}
+                                                                    starRatedColor="#F1B44C"
+                                                                    starEmptyColor="#2D363F"
+                                                                    numberOfStars={5}
+                                                                    name="rating"
+                                                                    starDimension="12px"
+                                                                    starSpacing="3px"
+                                                                />
+                                                            </div>
+                                                            <p className="text-muted">Senior Software Engineer</p>
+                                                            <p>
+                                                                I'm a full-stack developer with 15+ years of experience in web application development
+                                                                and code mentoring. Are you stuck? Let me help!
+                                                            </p>
+                                                            <div>
+                                                                <Badge pill className="font-size-14 p-1 m-1">
+                                                                    Java <div className="font-size-10 d-inline-block">(8+ yrs)</div>
+                                                                </Badge>
+                                                                <Badge pill className="font-size-14 p-1 m-1">
+                                                                    Redux <div className="font-size-10 d-inline-block">(2+ yrs)</div>
+                                                                </Badge>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </Col>
+                                                <Col xl="2" className="d-flex align-items-center justify-content-end">
+                                                    <div className="m-2">
+                                                        <Link to="/book-class" type="button" className="btn btn-primary waves-effect waves-light">
+                                                            <i className="bx bx-calendar-plus font-size-20 align-middle"></i>
+                                                        </Link>
+                                                    </div>
+                                                </Col>
+                                            </Row>
+                                            <div className="clearfix border-bottom mt-4 mb-4"></div>
+                                            <Row>
+                                                <Col xl="10">
+                                                    <div className="media mb-2">
+                                                        <Link to="/profile">
+                                                            <img
+                                                                className="d-flex align-self-start rounded mr-4"
+                                                                src={avatar3}
+                                                                alt="Skote"
+                                                                height="100"
+                                                            />
+                                                        </Link>
+                                                        <div className="media-body">
+                                                            <Link to="/profile">
+                                                                <h5 className="mt-1 font-16 d-inline-block mr-2">Khagendra Shah</h5>
+                                                            </Link>
+                                                            <div className="d-inline-block">
+                                                                <StarRatings
+                                                                    rating={4}
+                                                                    starRatedColor="#F1B44C"
+                                                                    starEmptyColor="#2D363F"
+                                                                    numberOfStars={5}
+                                                                    name="rating"
+                                                                    starDimension="12px"
+                                                                    starSpacing="3px"
+                                                                />
+                                                            </div>
+                                                            <p className="text-muted">Senior Software Engineer</p>
+                                                            <p>
+                                                                I'm a full-stack developer with 15+ years of experience in web application development
+                                                                and code mentoring. Are you stuck? Let me help!
+                                                            </p>
+                                                            <div>
+                                                                <Badge pill className="font-size-14 p-1 m-1">
+                                                                    React <div className="font-size-10 d-inline-block">(8+ yrs)</div>
+                                                                </Badge>
+                                                                <Badge pill className="font-size-14 p-1 m-1">
+                                                                    Redux <div className="font-size-10 d-inline-block">(2+ yrs)</div>
+                                                                </Badge>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </Col>
+                                                <Col xl="2" className="d-flex align-items-center justify-content-end">
+                                                    <div className="m-2">
+                                                        <Link to="/book-class" type="button" className="btn btn-primary waves-effect waves-light">
+                                                            <i className="bx bx-calendar-plus font-size-20 align-middle"></i>
+                                                        </Link>
+                                                    </div>
+                                                </Col>
+                                            </Row>
                                         </CardBody>
                                     </Card>
                                 </Col>
