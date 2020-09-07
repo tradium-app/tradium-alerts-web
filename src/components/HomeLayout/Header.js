@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
 import GoogleLogin from 'react-google-login'
-import { Dropdown, DropdownToggle, Button } from 'reactstrap'
 import { withNamespaces } from 'react-i18next'
 
-import logoLight from '../../assets/images/logo-light.png'
-import logoLightSvg from '../../assets/images/logo-light.svg'
+import logoLightSm from '../../assets/images/logo-light-sm.svg'
+import logoLightLg from '../../assets/images/logo-light-lg.svg'
 
 import { loginUser, apiError } from '../../store/actions'
 
@@ -21,10 +20,10 @@ const Header = (props) => {
                         <div className="navbar-brand-box">
                             <Link to="/" className="logo logo-light">
                                 <span className="logo-sm">
-                                    <img src={logoLightSvg} alt="" height="22" />
+                                    <img src={logoLightSm} alt="" height="22" />
                                 </span>
                                 <span className="logo-lg">
-                                    <img src={logoLight} alt="" height="40" />
+                                    <img src={logoLightLg} alt="" height="40" />
                                 </span>
                             </Link>
                         </div>
