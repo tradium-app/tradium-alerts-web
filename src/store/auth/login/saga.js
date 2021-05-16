@@ -15,7 +15,7 @@ function* loginUser({ payload: { user, history } }) {
         const response = yield call(postFakeLogin, '/post-fake-login', user)
         localStorage.setItem('authUser', JSON.stringify(response))
         yield put(loginSuccess(response))
-        history.push('/dashboard')
+        history.push('/')
     } catch (error) {
         yield put(apiError(error))
     }

@@ -1,5 +1,4 @@
 import Home from '../pages/Home'
-import Dashboard from '../pages/Dashboard/index'
 import Chat from '../pages/Chat/Chat'
 import FindTutors from '../pages/Find-Tutors/Find-Tutors'
 
@@ -14,7 +13,6 @@ import BookClass from '../pages/BookClass'
 import Wallet from '../pages/Wallet/wallet'
 
 const userRoutes = [
-    { path: '/dashboard', component: Dashboard },
     { path: '/wallet', component: Wallet },
     { path: '/chat', component: Chat },
     { path: '/profile', component: ContactsProfile },

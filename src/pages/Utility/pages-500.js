@@ -18,8 +18,8 @@ const Pages500 = (props) => {
                                 </h1>
                                 <h4 className="text-uppercase">Internal Server Error</h4>
                                 <div className="mt-5 text-center">
-                                    <Link className="btn btn-primary waves-effect waves-light" to="/dashboard">
-                                        Back to Dashboard
+                                    <Link className="btn btn-primary waves-effect waves-light" to="/">
+                                        Back to Home
                                     </Link>
                                 </div>
                             </div>
