@@ -10,6 +10,7 @@ import WelcomeComp from './WelcomeComp'
 import ActivityComp from './ActivityComp'
 
 import avatar3 from '../../assets/images/users/avatar-3.jpg'
+import Poll from './Poll/Poll'
 
 const Dashboard = (props) => {
     const [modal, setmodal] = useState(false)
@@ -22,35 +23,24 @@ const Dashboard = (props) => {
                         <Col xl="8">
                             <Card>
                                 <CardBody>
-                                    <Row>
-                                        <Col xl="10">
-                                            <div className="media mb-2">
-                                                <Link to="/profile">
-                                                    <img className="avatar-sm img-thumbnail rounded-circle m-2" src={avatar3} alt="" />
-                                                </Link>
-                                                <div className="media-body">
-                                                    <p className="text-muted font-size-12 mb-0">Suraj Shrestha</p>
-                                                    <p className="text-muted font-size-10">May 16 (9 hours ago)</p>
-                                                    <p className="font-size-16">What is the best serverless platform?</p>
-                                                    <div>
-                                                        <Badge pill className="font-size-14 p-1 m-1">
-                                                            Java <div className="font-size-10 d-inline-block">(8+ yrs)</div>
-                                                        </Badge>
-                                                        <Badge pill className="font-size-14 p-1 m-1">
-                                                            Redux <div className="font-size-10 d-inline-block">(2+ yrs)</div>
-                                                        </Badge>
-                                                    </div>
-                                                </div>
+                                    <div className="media mb-2">
+                                        <Link to="/profile">
+                                            <img className="avatar-sm img-thumbnail rounded-circle m-2" src={avatar3} alt="" />
+                                        </Link>
+                                        <div className="media-body">
+                                            <p className="text-muted font-size-12 mb-0">Suraj Shrestha</p>
+                                            <p className="text-muted font-size-10">May 16 (9 hours ago)</p>
+                                            <Poll />
+                                            <div>
+                                                <Badge pill className="font-size-14 p-1 m-1">
+                                                    Java <div className="font-size-10 d-inline-block">(8+ yrs)</div>
+                                                </Badge>
+                                                <Badge pill className="font-size-14 p-1 m-1">
+                                                    Redux <div className="font-size-10 d-inline-block">(2+ yrs)</div>
+                                                </Badge>
                                             </div>
-                                        </Col>
-                                        <Col xl="2" className="d-flex align-items-center justify-content-end">
-                                            <div className="m-2">
-                                                <Link to="/book-class" type="button" className="btn btn-primary waves-effect waves-light">
-                                                    <i className="bx bx-calendar-plus font-size-20 align-middle"></i>
-                                                </Link>
-                                            </div>
-                                        </Col>
-                                    </Row>
+                                        </div>
+                                    </div>
                                 </CardBody>
                             </Card>
                         </Col>

@@ -6,9 +6,6 @@ import { connect } from 'react-redux'
 // Import Routes all
 import { userRoutes, publicRoutes } from './routes/allRoutes'
 
-// Import all middleware
-import Authmiddleware from './routes/middleware/Authmiddleware'
-
 // layouts Format
 import HomeLayout from './components/HomeLayout'
 
@@ -38,7 +35,7 @@ const firebaseConfig = {
 initFirebaseBackend(firebaseConfig)
 
 const App = (props) => {
-    const NonAuthmiddleware = ({ component: Component, layout: Layout }) => (
+    const Middleware = ({ component: Component, layout: Layout }) => (
         <Route
             render={(props) => {
                 return (
@@ -55,11 +52,11 @@ const App = (props) => {
             <Router>
                 <Switch>
                     {publicRoutes.map((route, idx) => (
-                        <NonAuthmiddleware path={route.path} layout={HomeLayout} component={route.component} key={idx} exact />
+                        <Middleware path={route.path} layout={HomeLayout} component={route.component} key={idx} exact />
                     ))}
 
                     {userRoutes.map((route, idx) => (
-                        <Authmiddleware path={route.path} layout={HomeLayout} component={route.component} key={idx} exact />
+                        <Middleware path={route.path} layout={HomeLayout} component={route.component} key={idx} exact />
                     ))}
                 </Switch>
             </Router>
