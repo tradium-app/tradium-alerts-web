@@ -1157,7 +1157,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.0", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.5", "@babel/runtime@^7.13.10", "@babel/runtime@^7.2.0", "@babel/runtime@^7.4.2", "@babel/runtime@^7.4.3", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.0", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.5", "@babel/runtime@^7.13.10", "@babel/runtime@^7.2.0", "@babel/runtime@^7.4.2", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
   version "7.14.0"
   resolved "https://npm.devergage.com/@babel%2fruntime/-/runtime-7.14.0.tgz#46794bc20b612c5f75e62dd071e24dfd95f1cbe6"
   integrity sha512-JELkvo/DlpNdJ7dlyw/eY7E0suy5i5GQH+Vlxaq1nsNJ+H7f4Vtv3jMeCEgRhZZQFXTjldYfQgv2qmM6M1v5wA==
@@ -1654,11 +1654,6 @@
     gud "^1.0.0"
     warning "^4.0.3"
 
-"@icons/material@^0.2.4":
-  version "0.2.4"
-  resolved "https://npm.devergage.com/@icons%2fmaterial/-/material-0.2.4.tgz#e90c9f71768b3736e76d7dd6783fc6c2afa88bc8"
-  integrity sha512-QPcGmICAPbGLGb6F/yNf/KzKqvFx8z5qx3D1yFqVAjoFmXK35EgyW+cJ57Te3CNsmzblwtzakLGFqHPqrfb4Tw==
-
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
   resolved "https://npm.devergage.com/@istanbuljs%2fload-nyc-config/-/load-nyc-config-1.1.0.tgz#fd3db1d59ecf7cf121e80650bb86712f9b55eced"
@@ -1846,13 +1841,6 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@lourenci/react-kanban@^2.1.0":
-  version "2.1.0"
-  resolved "https://npm.devergage.com/@lourenci%2freact-kanban/-/react-kanban-2.1.0.tgz#1e9ffab30d37a19815adcb1a94cb35817ebee8a9"
-  integrity sha512-VZK+HbH2DtfQA7RhMWIZAtieN78n6XzJ8EDkKdaOxbefg1FYEJeyQ/GCav6CW7UvWEIAJxBjaYwF+csadIMYFA==
-  dependencies:
-    react-beautiful-dnd "^13.0.0"
-
 "@material-ui/core@3.9.3":
   version "3.9.3"
   resolved "https://npm.devergage.com/@material-ui%2fcore/-/core-3.9.3.tgz#d378c1f4beb18df9a534ca7258c2c33fb8e0e51f"
@@ -2003,11 +1991,6 @@
   version "1.1.0"
   resolved "https://npm.devergage.com/@protobufjs%2futf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha1-p3c2C1s5oaLlEG+OhY8v0tBgxXA=
-
-"@react-leaflet/core@^1.1.0":
-  version "1.1.0"
-  resolved "https://npm.devergage.com/@react-leaflet%2fcore/-/core-1.1.0.tgz#389b2b373f1da4caeb3c4cf6f33d84561c58d504"
-  integrity sha512-zFxMHgfjCi7khRVB7o7H8NoJl36NaezvfcaeEurVXx22lAGHFlTHiSuLOGA4tOiHj+Ep+Lo3uwUGJ3YM9BGkHg==
 
 "@redux-saga/core@^1.1.3":
   version "1.1.3"
@@ -2249,18 +2232,6 @@
   dependencies:
     "@babel/runtime" "^7.12.5"
 
-"@toast-ui/chart@^4.3.2":
-  version "4.3.2"
-  resolved "https://npm.devergage.com/@toast-ui%2fchart/-/chart-4.3.2.tgz#1133a1b38dc87d0a183b17f3f3516f67b0f0c092"
-  integrity sha512-oHHxNt3qu0JwSWFaqS7B0+wdJ7mdBP1bkdW6YLvq/e0xWjaKA8VV3ub/OyRuI8xLc3b7HbaBeGPXZcEI4aejyg==
-
-"@toast-ui/react-chart@^4.3.2":
-  version "4.3.2"
-  resolved "https://npm.devergage.com/@toast-ui%2freact-chart/-/react-chart-4.3.2.tgz#96607d490944618994a179493c9953ad8e8e274e"
-  integrity sha512-B6Sq3zCrqZ7PnxA9wya5rq5c0qqy+0eDp03byZJ3j/KpmIyRNQ9ijDtFHslC072g2bqvhK72fIq+yjmVN0ME1w==
-  dependencies:
-    "@toast-ui/chart" "^4.3.2"
-
 "@types/anymatch@*":
   version "1.3.1"
   resolved "https://npm.devergage.com/@types%2fanymatch/-/anymatch-1.3.1.tgz#336badc1beecb9dacc38bea2cf32adf627a8421a"
@@ -2395,11 +2366,6 @@
     csstype "^2.0.0"
     indefinite-observable "^1.0.1"
 
-"@types/lodash@^4.14.105":
-  version "4.14.169"
-  resolved "https://npm.devergage.com/@types%2flodash/-/lodash-4.14.169.tgz#83c217688f07a4d9ef8f28a3ebd1d318f6ff4cbb"
-  integrity sha512-DvmZHoHTFJ8zhVYwCLWbQ7uAbYQEk52Ev2/ZiQ7Y7gQGeV9pjBqjnQpECMHfKS1rCYAhMI7LHVxwyZLZinJgdw==
-
 "@types/long@^4.0.1":
   version "4.0.1"
   resolved "https://npm.devergage.com/@types%2flong/-/long-4.0.1.tgz#459c65fa1867dafe6a8f322c4c51695663cc55e9"
@@ -2468,15 +2434,6 @@
   version "17.0.5"
   resolved "https://npm.devergage.com/@types%2freact/-/react-17.0.5.tgz#3d887570c4489011f75a3fc8f965bf87d09a1bea"
   integrity sha512-bj4biDB9ZJmGAYTWSKJly6bMr4BLUiBrx9ujiJEoP9XIDY9CTaPGxE5QWN/1WjpPLzYF7/jRNnV2nNxNe970sw==
-  dependencies:
-    "@types/prop-types" "*"
-    "@types/scheduler" "*"
-    csstype "^3.0.2"
-
-"@types/react@^16.0.40":
-  version "16.14.6"
-  resolved "https://npm.devergage.com/@types%2freact/-/react-16.14.6.tgz#d933a2a6bc1bfe320a5eea480e8f45ba8126d6ee"
-  integrity sha512-Ol/aFKune+P0FSFKIgf+XbhGzYGyz0p7g5befSt4rmbzfGLaZR0q7jPew9k7d3bvrcuaL8dPy9Oz3XGZmf9n+w==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -2662,18 +2619,6 @@
   dependencies:
     "@typescript-eslint/types" "4.23.0"
     eslint-visitor-keys "^2.0.0"
-
-"@vtaits/react-color-picker@^0.1.1":
-  version "0.1.1"
-  resolved "https://npm.devergage.com/@vtaits%2freact-color-picker/-/react-color-picker-0.1.1.tgz#8a94e6a4b787f0087ed9d14f6d68a522654d2e82"
-  integrity sha512-SALTAO6EhQXdwhnkWKDBMSZrlq/plBx+uAOH+LrEBFLf5+CX/P19LEkA5xxTOgFyFawoG4FBYYnNmh3BVWjxiA==
-  dependencies:
-    "@babel/runtime" "^7.4.3"
-    classnames "^2.2.6"
-    drag-helper "^1.3.6"
-    prop-types "^15.7.2"
-    region "^2.1.2"
-    tinycolor2 "^1.4.1"
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
@@ -4032,16 +3977,6 @@ chart.js@2.9.3:
     chartjs-color "^2.1.0"
     moment "^2.10.2"
 
-chart.js@^3.2.1:
-  version "3.2.1"
-  resolved "https://npm.devergage.com/chart.js/-/chart.js-3.2.1.tgz#1a17d6a88cef324ef711949e227eb51d6c4c26d3"
-  integrity sha512-XsNDf3854RGZkLCt+5vWAXGAtUdKP2nhfikLGZqud6G4CvRE2ts64TIxTTfspOin2kEZvPgomE29E6oU02dYjQ==
-
-chartist@^0.11.4:
-  version "0.11.4"
-  resolved "https://npm.devergage.com/chartist/-/chartist-0.11.4.tgz#e96e1c573d8b67478920a3a6ae52359d9fc8d8b7"
-  integrity sha512-H4AimxaUD738/u9Mq8t27J4lh6STsLi4BQHt65nOtpLk3xyrBPaLiLMrHw7/WV9CmsjGA02WihjuL5qpSagLYw==
-
 chartjs-color-string@^0.6.0:
   version "0.6.0"
   resolved "https://npm.devergage.com/chartjs-color-string/-/chartjs-color-string-0.6.0.tgz#1df096621c0e70720a64f4135ea171d051402f71"
@@ -4144,7 +4079,7 @@ classnames@2.2.6:
   resolved "https://npm.devergage.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
   integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
 
-classnames@^2.2.1, classnames@^2.2.3, classnames@^2.2.5, classnames@^2.2.6:
+classnames@^2.2.3, classnames@^2.2.5, classnames@^2.2.6:
   version "2.3.1"
   resolved "https://npm.devergage.com/classnames/-/classnames-2.3.1.tgz#dfcfa3891e306ec1dad105d0e88f4417b8535e8e"
   integrity sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==
@@ -4456,7 +4391,7 @@ core-js@^2.4.0:
   resolved "https://npm.devergage.com/core-js/-/core-js-2.6.12.tgz#d9333dfa7b065e347cc5682219d6f690859cc2ec"
   integrity sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==
 
-core-js@^3.6.4, core-js@^3.6.5:
+core-js@^3.6.5:
   version "3.12.1"
   resolved "https://npm.devergage.com/core-js/-/core-js-3.12.1.tgz#6b5af4ff55616c08a44d386f1f510917ff204112"
   integrity sha512-Ne9DKPHTObRuB09Dru5AjwKjY4cJHVGu+y5f7coGn1E9Grkc3p2iBwE9AI/nJzsE29mQF7oq+mhYYRqOMFN1Bw==
@@ -4529,18 +4464,6 @@ create-hmac@^1.1.0, create-hmac@^1.1.4, create-hmac@^1.1.7:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-cropperjs@^1.5.11:
-  version "1.5.11"
-  resolved "https://npm.devergage.com/cropperjs/-/cropperjs-1.5.11.tgz#502ae6d8ca098b124de6813601cca70015879fc0"
-  integrity sha512-SJUeBBhtNBnnn+UrLKluhFRIXLJn7XFPv8QN1j49X5t+BIMwkgvDev541f96bmu8Xe0TgCx3gON22KmY/VddaA==
-
-cross-fetch@^3.0.4:
-  version "3.1.4"
-  resolved "https://npm.devergage.com/cross-fetch/-/cross-fetch-3.1.4.tgz#9723f3a3a247bf8b89039f3a380a9244e8fa2f39"
-  integrity sha512-1eAtFWdIubi6T4XPy6ei9iUFoKpUkIF971QLN8lIvvvwueI65+Nw5haMNKUwfJxabqlIIDODJKGrQ66gxC0PbQ==
-  dependencies:
-    node-fetch "2.6.1"
-
 cross-spawn@7.0.3, cross-spawn@^7.0.0, cross-spawn@^7.0.2, cross-spawn@^7.0.3:
   version "7.0.3"
   resolved "https://npm.devergage.com/cross-spawn/-/cross-spawn-7.0.3.tgz#f73a85b9d5d41d045551c177e2882d4ac85728a6"
@@ -4589,13 +4512,6 @@ css-blank-pseudo@^0.1.4:
   integrity sha512-LHz35Hr83dnFeipc7oqFDmsjHdljj3TQtxGGiNWSOsTLIAubSm4TEz8qCaKFpk7idaQ1GfWscF4E6mgpBysA1w==
   dependencies:
     postcss "^7.0.5"
-
-css-box-model@^1.2.0:
-  version "1.2.1"
-  resolved "https://npm.devergage.com/css-box-model/-/css-box-model-1.2.1.tgz#59951d3b81fd6b2074a62d49444415b0d2b4d7c1"
-  integrity sha512-a7Vr4Q/kd/aw96bnJG332W9V9LkJO69JRcaCYDUqjp6/z0w6VcZjgAcTbgFxEPfBgdnAwlh3iwu+hLopa+flJw==
-  dependencies:
-    tiny-invariant "^1.0.6"
 
 css-color-keywords@^1.0.0:
   version "1.0.0"
@@ -5218,28 +5134,10 @@ dotenv@^9.0.2:
   resolved "https://npm.devergage.com/dotenv/-/dotenv-9.0.2.tgz#dacc20160935a37dea6364aa1bef819fb9b6ab05"
   integrity sha512-I9OvvrHp4pIARv4+x9iuewrWycX6CcZtoAu1XrzPxc5UygMJXJZYmBsynku8IkrJwgypE5DGNjDPmPRhDCptUg==
 
-draft-js@^0.11.4:
-  version "0.11.7"
-  resolved "https://npm.devergage.com/draft-js/-/draft-js-0.11.7.tgz#be293aaa255c46d8a6647f3860aa4c178484a206"
-  integrity sha512-ne7yFfN4sEL82QPQEn80xnADR8/Q6ALVworbC5UOSzOvjffmYfFsr3xSZtxbIirti14R7Y33EZC5rivpLgIbsg==
-  dependencies:
-    fbjs "^2.0.0"
-    immutable "~3.7.4"
-    object-assign "^4.1.1"
-
 draftjs-utils@^0.10.2:
   version "0.10.2"
   resolved "https://npm.devergage.com/draftjs-utils/-/draftjs-utils-0.10.2.tgz#a7f16d2c1c174ac38ba3bbf700c256f176b2699c"
   integrity sha512-EstHqr3R3JVcilJrBaO/A+01GvwwKmC7e4TCjC7S94ZeMh4IVmf60OuQXtHHpwItK8C2JCi3iljgN5KHkJboUg==
-
-drag-helper@^1.3.6:
-  version "1.3.6"
-  resolved "https://npm.devergage.com/drag-helper/-/drag-helper-1.3.6.tgz#6694fbc07fc8cdd9f6ca7136e20ea0c496be8858"
-  integrity sha1-ZpT7wH/Izdn2ynE24g6gxJa+iFg=
-  dependencies:
-    has-touch "^1.0.0"
-    object-assign "^4.1.0"
-    region-align "^2.1.3"
 
 duplexer@^0.1.1:
   version "0.1.2"
@@ -5270,22 +5168,6 @@ ecdsa-sig-formatter@1.0.11:
   integrity sha512-nagl3RYrbNv6kQkeJIpt6NJZy8twLB/2vtz6yN9Z4vRKHN4/QZJIEbqohALSgwKdnksuY3k5Addp5lg8sVoVcQ==
   dependencies:
     safe-buffer "^5.0.1"
-
-echarts-for-react@^3.0.1:
-  version "3.0.1"
-  resolved "https://npm.devergage.com/echarts-for-react/-/echarts-for-react-3.0.1.tgz#cf9de60e468b342c244314be2325e00d765a5137"
-  integrity sha512-9LNcPNT+DH+IwtZlahuXQf7zqCWSnnYqITXtKgLDzoQ7fvotH1xEaFPriASQb+jYqSI9pBdtN5cFneT89wECUg==
-  dependencies:
-    fast-deep-equal "^3.1.3"
-    size-sensor "^1.0.1"
-
-echarts@^5.1.1:
-  version "5.1.1"
-  resolved "https://npm.devergage.com/echarts/-/echarts-5.1.1.tgz#b186f162f017c555cfd67b12ede6762bdc3ddfda"
-  integrity sha512-b3nP8M9XwZM2jISuA+fP0EuJv8lcfgWrinel185Npy8bE/UhXTDIPJcqgQOCWdvk0c5CeT6Dsm1xBjmJXAGlxQ==
-  dependencies:
-    tslib "2.0.3"
-    zrender "5.1.0"
 
 ee-first@1.1.1:
   version "1.1.1"
@@ -6013,11 +5895,6 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "2.1.1"
 
-fbjs-css-vars@^1.0.0:
-  version "1.0.2"
-  resolved "https://npm.devergage.com/fbjs-css-vars/-/fbjs-css-vars-1.0.2.tgz#216551136ae02fe255932c3ec8775f18e2c078b8"
-  integrity sha512-b2XGFAFdWZWg0phtAWLHCk836A1Xann+I+Dgd3Gk64MHKZO44FfoD1KxyvbSh0qZsIoXQGGlVztIY+oitJPpRQ==
-
 fbjs@^0.8.1:
   version "0.8.17"
   resolved "https://npm.devergage.com/fbjs/-/fbjs-0.8.17.tgz#c4d598ead6949112653d6588b01a5cdcd9f90fdd"
@@ -6025,20 +5902,6 @@ fbjs@^0.8.1:
   dependencies:
     core-js "^1.0.0"
     isomorphic-fetch "^2.1.1"
-    loose-envify "^1.0.0"
-    object-assign "^4.1.0"
-    promise "^7.1.1"
-    setimmediate "^1.0.5"
-    ua-parser-js "^0.7.18"
-
-fbjs@^2.0.0:
-  version "2.0.0"
-  resolved "https://npm.devergage.com/fbjs/-/fbjs-2.0.0.tgz#01fb812138d7e31831ed3e374afe27b9169ef442"
-  integrity sha512-8XA8ny9ifxrAWlyhAbexXcs3rRMtxWcs3M0lctLfB49jRDHiaxj+Mo0XxbwE7nKZYzgCFoq64FS+WFd4IycPPQ==
-  dependencies:
-    core-js "^3.6.4"
-    cross-fetch "^3.0.4"
-    fbjs-css-vars "^1.0.0"
     loose-envify "^1.0.0"
     object-assign "^4.1.0"
     promise "^7.1.1"
@@ -6064,11 +5927,6 @@ file-loader@6.1.1:
   dependencies:
     loader-utils "^2.0.0"
     schema-utils "^3.0.0"
-
-file-saver@2.0.2:
-  version "2.0.2"
-  resolved "https://npm.devergage.com/file-saver/-/file-saver-2.0.2.tgz#06d6e728a9ea2df2cce2f8d9e84dfcdc338ec17a"
-  integrity sha512-Wz3c3XQ5xroCxd1G8b7yL0Ehkf0TC9oYC6buPFkNnU9EnaPlifeAFCyCh+iewXTyFRcg0a6j3J7FmJsIhlhBdw==
 
 file-selector@^0.2.2:
   version "0.2.4"
@@ -6549,11 +6407,6 @@ globule@^1.0.0:
     lodash "~4.17.10"
     minimatch "~3.0.2"
 
-google-maps-react@^2.0.2:
-  version "2.0.6"
-  resolved "https://npm.devergage.com/google-maps-react/-/google-maps-react-2.0.6.tgz#0473356207ab6b47227b393b89e4b83f6eab06da"
-  integrity sha512-M8Eo9WndfQEfxcmm6yRq03qdJgw1x6rQmJ9DN+a+xPQ3K7yNDGkVDbinrf4/8vcox7nELbeopbm4bpefKewWfQ==
-
 graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0, graceful-fs@^4.2.3, graceful-fs@^4.2.4:
   version "4.2.6"
   resolved "https://npm.devergage.com/graceful-fs/-/graceful-fs-4.2.6.tgz#ff040b2b0853b23c3d31027523706f1885d76bee"
@@ -6627,11 +6480,6 @@ has-symbols@^1.0.1, has-symbols@^1.0.2:
   resolved "https://npm.devergage.com/has-symbols/-/has-symbols-1.0.2.tgz#165d3070c00309752a1236a479331e3ac56f1423"
   integrity sha512-chXa79rL/UC2KlX17jo3vRGz0azaWEx5tGqZg5pO3NUyEJVB17dMruQlzCCOfUvElghKcm5194+BCRvi2Rv/Gw==
 
-has-touch@^1.0.0:
-  version "1.0.1"
-  resolved "https://npm.devergage.com/has-touch/-/has-touch-1.0.1.tgz#63ef34353b1c0c08bcaf8e804f95dee257ee9516"
-  integrity sha1-Y+80NTscDAi8r46AT5Xe4lfulRY=
-
 has-unicode@^2.0.0:
   version "2.0.1"
   resolved "https://npm.devergage.com/has-unicode/-/has-unicode-2.0.1.tgz#e0e6fe6a28cf51138855e086d1691e771de2a8b9"
@@ -6691,11 +6539,6 @@ hash.js@^1.0.0, hash.js@^1.0.3:
   dependencies:
     inherits "^2.0.3"
     minimalistic-assert "^1.0.1"
-
-hasown@~1.x.x:
-  version "1.0.1"
-  resolved "https://npm.devergage.com/hasown/-/hasown-1.0.1.tgz#b64ff1570673ba06cc5d0183c0a4f0b5b1bd6459"
-  integrity sha1-tk/xVwZzugbMXQGDwKTwtbG9ZFk=
 
 he@^1.2.0:
   version "1.2.0"
@@ -6974,11 +6817,6 @@ immer@8.0.1:
   version "8.0.1"
   resolved "https://npm.devergage.com/immer/-/immer-8.0.1.tgz#9c73db683e2b3975c424fb0572af5889877ae656"
   integrity sha512-aqXhGP7//Gui2+UrEtvxZxSquQVXTpZ7KDxfCcKAF3Vysvw0CViVaW9RZ1j1xlIYqaaaipBoqdqeibkc18PNvA==
-
-immutable@~3.7.4:
-  version "3.7.6"
-  resolved "https://npm.devergage.com/immutable/-/immutable-3.7.6.tgz#13b4d3cb12befa15482a26fe1b2ebae640071e4b"
-  integrity sha1-E7TTyxK++hVIKib+Gy665kAHHks=
 
 import-cwd@^2.0.0:
   version "2.1.0"
@@ -8318,11 +8156,6 @@ last-call-webpack-plugin@^3.0.0:
     lodash "^4.17.5"
     webpack-sources "^1.1.0"
 
-leaflet@^1.7.1:
-  version "1.7.1"
-  resolved "https://npm.devergage.com/leaflet/-/leaflet-1.7.1.tgz#10d684916edfe1bf41d688a3b97127c0322a2a19"
-  integrity sha512-/xwPEBidtg69Q3HlqPdU3DnrXQOvQU/CCHA1tcDQVzOwm91YMYaILjNp7L4Eaw5Z4sOYdbBz6koWyibppd8Zqw==
-
 leven@^3.1.0:
   version "3.1.0"
   resolved "https://npm.devergage.com/leven/-/leven-3.1.0.tgz#77891de834064cccba82ae7842bb6b14a13ed7f2"
@@ -8527,7 +8360,7 @@ lodash.uniq@^4.5.0:
   resolved "https://npm.devergage.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
 
-"lodash@>=3.5 <5", lodash@^4.0.0, lodash@^4.0.1, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.7.0, lodash@~4.17.10:
+"lodash@>=3.5 <5", lodash@^4.0.0, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.7.0, lodash@~4.17.10:
   version "4.17.21"
   resolved "https://npm.devergage.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -8629,11 +8462,6 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-material-colors@^1.2.1:
-  version "1.2.6"
-  resolved "https://npm.devergage.com/material-colors/-/material-colors-1.2.6.tgz#6d1958871126992ceecc72f4bcc4d8f010865f46"
-  integrity sha512-6qE4B9deFBIa9YSpOc9O0Sgc43zTeVYbgDT5veRKSlB2+ZuHNoVVxA1L/ckMUayV9Ay9y7Z/SZCLcGteW9i7bg==
-
 material-ui-pickers@2.2.4:
   version "2.2.4"
   resolved "https://npm.devergage.com/material-ui-pickers/-/material-ui-pickers-2.2.4.tgz#8b33cfc55cbc5b2d520db45abf4b3dc94090dd3c"
@@ -8700,7 +8528,7 @@ media-typer@0.3.0:
   resolved "https://npm.devergage.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
   integrity sha1-hxDXrwqmJvj/+hzgAWhUUmMlV0g=
 
-memoize-one@^5.0.0, memoize-one@^5.1.1:
+memoize-one@^5.0.0:
   version "5.2.1"
   resolved "https://npm.devergage.com/memoize-one/-/memoize-one-5.2.1.tgz#8337aa3c4335581839ec01c3d594090cebe8f00e"
   integrity sha512-zYiwtZUcYyXKo/np96AGZAckk+FWWsUdJ3cHGGmld7+AhvcWmQyGCYUh1hc4Q/pkOhb65dQR/pqCyK0cOaHz4Q==
@@ -9059,11 +8887,6 @@ neo-async@^2.5.0, neo-async@^2.6.1, neo-async@^2.6.2:
   resolved "https://npm.devergage.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-newify@^1.1.9:
-  version "1.1.9"
-  resolved "https://npm.devergage.com/newify/-/newify-1.1.9.tgz#3f599bd1d44a4c38851a1bd25bbb6f7c4d72d8ff"
-  integrity sha1-P1mb0dRKTDiFGhvSW7tvfE1y2P8=
-
 next-tick@~1.0.0:
   version "1.0.0"
   resolved "https://npm.devergage.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
@@ -9310,11 +9133,6 @@ oauth-sign@~0.9.0:
   version "0.9.0"
   resolved "https://npm.devergage.com/oauth-sign/-/oauth-sign-0.9.0.tgz#47a7b016baa68b5fa0ecf3dee08a85c679ac6455"
   integrity sha512-fexhUFFPTGV8ybAtSIGbV6gOkSv8UtRbDBnAyLQw4QPKkgNlsH2ByPGtMUqdWkos6YCRmAqViwgZrJc/mRDzZQ==
-
-object-assign@^2.0.0:
-  version "2.1.1"
-  resolved "https://npm.devergage.com/object-assign/-/object-assign-2.1.1.tgz#43c36e5d569ff8e4816c4efa8be02d26967c18aa"
-  integrity sha1-Q8NuXVaf+OSBbE76i+AtJpZ8GKo=
 
 object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
   version "4.1.1"
@@ -10806,11 +10624,6 @@ queue-microtask@^1.2.2:
   resolved "https://npm.devergage.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
 
-raf-schd@^4.0.2:
-  version "4.0.3"
-  resolved "https://npm.devergage.com/raf-schd/-/raf-schd-4.0.3.tgz#5d6c34ef46f8b2a0e880a8fcdb743efc5bfdbc1a"
-  integrity sha512-tQkJl2GRWh83ui2DiPTJz9wEiMN20syf+5oKfB03yYP7ioZcJwsIK8FjrtLwH1m7C7e+Tt2yYBlrOpdT+dyeIQ==
-
 raf@3.4.1, raf@^3.4.1:
   version "3.4.1"
   resolved "https://npm.devergage.com/raf/-/raf-3.4.1.tgz#0742e99a4a6552f445d73e3ee0328af0ff1ede39"
@@ -10867,19 +10680,6 @@ react-app-polyfill@^2.0.0:
     regenerator-runtime "^0.13.7"
     whatwg-fetch "^3.4.1"
 
-react-beautiful-dnd@^13.0.0:
-  version "13.1.0"
-  resolved "https://npm.devergage.com/react-beautiful-dnd/-/react-beautiful-dnd-13.1.0.tgz#ec97c81093593526454b0de69852ae433783844d"
-  integrity sha512-aGvblPZTJowOWUNiwd6tNfEpgkX5OxmpqxHKNW/4VmvZTNTbeiq7bA3bn5T+QSF2uibXB0D1DmJsb1aC/+3cUA==
-  dependencies:
-    "@babel/runtime" "^7.9.2"
-    css-box-model "^1.2.0"
-    memoize-one "^5.1.1"
-    raf-schd "^4.0.2"
-    react-redux "^7.2.0"
-    redux "^4.0.4"
-    use-memo-one "^1.1.1"
-
 react-bootstrap-editable@^0.8.2:
   version "0.8.2"
   resolved "https://npm.devergage.com/react-bootstrap-editable/-/react-bootstrap-editable-0.8.2.tgz#a1a9b3a4116e30eb79a121c9665708cdbe1f1aa9"
@@ -10894,39 +10694,6 @@ react-bootstrap-sweetalert@^5.1.9:
   resolved "https://npm.devergage.com/react-bootstrap-sweetalert/-/react-bootstrap-sweetalert-5.2.0.tgz#a58bc9fa863eaf518a78b6d0716a25f32182d570"
   integrity sha512-7eaKHgDcYfoRUxiYPZuHjygeLa3yDycGWB+Xwr+PWo6h0HDixwfgGXqWBmDYXI4ZQ453BcY77iBWBZhRbnH/6g==
 
-react-bootstrap-table-next@^4.0.0:
-  version "4.0.3"
-  resolved "https://npm.devergage.com/react-bootstrap-table-next/-/react-bootstrap-table-next-4.0.3.tgz#b55873b01adfe22a7181904b784a9d24ac2822cf"
-  integrity sha512-uKxC73qUdUfusRf2uzDfMiF9LvTG5vuhTZa0lbAgHWSLLLaKTsI0iHf1e4+c7gP71q8dFsp7StvkP65SxC1JRg==
-  dependencies:
-    classnames "^2.2.5"
-    react-transition-group "^4.2.0"
-    underscore "1.9.1"
-
-react-bootstrap-table2-editor@^1.4.0:
-  version "1.4.0"
-  resolved "https://npm.devergage.com/react-bootstrap-table2-editor/-/react-bootstrap-table2-editor-1.4.0.tgz#2d73de4a88d23865e966aeb164abf78d71b17e60"
-  integrity sha512-18yDCwsVt3b5Fwy0jidNDAbUA6vC7k9JjQVmykazWSw8G115+mmZnhe9/7RO7jAu8X7lhmobwlNwECzwPu1nDg==
-
-react-bootstrap-table2-paginator@^2.1.2:
-  version "2.1.2"
-  resolved "https://npm.devergage.com/react-bootstrap-table2-paginator/-/react-bootstrap-table2-paginator-2.1.2.tgz#a62151909e594719db568cede6e5d2962cbf8ddb"
-  integrity sha512-LC5znEphhgKJvaSY1q8d+Gj0Nc/1X+VS3tKJjkmWmfv9P61YC/BnwJ+aoqEmQzsLiVGowrzss+i/u+Tip5H+Iw==
-
-react-bootstrap-table2-toolkit@^2.1.2:
-  version "2.1.3"
-  resolved "https://npm.devergage.com/react-bootstrap-table2-toolkit/-/react-bootstrap-table2-toolkit-2.1.3.tgz#554df765c3a4ab9d650b6686f55a5256e2509fab"
-  integrity sha512-nKBSezHTOkO9k8YMMuJfPEZtBVfIYrJbmP8n3u7+AXRcOrOGygXyauNVKWqdKLchQlG/cW5QR0sPkFknpp5rjQ==
-  dependencies:
-    file-saver "2.0.2"
-
-react-chartist@^0.14.4:
-  version "0.14.4"
-  resolved "https://npm.devergage.com/react-chartist/-/react-chartist-0.14.4.tgz#a70bdc78a92a7208973cab4253e177e99dc7bd29"
-  integrity sha512-1riwO5CjT5IdrilCM788waUYpIdl8Y4vsIc6Y5bbR3PIX46NYYtcq5bcaBEkIZfKEThuoJDEV6FU1rDmfbogsg==
-  dependencies:
-    prop-types "^15.5.8"
-
 react-chartjs-2@2.9.0:
   version "2.9.0"
   resolved "https://npm.devergage.com/react-chartjs-2/-/react-chartjs-2-2.9.0.tgz#d054dbdd763fbe9a76296a4ae0752ea549b76d9e"
@@ -10935,39 +10702,12 @@ react-chartjs-2@2.9.0:
     lodash "^4.17.4"
     prop-types "^15.5.8"
 
-react-chartjs-2@^3.0.3:
-  version "3.0.3"
-  resolved "https://npm.devergage.com/react-chartjs-2/-/react-chartjs-2-3.0.3.tgz#9cb1981396f9574afebd29aff4e6df71ed615596"
-  integrity sha512-jOFZKwZ8sMLkddewZ/tToxuu4pYimAvvY5I6uK+hCpSFT16Pvo2bdHhUoZ0X87zu9I+dx2I+JCqaLN6XhmrbDg==
-  dependencies:
-    lodash "^4.17.19"
-
-react-color@^2.19.3:
-  version "2.19.3"
-  resolved "https://npm.devergage.com/react-color/-/react-color-2.19.3.tgz#ec6c6b4568312a3c6a18420ab0472e146aa5683d"
-  integrity sha512-LEeGE/ZzNLIsFWa1TMe8y5VYqr7bibneWmvJwm1pCn/eNmrabWDh659JSPn9BuaMpEfU83WTOJfnCcjDZwNQTA==
-  dependencies:
-    "@icons/material" "^0.2.4"
-    lodash "^4.17.15"
-    lodash-es "^4.17.15"
-    material-colors "^1.2.1"
-    prop-types "^15.5.10"
-    reactcss "^1.2.0"
-    tinycolor2 "^1.4.1"
-
 react-countdown@^2.3.2:
   version "2.3.2"
   resolved "https://npm.devergage.com/react-countdown/-/react-countdown-2.3.2.tgz#4cc27f28f2dcd47237ee66e4b9f6d2a21fc0b0ad"
   integrity sha512-Q4SADotHtgOxNWhDdvgupmKVL0pMB9DvoFcxv5AzjsxVhzOVxnttMbAywgqeOdruwEAmnPhOhNv/awAgkwru2w==
   dependencies:
     prop-types "^15.7.2"
-
-react-cropper@^2.1.7:
-  version "2.1.7"
-  resolved "https://npm.devergage.com/react-cropper/-/react-cropper-2.1.7.tgz#f9f8127b9516fecc44f918dd331107bfc32adfaf"
-  integrity sha512-dGp2l2wSh4KubWx3PQZIP27fV4shPYjIvm972IqJZdzi/fpDsB6s3GKEH54mk0gy18+80d3WnlgAP2xJ/o8+yw==
-  dependencies:
-    cropperjs "^1.5.11"
 
 react-datepicker@^3.8.0:
   version "3.8.0"
@@ -11118,24 +10858,10 @@ react-jvectormap@^0.0.16:
     jvectormap-next "^3.0.0"
     prop-types "^15.6.0"
 
-react-leaflet@^3.2.0:
-  version "3.2.0"
-  resolved "https://npm.devergage.com/react-leaflet/-/react-leaflet-3.2.0.tgz#8d5d05beab3f9e52665738ad737bb7b1da99f30b"
-  integrity sha512-eHVqoRGjW8T9GxLt7jyTKP3BDQ7XQ5AD+tc/zkbaABn1dbmREDy8GojNcYjZQa3QFLQoOLQMcUC1PTtzytZpUA==
-  dependencies:
-    "@react-leaflet/core" "^1.1.0"
-
 react-lifecycles-compat@^3.0.0, react-lifecycles-compat@^3.0.2, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://npm.devergage.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
-
-react-modal-video@^1.2.6:
-  version "1.2.6"
-  resolved "https://npm.devergage.com/react-modal-video/-/react-modal-video-1.2.6.tgz#4137c7ac83875547f1aef0ee7d39a4ab9c30a338"
-  integrity sha512-rCo+jcohvZQ+IDyd3+uwa14DuTaeMlxL9Ng4tqSl9//4Rgc0PCLQHcTdeMfHipjuzvjk6/e7OqqNRG8dMAjUYw==
-  dependencies:
-    react-transition-group "^2.2.1"
 
 react-modal@^3.8.1:
   version "3.13.1"
@@ -11186,28 +10912,7 @@ react-popper@^2.2.3:
     react-fast-compare "^3.0.1"
     warning "^4.0.2"
 
-react-rangeslider@^2.2.0:
-  version "2.2.0"
-  resolved "https://npm.devergage.com/react-rangeslider/-/react-rangeslider-2.2.0.tgz#4362b01f4f5a455f0815d371d496f69ca4c6b5aa"
-  integrity sha512-5K7Woa+cyqZ5wiW5+KhqGV+3+FiFxGKQ9rUxTMh52sObXVYEeBbfxFrp1eBvS8mRIxnUbHz9ppnFP0LhwOyNeg==
-  dependencies:
-    classnames "^2.2.3"
-    resize-observer-polyfill "^1.4.2"
-
-react-rating-tooltip@^1.1.8:
-  version "1.1.8"
-  resolved "https://npm.devergage.com/react-rating-tooltip/-/react-rating-tooltip-1.1.8.tgz#8af8c40416b9e9141095ab62de692cc0ea7d3f0c"
-  integrity sha512-ku39JSU0IYDCc+PgP/CEL1k4ZM5BvX16hBBRRbPVTFLP3WJhqetO4bYWpABSXVeoGXhAwYaLTP1EPl0YOcSqtA==
-
-react-rating@^2.0.4:
-  version "2.0.5"
-  resolved "https://npm.devergage.com/react-rating/-/react-rating-2.0.5.tgz#2c9d7ebe5907db0361ba28b7c19f0394e6e4dd76"
-  integrity sha512-uldxgLCe5bzqGX7V+7/bPgQQj2Kok6eiMgTMxjKOhfhnQkFLDlc4TjMlp7gaJFAHWdbiOnqpiShI7z8as6oWtg==
-  dependencies:
-    "@types/lodash" "^4.14.105"
-    "@types/react" "^16.0.40"
-
-react-redux@^7.2.0, react-redux@^7.2.4:
+react-redux@^7.2.4:
   version "7.2.4"
   resolved "https://npm.devergage.com/react-redux/-/react-redux-7.2.4.tgz#1ebb474032b72d806de2e0519cd07761e222e225"
   integrity sha512-hOQ5eOSkEJEXdpIKbnRyl04LhaWabkDPV+Ix97wqQX3T3d2NQ8DUblNXXtNMavc7DpswyQM6xfaN4HQDKNY2JA==
@@ -11345,27 +11050,6 @@ react-select@^4.3.1:
     react-input-autosize "^3.0.0"
     react-transition-group "^4.3.0"
 
-react-sparklines@^1.7.0:
-  version "1.7.0"
-  resolved "https://npm.devergage.com/react-sparklines/-/react-sparklines-1.7.0.tgz#9b1d97e8c8610095eeb2ad658d2e1fcf91f91a60"
-  integrity sha512-bJFt9K4c5Z0k44G8KtxIhbG+iyxrKjBZhdW6afP+R7EnIq+iKjbWbEFISrf3WKNFsda+C46XAfnX0StS5fbDcg==
-  dependencies:
-    prop-types "^15.5.10"
-
-react-star-ratings@^2.3.0:
-  version "2.3.0"
-  resolved "https://npm.devergage.com/react-star-ratings/-/react-star-ratings-2.3.0.tgz#311a68f8f44492439a5b306ed743e63a63fe0fa7"
-  integrity sha512-34Z/oFNDRRn4ZcX7F3t9ccnpo7SQ32gD/vsusQOBc6B6vlqaGR6tke1/Yx3jTDjemKRSmXqhKgpPTR7/JAXq6A==
-  dependencies:
-    classnames "^2.2.1"
-    prop-types "^15.6.0"
-    react "^16.1.0"
-
-react-super-responsive-table@^5.2.0:
-  version "5.2.0"
-  resolved "https://npm.devergage.com/react-super-responsive-table/-/react-super-responsive-table-5.2.0.tgz#5357c928f7bca7851b3ae3f2e8e7550f7acf5c7d"
-  integrity sha512-gC6QX/+HNt7d5QDvhp83Q8AV8/44mbeRo4Z4UQ9KfBbY9dyHkQZUXRbaWPFp6CHmfSyVlJaRseTHzwMKmJjRKA==
-
 react-switch@^6.0.0:
   version "6.0.0"
   resolved "https://npm.devergage.com/react-switch/-/react-switch-6.0.0.tgz#bd4a2dea08f211b8a32e55e8314fd44bc1ec947e"
@@ -11420,7 +11104,7 @@ react-transition-group@^2.2.1, react-transition-group@^2.3.1, react-transition-g
     prop-types "^15.6.2"
     react-lifecycles-compat "^3.0.4"
 
-react-transition-group@^4, react-transition-group@^4.2.0, react-transition-group@^4.3.0:
+react-transition-group@^4, react-transition-group@^4.3.0:
   version "4.4.1"
   resolved "https://npm.devergage.com/react-transition-group/-/react-transition-group-4.4.1.tgz#63868f9325a38ea5ee9535d828327f85773345c9"
   integrity sha512-Djqr7OQ2aPUiYurhPalTrVy9ddmFCCzwhqQmtN+J3+3DzLO209Fdr70QrN8Z3DsglWql6iY1lDWAfpFiBtuKGw==
@@ -11438,15 +11122,6 @@ react@17.0.1:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
 
-react@^16.1.0:
-  version "16.14.0"
-  resolved "https://npm.devergage.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
-  integrity sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    prop-types "^15.6.2"
-
 react@^17.0.2:
   version "17.0.2"
   resolved "https://npm.devergage.com/react/-/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"
@@ -11454,13 +11129,6 @@ react@^17.0.2:
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
-
-reactcss@^1.2.0:
-  version "1.2.3"
-  resolved "https://npm.devergage.com/reactcss/-/reactcss-1.2.3.tgz#c00013875e557b1cf0dfd9a368a1c3dab3b548dd"
-  integrity sha512-KiwVUcFu1RErkI97ywr8nvx8dNOpT03rbnma0SSalTYjkrPYaEajR4a/MRt6DZ46K6arDRbWMNHF+xH7G7n/8A==
-  dependencies:
-    lodash "^4.0.1"
 
 reactstrap@^8.9.0:
   version "8.9.0"
@@ -11694,23 +11362,6 @@ regexpu-core@^4.7.1:
     unicode-match-property-ecmascript "^1.0.4"
     unicode-match-property-value-ecmascript "^1.2.0"
 
-region-align@^2.1.3:
-  version "2.1.3"
-  resolved "https://npm.devergage.com/region-align/-/region-align-2.1.3.tgz#7a5ebb9deff3d29c33d23598c7a003d3bfde0a5e"
-  integrity sha1-el67ne/z0pwz0jWYx6AD07/eCl4=
-  dependencies:
-    object-assign "^4.0.1"
-    region "^2.1.2"
-
-region@^2.1.2:
-  version "2.1.2"
-  resolved "https://npm.devergage.com/region/-/region-2.1.2.tgz#cfd95868afbc49e4c7a053b677bc5a0985c29afa"
-  integrity sha1-z9lYaK+8SeTHoFO2d7xaCYXCmvo=
-  dependencies:
-    hasown "~1.x.x"
-    newify "^1.1.9"
-    object-assign "^2.0.0"
-
 regjsgen@^0.5.1:
   version "0.5.2"
   resolved "https://npm.devergage.com/regjsgen/-/regjsgen-0.5.2.tgz#92ff295fb1deecbf6ecdab2543d207e91aa33733"
@@ -11822,11 +11473,6 @@ requires-port@^1.0.0:
   version "1.0.0"
   resolved "https://npm.devergage.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
   integrity sha1-kl0mAdOaxIXgkc8NpcbmlNw9yv8=
-
-resize-observer-polyfill@^1.4.2:
-  version "1.5.1"
-  resolved "https://npm.devergage.com/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz#0e9020dd3d21024458d4ebd27e23e40269810464"
-  integrity sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==
 
 resolve-cwd@^2.0.0:
   version "2.0.0"
@@ -12371,11 +12017,6 @@ sisteransi@^1.0.5:
   version "1.0.5"
   resolved "https://npm.devergage.com/sisteransi/-/sisteransi-1.0.5.tgz#134d681297756437cc05ca01370d3a7a571075ed"
   integrity sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==
-
-size-sensor@^1.0.1:
-  version "1.0.1"
-  resolved "https://npm.devergage.com/size-sensor/-/size-sensor-1.0.1.tgz#f84e46206d3e259faff1d548e4b3beca93219dbb"
-  integrity sha512-QTy7MnuugCFXIedXRpUSk9gUnyNiaxIdxGfUjr8xxXOqIB3QvBUYP9+b51oCg2C4dnhaeNk/h57TxjbvoJrJUA==
 
 slash@^3.0.0:
   version "3.0.0"
@@ -13173,7 +12814,7 @@ timsort@^0.3.0:
   resolved "https://npm.devergage.com/timsort/-/timsort-0.3.0.tgz#405411a8e7e6339fe64db9a234de11dc31e02bd4"
   integrity sha1-QFQRqOfmM5/mTbmiNN4R3DHgK9Q=
 
-tiny-invariant@^1.0.2, tiny-invariant@^1.0.6:
+tiny-invariant@^1.0.2:
   version "1.1.0"
   resolved "https://npm.devergage.com/tiny-invariant/-/tiny-invariant-1.1.0.tgz#634c5f8efdc27714b7f386c35e6760991d230875"
   integrity sha512-ytxQvrb1cPc9WBEI/HSeYYoGD0kWnGEOR8RY6KomWLBVhqz0RgTwVO9dLrGz7dC+nN9llyI7OKAgRq8Vq4ZBSw==
@@ -13182,11 +12823,6 @@ tiny-warning@^1.0.0, tiny-warning@^1.0.3:
   version "1.0.3"
   resolved "https://npm.devergage.com/tiny-warning/-/tiny-warning-1.0.3.tgz#94a30db453df4c643d0fd566060d60a875d84754"
   integrity sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA==
-
-tinycolor2@^1.4.1:
-  version "1.4.2"
-  resolved "https://npm.devergage.com/tinycolor2/-/tinycolor2-1.4.2.tgz#3f6a4d1071ad07676d7fa472e1fac40a719d8803"
-  integrity sha512-vJhccZPs965sV/L2sU4oRQVAos0pQXwsvTLkWYdqJ+a8Q5kPFzJTuOFwy7UniPli44NKQGAglksjvOcpo95aZA==
 
 tmpl@1.0.x:
   version "1.0.4"
@@ -13302,11 +12938,6 @@ tsconfig-paths@^3.9.0:
     json5 "^1.0.1"
     minimist "^1.2.0"
     strip-bom "^3.0.0"
-
-tslib@2.0.3:
-  version "2.0.3"
-  resolved "https://npm.devergage.com/tslib/-/tslib-2.0.3.tgz#8e0741ac45fc0c226e58a17bfc3e64b9bc6ca61c"
-  integrity sha512-uZtkfKblCEQtZKBF6EBXVZeQNl82yqtDQdv+eck8u7tdPxjLu2/lp5/uPW+um2tpuxINHWy3GhiccY7QgEaVHQ==
 
 tslib@^1.8.1, tslib@^1.9.3:
   version "1.14.1"
@@ -13460,11 +13091,6 @@ unbox-primitive@^1.0.0:
     has-symbols "^1.0.2"
     which-boxed-primitive "^1.0.2"
 
-underscore@1.9.1:
-  version "1.9.1"
-  resolved "https://npm.devergage.com/underscore/-/underscore-1.9.1.tgz#06dce34a0e68a7babc29b365b8e74b8925203961"
-  integrity sha512-5/4etnCkd9c8gwgowi5/om/mYO5ajCaOgdzj/oW+0eQV9WxKBDZw5+ycmKmeaTXjInS/W0BzpGLo2xR2aBwZdg==
-
 unicode-canonical-property-names-ecmascript@^1.0.4:
   version "1.0.4"
   resolved "https://npm.devergage.com/unicode-canonical-property-names-ecmascript/-/unicode-canonical-property-names-ecmascript-1.0.4.tgz#2619800c4c825800efdd8343af7dd9933cbe2818"
@@ -13598,11 +13224,6 @@ url@^0.11.0:
   dependencies:
     punycode "1.3.2"
     querystring "0.2.0"
-
-use-memo-one@^1.1.1:
-  version "1.1.2"
-  resolved "https://npm.devergage.com/use-memo-one/-/use-memo-one-1.1.2.tgz#0c8203a329f76e040047a35a1197defe342fab20"
-  integrity sha512-u2qFKtxLsia/r8qG0ZKkbytbztzRb317XCkT7yP8wxL0tZ/CzK2G+WWie5vWvpyeP7+YoPIwbJoIHJ4Ba4k0oQ==
 
 use@^3.1.0:
   version "3.1.1"
@@ -14284,10 +13905,3 @@ yocto-queue@^0.1.0:
   version "0.1.0"
   resolved "https://npm.devergage.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
-
-zrender@5.1.0:
-  version "5.1.0"
-  resolved "https://npm.devergage.com/zrender/-/zrender-5.1.0.tgz#b6a84c3aa7ccc6642ee0519901ca4c0835c4d85e"
-  integrity sha512-c+8VRx52ycbmqwHeHLlo/BAfIHBl/JZNLM6cfDQFgzIH05yb+f5J9F/fbRsP+zGc8dW9XHuhdt8/iqukgMZSeg==
-  dependencies:
-    tslib "2.0.3"
