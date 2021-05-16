@@ -6,7 +6,7 @@ import Pages404 from '../pages/Utility/pages-404'
 import Pages500 from '../pages/Utility/pages-500'
 
 import Profile from '../pages/Profile/profile'
-import CreatePoll from '../pages/Create-Poll'
+import CreatePoll from '../pages/Create-Poll/index'
 import EditProfile from '../pages/Edit-Profile'
 
 const userRoutes = [

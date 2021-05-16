@@ -1,13 +1,13 @@
 import React from 'react'
 import { Container } from 'reactstrap'
-import BookClass from './BookClass'
+import CreatePoll from './CreatePoll'
 
 const Page = (props) => {
     return (
         <React.Fragment>
             <div className="page-content">
-                <Container fluid>
-                    <BookClass />
+                <Container>
+                    <CreatePoll />
                 </Container>
             </div>
         </React.Fragment>

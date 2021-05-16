@@ -23,20 +23,24 @@ const Dashboard = (props) => {
                         <Col xl="8">
                             <Card>
                                 <CardBody>
-                                    <div className="media mb-2">
+                                    <Row className="media align-items-center mb-2">
                                         <Link to="/profile">
-                                            <img className="avatar-sm img-thumbnail rounded-circle m-2" src={avatar3} alt="" />
+                                            <img className="avatar-sm img-thumbnail rounded-circle mr-2" src={avatar3} alt="" />
                                         </Link>
-                                        <div className="media-body">
+                                        <div className="media-body align-items-center">
                                             <p className="text-muted font-size-12 mb-0">Suraj Shrestha</p>
-                                            <p className="text-muted font-size-10">May 16 (9 hours ago)</p>
+                                            <p className="text-muted font-size-10 mb-0">May 16 (9 hours ago)</p>
+                                        </div>
+                                    </Row>
+                                    <div className="media mb-2">
+                                        <div className="media-body">
                                             <Poll />
                                             <div>
-                                                <Badge pill className="font-size-14 p-1 m-1">
-                                                    Java <div className="font-size-10 d-inline-block">(8+ yrs)</div>
+                                                <Badge pill className="font-size-14 p-2 m-1">
+                                                    Java
                                                 </Badge>
-                                                <Badge pill className="font-size-14 p-1 m-1">
-                                                    Redux <div className="font-size-10 d-inline-block">(2+ yrs)</div>
+                                                <Badge pill className="font-size-14 p-2 m-1">
+                                                    Redux
                                                 </Badge>
                                             </div>
                                         </div>
