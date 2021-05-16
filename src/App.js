@@ -11,7 +11,6 @@ import Authmiddleware from './routes/middleware/Authmiddleware'
 
 // layouts Format
 import HomeLayout from './components/HomeLayout'
-import HorizontalLayout from './components/HorizontalLayout/'
 
 // Import scss
 import './assets/scss/theme.scss'
@@ -60,7 +59,7 @@ const App = (props) => {
                     ))}
 
                     {userRoutes.map((route, idx) => (
-                        <Authmiddleware path={route.path} layout={HorizontalLayout} component={route.component} key={idx} exact />
+                        <Authmiddleware path={route.path} layout={HomeLayout} component={route.component} key={idx} exact />
                     ))}
                 </Switch>
             </Router>

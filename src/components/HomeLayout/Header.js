@@ -40,7 +40,7 @@ const Header = (props) => {
 
                     <div className="d-flex">
                         <div className="d-lg-inline-block ml-1">
-                            <Link to="/find-tutors" className="btn header-item waves-effect">
+                            <Link to="/create-poll" className="btn header-item waves-effect">
                                 Create a Poll
                             </Link>
                         </div>
