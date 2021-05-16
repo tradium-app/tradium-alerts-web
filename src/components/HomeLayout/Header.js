@@ -6,10 +6,13 @@ import GoogleLogin from 'react-google-login'
 import logoLightSm from '../../assets/images/logo-light-sm.svg'
 import logoLightLg from '../../assets/images/logo-light-lg.svg'
 
-import { loginUser, apiError } from '../../store/actions'
+import { loginUser, logoutUser, apiError } from '../../store/actions'
+import NotificationDropdown from '../CommonForBoth/TopbarDropdown/NotificationDropdown'
+import ProfileMenu from '../CommonForBoth/TopbarDropdown/ProfileMenu'
 
 const Header = (props) => {
     // const [isSearch, setSearch] = useState(false)
+    const isUserLoggedIn = localStorage.getItem('authUser')
 
     return (
         <React.Fragment>
@@ -38,18 +41,15 @@ const Header = (props) => {
                     <div className="d-flex">
                         <div className="d-lg-inline-block ml-1">
                             <Link to="/find-tutors" className="btn header-item waves-effect">
-                                Find a Tutor
+                                Create a Poll
                             </Link>
                         </div>
 
-                        <div className="d-none d-lg-inline-block ml-1">
-                            <Link to="/edit-profile" className="btn header-item waves-effect">
-                                Become a Tutor
-                            </Link>
-                        </div>
+                        {!isUserLoggedIn && <GoogleLoginDevPolls text="Sign Up" {...props} />}
+                        {!isUserLoggedIn && <GoogleLoginDevPolls text="Login" {...props} />}
 
-                        <GoogleLoginWebtutor text="Sign Up" {...props} />
-                        <GoogleLoginWebtutor text="Login" {...props} />
+                        {isUserLoggedIn && <NotificationDropdown />}
+                        {isUserLoggedIn && <ProfileMenu logoutUser={logoutUser} />}
                     </div>
                 </div>
             </header>
@@ -57,7 +57,7 @@ const Header = (props) => {
     )
 }
 
-const GoogleLoginWebtutor = (props) => {
+const GoogleLoginDevPolls = (props) => {
     const handleGoogleLoginSuccess = (response) => {
         console.log(response.profileObj)
         props.loginUser(response.profileObj, props.history)
@@ -90,4 +90,4 @@ const mapStatetoProps = (state) => {
     return { error }
 }
 
-export default withRouter(connect(mapStatetoProps, { loginUser, apiError })(Header))
+export default withRouter(connect(mapStatetoProps, { loginUser, logoutUser, apiError })(Header))

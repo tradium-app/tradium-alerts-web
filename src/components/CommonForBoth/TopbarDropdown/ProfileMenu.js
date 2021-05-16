@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Button } from 'reactstrap'
+import { Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap'
 import { useGoogleLogout } from 'react-google-login'
 
+import { logoutUser } from '../../../store/actions'
 // users
 import user1 from '../../../assets/images/users/avatar-1.jpg'
 
 const ProfileMenu = (props) => {
-    // Declare a new state variable, which we'll call "menu"
     const [menu, setMenu] = useState(false)
-
     const [username, setusername] = useState('Admin')
     const [imageUrl, setImageUrl] = useState(user1)
 
@@ -28,7 +27,7 @@ const ProfileMenu = (props) => {
     }, [props.success])
 
     const onLogoutSuccess = () => {
-        props.history.push('/')
+        props.logoutUser(props.history)
     }
 
     const { signOut, loaded } = useGoogleLogout({
@@ -74,4 +73,4 @@ const mapStatetoProps = (state) => {
     return { error, success }
 }
 
-export default withRouter(connect(mapStatetoProps, {})(ProfileMenu))
+export default withRouter(connect(mapStatetoProps, { logoutUser })(ProfileMenu))
