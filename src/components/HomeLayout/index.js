@@ -20,7 +20,7 @@ class Layout extends Component {
         const title = this.props.location.pathname
         let currentage = title.charAt(1).toUpperCase() + title.slice(2)
 
-        if (currentage !== '') document.title = currentage + ' | WebTutor - Live 1:1 Tutoring'
+        if (currentage !== '') document.title = currentage + ' | DevPolls'
     }
 
     /**
