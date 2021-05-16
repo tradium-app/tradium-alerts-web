@@ -65,7 +65,7 @@ const GoogleLoginDevPolls = (props) => {
 
     return (
         <GoogleLogin
-            clientId="173892898030-lqdnujddqgv4j5kloa94lkmdsssfale5.apps.googleusercontent.com"
+            clientId={process.env.REACT_APP_GOOGLE_AUTH_CLIENT_ID}
             render={(renderProps) => (
                 <div className="d-lg-inline-block ml-1">
                     <button
