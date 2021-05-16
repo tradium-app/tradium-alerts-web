@@ -8,14 +8,13 @@ import avatar3 from '../../../assets/images/users/avatar-3.jpg'
 import avatar4 from '../../../assets/images/users/avatar-4.jpg'
 
 const NotificationDropdown = (props) => {
-    // Declare a new state variable, which we'll call "menu"
     const [menu, setMenu] = useState(false)
 
     return (
         <>
             <Dropdown isOpen={menu} toggle={() => setMenu(!menu)} className="dropdown d-inline-block" tag="li">
                 <DropdownToggle className="btn header-item noti-icon waves-effect" tag="button" id="page-header-notifications-dropdown">
-                    <i className="bx bx-bell bx-tada"></i>
+                    <i className="bx bx-bell"></i>
                     <span className="badge badge-danger badge-pill">3</span>
                 </DropdownToggle>
 
@@ -27,8 +26,7 @@ const NotificationDropdown = (props) => {
                             </Col>
                             <div className="col-auto">
                                 <a href="#!" className="small">
-                                    {' '}
-                                    View All
+                                    {'View All'}
                                 </a>
                             </div>
                         </Row>
