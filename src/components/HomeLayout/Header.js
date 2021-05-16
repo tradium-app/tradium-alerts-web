@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
 import GoogleLogin from 'react-google-login'
-import { withNamespaces } from 'react-i18next'
 
 import logoLightSm from '../../assets/images/logo-light-sm.svg'
 import logoLightLg from '../../assets/images/logo-light-lg.svg'
@@ -91,4 +90,4 @@ const mapStatetoProps = (state) => {
     return { error }
 }
 
-export default withRouter(connect(mapStatetoProps, { loginUser, apiError })(withNamespaces()(Header)))
+export default withRouter(connect(mapStatetoProps, { loginUser, apiError })(Header))

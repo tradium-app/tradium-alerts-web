@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Button } from 'reactstrap'
-import { withNamespaces } from 'react-i18next'
 import { useGoogleLogout } from 'react-google-login'
 
 // users
@@ -49,20 +48,20 @@ const ProfileMenu = (props) => {
                 <DropdownMenu right>
                     <Link className="dropdown-item" to="/profile">
                         <i className="bx bx-user font-size-16 align-middle mr-1"></i>
-                        {props.t('Profile')}
+                        {'Profile'}
                     </Link>
                     <Link className="dropdown-item" to="/wallet">
                         <i className="bx bx-wallet font-size-16 align-middle mr-1"></i>
-                        {props.t('Wallet')}
+                        {'Wallet'}
                     </Link>
                     <Link className="dropdown-item" to="/edit-profile">
                         <i className="bx bx-cog font-size-16 align-middle mr-1"></i>
-                        {props.t('Settings')}
+                        {'Settings'}
                     </Link>
                     <div className="dropdown-divider"></div>
                     <Link onClick={signOut} className="dropdown-item btn-primary" to="#">
                         <i className="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i>
-                        <span>{props.t('Logout')}</span>
+                        <span>{'Logout'}</span>
                     </Link>
                 </DropdownMenu>
             </Dropdown>
@@ -75,4 +74,4 @@ const mapStatetoProps = (state) => {
     return { error, success }
 }
 
-export default withRouter(connect(mapStatetoProps, {})(withNamespaces()(ProfileMenu)))
+export default withRouter(connect(mapStatetoProps, {})(ProfileMenu))

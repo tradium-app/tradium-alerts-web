@@ -9,8 +9,6 @@ import modalimage2 from '../../assets/images/product/img-4.png'
 import WelcomeComp from './WelcomeComp'
 import ActivityComp from './ActivityComp'
 
-//i18n
-import { withNamespaces } from 'react-i18next'
 import StarRatings from 'react-star-ratings'
 import avatar3 from '../../assets/images/users/avatar-3.jpg'
 
@@ -374,4 +372,4 @@ const Dashboard = (props) => {
     )
 }
 
-export default withNamespaces()(Dashboard)
+export default Dashboard
