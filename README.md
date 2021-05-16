@@ -5,4 +5,4 @@
 
 <br/>
 <br/>
-<img src="public/stoke-dashboard-screenshot.png" height="400">
+<img src="https://devpolls.netlify.app" height="400">
