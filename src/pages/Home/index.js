@@ -6,11 +6,10 @@ import modalimage1 from '../../assets/images/product/img-7.png'
 import modalimage2 from '../../assets/images/product/img-4.png'
 
 // Pages Components
-import WelcomeComp from './WelcomeComp'
-import ActivityComp from './ActivityComp'
-
 import avatar3 from '../../assets/images/users/avatar-3.jpg'
 import Poll from './Poll/Poll'
+import TopPolls from './TopPolls/Index'
+import TopHashtags from './TopHashtags/Index'
 
 const Dashboard = (props) => {
     const [modal, setmodal] = useState(false)
@@ -36,10 +35,10 @@ const Dashboard = (props) => {
                                         <div className="media-body">
                                             <Poll />
                                             <div>
-                                                <Badge pill className="font-size-14 p-2 m-1">
+                                                <Badge pill className="badge badge-primary font-size-11 mr-1">
                                                     Java
                                                 </Badge>
-                                                <Badge pill className="font-size-14 p-2 m-1">
+                                                <Badge pill className="badge badge-primary font-size-11 mr-1">
                                                     Redux
                                                 </Badge>
                                             </div>
@@ -49,26 +48,8 @@ const Dashboard = (props) => {
                             </Card>
                         </Col>
                         <Col xl="4">
-                            <WelcomeComp />
-
-                            <Card className="mini-stats-wid">
-                                <CardBody>
-                                    <Media>
-                                        <Media body>
-                                            <p className="text-muted font-weight-medium">Balance</p>
-                                            <h4 className="mb-0">$200</h4>
-                                        </Media>
-                                        <div className="mini-stat-icon avatar-sm rounded-circle bg-primary align-self-center">
-                                            <Link to="/wallet">
-                                                <span className="avatar-title">
-                                                    <i className="bx bx bx-dollar-circle font-size-24"></i>
-                                                </span>
-                                            </Link>
-                                        </div>
-                                    </Media>
-                                </CardBody>
-                            </Card>
-                            <ActivityComp />
+                            <TopPolls />
+                            <TopHashtags />
                         </Col>
                     </Row>
                 </Container>
