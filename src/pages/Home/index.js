@@ -35,12 +35,8 @@ const Dashboard = (props) => {
                                         <div className="media-body">
                                             <Poll />
                                             <div>
-                                                <Badge pill className="badge badge-primary font-size-11 mr-1">
-                                                    Java
-                                                </Badge>
-                                                <Badge pill className="badge badge-primary font-size-11 mr-1">
-                                                    Redux
-                                                </Badge>
+                                                <Badge className="badge badge-primary font-size-11 mr-1">Java</Badge>
+                                                <Badge className="badge badge-primary font-size-11 mr-1">Redux</Badge>
                                             </div>
                                         </div>
                                     </div>

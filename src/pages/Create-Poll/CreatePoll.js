@@ -11,9 +11,9 @@ const ProfileEdit = (props) => {
                         <Card>
                             <CardBody>
                                 <CardTitle className="mb-4">Create a Poll</CardTitle>
-                                <Form>
+                                <Form className="justify-content-center">
                                     <FormGroup className="mb-4 justify-content-center" row>
-                                        <Col md="9">
+                                        <Col md="8">
                                             <textarea
                                                 type="text"
                                                 className="form-control"
@@ -24,12 +24,12 @@ const ProfileEdit = (props) => {
                                         </Col>
                                     </FormGroup>
                                     <FormGroup className="mb-4 justify-content-center" row>
-                                        <Col md="7">
+                                        <Col md="6" xs="6">
                                             <Input type="text" className="form-control" id="option1" placeholder="Option 1" />
                                         </Col>
-                                        <Col md="2">
-                                            <button type="button" class="inner btn btn-primary">
-                                                +
+                                        <Col md="2" xs="2">
+                                            <button type="button" className="inner btn btn-primary">
+                                                {'+'}
                                             </button>
                                         </Col>
                                     </FormGroup>
