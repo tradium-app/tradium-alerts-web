@@ -10,27 +10,27 @@ const ProfileEdit = (props) => {
                     <Col lg="10">
                         <Card>
                             <CardBody>
-                                <CardTitle className="mb-4">General Info</CardTitle>
+                                <CardTitle className="mb-4">Create a Poll</CardTitle>
                                 <Form>
-                                    <FormGroup className="mb-4" row>
-                                        <Label htmlFor="billing-name" md="3" className="col-form-label">
-                                            What do you want to learn*
-                                        </Label>
+                                    <FormGroup className="mb-4 justify-content-center" row>
                                         <Col md="9">
-                                            <Input type="text" className="form-control" id="billing-name" />
-                                            <span className="font-13 text-muted">e.g "I want to know more about JavaScript React Framework"</span>
+                                            <textarea
+                                                type="text"
+                                                className="form-control"
+                                                id="poll-question"
+                                                placeholder="Start with a Question"
+                                                rows="3"
+                                            />
                                         </Col>
                                     </FormGroup>
-                                    <FormGroup className="mb-4" row>
-                                        <Label htmlFor="billing-email-address" md="3" className="col-form-label">
-                                            More Description
-                                        </Label>
-                                        <Col md="9">
-                                            <textarea id="shortbio" className="form-control" rows="2"></textarea>
-                                            <span className="font-13 text-muted">
-                                                e.g "A short greeting to clients A summary of your strengths and skills Any other information you want
-                                                clients to know"
-                                            </span>
+                                    <FormGroup className="mb-4 justify-content-center" row>
+                                        <Col md="7">
+                                            <Input type="text" className="form-control" id="option1" placeholder="Option 1" />
+                                        </Col>
+                                        <Col md="2">
+                                            <button type="button" class="inner btn btn-primary">
+                                                +
+                                            </button>
                                         </Col>
                                     </FormGroup>
                                 </Form>
@@ -40,7 +40,7 @@ const ProfileEdit = (props) => {
                             <Col>
                                 <div className="text-sm-right">
                                     <button type="button" className="btn btn-primary waves-effect waves-light">
-                                        Save <i className="bx bx-save font-size-24 align-middle ml-2"></i>
+                                        Post the Question <i className="bx bx-save font-size-24 align-middle ml-2"></i>
                                     </button>
                                 </div>
                             </Col>
