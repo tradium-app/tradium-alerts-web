@@ -10,6 +10,7 @@
     "lint": "eslint src/**/**/*.js"
   },
   "dependencies": {
+    "@apollo/client": "^3.3.19",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^13.1.9",
@@ -20,6 +21,7 @@
     "bootstrap": "^4.4.1",
     "dotenv": "^9.0.2",
     "firebase": "^8.6.1",
+    "graphql": "^15.5.0",
     "jsonwebtoken": "^8.5.1",
     "lodash.clonedeep": "^4.5.0",
     "mdbreact": "^5.0.2",
