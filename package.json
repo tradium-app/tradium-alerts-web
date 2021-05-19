@@ -1,5 +1,5 @@
 {
-  "name": "devpolls",
+  "name": "devpolls-web",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,10 +10,6 @@
     "lint": "eslint src/**/**/*.js"
   },
   "dependencies": {
-    "@fullcalendar/bootstrap": "^4.3.0",
-    "@fullcalendar/daygrid": "^4.3.0",
-    "@fullcalendar/interaction": "^4.3.0",
-    "@fullcalendar/react": "^4.3.0",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^13.1.9",
