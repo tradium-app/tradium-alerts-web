@@ -1,32 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Table } from 'reactstrap'
 
 import modalimage1 from '../../assets/images/product/img-7.png'
 import modalimage2 from '../../assets/images/product/img-4.png'
 
-const CreatePollModal = () => {
-    const [modal, setmodal] = useState(false)
-
-    return (
-        <Modal
-            isOpen={modal}
-            role="dialog"
-            autoFocus={true}
-            centered={true}
-            className="exampleModal"
-            tabindex="-1"
-            toggle={() => {
-                setmodal(!modal)
-            }}
-        >
+const CreatePollModal = ({ isShowing, toggle }) => {
+    return isShowing ? (
+        <Modal isOpen={isShowing} role="dialog" autoFocus={true} centered={true} className="exampleModal" tabIndex="-1" toggle={toggle}>
             <div className="modal-content">
-                <ModalHeader
-                    toggle={() => {
-                        setmodal(!modal)
-                    }}
-                >
-                    Order Details
-                </ModalHeader>
+                <ModalHeader toggle={toggle}>Create a Poll</ModalHeader>
                 <ModalBody>
                     <p className="mb-2">
                         Product id: <span className="text-primary">#SK2540</span>
@@ -74,19 +56,19 @@ const CreatePollModal = () => {
                                     <td>$ 145</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2">
+                                    <td colSpan="2">
                                         <h6 className="m-0 text-right">Sub Total:</h6>
                                     </td>
                                     <td>$ 400</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2">
+                                    <td colSpan="2">
                                         <h6 className="m-0 text-right">Shipping:</h6>
                                     </td>
                                     <td>Free</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2">
+                                    <td colSpan="2">
                                         <h6 className="m-0 text-right">Total:</h6>
                                     </td>
                                     <td>$ 400</td>
@@ -96,18 +78,12 @@ const CreatePollModal = () => {
                     </div>
                 </ModalBody>
                 <ModalFooter>
-                    <Button
-                        type="button"
-                        color="secondary"
-                        onClick={() => {
-                            setmodal(!modal)
-                        }}
-                    >
+                    <Button type="button" color="secondary" onClick={toggle}>
                         Close
                     </Button>
                 </ModalFooter>
             </div>
         </Modal>
-    )
+    ) : null
 }
 export default CreatePollModal

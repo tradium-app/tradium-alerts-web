@@ -11,7 +11,6 @@ import TopPolls from './TopPolls/Index'
 import TopHashtags from './TopHashtags/Index'
 
 const HomePage = (props) => {
-    const [modal, setmodal] = useState(false)
     const { loading, error, data } = useQuery(GET_TOP_POLLS_QUERY)
 
     return (

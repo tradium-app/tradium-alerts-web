@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
+import { Button } from 'reactstrap'
 import GoogleLogin from 'react-google-login'
 
 import logoLightSm from '../../assets/images/logo-light-sm.svg'
@@ -9,9 +10,11 @@ import logoLightLg from '../../assets/images/logo-light-lg.svg'
 import { loginUser, logoutUser, apiError } from '../../store/actions'
 import NotificationDropdown from '../CommonForBoth/TopbarDropdown/NotificationDropdown'
 import ProfileMenu from '../CommonForBoth/TopbarDropdown/ProfileMenu'
+import CreatePollModal from '../Common/create-poll-modal'
+import useModal from './useModal'
 
 const Header = (props) => {
-    // const [isSearch, setSearch] = useState(false)
+    const { isShowing, toggle } = useModal()
     const isUserLoggedIn = localStorage.getItem('authUser')
 
     return (
@@ -39,10 +42,11 @@ const Header = (props) => {
                     </div>
 
                     <div className="d-flex">
-                        <div className="d-lg-inline-block ml-1">
-                            <Link to="/create-poll" className="btn header-item waves-effect">
+                        <div className="d-flex mr-2 align-items-center">
+                            <Button type="button" color="primary" onClick={toggle}>
                                 Create a Poll
-                            </Link>
+                            </Button>
+                            <CreatePollModal isShowing={isShowing} toggle={toggle} />
                         </div>
 
                         {!isUserLoggedIn && <GoogleLoginDevPolls text="Sign Up" {...props} />}
