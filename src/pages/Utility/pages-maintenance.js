@@ -7,7 +7,7 @@ import CardMaintenance from './card-maintenance'
 
 //Import Images
 import maintenance from '../../assets/images/maintenance.png'
-import logo from '../../assets/images/logo-dark.png'
+import logo from '../../assets/images/logo-light-lg.svg'
 
 const PagesMaintenance = (props) => {
     return (

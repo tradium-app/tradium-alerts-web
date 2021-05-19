@@ -12,8 +12,8 @@
    width="300.03168"
    height="69.075432"
    viewBox="0 0 300.03168 69.075432"
-   sodipodi:docname="webtutor-logo.svg"
-   inkscape:version="1.0 (4035a4f, 2020-05-01)"
+   sodipodi:docname="logo-light-lg.svg"
+   inkscape:version="1.0.1 (c497b03c, 2020-09-10)"
    inkscape:export-filename="/Users/sshrestha/Desktop/webtutor-logo-3.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96">
@@ -25,7 +25,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -48,8 +48,8 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1440"
-     inkscape:window-height="855"
+     inkscape:window-width="1536"
+     inkscape:window-height="915"
      id="namedview411"
      showgrid="false"
      inkscape:zoom="2.2587842"
@@ -150,12 +150,12 @@
        id="text240"
        y="58.850121"
        x="95.64222"
-       style="font-size:45.3333px;line-height:1.25;font-family:Silom;-inkscape-font-specification:Silom;letter-spacing:-4px;fill:#f2f2f2"
+       style="font-size:45.33330000000000126px;line-height:1.25;font-family:Silom;-inkscape-font-specification:Silom;letter-spacing:-4px;fill:#f2f2f2;fill-opacity:1;"
        xml:space="preserve"><tspan
-         style="font-size:45.3333px;fill:#f2f2f2"
+         style="font-size:45.33330000000000126px;fill:#f2f2f2;fill-opacity:1;"
          y="58.850121"
          x="95.64222"
          id="tspan238"
-         sodipodi:role="line">Webtutor</tspan></text>
+         sodipodi:role="line">DevPolls</tspan></text>
   </g>
 </svg>
