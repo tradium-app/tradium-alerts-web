@@ -72,7 +72,7 @@ const CreatePollModal = ({ isShowing, toggle }) => {
             errors.question = 'Question required.'
         }
         if (!(values?.options?.filter((o) => o.text).length > 1)) {
-            errors.options = 'More options required.'
+            errors.options = 'At least two options are required.'
         }
 
         return errors
