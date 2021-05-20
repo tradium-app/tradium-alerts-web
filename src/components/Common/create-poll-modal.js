@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/client'
-import { Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Col, Input, Button } from 'reactstrap'
+import { Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Col, Input, Button, FormFeedback } from 'reactstrap'
+import { useFormik } from 'formik'
 import toastr from 'toastr'
 import 'toastr/build/toastr.min.css'
 
@@ -12,7 +13,6 @@ toastr.options = {
 }
 
 const CreatePollModal = ({ isShowing, toggle }) => {
-    const [question, setQuestion] = useState('')
     const [options, setOptions] = useState([
         { text: '', order: 1 },
         { text: '', order: 2 },
@@ -25,13 +25,10 @@ const CreatePollModal = ({ isShowing, toggle }) => {
         onCompleted: setData,
     })
 
-    const createPoll = () => {
+    const createPoll = (pollInput) => {
         createPollMutate({
             variables: {
-                pollInput: {
-                    question,
-                    options,
-                },
+                pollInput,
             },
         })
     }
@@ -68,25 +65,57 @@ const CreatePollModal = ({ isShowing, toggle }) => {
         setData(null)
     }
 
+    function validate(values) {
+        console.log('printing values', values)
+        const errors = {}
+        if (!values.question) {
+            errors.question = 'Question required.'
+        }
+        if (!(values?.options?.filter((o) => o.text).length > 1)) {
+            errors.options = 'More options required.'
+        }
+
+        return errors
+    }
+
+    const {
+        handleSubmit,
+        handleChange,
+        handleBlur,
+        touched,
+        values, // use this if you want controlled components
+        errors,
+    } = useFormik({
+        initialValues: {
+            question: '',
+            options,
+        },
+        validate,
+        onSubmit: (values) => {
+            console.log(JSON.stringify(values))
+            createPoll(values)
+        },
+    })
+
     return isShowing ? (
         <Modal isOpen={isShowing} role="dialog" autoFocus={true} centered={true} className="exampleModal" tabIndex="-1" toggle={toggle}>
             <div className="modal-content">
                 <ModalHeader toggle={toggle}>Create a Poll</ModalHeader>
-                <ModalBody>
-                    <Form className="justify-content-center">
+                <Form onSubmit={handleSubmit} className="justify-content-center">
+                    <ModalBody>
                         <FormGroup className="mb-4 justify-content-center" row>
                             <Col xl="12" md="12">
-                                <textarea
-                                    value={question}
-                                    onChange={(event) => {
-                                        setQuestion(event.target.value)
-                                    }}
-                                    type="text"
+                                <Input
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    type="textarea"
                                     className="form-control"
-                                    id="poll-question"
+                                    id="question"
                                     placeholder="Start with a Question"
                                     rows="3"
+                                    invalid={!!(touched.question && errors.question)}
                                 />
+                                <FormFeedback>{errors.question}</FormFeedback>
                             </Col>
                         </FormGroup>
                         {options
@@ -99,24 +128,27 @@ const CreatePollModal = ({ isShowing, toggle }) => {
                                     addOption={addOption}
                                     key={option.order}
                                     isLastOption={option.order === options.length}
+                                    handleChange={handleChange}
+                                    handleBlur={handleBlur}
                                 />
                             ))}
-                    </Form>
-                </ModalBody>
-                <ModalFooter>
-                    <Button type="button" color="secondary" onClick={createPoll}>
-                        Reset
-                    </Button>
-                    <Button type="button" color="primary" onClick={createPoll}>
-                        Publish the Poll
-                    </Button>
-                </ModalFooter>
+                        {errors && errors.options && touched.options && <div className="invalid-feedback d-block">{errors.options}</div>}
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button type="button" color="secondary">
+                            Reset
+                        </Button>
+                        <Button type="submit" color="primary">
+                            Publish the Poll
+                        </Button>
+                    </ModalFooter>
+                </Form>
             </div>
         </Modal>
     ) : null
 }
 
-const OptionInput = ({ option, setOption, removeOption, isLastOption, addOption }) => {
+const OptionInput = ({ option, setOption, removeOption, isLastOption, addOption, handleChange, handleBlur }) => {
     return (
         <FormGroup className="mb-4" row>
             <Col md="10" xs="10">
@@ -127,7 +159,9 @@ const OptionInput = ({ option, setOption, removeOption, isLastOption, addOption 
                     placeholder={'Option ' + option.order}
                     onChange={(event) => {
                         setOption(option.order, event.target.value)
+                        handleChange(event.target.value)
                     }}
+                    onBlur={handleBlur}
                     className="form-control"
                     autoComplete="off"
                 />
