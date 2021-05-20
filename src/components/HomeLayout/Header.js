@@ -69,13 +69,7 @@ const GoogleLoginDevPolls = (props) => {
             .auth()
             .signInWithPopup(googleAuthProvider)
             .then((response) => {
-                const user = {
-                    uid: response.user.uid,
-                    displayName: response.user.displayName,
-                    photoURL: response.user.photoURL,
-                    email: response.user.email,
-                }
-                props.loginUser(user, props.history, response.credential.accessToken)
+                props.loginUser(response.credential.accessToken, props.history)
             })
     }
 

@@ -7,7 +7,7 @@ import { loginSuccess, logoutUserSuccess, apiError } from './actions'
 import graphqlClient from '../../../graphql-client'
 import gql from 'graphql-tag'
 
-function* loginUser({ payload: { user, history, accessToken } }) {
+function* loginUser({ payload: { accessToken, history } }) {
     try {
         const result = yield graphqlClient.mutate({
             mutation: gql`
