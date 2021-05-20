@@ -15,6 +15,11 @@ function* loginUser({ payload: { accessToken, history } }) {
                     loginUser(accessToken: $accessToken) {
                         success
                         message
+                        user {
+                            _id
+                            name
+                            imageUrl
+                        }
                     }
                 }
             `,
@@ -23,11 +28,14 @@ function* loginUser({ payload: { accessToken, history } }) {
             },
         })
 
-        const authUser = result.data.loginUser
-        // const response = yield call(postFakeLogin, '/post-fake-login', user)
-        localStorage.setItem('authUser', JSON.stringify(authUser))
-        // return result.data.loginUser
-        yield put(loginSuccess(authUser))
+        if (result.data.loginUser.success) {
+            const authUser = result.data.loginUser.user
+            if (authUser) {
+                localStorage.setItem('authUser', JSON.stringify(authUser))
+                yield put(loginSuccess(authUser))
+            }
+        }
+
         history.push('/')
     } catch (error) {
         yield put(apiError(error))
