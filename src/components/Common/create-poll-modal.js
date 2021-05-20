@@ -12,28 +12,46 @@ toastr.options = {
 }
 
 const CreatePollModal = ({ isShowing, toggle }) => {
-    const [createPollMutate, { loading, error, data }] = useMutation(CREATE_POLL_QUERY)
     const [question, setQuestion] = useState('')
-    const [option1, setOption1] = useState('')
-    const [option2, setOption2] = useState('')
+    const [options, setOptions] = useState([
+        { text: '', order: 1 },
+        { text: '', order: 2 },
+    ])
+
+    const [error, setError] = React.useState(null)
+    const [data, setData] = React.useState(null)
+    const [createPollMutate, { loading }] = useMutation(CREATE_POLL_QUERY, {
+        onError: setError,
+        onCompleted: setData,
+    })
 
     const createPoll = () => {
         createPollMutate({
             variables: {
                 pollInput: {
-                    question: question,
-                    options: [{ text: option1 }, { text: option2 }],
+                    question,
+                    options,
                 },
             },
         })
     }
 
+    const addOption = () => {
+        setOptions([...options, { text: '', order: options.length + 1 }])
+    }
+
+    const setOption = (order, value) => {
+        options.find((o) => o.order === order).text = value
+    }
+
     if (error) {
         toastr.error(error)
+        setError(null)
     }
 
     if (data) {
         toastr.success('Poll Created.')
+        setData(null)
     }
 
     return isShowing ? (
@@ -57,40 +75,17 @@ const CreatePollModal = ({ isShowing, toggle }) => {
                                 />
                             </Col>
                         </FormGroup>
-                        <FormGroup className="mb-4" row>
-                            <Col md="10" xs="10">
-                                <Input
-                                    type="text"
-                                    id="option1"
-                                    placeholder="Option 1"
-                                    onChange={(event) => {
-                                        setOption1(event.target.value)
-                                    }}
-                                    className="form-control"
-                                />
-                            </Col>
-                        </FormGroup>
-                        <FormGroup className="mb-4" row>
-                            <Col md="10" xs="10">
-                                <Input
-                                    type="text"
-                                    id="option2"
-                                    placeholder="Option 2"
-                                    onChange={(event) => {
-                                        setOption2(event.target.value)
-                                    }}
-                                    className="form-control"
-                                />
-                            </Col>
-                            <Col md="2" xs="2">
-                                <button type="button" className="inner btn btn-secondary">
-                                    {'+'}
-                                </button>
-                            </Col>
-                        </FormGroup>
+                        {options
+                            .sort((a, b) => a - b)
+                            .map((option) => (
+                                <OptionInput option={option} setOption={setOption} addOption={addOption} />
+                            ))}
                     </Form>
                 </ModalBody>
                 <ModalFooter>
+                    <Button type="button" color="secondary" onClick={createPoll}>
+                        Reset
+                    </Button>
                     <Button type="button" color="primary" onClick={createPoll}>
                         Publish the Poll
                     </Button>
@@ -98,6 +93,31 @@ const CreatePollModal = ({ isShowing, toggle }) => {
             </div>
         </Modal>
     ) : null
+}
+
+const OptionInput = ({ option, setOption, addOption }) => {
+    return (
+        <FormGroup className="mb-4" row>
+            <Col md="10" xs="10">
+                <Input
+                    type="text"
+                    key={option.order}
+                    id={'Option-' + option.order}
+                    placeholder={'Option ' + option.order}
+                    onChange={(event) => {
+                        setOption(option.order, event.target.value)
+                    }}
+                    className="form-control"
+                    autoComplete="off"
+                />
+            </Col>
+            <Col md="2" xs="2">
+                <button type="button" className="inner btn btn-secondary" onClick={addOption}>
+                    {'+'}
+                </button>
+            </Col>
+        </FormGroup>
+    )
 }
 
 export const CREATE_POLL_QUERY = gql`
