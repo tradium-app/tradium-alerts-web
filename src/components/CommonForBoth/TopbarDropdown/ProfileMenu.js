@@ -49,7 +49,7 @@ const ProfileMenu = (props) => {
                         <i className="bx bx-user font-size-16 align-middle mr-1"></i>
                         {'Profile'}
                     </Link>
-                    <Link className="dropdown-item" to="/edit-profile">
+                    <Link className="dropdown-item" to="/settings">
                         <i className="bx bx-cog font-size-16 align-middle mr-1"></i>
                         {'Settings'}
                     </Link>

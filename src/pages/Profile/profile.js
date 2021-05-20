@@ -1,15 +1,30 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Container, Row, Col, Card, CardBody, CardTitle, Media } from 'reactstrap'
+import { Container, Row, Col, Card, CardBody, CardTitle, Media, Table } from 'reactstrap'
 
 import avatar2 from '../../assets/images/users/avatar-2.jpg'
 import avatar3 from '../../assets/images/users/avatar-3.jpg'
 
 const ProfileMenu = (props) => {
-    const experiences = [
-        { id: 1, iconClass: 'bx-server', link: '#', designation: 'Back end Developer', timeDuration: '2016 - 19' },
-        { id: 2, iconClass: 'bx-code', link: '#', designation: 'Front end Developer', timeDuration: '2013 - 16' },
-        { id: 3, iconClass: 'bx-edit', link: '#', designation: 'UI /UX Designer', timeDuration: '2011 - 13' },
+    const links = [
+        {
+            id: 1,
+            name: 'Github',
+            imgUrl: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png',
+            url: 'https://github.com/syuraj',
+        },
+        {
+            id: 2,
+            name: 'LinkedIn',
+            imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png',
+            url: 'https://www.linkedin.com/in/surajshrestha',
+        },
+        {
+            id: 3,
+            name: 'Stack Overflow',
+            imgUrl: 'https://cdn.sstatic.net/Sites/stackoverflow/company/Img/logos/so/so-icon.svg?v=f13ebeedfa9e',
+            url: 'https://stackoverflow.com/users/291668/suraj-shrestha',
+        },
     ]
 
     return (
@@ -32,24 +47,13 @@ const ProfileMenu = (props) => {
                                     <Row>
                                         <Col>
                                             <div className="text-center pt-4">
-                                                <Row>
-                                                    <Col xs="6">
-                                                        <h5 className="font-size-15">125</h5>
-                                                        <p className="text-muted mb-0">Sessions</p>
-                                                    </Col>
-                                                    <Col xs="6">
-                                                        <h5 className="font-size-15">$20</h5>
-                                                        <p className="text-muted mb-0">Per Hour</p>
-                                                    </Col>
-                                                </Row>
                                                 <Row className="mt-4 mb-4">
                                                     <Col className="align-self-center text-center">
                                                         <a href="https://github.com/syuraj" target="_blank" rel="noreferrer noopener">
                                                             <img
-                                                                className="avatar-xs img-thumbnail d-inline-block rounded-circle ml-1 mr-1"
+                                                                className="avatar-sm img-thumbnail d-inline-block rounded-circle ml-1 mr-1"
                                                                 src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
                                                                 alt="Github"
-                                                                height="50"
                                                             />
                                                         </a>
                                                         <a
@@ -58,10 +62,9 @@ const ProfileMenu = (props) => {
                                                             rel="noreferrer noopener"
                                                         >
                                                             <img
-                                                                className="avatar-xs img-thumbnail d-inline-block rounded-circle ml-1 mr-1"
+                                                                className="avatar-sm img-thumbnail d-inline-block rounded-circle ml-1 mr-1"
                                                                 src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
                                                                 alt="LinkedIn"
-                                                                height="50"
                                                             />
                                                         </a>
                                                         <a
@@ -70,69 +73,16 @@ const ProfileMenu = (props) => {
                                                             rel="noreferrer noopener"
                                                         >
                                                             <img
-                                                                className="avatar-xs img-thumbnail d-inline-block rounded-circle ml-1 mr-1"
+                                                                className="avatar-sm img-thumbnail d-inline-block rounded-circle ml-1 mr-1"
                                                                 src="https://cdn.sstatic.net/Sites/stackoverflow/company/Img/logos/so/so-icon.svg?v=f13ebeedfa9e"
                                                                 alt="Stack Overflow"
-                                                                height="50"
                                                             />
                                                         </a>
-                                                    </Col>
-                                                </Row>
-                                                <Row className="mt-4">
-                                                    <Col className="align-self-center text-center">
-                                                        <div className="m-1 d-inline-block">
-                                                            <Link to="/book-class" className="btn btn-primary waves-effect waves-light">
-                                                                <i className="bx bx-calendar-plus font-size-16 align-middle mr-2"></i> Book a session
-                                                            </Link>
-                                                        </div>
-                                                        <div className="m-1 d-inline-block">
-                                                            <Link to="/chat" className="btn btn-success waves-effect waves-light">
-                                                                <i className="bx bx-chat font-size-16 align-middle mr-2"></i> Chat
-                                                            </Link>
-                                                        </div>
                                                     </Col>
                                                 </Row>
                                             </div>
                                         </Col>
                                     </Row>
-                                </CardBody>
-                            </Card>
-
-                            <Card>
-                                <CardBody>
-                                    <CardTitle className="mb-5">Experience</CardTitle>
-                                    <div className="">
-                                        <ul className="verti-timeline list-unstyled">
-                                            {experiences.map((experience, i) => (
-                                                <li className={experience.id === 1 ? 'event-list active' : 'event-list'} key={'_exp_' + i}>
-                                                    <div className="event-timeline-dot">
-                                                        <i
-                                                            className={
-                                                                experience.id === 1
-                                                                    ? 'bx bx-right-arrow-circle bx-fade-right'
-                                                                    : 'bx bx-right-arrow-circle'
-                                                            }
-                                                        ></i>
-                                                    </div>
-                                                    <Media>
-                                                        <div className="mr-3">
-                                                            <i className={'bx ' + experience.iconClass + ' h4 text-primary'}></i>
-                                                        </div>
-                                                        <Media body>
-                                                            <div>
-                                                                <h5 className="font-size-15">
-                                                                    <Link to={experience.link} className="text-dark">
-                                                                        {experience.designation}
-                                                                    </Link>
-                                                                </h5>
-                                                                <span className="text-primary">{experience.timeDuration}</span>
-                                                            </div>
-                                                        </Media>
-                                                    </Media>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
                                 </CardBody>
                             </Card>
                         </Col>

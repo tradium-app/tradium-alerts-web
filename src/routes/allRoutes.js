@@ -6,9 +6,9 @@ import Pages404 from '../pages/Utility/pages-404'
 import Pages500 from '../pages/Utility/pages-500'
 
 import Profile from '../pages/Profile/profile'
-import EditProfile from '../pages/Edit-Profile'
+import Settings from '../pages/Settings'
 
-const userRoutes = [{ path: '/edit-profile', component: EditProfile }]
+const userRoutes = [{ path: '/settings', component: Settings }]
 
 const publicRoutes = [
     { path: '/', component: Home },
