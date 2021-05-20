@@ -63,8 +63,8 @@ const Header = (props) => {
 
 const GoogleLoginDevPolls = (props) => {
     const handleGoogleLoginSuccess = (response) => {
-        console.log(response.profileObj)
-        props.loginUser(response.profileObj, props.history)
+        console.log(response)
+        props.loginUser(response.profileObj, props.history, response.accessToken)
     }
 
     return (

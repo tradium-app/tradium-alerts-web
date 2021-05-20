@@ -1,9 +1,9 @@
 import { LOGIN_USER, LOGIN_SUCCESS, LOGOUT_USER, LOGOUT_USER_SUCCESS, API_ERROR } from './actionTypes'
 
-export const loginUser = (user, history) => {
+export const loginUser = (user, history, accessToken) => {
     return {
         type: LOGIN_USER,
-        payload: { user, history },
+        payload: { user, history, accessToken },
     }
 }
 
