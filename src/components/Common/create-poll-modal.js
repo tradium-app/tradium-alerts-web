@@ -44,6 +44,20 @@ const CreatePollModal = ({ isShowing, toggle }) => {
         options.find((o) => o.order === order).text = value
     }
 
+    const removeOption = (order) => {
+        const newOptions = options
+            .filter((o) => o.order !== order)
+            .map((option) => {
+                if (option.order > order) {
+                    return { ...option, order: option.order - 1 }
+                } else {
+                    return option
+                }
+            })
+
+        setOptions(newOptions)
+    }
+
     if (error) {
         toastr.error(error)
         setError(null)
@@ -78,7 +92,14 @@ const CreatePollModal = ({ isShowing, toggle }) => {
                         {options
                             .sort((a, b) => a - b)
                             .map((option) => (
-                                <OptionInput option={option} setOption={setOption} addOption={addOption} key={option.order} />
+                                <OptionInput
+                                    option={option}
+                                    setOption={setOption}
+                                    removeOption={removeOption}
+                                    addOption={addOption}
+                                    key={option.order}
+                                    isLastOption={option.order === options.length}
+                                />
                             ))}
                     </Form>
                 </ModalBody>
@@ -95,7 +116,7 @@ const CreatePollModal = ({ isShowing, toggle }) => {
     ) : null
 }
 
-const OptionInput = ({ option, setOption, addOption }) => {
+const OptionInput = ({ option, setOption, removeOption, isLastOption, addOption }) => {
     return (
         <FormGroup className="mb-4" row>
             <Col md="10" xs="10">
@@ -112,9 +133,16 @@ const OptionInput = ({ option, setOption, addOption }) => {
                 />
             </Col>
             <Col md="2" xs="2">
-                <button type="button" className="inner btn btn-secondary" onClick={addOption}>
-                    {'+'}
-                </button>
+                {!isLastOption && (
+                    <button type="button" className="inner btn btn-secondary" onClick={() => removeOption(option.order)}>
+                        <i className="bx bx-trash"></i>
+                    </button>
+                )}
+                {isLastOption && (
+                    <button type="button" className="inner btn btn-secondary" onClick={addOption}>
+                        <i className="bx bx-plus"></i>
+                    </button>
+                )}
             </Col>
         </FormGroup>
     )
