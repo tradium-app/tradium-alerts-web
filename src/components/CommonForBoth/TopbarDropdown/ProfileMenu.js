@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 import { Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap'
-import { useGoogleLogout } from 'react-google-login'
-
+import firebase from 'firebase/app'
 import { logoutUser } from '../../../store/actions'
 // users
 import user1 from '../../../assets/images/users/avatar-1.jpg'
@@ -20,16 +19,6 @@ const ProfileMenu = (props) => {
             setImageUrl(obj.imageUrl)
         }
     }, [props.success])
-
-    const onLogoutSuccess = () => {
-        props.logoutUser(props.history)
-    }
-
-    const { signOut, loaded } = useGoogleLogout({
-        clientId: process.env.REACT_APP_GOOGLE_AUTH_CLIENT_ID,
-        uxMode: 'redirect',
-        onLogoutSuccess,
-    })
 
     return (
         <React.Fragment>
@@ -49,7 +38,16 @@ const ProfileMenu = (props) => {
                         {'Settings'}
                     </Link>
                     <div className="dropdown-divider"></div>
-                    <Link onClick={signOut} className="dropdown-item btn-primary" to="#">
+                    <Link
+                        onClick={() => {
+                            firebase
+                                .auth()
+                                .signOut()
+                                .then(() => props.logoutUser(props.history))
+                        }}
+                        className="dropdown-item btn-primary"
+                        to="#"
+                    >
                         <i className="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i>
                         <span>{'Logout'}</span>
                     </Link>

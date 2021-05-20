@@ -2,7 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
 import { Button } from 'reactstrap'
-import GoogleLogin from 'react-google-login'
+import firebase from 'firebase/app'
+import 'firebase/auth'
 
 import logoLightSm from '../../assets/images/logo-light-sm.svg'
 import logoLightLg from '../../assets/images/logo-light-lg.svg'
@@ -62,30 +63,28 @@ const Header = (props) => {
 }
 
 const GoogleLoginDevPolls = (props) => {
-    const handleGoogleLoginSuccess = (response) => {
-        console.log(response)
-        props.loginUser(response.profileObj, props.history, response.accessToken)
+    const handleGoogleLogin = () => {
+        const googleAuthProvider = new firebase.auth.GoogleAuthProvider()
+        firebase
+            .auth()
+            .signInWithPopup(googleAuthProvider)
+            .then((response) => {
+                const user = {
+                    uid: response.user.uid,
+                    displayName: response.user.displayName,
+                    photoURL: response.user.photoURL,
+                    email: response.user.email,
+                }
+                props.loginUser(user, props.history, response.credential.accessToken)
+            })
     }
 
     return (
-        <GoogleLogin
-            clientId={process.env.REACT_APP_GOOGLE_AUTH_CLIENT_ID}
-            render={(renderProps) => (
-                <div className="d-lg-inline-block ml-1">
-                    <button
-                        aria-haspopup="true"
-                        className="btn header-item waves-effect"
-                        onClick={renderProps.onClick}
-                        disabled={renderProps.disabled}
-                    >
-                        {props.text}
-                    </button>
-                </div>
-            )}
-            onSuccess={handleGoogleLoginSuccess}
-            onFailure={handleGoogleLoginSuccess}
-            cookiePolicy={'single_host_origin'}
-        />
+        <div className="d-lg-inline-block ml-1">
+            <button aria-haspopup="true" className="btn header-item waves-effect" onClick={handleGoogleLogin}>
+                {props.text}
+            </button>
+        </div>
     )
 }
 

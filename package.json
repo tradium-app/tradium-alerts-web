@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.3.19",
+    "@react-firebase/auth": "^0.2.10",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^13.1.9",
@@ -40,7 +41,6 @@
     "react-dom": "^17.0.2",
     "react-draft-wysiwyg": "^1.14.7",
     "react-dropzone": "^11.3.2",
-    "react-google-login": "^5.2.2",
     "react-image-lightbox": "^5.1.1",
     "react-input-mask": "^2.0.4",
     "react-jvectormap": "^0.0.16",
