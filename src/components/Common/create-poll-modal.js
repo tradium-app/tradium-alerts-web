@@ -20,7 +20,7 @@ const CreatePollModal = ({ isShowing, toggle }) => {
 
     const [error, setError] = React.useState(null)
     const [data, setData] = React.useState(null)
-    const [createPollMutate, { loading }] = useMutation(CREATE_POLL_QUERY, {
+    const [createPollMutate] = useMutation(CREATE_POLL_QUERY, {
         onError: setError,
         onCompleted: setData,
     })
@@ -78,7 +78,7 @@ const CreatePollModal = ({ isShowing, toggle }) => {
                         {options
                             .sort((a, b) => a - b)
                             .map((option) => (
-                                <OptionInput option={option} setOption={setOption} addOption={addOption} />
+                                <OptionInput option={option} setOption={setOption} addOption={addOption} key={option.order} />
                             ))}
                     </Form>
                 </ModalBody>

@@ -36,7 +36,7 @@ const HomePage = (props) => {
                                             </Row>
                                             <div className="media mb-2">
                                                 <div className="media-body">
-                                                    <Poll poll={poll} />
+                                                    <Poll poll={poll} key={poll._id} />
                                                     <div>
                                                         <Badge className="badge badge-primary font-size-11 mr-1">Java</Badge>
                                                         <Badge className="badge badge-primary font-size-11 mr-1">Redux</Badge>
