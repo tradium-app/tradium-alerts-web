@@ -6,13 +6,9 @@ import Pages404 from '../pages/Utility/pages-404'
 import Pages500 from '../pages/Utility/pages-500'
 
 import Profile from '../pages/Profile/profile'
-import CreatePoll from '../pages/Create-Poll/index'
 import EditProfile from '../pages/Edit-Profile'
 
-const userRoutes = [
-    { path: '/create-poll', component: CreatePoll },
-    { path: '/edit-profile', component: EditProfile },
-]
+const userRoutes = [{ path: '/edit-profile', component: EditProfile }]
 
 const publicRoutes = [
     { path: '/', component: Home },
