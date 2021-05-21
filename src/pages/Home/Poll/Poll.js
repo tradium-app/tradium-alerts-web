@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/client'
 import { Label, Progress } from 'reactstrap'
@@ -6,15 +6,17 @@ import { Label, Progress } from 'reactstrap'
 const Poll = ({ poll }) => {
     let grandTotalVotes = 0
 
-    const options = poll.options
+    const optionsInitial = poll.options
         .map((option) => {
             grandTotalVotes += option.totalVotes ?? 0
             return option
         })
         .sort((a, b) => a.order - b.order)
 
+    const [options, setOptions] = useState(optionsInitial)
+
     const submitVoteHandler = (response) => {
-        console.log('printing poll options after saving: ', response.submitVote.poll.options)
+        setOptions(response.submitVote.poll.options)
     }
 
     const [submitVoteMutate] = useMutation(SUBMIT_VOTE_QUERY, {
@@ -65,6 +67,9 @@ export const SUBMIT_VOTE_QUERY = gql`
             message
             poll {
                 options {
+                    _id
+                    text
+                    order
                     totalVotes
                 }
             }
