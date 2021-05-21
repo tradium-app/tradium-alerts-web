@@ -66,7 +66,6 @@ const CreatePollModal = ({ isShowing, toggle }) => {
     }
 
     function validate(values) {
-        console.log('printing values', values)
         const errors = {}
         if (!values.question) {
             errors.question = 'Question required.'

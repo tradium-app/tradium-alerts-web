@@ -1,13 +1,35 @@
+import React from 'react'
+import gql from 'graphql-tag'
+import { useMutation } from '@apollo/client'
 import { Label, Progress } from 'reactstrap'
 
 const Poll = ({ poll }) => {
-    let totalVotes = 0
+    let grandTotalVotes = 0
 
-    const options = poll.options.map((option, index) => {
-        totalVotes += option.votes ?? 0
-        const id = poll._id + '-' + (option.order ?? index)
-        return { ...option, id }
+    const options = poll.options
+        .map((option) => {
+            grandTotalVotes += option.totalVotes ?? 0
+            return option
+        })
+        .sort((a, b) => a.order - b.order)
+
+    const submitVoteHandler = (response) => {
+        console.log('printing poll options after saving: ', response.submitVote.poll.options)
+    }
+
+    const [submitVoteMutate] = useMutation(SUBMIT_VOTE_QUERY, {
+        onCompleted: submitVoteHandler,
     })
+
+    const submitVote = (optionId) => {
+        const pollVote = { pollId: poll._id, optionId }
+
+        submitVoteMutate({
+            variables: {
+                pollVote,
+            },
+        })
+    }
 
     return (
         <div className="control-group">
@@ -16,11 +38,18 @@ const Poll = ({ poll }) => {
 
                 {options &&
                     options.map((option) => (
-                        <div className="custom-control custom-radio mb-4" key={option.id}>
-                            <input id={option.id} type="radio" name="positions" className="custom-control-input" value="a" />
-                            <Label className="custom-control-label d-inline-block pt-0" for={option.id} xl="12">
+                        <div className="custom-control custom-radio mb-4" key={option._id}>
+                            <input
+                                id={option._id}
+                                type="radio"
+                                name="positions"
+                                className="custom-control-input"
+                                value="a"
+                                onClick={() => submitVote(option._id)}
+                            />
+                            <Label className="custom-control-label d-inline-block pt-0" for={option._id} xl="12">
                                 {option.text}
-                                <Progress color="primary" className="mt-2" value={option.votes / totalVotes} max={totalVotes}></Progress>
+                                <Progress color="primary" className="mt-2" value={option.totalVotes} max={grandTotalVotes}></Progress>
                             </Label>
                         </div>
                     ))}
@@ -28,5 +57,19 @@ const Poll = ({ poll }) => {
         </div>
     )
 }
+
+export const SUBMIT_VOTE_QUERY = gql`
+    mutation submitVote($pollVote: PollVote!) {
+        submitVote(pollVote: $pollVote) {
+            success
+            message
+            poll {
+                options {
+                    totalVotes
+                }
+            }
+        }
+    }
+`
 
 export default Poll

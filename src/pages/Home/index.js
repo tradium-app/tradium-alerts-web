@@ -64,10 +64,13 @@ export const GET_TOP_POLLS_QUERY = gql`
             _id
             question
             options {
+                _id
                 text
-                votes
+                order
+                totalVotes
             }
             author {
+                _id
                 name
             }
         }
