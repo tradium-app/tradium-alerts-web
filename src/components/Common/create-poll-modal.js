@@ -60,7 +60,9 @@ const CreatePollModal = ({ isShowing, toggle }) => {
     }
 
     if (data) {
-        toastr.success('Poll Created.')
+        if (data.createPoll.success) {
+            toastr.success('Poll Created.')
+        }
         setData(null)
     }
 
@@ -68,22 +70,19 @@ const CreatePollModal = ({ isShowing, toggle }) => {
         const errors = {}
         if (!values.question) {
             errors.question = 'Question required.'
-        }
-        if (values.question.trim().split(' ').length < 4) {
+        } else if (values.question.trim().split(' ').length < 4) {
             errors.question = 'Too few words.'
-        }
-        if (values.question.indexOf('?') === -1) {
-            errors.question = 'Question missing.'
+        } else if (values.question.indexOf('?') === -1) {
+            errors.question = 'Question not valid.'
         }
 
-        if (!(values?.options?.filter((o) => o.text).length > 1)) {
+        const nonEmptyOptions = values.options.filter((o) => o.text)
+        const optionSet = new Set()
+        nonEmptyOptions.forEach((option) => optionSet.add(option.text))
+
+        if (nonEmptyOptions.length < 2) {
             errors.options = 'At least two options are required.'
-        }
-
-        let optionSet = new Set()
-        values?.options.forEach((option) => optionSet.add(option.text))
-
-        if (optionSet.size < values?.options.length) {
+        } else if (optionSet.size < values?.options.length) {
             errors.options = 'Please remove duplicate options.'
         }
 
@@ -121,7 +120,7 @@ const CreatePollModal = ({ isShowing, toggle }) => {
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                     type="textarea"
-                                    className="form-control"
+                                    className="form-control font-size-16"
                                     id="question"
                                     placeholder="Start with a Question"
                                     rows="3"
