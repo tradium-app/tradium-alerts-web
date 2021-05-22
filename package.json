@@ -23,7 +23,6 @@
     "firebase": "^8.6.1",
     "formik": "^2.2.7",
     "graphql": "^15.5.0",
-    "lodash.clonedeep": "^4.5.0",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.33",
     "node-sass": "^6.0.0",

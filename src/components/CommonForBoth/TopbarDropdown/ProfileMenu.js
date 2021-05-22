@@ -4,13 +4,11 @@ import { withRouter, Link } from 'react-router-dom'
 import { Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap'
 import firebase from 'firebase/app'
 import { logoutUser } from '../../../store/actions'
-// users
-import user1 from '../../../assets/images/users/avatar-1.jpg'
 
 const ProfileMenu = (props) => {
     const [menu, setMenu] = useState(false)
     const [username, setusername] = useState('Admin')
-    const [imageUrl, setImageUrl] = useState(user1)
+    const [imageUrl, setImageUrl] = useState(null)
 
     useEffect(() => {
         if (localStorage.getItem('authUser')) {
