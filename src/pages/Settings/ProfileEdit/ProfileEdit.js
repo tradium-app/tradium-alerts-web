@@ -20,7 +20,6 @@ const ProfileEdit = (props) => {
     }
 
     if (data) {
-        console.log('printing data', data)
         if (data.updateProfile.success) {
             toastr.success('Profile successfully updated.')
         } else {
@@ -43,7 +42,6 @@ const ProfileEdit = (props) => {
         initialValues: {},
         validate,
         onSubmit: (values) => {
-            console.log(JSON.stringify(values))
             updateProfileMutate({
                 variables: {
                     userInput: values,

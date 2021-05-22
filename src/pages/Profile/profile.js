@@ -1,6 +1,7 @@
 import { useQuery } from '@apollo/client'
 import gql from 'graphql-tag'
 import React from 'react'
+import { useParams } from 'react-router'
 import { Link } from 'react-router-dom'
 import { Container, Row, Col, Card, CardBody, CardTitle, Media, Table } from 'reactstrap'
 
@@ -34,8 +35,10 @@ const ProfileMenu = (props) => {
         authUser = JSON.parse(localStorage.getItem('authUser'))
     }
 
+    let { userId } = useParams()
+
     const { loading, error, data } = useQuery(GET_PROFILE_QUERY, {
-        variables: { userId: authUser?._id },
+        variables: { userId: userId || authUser?._id },
     })
 
     const user = data?.getUserProfile

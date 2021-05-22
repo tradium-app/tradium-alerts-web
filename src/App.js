@@ -8,8 +8,9 @@ import './assets/scss/theme.scss'
 import 'toastr/build/toastr.min.css'
 
 const App = (props) => {
-    const Middleware = ({ component: Component, layout: Layout }) => (
+    const Middleware = ({ path, component: Component, layout: Layout, exact }) => (
         <Route
+            path={path}
             render={(props) => {
                 return (
                     <Layout>
@@ -17,6 +18,7 @@ const App = (props) => {
                     </Layout>
                 )
             }}
+            exact
         />
     )
 

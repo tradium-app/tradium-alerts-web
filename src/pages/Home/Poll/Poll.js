@@ -42,7 +42,7 @@ const Poll = ({ poll }) => {
     return (
         <div className="control-group">
             <div className="controls mb-4">
-                <p className="font-size-16">{poll.question}</p>
+                <p className="font-size-18 mb-4">{poll.question}</p>
 
                 {options &&
                     options.map((option) => (

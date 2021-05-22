@@ -11,7 +11,7 @@ const userRoutes = [{ path: '/settings', component: Settings }]
 
 const publicRoutes = [
     { path: '/', component: Home },
-    { path: '/profile', component: Profile },
+    { path: '/profile/:userId?', component: Profile },
     { path: '/pages-maintenance', component: PagesMaintenance },
     { path: '/pages-404', component: Pages404 },
     { path: '/pages-500', component: Pages500 },

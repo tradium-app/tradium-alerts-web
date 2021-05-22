@@ -55,6 +55,4 @@ const ProfileMenu = (props) => {
     )
 }
 
-const mapStatetoProps = () => {}
-
-export default withRouter(connect(mapStatetoProps, { logoutUser })(ProfileMenu))
+export default withRouter(connect(null, { logoutUser })(ProfileMenu))

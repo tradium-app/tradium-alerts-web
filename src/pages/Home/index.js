@@ -25,12 +25,14 @@ const HomePage = () => {
                                 data.getTopPolls.map((poll) => (
                                     <Card key={poll._id}>
                                         <CardBody>
-                                            <Row className="media align-items-center mb-2">
-                                                <Link to="/profile">
-                                                    <img className="avatar-sm img-thumbnail rounded-circle mr-2" src={poll.author?.imageUrl} alt="" />
+                                            <Row className="media align-items-center mb-4">
+                                                <Link to={'/profile/' + poll.author?._id}>
+                                                    <img className="avatar-xs img-thumbnail rounded-circle mr-2" src={poll.author?.imageUrl} alt="" />
                                                 </Link>
                                                 <div className="media-body align-items-center">
-                                                    <p className="text-muted font-size-12 mb-0">{poll.author?.name}</p>
+                                                    <Link to={'/profile/' + poll.author?._id} className="text-muted font-size-10 mb-0">
+                                                        {poll.author?.name}
+                                                    </Link>
                                                     <p className="text-muted font-size-10 mb-0">{getRelativeTime(poll.modifiedDate)}</p>
                                                 </div>
                                             </Row>
