@@ -30,7 +30,7 @@ const HomePage = () => {
                                                     <img className="avatar-sm img-thumbnail rounded-circle mr-2" src={poll.author?.imageUrl} alt="" />
                                                 </Link>
                                                 <div className="media-body align-items-center">
-                                                    <p className="text-muted font-size-12 mb-0">{poll.author.name}</p>
+                                                    <p className="text-muted font-size-12 mb-0">{poll.author?.name}</p>
                                                     <p className="text-muted font-size-10 mb-0">{getRelativeTime(poll.modifiedDate)}</p>
                                                 </div>
                                             </Row>
