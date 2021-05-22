@@ -1,14 +1,12 @@
 import React from 'react'
 import { useQuery } from '@apollo/client'
 import gql from 'graphql-tag'
-import { Container, Row, Col, Card, CardBody, Badge } from 'reactstrap'
-import { Link } from 'react-router-dom'
+import { Container, Row, Col } from 'reactstrap'
 
 // Pages Components
-import Poll from './Poll/Poll'
 import TopPolls from './TopPolls/Index'
 import TopHashtags from './TopHashtags/Index'
-import { getRelativeTime } from '../../components/Common/time'
+import PollCard from './Poll/PollCard'
 
 const HomePage = () => {
     const { loading, error, data } = useQuery(GET_TOP_POLLS_QUERY)
@@ -18,37 +16,7 @@ const HomePage = () => {
             <div className="page-content">
                 <Container>
                     <Row>
-                        <Col xl="8">
-                            {data &&
-                                !error &&
-                                !loading &&
-                                data.getTopPolls.map((poll) => (
-                                    <Card key={poll._id}>
-                                        <CardBody>
-                                            <Row className="media align-items-center mb-4">
-                                                <Link to={'/profile/' + poll.author?._id}>
-                                                    <img className="avatar-xs img-thumbnail rounded-circle mr-2" src={poll.author?.imageUrl} alt="" />
-                                                </Link>
-                                                <div className="media-body align-items-center">
-                                                    <Link to={'/profile/' + poll.author?._id} className="text-muted font-size-10 mb-0">
-                                                        {poll.author?.name}
-                                                    </Link>
-                                                    <p className="text-muted font-size-10 mb-0">{getRelativeTime(poll.modifiedDate)}</p>
-                                                </div>
-                                            </Row>
-                                            <div className="media mb-2">
-                                                <div className="media-body">
-                                                    <Poll poll={poll} key={poll._id} />
-                                                    <div>
-                                                        <Badge className="badge badge-primary font-size-11 mr-1">#java</Badge>
-                                                        <Badge className="badge badge-primary font-size-11 mr-1">#redux</Badge>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </CardBody>
-                                    </Card>
-                                ))}
-                        </Col>
+                        <Col xl="8">{data && !error && !loading && data.getTopPolls.map((poll) => <PollCard key={poll._id} poll={poll} />)}</Col>
                         <Col xl="4">
                             <TopPolls />
                             <TopHashtags />

@@ -1,12 +1,9 @@
 import React from 'react'
 import { useParams } from 'react-router'
-import { Link } from 'react-router-dom'
 import { useQuery } from '@apollo/client'
 import gql from 'graphql-tag'
-import { Container, Row, Col, Card, CardBody, CardTitle, Badge } from 'reactstrap'
-
-import Poll from '../Home/Poll/Poll'
-import { getRelativeTime } from '../../components/Common/time'
+import { Container, Row, Col, Card, CardBody, CardTitle } from 'reactstrap'
+import PollCard from '../Home/Poll/PollCard'
 
 const socialLinks = [
     {
@@ -88,35 +85,7 @@ const Profile = () => {
                                 </CardBody>
                             </Card>
 
-                            {user &&
-                                !error &&
-                                !loading &&
-                                user.pollsCreated.map((poll) => (
-                                    <Card key={poll._id}>
-                                        <CardBody>
-                                            <Row className="media align-items-center mb-4">
-                                                <Link to={'/profile/' + user?._id}>
-                                                    <img className="avatar-xs img-thumbnail rounded-circle mr-2" src={user?.imageUrl} alt="" />
-                                                </Link>
-                                                <div className="media-body align-items-center">
-                                                    <Link to={'/profile/' + user?._id} className="text-muted font-size-10 mb-0">
-                                                        {user?.name}
-                                                    </Link>
-                                                    <p className="text-muted font-size-10 mb-0">{getRelativeTime(poll.modifiedDate)}</p>
-                                                </div>
-                                            </Row>
-                                            <div className="media mb-2">
-                                                <div className="media-body">
-                                                    <Poll poll={poll} key={poll._id} />
-                                                    <div>
-                                                        <Badge className="badge badge-primary font-size-11 mr-1">#java</Badge>
-                                                        <Badge className="badge badge-primary font-size-11 mr-1">#redux</Badge>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </CardBody>
-                                    </Card>
-                                ))}
+                            {user && !error && !loading && user.pollsCreated.map((poll) => <PollCard key={poll._id} poll={poll} />)}
                         </Col>
                     </Row>
                 </Container>
@@ -145,6 +114,12 @@ export const GET_PROFILE_QUERY = gql`
                     order
                     selected
                     totalVotes
+                }
+                author {
+                    _id
+                    name
+                    imageUrl
+                    status
                 }
                 createdDate
                 modifiedDate
