@@ -20,25 +20,20 @@ const CreatePollModal = ({ isShowing, toggle }) => {
         onCompleted: setData,
     })
 
-    const {
-        handleSubmit,
-        handleChange,
-        handleBlur,
-        touched,
-        values, // use this if you want controlled components
-        setValues,
-        errors,
-    } = useFormik({
-        initialValues: {
-            question: '',
-            options: [
-                { text: '', order: 1 },
-                { text: '', order: 2 },
-            ],
-        },
+    const initialValues = {
+        question: '',
+        options: [
+            { text: '', order: 1 },
+            { text: '', order: 2 },
+        ],
+    }
+
+    const { handleSubmit, handleChange, handleBlur, touched, values, setValues, errors, handleReset } = useFormik({
+        initialValues,
         validate,
-        onSubmit: (values) => {
+        onSubmit: (values, formikBag) => {
             createPoll(values)
+            formikBag.resetForm()
         },
     })
 
@@ -107,7 +102,7 @@ const CreatePollModal = ({ isShowing, toggle }) => {
     }
 
     return isShowing ? (
-        <Modal isOpen={isShowing} role="dialog" autoFocus={true} centered={true} className="exampleModal" tabIndex="-1" toggle={toggle}>
+        <Modal isOpen={isShowing} role="dialog" autoFocus={true} centered={true} tabIndex="-1" toggle={toggle}>
             <div className="modal-content">
                 <ModalHeader toggle={toggle}>Create a Poll</ModalHeader>
                 <Form onSubmit={handleSubmit} className="justify-content-center">
@@ -145,7 +140,7 @@ const CreatePollModal = ({ isShowing, toggle }) => {
                         {errors && errors.options && touched.options && <div className="invalid-feedback d-block">{errors.options}</div>}
                     </ModalBody>
                     <ModalFooter>
-                        <Button type="button" color="secondary">
+                        <Button type="button" color="secondary" onClick={handleReset}>
                             Reset
                         </Button>
                         <Button type="submit" color="primary">
