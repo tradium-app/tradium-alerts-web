@@ -69,8 +69,22 @@ const CreatePollModal = ({ isShowing, toggle }) => {
         if (!values.question) {
             errors.question = 'Question required.'
         }
+        if (values.question.trim().split(' ').length < 4) {
+            errors.question = 'Too few words.'
+        }
+        if (values.question.indexOf('?') === -1) {
+            errors.question = 'Question missing.'
+        }
+
         if (!(values?.options?.filter((o) => o.text).length > 1)) {
             errors.options = 'At least two options are required.'
+        }
+
+        let optionSet = new Set()
+        values?.options.forEach((option) => optionSet.add(option.text))
+
+        if (optionSet.size < values?.options.length) {
+            errors.options = 'Please remove duplicate options.'
         }
 
         return errors
