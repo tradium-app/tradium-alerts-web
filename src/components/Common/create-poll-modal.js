@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/client'
 import { Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Col, Input, Button, FormFeedback } from 'reactstrap'
@@ -13,16 +13,33 @@ toastr.options = {
 }
 
 const CreatePollModal = ({ isShowing, toggle }) => {
-    const [options, setOptions] = useState([
-        { text: '', order: 1 },
-        { text: '', order: 2 },
-    ])
-
     const [error, setError] = React.useState(null)
     const [data, setData] = React.useState(null)
     const [createPollMutate] = useMutation(CREATE_POLL_QUERY, {
         onError: setError,
         onCompleted: setData,
+    })
+
+    const {
+        handleSubmit,
+        handleChange,
+        handleBlur,
+        touched,
+        values, // use this if you want controlled components
+        setValues,
+        errors,
+    } = useFormik({
+        initialValues: {
+            question: '',
+            options: [
+                { text: '', order: 1 },
+                { text: '', order: 2 },
+            ],
+        },
+        validate,
+        onSubmit: (values) => {
+            createPoll(values)
+        },
     })
 
     const createPoll = (pollInput) => {
@@ -34,15 +51,14 @@ const CreatePollModal = ({ isShowing, toggle }) => {
     }
 
     const addOption = () => {
-        setOptions([...options, { text: '', order: options.length + 1 }])
-    }
-
-    const setOption = (order, value) => {
-        options.find((o) => o.order === order).text = value
+        const options = [...values.options]
+        const lastOrder = options[options.length - 1].order
+        options.push({ text: '', order: lastOrder + 1 })
+        setValues({ ...values, options })
     }
 
     const removeOption = (order) => {
-        const newOptions = options
+        const newOptions = values.options
             .filter((o) => o.order !== order)
             .map((option) => {
                 if (option.order > order) {
@@ -52,7 +68,7 @@ const CreatePollModal = ({ isShowing, toggle }) => {
                 }
             })
 
-        setOptions(newOptions)
+        setValues({ ...values, options: newOptions })
     }
 
     if (error) {
@@ -90,25 +106,6 @@ const CreatePollModal = ({ isShowing, toggle }) => {
         return errors
     }
 
-    const {
-        handleSubmit,
-        handleChange,
-        handleBlur,
-        touched,
-        values, // use this if you want controlled components
-        errors,
-    } = useFormik({
-        initialValues: {
-            question: '',
-            options,
-        },
-        validate,
-        onSubmit: (values) => {
-            console.log(JSON.stringify(values))
-            createPoll(values)
-        },
-    })
-
     return isShowing ? (
         <Modal isOpen={isShowing} role="dialog" autoFocus={true} centered={true} className="exampleModal" tabIndex="-1" toggle={toggle}>
             <div className="modal-content">
@@ -118,11 +115,12 @@ const CreatePollModal = ({ isShowing, toggle }) => {
                         <FormGroup className="mb-4 justify-content-center" row>
                             <Col xl="12" md="12">
                                 <Input
+                                    id="question"
+                                    value={values.question}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                     type="textarea"
                                     className="form-control font-size-16"
-                                    id="question"
                                     placeholder="Start with a Question"
                                     rows="3"
                                     invalid={!!(touched.question && errors.question)}
@@ -130,16 +128,16 @@ const CreatePollModal = ({ isShowing, toggle }) => {
                                 <FormFeedback>{errors.question}</FormFeedback>
                             </Col>
                         </FormGroup>
-                        {options
+                        {values.options
                             .sort((a, b) => a - b)
-                            .map((option) => (
+                            .map((option, index) => (
                                 <OptionInput
                                     option={option}
-                                    setOption={setOption}
+                                    index={index}
                                     removeOption={removeOption}
                                     addOption={addOption}
-                                    key={option.order}
-                                    isLastOption={option.order === options.length}
+                                    key={index}
+                                    isLastOption={index === values.options.length - 1}
                                     handleChange={handleChange}
                                     handleBlur={handleBlur}
                                 />
@@ -160,19 +158,16 @@ const CreatePollModal = ({ isShowing, toggle }) => {
     ) : null
 }
 
-const OptionInput = ({ option, setOption, removeOption, isLastOption, addOption, handleChange, handleBlur }) => {
+const OptionInput = ({ option, index, setOption, removeOption, isLastOption, addOption, handleChange, handleBlur }) => {
     return (
         <FormGroup className="mb-4" row>
             <Col md="10" xs="10">
                 <Input
                     type="text"
-                    key={option.order}
-                    id={'Option-' + option.order}
-                    placeholder={'Option ' + option.order}
-                    onChange={(event) => {
-                        setOption(option.order, event.target.value)
-                        handleChange(event.target.value)
-                    }}
+                    name={`options.${index}.text`}
+                    value={option.text}
+                    placeholder={'Option ' + (index + 1)}
+                    onChange={handleChange}
                     onBlur={handleBlur}
                     className="form-control"
                     autoComplete="off"
