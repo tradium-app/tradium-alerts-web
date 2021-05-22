@@ -6,6 +6,7 @@ import { useFormik } from 'formik'
 import toastr from 'toastr'
 
 toastr.options = {
+    positionClass: 'toast-top-center',
     closeButton: true,
     preventDuplicates: true,
     newestOnTop: true,
@@ -55,7 +56,7 @@ const CreatePollModal = ({ isShowing, toggle }) => {
     }
 
     if (error) {
-        toastr.error(error)
+        toastr.error(error.message)
         setError(null)
     }
 
@@ -82,7 +83,7 @@ const CreatePollModal = ({ isShowing, toggle }) => {
 
         if (nonEmptyOptions.length < 2) {
             errors.options = 'At least two options are required.'
-        } else if (optionSet.size < values?.options.length) {
+        } else if (optionSet.size < nonEmptyOptions.length) {
             errors.options = 'Please remove duplicate options.'
         }
 
