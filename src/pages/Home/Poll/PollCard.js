@@ -1,9 +1,24 @@
+import gql from 'graphql-tag'
+import { useMutation } from '@apollo/client'
 import { Link } from 'react-router-dom'
 import { Badge, Card, CardBody, DropdownItem, DropdownMenu, DropdownToggle, Row, UncontrolledDropdown } from 'reactstrap'
+import toastr from 'toastr'
 import { getRelativeTime } from '../../../components/Common/time'
 import PollBody from './PollBody'
 
 const PollCard = ({ poll, authUser }) => {
+    const [deletePollMutate] = useMutation(DELETE_POLL_MUTATION, {
+        onCompleted: deletePollCompleteHandler,
+    })
+
+    const deletePollHandler = () => {
+        deletePollMutate({
+            variables: {
+                pollId: poll._id,
+            },
+        })
+    }
+
     return (
         <Card key={poll._id}>
             <CardBody>
@@ -23,7 +38,7 @@ const PollCard = ({ poll, authUser }) => {
                                 <i className="mdi mdi-dots-horizontal font-size-18"></i>
                             </DropdownToggle>
                             <DropdownMenu right>
-                                <DropdownItem href="#">Delete</DropdownItem>
+                                <DropdownItem onClick={deletePollHandler}>Delete</DropdownItem>
                             </DropdownMenu>
                         </UncontrolledDropdown>
                     )}
@@ -41,6 +56,24 @@ const PollCard = ({ poll, authUser }) => {
             </CardBody>
         </Card>
     )
+}
+
+export const DELETE_POLL_MUTATION = gql`
+    mutation deletePoll($pollId: String!) {
+        deletePoll(pollId: $pollId) {
+            success
+            message
+        }
+    }
+`
+
+const deletePollCompleteHandler = (result) => {
+    console.log('printing result', result)
+    if (result.deletePoll.success) {
+        toastr.success('Poll successfully deleted.')
+    } else {
+        toastr.error('Poll delete failed.')
+    }
 }
 
 export default PollCard
