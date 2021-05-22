@@ -1,77 +1,169 @@
 import React from 'react'
+import { useMutation } from '@apollo/client'
+import gql from 'graphql-tag'
 import { Row, Col, Card, CardBody, CardTitle, Form, FormGroup, Label, Input } from 'reactstrap'
+import { useFormik } from 'formik'
+import toastr from 'toastr'
 
 const ProfileEdit = (props) => {
+    const [error, setError] = React.useState(null)
+    const [data, setData] = React.useState(null)
+
+    const [updateProfileMutate] = useMutation(UPDATE_PROFILE_MUTATION, {
+        onError: setError,
+        onCompleted: setData,
+    })
+
+    if (error) {
+        toastr.error(error)
+        setError(null)
+    }
+
+    if (data) {
+        console.log('printing data', data)
+        if (data.updateProfile.success) {
+            toastr.success('Profile successfully updated.')
+        } else {
+            toastr.error('Profile update failed.')
+        }
+
+        setData(null)
+    }
+
+    function validate(values) {
+        const errors = {}
+        if (!values.title) {
+            errors.title = 'Title required.'
+        }
+
+        return errors
+    }
+
+    const { handleSubmit, handleChange, handleBlur, touched, errors } = useFormik({
+        initialValues: {},
+        validate,
+        onSubmit: (values) => {
+            console.log(JSON.stringify(values))
+            updateProfileMutate({
+                variables: {
+                    userInput: values,
+                },
+            })
+        },
+    })
+
     return (
         <React.Fragment>
-            <Row className="justify-content-center">
-                <Col lg="10">
-                    <Card>
-                        <CardBody>
-                            <CardTitle className="mb-4">General Info</CardTitle>
-                            <Form>
+            <Form onSubmit={handleSubmit} className="justify-content-center">
+                <Row className="justify-content-center">
+                    <Col lg="10">
+                        <Card>
+                            <CardBody>
+                                <CardTitle className="mb-4">General Info</CardTitle>
                                 <FormGroup className="mb-4" row>
                                     <Label htmlFor="title" md="3" className="col-form-label">
                                         One sentence describing you *
                                     </Label>
                                     <Col md="9">
-                                        <Input id="title" type="text" className="form-control" autoComplete="off" />
+                                        <Input
+                                            id="title"
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            type="text"
+                                            className="form-control"
+                                            autoComplete="off"
+                                            invalid={!!(touched.title && errors.title)}
+                                        />
                                         <span className="font-13 text-muted">e.g "Senior front-end developer with 5+ years of experience"</span>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup className="mb-4" row>
                                     <Label htmlFor="billing-email-address" md="3" className="col-form-label">
-                                        Short bio *
+                                        Short bio
                                     </Label>
                                     <Col md="9">
-                                        <textarea id="shortbio" className="form-control" rows="2"></textarea>
+                                        <textarea
+                                            id="shortBio"
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            className="form-control"
+                                            rows="2"
+                                        ></textarea>
                                         <span className="font-13 text-muted">e.g "A short greeting to visitors"</span>
                                     </Col>
                                 </FormGroup>
-                            </Form>
 
-                            <CardTitle className="mb-4">Social</CardTitle>
-                            <Form>
+                                <CardTitle className="mb-4">Social</CardTitle>
                                 <FormGroup className="mb-4" row>
-                                    <Label htmlFor="github-link" md="3" className="col-form-label">
+                                    <Label htmlFor="githubLink" md="3" className="col-form-label">
                                         Github
                                     </Label>
                                     <Col md="5">
-                                        <Input type="text" className="form-control" id="github-link" defaultValue="https://github.com/" />
+                                        <Input
+                                            id="githubLink"
+                                            type="text"
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            className="form-control"
+                                            defaultValue="https://github.com/"
+                                        />
                                     </Col>
                                 </FormGroup>
                                 <FormGroup className="mb-4" row>
-                                    <Label htmlFor="linkedin-link" md="3" className="col-form-label">
+                                    <Label htmlFor="linkedinLink" md="3" className="col-form-label">
                                         LinkedIn
                                     </Label>
                                     <Col md="5">
-                                        <Input type="text" className="form-control" id="linkedin-link" defaultValue="https://www.linkedin.com/" />
+                                        <Input
+                                            id="linkedinLink"
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            type="text"
+                                            className="form-control"
+                                            defaultValue="https://www.linkedin.com/"
+                                        />
                                     </Col>
                                 </FormGroup>
                                 <FormGroup className="mb-4" row>
-                                    <Label htmlFor="stack-link" md="3" className="col-form-label">
+                                    <Label htmlFor="stackOverflowLink" md="3" className="col-form-label">
                                         Stack Overflow
                                     </Label>
                                     <Col md="5">
-                                        <Input type="text" className="form-control" id="stack-link" defaultValue="https://stackoverflow.com/" />
+                                        <Input
+                                            id="stackOverflowLink"
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            type="text"
+                                            className="form-control"
+                                            defaultValue="https://stackoverflow.com/"
+                                        />
                                     </Col>
                                 </FormGroup>
-                            </Form>
-                        </CardBody>
-                    </Card>
-                    <Row className="my-4">
-                        <Col>
-                            <div className="text-sm-right">
-                                <button type="button" className="btn btn-primary waves-effect waves-light">
-                                    <i className="bx bx-save font-size-16 align-middle mr-2"></i> Update
-                                </button>
-                            </div>
-                        </Col>
-                    </Row>
-                </Col>
-            </Row>
+                            </CardBody>
+                        </Card>
+                        <Row className="my-4">
+                            <Col>
+                                <div className="text-sm-right">
+                                    <button type="submit" className="btn btn-primary waves-effect waves-light">
+                                        <i className="bx bx-save font-size-16 align-middle mr-2"></i> Update
+                                    </button>
+                                </div>
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>
+            </Form>
         </React.Fragment>
     )
 }
+
+export const UPDATE_PROFILE_MUTATION = gql`
+    mutation updateProfile($userInput: UserInput!) {
+        updateProfile(userInput: $userInput) {
+            success
+            message
+        }
+    }
+`
 
 export default ProfileEdit
