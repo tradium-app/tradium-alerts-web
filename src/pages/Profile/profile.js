@@ -1,3 +1,5 @@
+import { useQuery } from '@apollo/client'
+import gql from 'graphql-tag'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Container, Row, Col, Card, CardBody, CardTitle, Media, Table } from 'reactstrap'
@@ -27,6 +29,17 @@ const ProfileMenu = (props) => {
         },
     ]
 
+    let authUser
+    if (localStorage.getItem('authUser')) {
+        authUser = JSON.parse(localStorage.getItem('authUser'))
+    }
+
+    const { loading, error, data } = useQuery(GET_PROFILE_QUERY, {
+        variables: { userId: authUser?._id },
+    })
+
+    const user = data?.getUserProfile
+
     return (
         <React.Fragment>
             <div className="page-content">
@@ -38,9 +51,9 @@ const ProfileMenu = (props) => {
                                     <Row>
                                         <Col className="text-center">
                                             <div className="avatar-xl mt-2 mb-2 d-inline-block">
-                                                <img src={avatar2} alt="" className="img-thumbnail rounded-circle" />
+                                                <img src={user?.imageUrl} alt="" className="img-thumbnail rounded-circle" />
                                             </div>
-                                            <h5 className="font-size-20 text-truncate">Suraj Shrestha</h5>
+                                            <h5 className="font-size-20 text-truncate">{user?.name}</h5>
                                             <p className="text-muted mb-0 text-truncate">Indianapolis, Indiana</p>
                                         </Col>
                                     </Row>
@@ -90,13 +103,8 @@ const ProfileMenu = (props) => {
                         <Col xl="8">
                             <Card>
                                 <CardBody>
-                                    <CardTitle className="mb-4">Senior Software Engineer</CardTitle>
-                                    <p className="font-size-16 text-muted">
-                                        Accomplished developer and software engineer with 11+ years of experience in developing and designing
-                                        manufacturing, warehouse, sales, logistics, and financial tools, applications, and websites. Focused team
-                                        player and multi-tasker, demonstrating proven technical expertise encompassing JavaScript, SQL, ASP.NET, Java,
-                                        as well as other programming languages, and software applications.
-                                    </p>
+                                    <CardTitle className="mb-4">{user?.title}</CardTitle>
+                                    <p className="font-size-16 text-muted">{user?.shortBio}</p>
                                 </CardBody>
                             </Card>
 
@@ -131,5 +139,24 @@ const ProfileMenu = (props) => {
         </React.Fragment>
     )
 }
+
+export const GET_PROFILE_QUERY = gql`
+    query getUserProfile($userId: String) {
+        getUserProfile(userId: $userId) {
+            _id
+            name
+            imageUrl
+            title
+            shortBio
+            githubLink
+            linkedinLink
+            stackOverflowLink
+            pollsCreated {
+                _id
+                question
+            }
+        }
+    }
+`
 
 export default ProfileMenu
