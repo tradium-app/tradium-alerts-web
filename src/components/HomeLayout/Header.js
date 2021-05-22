@@ -8,7 +8,7 @@ import 'firebase/auth'
 import logoLightSm from '../../assets/images/logo-light-sm.svg'
 import logoLightLg from '../../assets/images/logo-light-lg.svg'
 
-import { loginUser, logoutUser, apiError } from '../../store/actions'
+import { loginUser, logoutUser } from '../../store/actions'
 import NotificationDropdown from '../CommonForBoth/TopbarDropdown/NotificationDropdown'
 import ProfileMenu from '../CommonForBoth/TopbarDropdown/ProfileMenu'
 import CreatePollModal from '../Common/create-poll-modal'
@@ -87,4 +87,4 @@ const mapStatetoProps = (state) => {
     return { error }
 }
 
-export default withRouter(connect(mapStatetoProps, { loginUser, logoutUser, apiError })(Header))
+export default withRouter(connect(mapStatetoProps, { loginUser, logoutUser })(Header))

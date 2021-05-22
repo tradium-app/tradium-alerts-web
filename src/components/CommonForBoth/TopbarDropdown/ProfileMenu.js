@@ -55,9 +55,6 @@ const ProfileMenu = (props) => {
     )
 }
 
-const mapStatetoProps = (state) => {
-    const { error, success } = state.Profile
-    return { error, success }
-}
+const mapStatetoProps = () => {}
 
 export default withRouter(connect(mapStatetoProps, { logoutUser })(ProfileMenu))
