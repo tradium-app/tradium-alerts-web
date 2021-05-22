@@ -44,7 +44,7 @@ const Poll = ({ poll }) => {
                             <input
                                 id={option._id}
                                 type="radio"
-                                name="positions"
+                                name={poll._id}
                                 className="custom-control-input"
                                 value="a"
                                 onClick={() => submitVote(option._id)}

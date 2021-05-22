@@ -15,6 +15,7 @@ function* loginUser({ payload: { accessToken, history } }) {
                     loginUser(accessToken: $accessToken) {
                         success
                         message
+                        accessToken
                         user {
                             _id
                             name
@@ -31,6 +32,7 @@ function* loginUser({ payload: { accessToken, history } }) {
         if (result.data.loginUser.success) {
             const authUser = result.data.loginUser.user
             if (authUser) {
+                authUser.accessToken = result.data.loginUser.accessToken
                 localStorage.setItem('authUser', JSON.stringify(authUser))
                 yield put(loginSuccess(authUser))
             }

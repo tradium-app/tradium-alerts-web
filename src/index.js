@@ -11,16 +11,6 @@ import store from './store'
 import { ApolloProvider } from '@apollo/client/react'
 import graphqlClient from './graphql-client'
 
-// const firebaseConfig = {
-//     apiKey: 'AIzaSyDxtwo5SOJAz9sr7Y7RDn8WbffcRKAD94o',
-//     authDomain: 'devpolls-qa.firebaseapp.com',
-//     projectId: 'devpolls-qa',
-//     storageBucket: 'devpolls-qa.appspot.com',
-//     messagingSenderId: '649412033580',
-//     appId: '1:649412033580:web:0ff2efa36fb5c58c7d6589',
-//     measurementId: 'G-HQNTY6Y4BM',
-// }
-
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_APIKEY,
     authDomain: process.env.REACT_APP_AUTHDOMAIN,
