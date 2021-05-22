@@ -1,35 +1,32 @@
-import { useQuery } from '@apollo/client'
-import gql from 'graphql-tag'
 import React from 'react'
 import { useParams } from 'react-router'
 import { Link } from 'react-router-dom'
-import { Container, Row, Col, Card, CardBody, CardTitle, Media, Table } from 'reactstrap'
+import { useQuery } from '@apollo/client'
+import gql from 'graphql-tag'
+import { Container, Row, Col, Card, CardBody, CardTitle, Badge } from 'reactstrap'
 
-import avatar2 from '../../assets/images/users/avatar-2.jpg'
-import avatar3 from '../../assets/images/users/avatar-3.jpg'
+import Poll from '../Home/Poll/Poll'
+import { getRelativeTime } from '../../components/Common/time'
 
-const ProfileMenu = (props) => {
-    const links = [
-        {
-            id: 1,
-            name: 'Github',
-            imgUrl: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png',
-            url: 'https://github.com/syuraj',
-        },
-        {
-            id: 2,
-            name: 'LinkedIn',
-            imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png',
-            url: 'https://www.linkedin.com/in/surajshrestha',
-        },
-        {
-            id: 3,
-            name: 'Stack Overflow',
-            imgUrl: 'https://cdn.sstatic.net/Sites/stackoverflow/company/Img/logos/so/so-icon.svg?v=f13ebeedfa9e',
-            url: 'https://stackoverflow.com/users/291668/suraj-shrestha',
-        },
-    ]
+const socialLinks = [
+    {
+        id: 'githubLink',
+        name: 'Github',
+        imgUrl: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png',
+    },
+    {
+        id: 'linkedinLink',
+        name: 'LinkedIn',
+        imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png',
+    },
+    {
+        id: 'stackOverflowLink',
+        name: 'Stack Overflow',
+        imgUrl: 'https://cdn.sstatic.net/Sites/stackoverflow/company/Img/logos/so/so-icon.svg?v=f13ebeedfa9e',
+    },
+]
 
+const ProfileMenu = () => {
     let authUser
     if (localStorage.getItem('authUser')) {
         authUser = JSON.parse(localStorage.getItem('authUser'))
@@ -65,35 +62,15 @@ const ProfileMenu = (props) => {
                                             <div className="text-center pt-4">
                                                 <Row className="mt-4 mb-4">
                                                     <Col className="align-self-center text-center">
-                                                        <a href="https://github.com/syuraj" target="_blank" rel="noreferrer noopener">
-                                                            <img
-                                                                className="avatar-sm img-thumbnail d-inline-block rounded-circle ml-1 mr-1"
-                                                                src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-                                                                alt="Github"
-                                                            />
-                                                        </a>
-                                                        <a
-                                                            href="https://www.linkedin.com/in/surajshrestha/"
-                                                            target="_blank"
-                                                            rel="noreferrer noopener"
-                                                        >
-                                                            <img
-                                                                className="avatar-sm img-thumbnail d-inline-block rounded-circle ml-1 mr-1"
-                                                                src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
-                                                                alt="LinkedIn"
-                                                            />
-                                                        </a>
-                                                        <a
-                                                            href="https://stackoverflow.com/users/291668/suraj-shrestha"
-                                                            target="_blank"
-                                                            rel="noreferrer noopener"
-                                                        >
-                                                            <img
-                                                                className="avatar-sm img-thumbnail d-inline-block rounded-circle ml-1 mr-1"
-                                                                src="https://cdn.sstatic.net/Sites/stackoverflow/company/Img/logos/so/so-icon.svg?v=f13ebeedfa9e"
-                                                                alt="Stack Overflow"
-                                                            />
-                                                        </a>
+                                                        {socialLinks.map((link) => (
+                                                            <a href={user && user[link.id]} target="_blank" rel="noreferrer noopener">
+                                                                <img
+                                                                    className="avatar-sm img-thumbnail d-inline-block rounded-circle ml-1 mr-1"
+                                                                    src={link.imgUrl}
+                                                                    alt={link.name}
+                                                                />
+                                                            </a>
+                                                        ))}
                                                     </Col>
                                                 </Row>
                                             </div>
@@ -111,30 +88,35 @@ const ProfileMenu = (props) => {
                                 </CardBody>
                             </Card>
 
-                            <Card>
-                                <CardBody>
-                                    <div className="media mb-4">
-                                        <img className="d-flex align-self-start rounded mr-4" src={avatar3} alt="Skote" height="50" />
-                                        <div className="media-body">
-                                            <h5 className="mt-0 font-16">JavaScript</h5>
-                                            <p>
-                                                I'm a full-stack developer with 15+ years of experience in web application development and code
-                                                mentoring. Are you stuck? Let me help!
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div className="media mb-4">
-                                        <img className="d-flex align-self-start rounded mr-4" src={avatar3} alt="Skote" height="50" />
-                                        <div className="media-body">
-                                            <h5 className="mt-0 font-16">Python</h5>
-                                            <p>
-                                                I'm a full-stack developer with 15+ years of experience in web application development and code
-                                                mentoring. Are you stuck? Let me help!
-                                            </p>
-                                        </div>
-                                    </div>
-                                </CardBody>
-                            </Card>
+                            {user &&
+                                !error &&
+                                !loading &&
+                                user.pollsCreated.map((poll) => (
+                                    <Card key={poll._id}>
+                                        <CardBody>
+                                            <Row className="media align-items-center mb-4">
+                                                <Link to={'/profile/' + user?._id}>
+                                                    <img className="avatar-xs img-thumbnail rounded-circle mr-2" src={user?.imageUrl} alt="" />
+                                                </Link>
+                                                <div className="media-body align-items-center">
+                                                    <Link to={'/profile/' + user?._id} className="text-muted font-size-10 mb-0">
+                                                        {user?.name}
+                                                    </Link>
+                                                    <p className="text-muted font-size-10 mb-0">{getRelativeTime(poll.modifiedDate)}</p>
+                                                </div>
+                                            </Row>
+                                            <div className="media mb-2">
+                                                <div className="media-body">
+                                                    <Poll poll={poll} key={poll._id} />
+                                                    <div>
+                                                        <Badge className="badge badge-primary font-size-11 mr-1">#java</Badge>
+                                                        <Badge className="badge badge-primary font-size-11 mr-1">#redux</Badge>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </CardBody>
+                                    </Card>
+                                ))}
                         </Col>
                     </Row>
                 </Container>
@@ -157,6 +139,15 @@ export const GET_PROFILE_QUERY = gql`
             pollsCreated {
                 _id
                 question
+                options {
+                    _id
+                    text
+                    order
+                    selected
+                    totalVotes
+                }
+                createdDate
+                modifiedDate
             }
         }
     }
