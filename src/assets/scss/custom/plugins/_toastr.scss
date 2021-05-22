@@ -36,7 +36,7 @@
 .toast-error {
     background-color: rgba($danger, 0.8);
     border: 2px solid $danger;
-    min-width: 50%;
+    max-width: 50%;
 }
 
 .toastr-options {
@@ -44,5 +44,5 @@
     background-color: lighten($gray-200, 2%);
     margin-bottom: 0;
     border: 1px solid $border-color;
-    min-width: 50%;
+    max-width: 50%;
 }

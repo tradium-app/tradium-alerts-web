@@ -46,7 +46,7 @@ const Poll = ({ poll }) => {
 
                 {options &&
                     options.map((option) => (
-                        <div className="custom-control custom-radio mb-4" key={option._id}>
+                        <div className="custom-control custom-radio mb-1" key={option._id}>
                             <input
                                 id={option._id}
                                 type="radio"

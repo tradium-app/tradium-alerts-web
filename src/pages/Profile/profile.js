@@ -26,7 +26,7 @@ const socialLinks = [
     },
 ]
 
-const ProfileMenu = () => {
+const Profile = () => {
     let authUser
     if (localStorage.getItem('authUser')) {
         authUser = JSON.parse(localStorage.getItem('authUser'))
@@ -63,7 +63,7 @@ const ProfileMenu = () => {
                                                 <Row className="mt-4 mb-4">
                                                     <Col className="align-self-center text-center">
                                                         {socialLinks.map((link) => (
-                                                            <a href={user && user[link.id]} target="_blank" rel="noreferrer noopener">
+                                                            <a href={user && user[link.id]} target="_blank" rel="noreferrer noopener" key={link.id}>
                                                                 <img
                                                                     className="avatar-sm img-thumbnail d-inline-block rounded-circle ml-1 mr-1"
                                                                     src={link.imgUrl}
@@ -153,4 +153,4 @@ export const GET_PROFILE_QUERY = gql`
     }
 `
 
-export default ProfileMenu
+export default Profile
