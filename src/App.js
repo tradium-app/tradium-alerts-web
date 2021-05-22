@@ -1,17 +1,14 @@
 import React from 'react'
-
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
+import GoogleAnalytics from 'react-ga'
 
-// Import Routes all
 import { userRoutes, publicRoutes } from './routes/allRoutes'
-
-// layouts Format
 import HomeLayout from './components/HomeLayout'
-
-// Import scss
 import './assets/scss/theme.scss'
 import 'toastr/build/toastr.min.css'
+
+GoogleAnalytics.initialize(process.env.REACT_APP_GAID || 'G-6GX7ZD08X8')
 
 const App = (props) => {
     const Middleware = ({ component: Component, layout: Layout }) => (
