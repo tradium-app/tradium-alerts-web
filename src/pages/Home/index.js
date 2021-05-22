@@ -27,7 +27,7 @@ const HomePage = () => {
                                         <CardBody>
                                             <Row className="media align-items-center mb-2">
                                                 <Link to="/profile">
-                                                    <img className="avatar-sm img-thumbnail rounded-circle mr-2" src={poll.author.imageUrl} alt="" />
+                                                    <img className="avatar-sm img-thumbnail rounded-circle mr-2" src={poll.author?.imageUrl} alt="" />
                                                 </Link>
                                                 <div className="media-body align-items-center">
                                                     <p className="text-muted font-size-12 mb-0">{poll.author.name}</p>
@@ -67,6 +67,7 @@ export const GET_TOP_POLLS_QUERY = gql`
                 _id
                 text
                 order
+                selected
                 totalVotes
             }
             author {

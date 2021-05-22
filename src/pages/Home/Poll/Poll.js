@@ -51,8 +51,8 @@ const Poll = ({ poll }) => {
                                 id={option._id}
                                 type="radio"
                                 name={poll._id}
+                                defaultChecked={option.selected}
                                 className="custom-control-input"
-                                value="a"
                                 onClick={() => submitVote(option._id)}
                             />
                             <Label className="custom-control-label d-inline-block pt-0" for={option._id} xl="12">
