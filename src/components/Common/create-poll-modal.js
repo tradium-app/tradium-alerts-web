@@ -4,7 +4,6 @@ import { useMutation } from '@apollo/client'
 import { Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Col, Input, Button, FormFeedback } from 'reactstrap'
 import { useFormik } from 'formik'
 import toastr from 'toastr'
-import 'toastr/build/toastr.min.css'
 
 toastr.options = {
     closeButton: true,

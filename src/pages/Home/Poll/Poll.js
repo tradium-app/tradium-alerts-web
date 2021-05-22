@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/client'
 import { Label, Progress } from 'reactstrap'
+import toastr from 'toastr'
 
 const Poll = ({ poll }) => {
     let grandTotalVotes = 0
@@ -24,6 +25,11 @@ const Poll = ({ poll }) => {
     })
 
     const submitVote = (optionId) => {
+        if (!localStorage.getItem('authUser')) {
+            toastr.error('Please Login to vote.')
+            return
+        }
+
         const pollVote = { pollId: poll._id, optionId }
 
         submitVoteMutate({

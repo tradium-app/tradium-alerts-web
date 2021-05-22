@@ -11,6 +11,7 @@ import HomeLayout from './components/HomeLayout'
 
 // Import scss
 import './assets/scss/theme.scss'
+import 'toastr/build/toastr.min.css'
 
 const App = (props) => {
     const Middleware = ({ component: Component, layout: Layout }) => (
