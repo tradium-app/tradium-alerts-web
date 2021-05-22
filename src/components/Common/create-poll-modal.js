@@ -31,14 +31,15 @@ const CreatePollModal = ({ isShowing, toggle }) => {
     const { handleSubmit, handleChange, handleBlur, touched, values, setValues, errors, handleReset } = useFormik({
         initialValues,
         validate,
-        onSubmit: (values, formikBag) => {
-            createPoll(values)
+        onSubmit: async (values, formikBag) => {
+            await createPoll(values)
             formikBag.resetForm()
+            toggle()
         },
     })
 
-    const createPoll = (pollInput) => {
-        createPollMutate({
+    const createPoll = async (pollInput) => {
+        await createPollMutate({
             variables: {
                 pollInput,
             },
