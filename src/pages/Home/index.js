@@ -12,6 +12,11 @@ import PollCard from './Poll/PollCard'
 const HomePage = () => {
     const { loading, error, data } = useQuery(GET_TOP_POLLS_QUERY)
 
+    let authUser
+    if (localStorage.getItem('authUser')) {
+        authUser = JSON.parse(localStorage.getItem('authUser'))
+    }
+
     return (
         <React.Fragment>
             <Helmet>
@@ -20,7 +25,12 @@ const HomePage = () => {
             <div className="page-content">
                 <Container>
                     <Row>
-                        <Col xl="8">{data && !error && !loading && data.getTopPolls.map((poll) => <PollCard key={poll._id} poll={poll} />)}</Col>
+                        <Col xl="8">
+                            {data &&
+                                !error &&
+                                !loading &&
+                                data.getTopPolls.map((poll) => <PollCard key={poll._id} poll={poll} authUser={authUser} />)}
+                        </Col>
                         <Col xl="4">
                             <TopPolls />
                             <TopHashtags />

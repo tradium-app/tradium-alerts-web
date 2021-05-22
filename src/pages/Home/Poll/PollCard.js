@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
-import { Badge, Card, CardBody, Row } from 'reactstrap'
+import { Badge, Card, CardBody, DropdownItem, DropdownMenu, DropdownToggle, Row, UncontrolledDropdown } from 'reactstrap'
 import { getRelativeTime } from '../../../components/Common/time'
 import PollBody from './PollBody'
 
-const PollCard = ({ poll }) => {
+const PollCard = ({ poll, authUser }) => {
     return (
         <Card key={poll._id}>
             <CardBody>
@@ -17,7 +17,18 @@ const PollCard = ({ poll }) => {
                         </Link>
                         <p className="text-muted font-size-10 mb-0">{getRelativeTime(poll.modifiedDate)}</p>
                     </div>
+                    {authUser && authUser._id === poll.author?._id && (
+                        <UncontrolledDropdown className="float-right mr-1">
+                            <DropdownToggle href="#" className="card-drop" tag="i">
+                                <i className="mdi mdi-dots-horizontal font-size-18"></i>
+                            </DropdownToggle>
+                            <DropdownMenu right>
+                                <DropdownItem href="#">Delete</DropdownItem>
+                            </DropdownMenu>
+                        </UncontrolledDropdown>
+                    )}
                 </Row>
+
                 <div className="media mb-2">
                     <div className="media-body">
                         <PollBody poll={poll} key={poll._id} />

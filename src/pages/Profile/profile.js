@@ -89,7 +89,10 @@ const Profile = () => {
                                 </CardBody>
                             </Card>
 
-                            {user && !error && !loading && user.pollsCreated.map((poll) => <PollCard key={poll._id} poll={poll} />)}
+                            {user &&
+                                !error &&
+                                !loading &&
+                                user.pollsCreated.map((poll) => <PollCard key={poll._id} poll={poll} authUser={authUser} />)}
                         </Col>
                     </Row>
                 </Container>
