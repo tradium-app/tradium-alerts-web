@@ -14,13 +14,7 @@ class Layout extends Component {
     }
 
     componentDidMount() {
-        // Scrollto 0,0
         window.scrollTo(0, 0)
-
-        const title = this.props.location.pathname
-        let currentage = title.charAt(1).toUpperCase() + title.slice(2)
-
-        if (currentage !== '') document.title = currentage + ' | DevPolls'
     }
 
     /**

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Helmet } from 'react-helmet'
 import { useParams } from 'react-router'
 import { useQuery } from '@apollo/client'
 import gql from 'graphql-tag'
@@ -39,6 +40,9 @@ const Profile = () => {
 
     return (
         <React.Fragment>
+            <Helmet>
+                <title>{user?.name + ' | DevPolls'}</title>
+            </Helmet>
             <div className="page-content">
                 <Container fluid>
                     <Row>

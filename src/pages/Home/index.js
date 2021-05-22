@@ -1,4 +1,5 @@
 import React from 'react'
+import { Helmet } from 'react-helmet'
 import { useQuery } from '@apollo/client'
 import gql from 'graphql-tag'
 import { Container, Row, Col } from 'reactstrap'
@@ -13,6 +14,9 @@ const HomePage = () => {
 
     return (
         <React.Fragment>
+            <Helmet>
+                <title>DevPolls - fun quizzes for developers</title>
+            </Helmet>
             <div className="page-content">
                 <Container>
                     <Row>
