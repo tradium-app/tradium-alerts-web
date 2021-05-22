@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useQuery } from '@apollo/client'
 import gql from 'graphql-tag'
 import { Container, Row, Col, Card, CardBody, Badge } from 'reactstrap'
 import { Link } from 'react-router-dom'
 
 // Pages Components
-import avatar3 from '../../assets/images/users/avatar-3.jpg'
 import Poll from './Poll/Poll'
 import TopPolls from './TopPolls/Index'
 import TopHashtags from './TopHashtags/Index'
+import { getRelativeTime } from '../../components/Common/time'
 
-const HomePage = (props) => {
+const HomePage = () => {
     const { loading, error, data } = useQuery(GET_TOP_POLLS_QUERY)
 
     return (
@@ -27,11 +27,11 @@ const HomePage = (props) => {
                                         <CardBody>
                                             <Row className="media align-items-center mb-2">
                                                 <Link to="/profile">
-                                                    <img className="avatar-sm img-thumbnail rounded-circle mr-2" src={avatar3} alt="" />
+                                                    <img className="avatar-sm img-thumbnail rounded-circle mr-2" src={poll.author.imageUrl} alt="" />
                                                 </Link>
                                                 <div className="media-body align-items-center">
-                                                    <p className="text-muted font-size-12 mb-0">Suraj Shrestha</p>
-                                                    <p className="text-muted font-size-10 mb-0">May 16 (9 hours ago)</p>
+                                                    <p className="text-muted font-size-12 mb-0">{poll.author.name}</p>
+                                                    <p className="text-muted font-size-10 mb-0">{getRelativeTime(poll.modifiedDate)}</p>
                                                 </div>
                                             </Row>
                                             <div className="media mb-2">
@@ -72,7 +72,11 @@ export const GET_TOP_POLLS_QUERY = gql`
             author {
                 _id
                 name
+                imageUrl
+                status
             }
+            createdDate
+            modifiedDate
         }
     }
 `
