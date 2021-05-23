@@ -18,11 +18,10 @@ jobs:
               env:
                   CI: true
 
-            # - name: yarn test:coverage
-            #   if: github.ref == 'refs/heads/master'
-            #   run: yarn test:coverage
-            #   env:
-            #       CI: true
+            - name: Run Yarn Test with Coverage
+              run: yarn test:coverage
+              env:
+                  CI: true
 
             - name: Upload Coverage to codecov
               if: github.ref == 'refs/heads/master'
@@ -30,9 +29,3 @@ jobs:
               with:
                   token: ${{secrets.CODECOV_TOKEN}}
                   file: ./coverage/clover.xml
-
-            - name: yarn test
-              if: github.ref != 'refs/heads/master'
-              run: yarn test
-              env:
-                  CI: true
