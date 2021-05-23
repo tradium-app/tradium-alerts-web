@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { withRouter } from 'react-router'
+import { connect } from 'react-redux'
 import { useMutation } from '@apollo/client'
 import gql from 'graphql-tag'
 import { Row, Col, Card, CardBody, CardTitle, Form, FormGroup, Label, Input } from 'reactstrap'
 import { useFormik } from 'formik'
 import toastr from 'toastr'
+import { fetchProfile } from '../../../store/actions'
 
-const ProfileEdit = (props) => {
+const ProfileEdit = ({ profile, fetchProfile }) => {
     const [error, setError] = React.useState(null)
     const [data, setData] = React.useState(null)
 
@@ -15,7 +18,7 @@ const ProfileEdit = (props) => {
     })
 
     if (error) {
-        toastr.error(error)
+        toastr.error(error.message)
         setError(null)
     }
 
@@ -38,8 +41,17 @@ const ProfileEdit = (props) => {
         return errors
     }
 
-    const { handleSubmit, handleChange, handleBlur, touched, errors } = useFormik({
-        initialValues: {},
+    const initialValues = {
+        title: profile?.title,
+        shortBio: profile?.shortBio,
+        githubLink: profile?.githubLink,
+        linkedinLink: profile?.linkedinLink,
+        stackOverflowLink: profile?.stackOverflowLink,
+    }
+
+    const { values, handleSubmit, handleChange, handleBlur, touched, errors } = useFormik({
+        initialValues,
+        enableReinitialize: true,
         validate,
         onSubmit: (values) => {
             updateProfileMutate({
@@ -49,6 +61,13 @@ const ProfileEdit = (props) => {
             })
         },
     })
+
+    useEffect(() => {
+        if (localStorage.getItem('authUser')) {
+            const authUser = JSON.parse(localStorage.getItem('authUser'))
+            fetchProfile(authUser._id)
+        }
+    }, [fetchProfile])
 
     return (
         <React.Fragment>
@@ -65,6 +84,7 @@ const ProfileEdit = (props) => {
                                     <Col md="9">
                                         <Input
                                             id="title"
+                                            value={values?.title || ''}
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             type="text"
@@ -75,6 +95,7 @@ const ProfileEdit = (props) => {
                                         <span className="font-13 text-muted">e.g "Senior front-end developer with 5+ years of experience"</span>
                                     </Col>
                                 </FormGroup>
+
                                 <FormGroup className="mb-4" row>
                                     <Label htmlFor="billing-email-address" md="3" className="col-form-label">
                                         Short bio
@@ -82,6 +103,7 @@ const ProfileEdit = (props) => {
                                     <Col md="9">
                                         <textarea
                                             id="shortBio"
+                                            value={values?.shortBio || ''}
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             className="form-control"
@@ -99,11 +121,11 @@ const ProfileEdit = (props) => {
                                     <Col md="5">
                                         <Input
                                             id="githubLink"
+                                            value={values?.githubLink || 'https://github.com/'}
                                             type="text"
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             className="form-control"
-                                            defaultValue="https://github.com/"
                                         />
                                     </Col>
                                 </FormGroup>
@@ -114,11 +136,11 @@ const ProfileEdit = (props) => {
                                     <Col md="5">
                                         <Input
                                             id="linkedinLink"
+                                            value={values?.linkedinLink || 'https://www.linkedin.com/'}
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             type="text"
                                             className="form-control"
-                                            defaultValue="https://www.linkedin.com/"
                                         />
                                     </Col>
                                 </FormGroup>
@@ -129,11 +151,11 @@ const ProfileEdit = (props) => {
                                     <Col md="5">
                                         <Input
                                             id="stackOverflowLink"
+                                            value={values?.stackOverflowLink || 'https://stackoverflow.com/'}
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             type="text"
                                             className="form-control"
-                                            defaultValue="https://stackoverflow.com/"
                                         />
                                     </Col>
                                 </FormGroup>
@@ -163,5 +185,11 @@ export const UPDATE_PROFILE_MUTATION = gql`
         }
     }
 `
+const mapStateToProps = (state) => {
+    return {
+        authUser: state.Login.authUser,
+        profile: state.Profile.profile,
+    }
+}
 
-export default ProfileEdit
+export default withRouter(connect(mapStateToProps, { fetchProfile })(ProfileEdit))

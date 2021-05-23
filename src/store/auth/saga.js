@@ -1,10 +1,11 @@
 import { takeEvery, fork, put, all, call } from 'redux-saga/effects'
+import firebase from 'firebase/app'
 
 // Login Redux States
 import { LOGIN_USER, LOGOUT_USER } from './actionTypes'
 import { loginSuccess, logoutUserSuccess, apiError } from './actions'
 
-import graphqlClient from '../../../graphql-client'
+import graphqlClient from '../../graphql-client'
 import gql from 'graphql-tag'
 
 function* loginUser({ payload: { accessToken, history } }) {
@@ -46,7 +47,10 @@ function* loginUser({ payload: { accessToken, history } }) {
 
 function* logoutUser({ payload: { history } }) {
     try {
+        yield firebase.auth().signOut()
         localStorage.removeItem('authUser')
+        yield put(logoutUserSuccess())
+
         history.push('/')
     } catch (error) {
         yield put(apiError(error))

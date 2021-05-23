@@ -68,7 +68,6 @@ export const DELETE_POLL_MUTATION = gql`
 `
 
 const deletePollCompleteHandler = (result) => {
-    console.log('printing result', result)
     if (result.deletePoll.success) {
         toastr.success('Poll successfully deleted.')
     } else {

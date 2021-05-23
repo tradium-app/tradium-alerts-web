@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 import { Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap'
-import firebase from 'firebase/app'
 import { logoutUser } from '../../../store/actions'
 
 const ProfileMenu = (props) => {
@@ -36,16 +35,7 @@ const ProfileMenu = (props) => {
                         {'Settings'}
                     </Link>
                     <div className="dropdown-divider"></div>
-                    <Link
-                        onClick={() => {
-                            firebase
-                                .auth()
-                                .signOut()
-                                .then(() => props.logoutUser(props.history))
-                        }}
-                        className="dropdown-item btn-primary"
-                        to="#"
-                    >
+                    <Link onClick={() => props.logoutUser(props.history)} className="dropdown-item btn-primary" to="#">
                         <i className="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i>
                         <span>{'Logout'}</span>
                     </Link>

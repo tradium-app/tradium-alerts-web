@@ -83,7 +83,7 @@ const GoogleLoginDevPolls = (props) => {
 }
 
 const mapStatetoProps = (state) => {
-    const { error } = state.Login
+    const { error } = state?.Login
     return { error }
 }
 
