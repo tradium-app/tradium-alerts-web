@@ -5,8 +5,8 @@ import gql from 'graphql-tag'
 import { Container, Row, Col } from 'reactstrap'
 
 // Pages Components
-import TopPolls from './TopPolls/Index'
-import TopHashtags from './TopHashtags/Index'
+import TopPolls from './TopTrendingPolls/Index'
+import TopHashtags from './TopTrendingTopics/Index'
 import PollCard from './Poll/PollCard'
 
 const HomePage = () => {

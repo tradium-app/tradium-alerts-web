@@ -103,7 +103,7 @@ const CreatePollModal = ({ isShowing, toggle }) => {
     }
 
     return isShowing ? (
-        <Modal isOpen={isShowing} role="dialog" autoFocus={true} centered={true} tabIndex="-1" toggle={toggle}>
+        <Modal isOpen={isShowing} role="dialog" autoFocus={true} tabIndex="-1" toggle={toggle}>
             <div className="modal-content">
                 <ModalHeader toggle={toggle}>Create a Poll</ModalHeader>
                 <Form onSubmit={handleSubmit} className="justify-content-center">
