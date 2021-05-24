@@ -19,15 +19,15 @@ const TopTrendingPolls = ({ fetchTopPolls, topPolls }) => {
                         <Table className="table table-centered table-nowrap">
                             <tbody>
                                 {topPolls &&
-                                    topPolls.map((poll) => (
+                                    topPolls.slice(0, 5).map((poll) => (
                                         <tr key={poll._id}>
                                             <td style={{ width: '50px' }}>
-                                                {poll.author.imageUrl !== 'Null' ? (
-                                                    <img src={poll.author.imageUrl} className="rounded-circle avatar-xs" alt="" />
+                                                {poll.author?.imageUrl !== 'Null' ? (
+                                                    <img src={poll.author?.imageUrl} className="rounded-circle avatar-xs" alt="" />
                                                 ) : (
                                                     <div className="avatar-xs">
                                                         <span className="avatar-title rounded-circle bg-soft-primary text-primary font-size-16">
-                                                            {poll.author.name.charAt(0)}
+                                                            {poll.author?.name.charAt(0)}
                                                         </span>
                                                     </div>
                                                 )}
