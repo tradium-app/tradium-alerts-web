@@ -59,7 +59,6 @@ const TopTrendingPolls = ({ fetchTopPolls, topPolls }) => {
 }
 
 const mapStateToProps = (state) => {
-    console.log('printing state', state)
     return {
         topPolls: state.Home.topPolls,
     }

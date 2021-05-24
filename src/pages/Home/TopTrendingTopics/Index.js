@@ -42,7 +42,7 @@ const TopTrendingTopics = () => {
         <React.Fragment>
             <Card>
                 <CardBody>
-                    <CardTitle className="mb-4">Top Trending Hashtags</CardTitle>
+                    <CardTitle className="mb-4">Top Trending Topics</CardTitle>
 
                     <div className="table-responsive">
                         <Table className="table table-centered table-nowrap">

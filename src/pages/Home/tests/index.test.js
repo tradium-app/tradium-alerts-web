@@ -3,7 +3,34 @@ import { render, act } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
 import { MockedProvider } from '@apollo/client/testing'
 import HomePage, { GET_TOP_POLLS_QUERY } from '../index'
-import store from '../../../store'
+import configureMockStore from 'redux-mock-store'
+
+const mockTopPolls = [
+    {
+        _id: '60a209670e91130020e3e4b6',
+        question: 'Sample question?',
+        options: [
+            {
+                _id: '60a209670e91130020e3e4b1',
+                text: 'some text',
+                order: 1,
+                selected: false,
+                totalVotes: 1,
+            },
+        ],
+        author: {
+            _id: '60a209670e91130020e3e4b1',
+            name: '',
+            imageUrl: '',
+            status: '',
+        },
+        createdDate: null,
+        modifiedDate: null,
+    },
+]
+
+const mockStore = configureMockStore([])
+const store = mockStore({ Home: { topPolls: mockTopPolls } })
 
 test('HomePage renders without error when data is empty', () => {
     const mocks = []
@@ -18,7 +45,7 @@ test('HomePage renders without error when data is empty', () => {
         </MockedProvider>
     )
 
-    const linkElement = getByText(/Top Trending Hashtags/i)
+    const linkElement = getByText(/Top Trending Topics/i)
     expect(linkElement).toBeInTheDocument()
 })
 
@@ -38,25 +65,13 @@ test('HomePage renders polls from graphql endpoint', async () => {
             },
             result: {
                 data: {
-                    getTopPolls: [
-                        {
-                            _id: '60a209670e91130020e3e4b6',
-                            question: 'Sample question?',
-                            options: [
-                                {
-                                    text: 'some text',
-                                    votes: null,
-                                },
-                            ],
-                            author: null,
-                        },
-                    ],
+                    getTopPolls: mockTopPolls,
                 },
             },
         },
     ]
 
-    const { getByText } = render(
+    const { getAllByText } = render(
         <MockedProvider mocks={mocks} addTypename={false}>
             <Provider store={store}>
                 <BrowserRouter>
@@ -66,8 +81,8 @@ test('HomePage renders polls from graphql endpoint', async () => {
         </MockedProvider>
     )
 
-    await wait()
+    await wait(100)
 
-    const linkElement = getByText(/Sample question/i)
-    expect(linkElement).toBeInTheDocument()
+    const linkElement = getAllByText(/Sample question/i)
+    expect(linkElement[0]).toBeInTheDocument()
 })

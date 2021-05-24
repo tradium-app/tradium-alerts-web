@@ -32,7 +32,6 @@ function* fetchTopPolls() {
             `,
         })
 
-        console.log('printing result.data', result.data)
         yield put(fetchTopPollsSuccess(result.data.getTopPolls))
     } catch (error) {
         yield put(fetchTopPollsError(error.message))
