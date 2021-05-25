@@ -4,14 +4,13 @@ import makeAnimated from 'react-select/animated'
 
 const TagSelect = ({ label, ...props }) => {
     const [field, meta, helpers] = useField(props)
-
     const { options } = props
     // const { touched, error, value } = meta
     const { setValue } = helpers
 
     return (
         <Select
-            instanceId={props.id}
+            id={props.id}
             options={options}
             name={field.name}
             placeholder="Select tags..."
@@ -20,7 +19,9 @@ const TagSelect = ({ label, ...props }) => {
             closeMenuOnSelect={true}
             defaultMenuIsOpen={false}
             components={makeAnimated({ DropdownIndicator: () => null, IndicatorSeparator: () => null })}
-            onChange={(option) => setValue(option.value)}
+            onChange={(option) => {
+                setValue(option.map((o) => o.value))
+            }}
         />
     )
 }

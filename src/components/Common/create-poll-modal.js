@@ -17,7 +17,7 @@ const CreatePollModal = ({ isShowing, toggle }) => {
     const [error, setError] = useState(null)
     const [data, setData] = useState(null)
 
-    const tags = [
+    const availableTags = [
         { label: 'Java', value: 'Java' },
         { label: 'JavaScript', value: 'JavaScript' },
         { label: 'C#', value: 'C#' },
@@ -36,6 +36,7 @@ const CreatePollModal = ({ isShowing, toggle }) => {
             { text: '', order: 1 },
             { text: '', order: 2 },
         ],
+        tags: [''],
     }
 
     const addOption = (values, setValues) => {
@@ -149,7 +150,7 @@ const CreatePollModal = ({ isShowing, toggle }) => {
                                     <Col xl="12" md="12">
                                         <Label htmlFor="tags">Tags</Label>
                                         <div className="templating-select select2-container">
-                                            <TagSelect id="tagSelect" name="tagSelect" options={tags} />
+                                            <TagSelect id="tags" name="tags" options={availableTags} />
                                         </div>
                                     </Col>
                                 </FormGroup>
