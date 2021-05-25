@@ -39,10 +39,10 @@ const TopTrendingPolls = ({ fetchTopPolls, topPolls }) => {
                                                     {poll.question.length > 100 ? poll.question.substring(0, 100) + '...' : poll.question}
                                                 </Link>
                                                 <div>
-                                                    {poll.question.topics &&
-                                                        poll.question.topics.map((topic, key) => (
-                                                            <Link to="#" className="badge badge-primary font-size-11 mr-1" key={topic}>
-                                                                {topic}
+                                                    {poll.tags &&
+                                                        poll.tags.map((tag, key) => (
+                                                            <Link to="#" className="badge badge-primary font-size-11 mr-1" key={key}>
+                                                                {tag}
                                                             </Link>
                                                         ))}
                                                 </div>

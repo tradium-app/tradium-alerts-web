@@ -25,6 +25,7 @@ function* fetchTopPolls() {
                             imageUrl
                             status
                         }
+                        tags
                         createdDate
                         modifiedDate
                     }

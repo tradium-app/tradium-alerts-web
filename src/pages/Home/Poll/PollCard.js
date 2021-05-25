@@ -48,8 +48,9 @@ const PollCard = ({ poll, authUser }) => {
                     <div className="media-body">
                         <PollBody poll={poll} key={poll._id} />
                         <div>
-                            <Badge className="badge badge-primary font-size-11 mr-1">java</Badge>
-                            <Badge className="badge badge-primary font-size-11 mr-1">redux</Badge>
+                            {poll?.tags?.map((tag) => (
+                                <Badge className="badge badge-primary font-size-11 mr-1">{tag}</Badge>
+                            ))}
                         </div>
                     </div>
                 </div>

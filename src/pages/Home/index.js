@@ -60,6 +60,7 @@ export const GET_TOP_POLLS_QUERY = gql`
                 imageUrl
                 status
             }
+            tags
             createdDate
             modifiedDate
         }
