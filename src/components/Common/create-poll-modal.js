@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/client'
-import { Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Col, Input, Button, FormFeedback } from 'reactstrap'
+import { Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Col, Input, Button, FormFeedback, Label } from 'reactstrap'
 import { useFormik } from 'formik'
 import toastr from 'toastr'
+import Select, { components } from 'react-select'
+import makeAnimated from 'react-select/animated'
 
 toastr.options = {
     positionClass: 'toast-top-center',
@@ -13,8 +15,22 @@ toastr.options = {
 }
 
 const CreatePollModal = ({ isShowing, toggle }) => {
-    const [error, setError] = React.useState(null)
-    const [data, setData] = React.useState(null)
+    const [error, setError] = useState(null)
+    const [data, setData] = useState(null)
+    const [selectedMulti3, setselectedMulti3] = useState(null)
+
+    const optionGroup2 = [
+        { label: 'Java', value: 'Java' },
+        { label: 'JavaScript', value: 'JavaScript' },
+        { label: 'C#', value: 'C#' },
+        { label: '.Net', value: '.Net' },
+        { label: 'Python', value: 'Python' },
+    ]
+
+    function handleMulti3(selectedMulti3) {
+        setselectedMulti3(selectedMulti3)
+    }
+
     const [createPollMutate] = useMutation(CREATE_POLL_QUERY, {
         onError: setError,
         onCompleted: setData,
@@ -139,6 +155,26 @@ const CreatePollModal = ({ isShowing, toggle }) => {
                                 />
                             ))}
                         {errors && errors.options && touched.options && <div className="invalid-feedback d-block">{errors.options}</div>}
+                        <FormGroup className="mb-4 justify-content-center" row>
+                            <Col xl="12" md="12">
+                                <Label htmlFor="tags">Tags</Label>
+                                <div className="templating-select select2-container">
+                                    <Select
+                                        value={selectedMulti3}
+                                        options={optionGroup2}
+                                        placeholder="Select tags..."
+                                        onChange={() => {
+                                            handleMulti3()
+                                        }}
+                                        isMulti={true}
+                                        classNamePrefix="select2-selection"
+                                        closeMenuOnSelect={true}
+                                        defaultMenuIsOpen={false}
+                                        components={makeAnimated({ DropdownIndicator: () => null, IndicatorSeparator: () => null })}
+                                    />
+                                </div>
+                            </Col>
+                        </FormGroup>
                     </ModalBody>
                     <ModalFooter>
                         <Button type="button" color="secondary" onClick={handleReset}>
@@ -193,5 +229,14 @@ export const CREATE_POLL_QUERY = gql`
         }
     }
 `
+const DropdownIndicator = (props) => {
+    return (
+        components.DropdownIndicator && (
+            <components.DropdownIndicator {...props}>
+                <i className="bx bx-search-alt font-size-24" aria-hidden="true" />
+            </components.DropdownIndicator>
+        )
+    )
+}
 
 export default CreatePollModal
