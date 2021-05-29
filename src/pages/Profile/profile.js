@@ -55,12 +55,21 @@ const Profile = () => {
                                                 <img src={user?.imageUrl} alt="" className="img-thumbnail rounded-circle" />
                                             </div>
                                             <h5 className="font-size-20 text-truncate">{user?.name}</h5>
-                                            <p className="text-muted mb-0 text-truncate">Indianapolis, Indiana</p>
                                         </Col>
                                     </Row>
                                     <Row>
                                         <Col>
                                             <div className="text-center pt-4">
+                                                <Row>
+                                                    <Col xs="6">
+                                                        <h5 className="font-size-15">{user?.pollsCreated?.length}</h5>
+                                                        <p className="text-muted mb-0">Polls Created</p>
+                                                    </Col>
+                                                    <Col xs="6">
+                                                        <h5 className="font-size-15">0</h5>
+                                                        <p className="text-muted mb-0">Polls Answered</p>
+                                                    </Col>
+                                                </Row>
                                                 <Row className="mt-4 mb-4">
                                                     <Col className="align-self-center text-center">
                                                         {socialLinks.map((link) => (

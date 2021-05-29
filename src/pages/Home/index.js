@@ -20,7 +20,7 @@ const HomePage = () => {
     return (
         <React.Fragment>
             <Helmet>
-                <title>DevPolls - fun quizzes for developers</title>
+                <title>DevPolls - fun polls for developers</title>
             </Helmet>
             <div className="page-content">
                 <Container>
