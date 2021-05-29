@@ -1,9 +1,9 @@
 import { FETCH_PROFILE, PROFILE_SUCCESS, PROFILE_ERROR, UPDATE_PROFILE } from './actionTypes'
 
-export const fetchProfile = (userId) => {
+export const fetchProfile = (userUrlId) => {
     return {
         type: FETCH_PROFILE,
-        payload: { userId },
+        payload: { userUrlId },
     }
 }
 

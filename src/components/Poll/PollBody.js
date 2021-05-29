@@ -3,6 +3,7 @@ import gql from 'graphql-tag'
 import { useMutation } from '@apollo/client'
 import { Label, Progress } from 'reactstrap'
 import toastr from 'toastr'
+import { Link } from 'react-router-dom'
 
 const Poll = ({ poll }) => {
     let grandTotalVotes = 0
@@ -40,7 +41,11 @@ const Poll = ({ poll }) => {
     return (
         <div className="control-group">
             <div className="controls mb-4">
-                <p className="font-size-18 mb-4">{poll.question}</p>
+                <p className="font-size-18 mb-4">
+                    <Link to={`/${poll.author?.userUrlId}/${poll.pollUrlId}`} className="text-dark">
+                        {poll.question}
+                    </Link>
+                </p>
 
                 {options &&
                     options

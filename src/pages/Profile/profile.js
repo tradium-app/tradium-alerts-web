@@ -4,7 +4,7 @@ import { useParams } from 'react-router'
 import { useQuery } from '@apollo/client'
 import gql from 'graphql-tag'
 import { Container, Row, Col, Card, CardBody, CardTitle } from 'reactstrap'
-import PollCard from '../Home/Poll/PollCard'
+import PollCard from '../../components/Poll/PollCard'
 
 const socialLinks = [
     {
@@ -30,10 +30,10 @@ const Profile = () => {
         authUser = JSON.parse(localStorage.getItem('authUser'))
     }
 
-    let { userId } = useParams()
+    let { userUrlId } = useParams()
 
     const { loading, error, data } = useQuery(GET_PROFILE_QUERY, {
-        variables: { userId: userId || authUser?.userId },
+        variables: { userUrlId: userUrlId || authUser?.userUrlId },
     })
 
     const user = data?.getUserProfile
@@ -111,8 +111,8 @@ const Profile = () => {
 }
 
 export const GET_PROFILE_QUERY = gql`
-    query getUserProfile($userId: String) {
-        getUserProfile(userId: $userId) {
+    query getUserProfile($userUrlId: String) {
+        getUserProfile(userUrlId: $userUrlId) {
             _id
             name
             imageUrl
@@ -123,6 +123,7 @@ export const GET_PROFILE_QUERY = gql`
             stackOverflowLink
             pollsCreated {
                 _id
+                pollUrlId
                 question
                 options {
                     _id
@@ -133,7 +134,7 @@ export const GET_PROFILE_QUERY = gql`
                 }
                 author {
                     _id
-                    userId
+                    userUrlId
                     name
                     imageUrl
                     status

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
+import { useParams } from 'react-router'
 import { useQuery } from '@apollo/client'
 import gql from 'graphql-tag'
 import { Container, Row, Col } from 'reactstrap'
@@ -9,28 +10,29 @@ import TopPolls from '../../components/TopTrendingPolls/Index'
 import TopHashtags from '../../components/TopTrendingTopics/Index'
 import PollCard from '../../components/Poll/PollCard'
 
-const HomePage = () => {
-    const { loading, error, data } = useQuery(GET_TOP_POLLS_QUERY)
+const PollPage = () => {
+    let { userUrlId, pollUrlId } = useParams()
+
+    const { loading, error, data } = useQuery(GET_POLL_QUERY, {
+        variables: { userUrlId, pollUrlId },
+    })
 
     let authUser
     if (localStorage.getItem('authUser')) {
         authUser = JSON.parse(localStorage.getItem('authUser'))
     }
 
+    const poll = data?.getPoll
+
     return (
         <React.Fragment>
             <Helmet>
-                <title>DevPolls - fun polls for developers</title>
+                <title>DevPolls | {poll?.question || pollUrlId}</title>
             </Helmet>
             <div className="page-content">
                 <Container>
                     <Row>
-                        <Col xl="8">
-                            {data &&
-                                !error &&
-                                !loading &&
-                                data.getTopPolls.map((poll) => <PollCard key={poll._id} poll={poll} authUser={authUser} />)}
-                        </Col>
+                        <Col xl="8">{poll && !error && !loading && <PollCard key={poll._id} poll={poll} authUser={authUser} />}</Col>
                         <Col xl="4">
                             <TopPolls />
                             <TopHashtags />
@@ -42,9 +44,9 @@ const HomePage = () => {
     )
 }
 
-export const GET_TOP_POLLS_QUERY = gql`
-    query getTopPolls {
-        getTopPolls {
+export const GET_POLL_QUERY = gql`
+    query getPoll($userUrlId: String, $pollUrlId: String) {
+        getPoll(userUrlId: $userUrlId, pollUrlId: $pollUrlId) {
             _id
             pollUrlId
             question
@@ -69,4 +71,4 @@ export const GET_TOP_POLLS_QUERY = gql`
     }
 `
 
-export default HomePage
+export default PollPage

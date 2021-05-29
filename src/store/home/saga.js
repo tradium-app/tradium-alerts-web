@@ -11,6 +11,7 @@ function* fetchTopPolls() {
                 query getTopPolls {
                     getTopPolls {
                         _id
+                        pollUrlId
                         question
                         options {
                             _id
@@ -21,7 +22,7 @@ function* fetchTopPolls() {
                         }
                         author {
                             _id
-                            userId
+                            userUrlId
                             name
                             imageUrl
                             status

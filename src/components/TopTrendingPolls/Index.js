@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Card, CardBody, CardTitle, Table } from 'reactstrap'
-import { fetchTopPolls } from '../../../store/actions'
+import { fetchTopPolls } from '../../store/actions'
 
 const TopTrendingPolls = ({ fetchTopPolls, topPolls }) => {
     useEffect(() => {
@@ -22,7 +22,7 @@ const TopTrendingPolls = ({ fetchTopPolls, topPolls }) => {
                                     topPolls.slice(0, 5).map((poll) => (
                                         <tr key={poll._id}>
                                             <td style={{ width: '50px' }}>
-                                                <Link to={'/profile/' + poll.author?.userId} className="text-dark font-size-14 m-0">
+                                                <Link to={'/profile/' + poll.author?.userUrlId} className="text-dark font-size-14 m-0">
                                                     {poll.author?.imageUrl !== 'Null' ? (
                                                         <img src={poll.author?.imageUrl} className="rounded-circle avatar-xs" alt="" />
                                                     ) : (

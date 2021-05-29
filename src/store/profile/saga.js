@@ -6,15 +6,15 @@ import graphqlClient from '../../graphql-client'
 import { FETCH_PROFILE } from './actionTypes'
 import { profileSuccess, profileError } from './actions'
 
-function* fetchProfile({ payload: { userId } }) {
+function* fetchProfile({ payload: { userUrlId } }) {
     try {
         const result = yield graphqlClient.query({
             variables: {
-                userId: userId,
+                userUrlId: userUrlId,
             },
             query: gql`
-                query getUserProfile($userId: String) {
-                    getUserProfile(userId: $userId) {
+                query getUserProfile($userUrlId: String) {
+                    getUserProfile(userUrlId: $userUrlId) {
                         _id
                         name
                         imageUrl

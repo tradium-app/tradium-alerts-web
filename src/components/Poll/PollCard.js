@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/client'
 import { Link } from 'react-router-dom'
 import { Badge, Card, CardBody, DropdownItem, DropdownMenu, DropdownToggle, Row, UncontrolledDropdown } from 'reactstrap'
 import toastr from 'toastr'
-import { getRelativeTime } from '../../../components/Common/time'
+import { getRelativeTime } from '../Common/time'
 import PollBody from './PollBody'
 
 const PollCard = ({ poll, authUser }) => {
@@ -23,11 +23,11 @@ const PollCard = ({ poll, authUser }) => {
         <Card key={poll._id}>
             <CardBody>
                 <Row className="media align-items-center mb-4">
-                    <Link to={'/profile/' + poll.author?.userId}>
+                    <Link to={'/profile/' + poll.author?.userUrlId}>
                         <img className="avatar-xs img-thumbnail rounded-circle mr-2" src={poll.author?.imageUrl} alt="" />
                     </Link>
                     <div className="media-body align-items-center">
-                        <Link to={'/profile/' + poll.author?.userId} className="text-muted font-size-10 mb-0">
+                        <Link to={'/profile/' + poll.author?.userUrlId} className="text-muted font-size-10 mb-0">
                             {poll.author?.name}
                         </Link>
                         <p className="text-muted font-size-10 mb-0">{getRelativeTime(poll.modifiedDate)}</p>

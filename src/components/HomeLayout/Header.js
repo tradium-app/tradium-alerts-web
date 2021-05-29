@@ -9,8 +9,8 @@ import logoLightSm from '../../assets/images/logo-light-sm.svg'
 import logoLightLg from '../../assets/images/logo-light-lg.svg'
 
 import { loginUser, logoutUser } from '../../store/actions'
-import NotificationDropdown from '../CommonForBoth/TopbarDropdown/NotificationDropdown'
-import ProfileMenu from '../CommonForBoth/TopbarDropdown/ProfileMenu'
+import NotificationDropdown from '../Common/TopbarDropdown/NotificationDropdown'
+import ProfileMenu from '../Common/TopbarDropdown/ProfileMenu'
 import CreatePollModal from '../Common/create-poll-modal'
 import useModal from './useModal'
 

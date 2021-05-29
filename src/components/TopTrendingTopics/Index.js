@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardBody, CardTitle, Media, Table } from 'reactstrap'
+import { Card, CardBody, CardTitle, Table } from 'reactstrap'
 import { Link } from 'react-router-dom'
 
 const TopTrendingTopics = () => {
