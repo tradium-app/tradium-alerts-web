@@ -7,12 +7,10 @@ import toastr from 'toastr'
 const Poll = ({ poll }) => {
     let grandTotalVotes = 0
 
-    const optionsInitial = poll.options
-        .map((option) => {
-            grandTotalVotes += option.totalVotes ?? 0
-            return option
-        })
-        .sort((a, b) => a.order - b.order)
+    const optionsInitial = poll.options.map((option) => {
+        grandTotalVotes += option.totalVotes ?? 0
+        return option
+    })
 
     const [options, setOptions] = useState(optionsInitial)
 
@@ -45,22 +43,24 @@ const Poll = ({ poll }) => {
                 <p className="font-size-18 mb-4">{poll.question}</p>
 
                 {options &&
-                    options.map((option) => (
-                        <div className="custom-control custom-radio mb-1" key={option._id}>
-                            <input
-                                id={option._id}
-                                type="radio"
-                                name={poll._id}
-                                defaultChecked={option.selected}
-                                className="custom-control-input"
-                                onClick={() => submitVote(option._id)}
-                            />
-                            <Label className="custom-control-label d-inline-block pt-0" for={option._id} xl="12">
-                                {option.text}
-                                <Progress color="primary" className="mt-2" value={option.totalVotes} max={grandTotalVotes}></Progress>
-                            </Label>
-                        </div>
-                    ))}
+                    options
+                        .sort((a, b) => a.order - b.order)
+                        .map((option) => (
+                            <div className="custom-control custom-radio mb-1" key={option._id}>
+                                <input
+                                    id={option._id}
+                                    type="radio"
+                                    name={poll._id}
+                                    defaultChecked={option.selected}
+                                    className="custom-control-input"
+                                    onClick={() => submitVote(option._id)}
+                                />
+                                <Label className="custom-control-label d-inline-block pt-0" for={option._id} xl="12">
+                                    {option.text}
+                                    <Progress color="primary" className="mt-2" value={option.totalVotes} max={grandTotalVotes}></Progress>
+                                </Label>
+                            </div>
+                        ))}
             </div>
         </div>
     )

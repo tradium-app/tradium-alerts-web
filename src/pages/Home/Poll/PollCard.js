@@ -48,8 +48,10 @@ const PollCard = ({ poll, authUser }) => {
                     <div className="media-body">
                         <PollBody poll={poll} key={poll._id} />
                         <div>
-                            {poll?.tags?.map((tag) => (
-                                <Badge className="badge badge-primary font-size-11 mr-1">{tag}</Badge>
+                            {poll?.tags?.map((tag, index) => (
+                                <Badge key={index} className="badge badge-primary font-size-11 mr-1">
+                                    {tag}
+                                </Badge>
                             ))}
                         </div>
                     </div>

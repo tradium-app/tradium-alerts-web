@@ -15,7 +15,7 @@ const Footer = () => {
                                 rel="noreferrer noopener"
                                 className="text-reset"
                             >
-                                <div className="text-sm-right d-none d-sm-block">Request a feature</div>
+                                <div className="text-sm-right d-none d-sm-block">Report an Issue</div>
                             </a>
                         </Col>
                     </Row>
