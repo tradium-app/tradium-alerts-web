@@ -1,4 +1,4 @@
-## DevPolls - fun quizzes for developers
+## DevPolls - fun polls for developers
 
 [![Node CI](https://github.com/devpolls/devpolls-web/actions/workflows/node.js.yml/badge.svg)](https://github.com/devpolls/devpolls-web/actions/workflows/node.js.yml)
 [![DeepScan grade](https://deepscan.io/api/teams/5348/projects/17277/branches/390642/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=5348&pid=17277&bid=390642)
