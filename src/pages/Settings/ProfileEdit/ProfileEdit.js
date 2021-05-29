@@ -8,7 +8,7 @@ import { useFormik } from 'formik'
 import toastr from 'toastr'
 import { fetchProfile } from '../../../store/actions'
 
-const ProfileEdit = ({ profile, fetchProfile }) => {
+const ProfileEdit = ({ authUser, profile, fetchProfile }) => {
     const [error, setError] = React.useState(null)
     const [data, setData] = React.useState(null)
 
@@ -63,11 +63,10 @@ const ProfileEdit = ({ profile, fetchProfile }) => {
     })
 
     useEffect(() => {
-        if (localStorage.getItem('authUser')) {
-            const authUser = JSON.parse(localStorage.getItem('authUser'))
-            fetchProfile(authUser._id)
+        if (authUser || localStorage.getItem('authUser')) {
+            fetchProfile()
         }
-    }, [fetchProfile])
+    }, [fetchProfile, authUser])
 
     return (
         <React.Fragment>
