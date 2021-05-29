@@ -35,7 +35,7 @@ const TopTrendingPolls = ({ fetchTopPolls, topPolls }) => {
                                                 </Link>
                                             </td>
                                             <td>
-                                                <Link to="" className="text-dark font-size-14 m-0">
+                                                <Link to={'/' + poll.author?.userUrlId + '/' + poll.pollUrlId} className="text-dark font-size-14 m-0">
                                                     {poll.question.length > 100 ? poll.question.substring(0, 100) + '...' : poll.question}
                                                 </Link>
                                                 <div>
