@@ -22,7 +22,7 @@ const TopTrendingPolls = ({ fetchTopPolls, topPolls }) => {
                                     topPolls.slice(0, 5).map((poll) => (
                                         <tr key={poll._id}>
                                             <td style={{ width: '50px' }}>
-                                                <Link to={'/profile/' + poll.author?._id} className="text-dark font-size-14 m-0">
+                                                <Link to={'/profile/' + poll.author?.userId} className="text-dark font-size-14 m-0">
                                                     {poll.author?.imageUrl !== 'Null' ? (
                                                         <img src={poll.author?.imageUrl} className="rounded-circle avatar-xs" alt="" />
                                                     ) : (

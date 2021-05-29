@@ -21,6 +21,7 @@ function* fetchTopPolls() {
                         }
                         author {
                             _id
+                            userId
                             name
                             imageUrl
                             status

@@ -33,7 +33,7 @@ const Profile = () => {
     let { userId } = useParams()
 
     const { loading, error, data } = useQuery(GET_PROFILE_QUERY, {
-        variables: { userId: userId || authUser?._id },
+        variables: { userId: userId || authUser?.userId },
     })
 
     const user = data?.getUserProfile
@@ -124,6 +124,7 @@ export const GET_PROFILE_QUERY = gql`
                 }
                 author {
                     _id
+                    userId
                     name
                     imageUrl
                     status

@@ -56,6 +56,7 @@ export const GET_TOP_POLLS_QUERY = gql`
             }
             author {
                 _id
+                userId
                 name
                 imageUrl
                 status
