@@ -10,11 +10,13 @@ const NotificationDropdown = () => {
     const [menu, setMenu] = useState(false)
     const { loading, error, data } = useQuery(GET_NOTIFICATIONS_QUERY)
 
+    const notificationLength = data?.getNotifications.filter((n) => !n.isRead).length
+
     return (
         <Dropdown isOpen={menu} toggle={() => setMenu(!menu)} className="dropdown d-inline-block" tag="li">
             <DropdownToggle className="btn header-item noti-icon waves-effect" tag="button" id="page-header-notifications-dropdown">
                 <i className="bx bx-bell"></i>
-                <span className="badge badge-danger badge-pill">{data?.getNotifications.filter((n) => !n.isRead).length}</span>
+                {notificationLength > 0 && <span className="badge badge-danger badge-pill">{notificationLength}</span>}
             </DropdownToggle>
 
             <DropdownMenu className="dropdown-menu dropdown-menu-lg p-0" right>
@@ -37,7 +39,7 @@ const NotificationDropdown = () => {
                                 onClick={() => setMenu(false)}
                             >
                                 <div className="media">
-                                    <img src={notification.user.imageUrl} className="mr-3 rounded-circle avatar-xs" alt="user-pic" />
+                                    <img src={notification.imageUrl} className="mr-3 rounded-circle avatar-xs" alt="" />
                                     <div className="media-body">
                                         <div className="font-size-12 text-muted">
                                             <p className="mb-1">{notification.message}</p>
@@ -60,6 +62,7 @@ export const GET_NOTIFICATIONS_QUERY = gql`
         getNotifications {
             _id
             message
+            imageUrl
             isRead
             modifiedDate
             poll {
@@ -67,7 +70,6 @@ export const GET_NOTIFICATIONS_QUERY = gql`
             }
             user {
                 userUrlId
-                imageUrl
             }
         }
     }
