@@ -6,7 +6,7 @@
     "start": "react-scripts start",
     "build": "CI=false react-scripts build",
     "test": "react-scripts test",
-    "test:coverage": "react-scripts test --coverage .",
+    "test:coverage": "react-scripts test --coverage ./src --detectOpenHandles --forceExit --runInBand --passWithNoTests --coverageReporters=clover",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/**/*.js"
   },
