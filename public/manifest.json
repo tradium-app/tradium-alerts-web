@@ -1,6 +1,6 @@
 {
   "short_name": "DevPolls",
-  "name": "DevPolls - fun quizzes for developers",
+  "name": "DevPolls - fun polls for developers",
   "icons": [
     {
       "src": "favicon.ico",
@@ -18,8 +18,8 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
+  "theme_color": "#d1f0f1",
+  "background_color": "#d1f0f1",
   "display": "standalone",
   "start_url": "."
 }

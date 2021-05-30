@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   xmlns:i="http://ns.adobe.com/AdobeIllustrator/10.0/"
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -8,20 +7,34 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   aria-hidden="true"
+   viewBox="0 0 21.578476 16.309092"
    version="1.1"
-   x="0px"
-   y="0px"
-   viewBox="0 0 94.599998 94.900002"
-   xml:space="preserve"
-   id="svg855"
-   sodipodi:docname="logo-light-sm.svg"
+   data-view-component="true"
+   height="16.309093"
+   width="21.578476"
+   class="octicon octicon-project"
+   id="svg835"
+   sodipodi:docname="poll.svg"
    inkscape:version="1.0.1 (c497b03c, 2020-09-10)"
-   width="94.599998"
-   height="94.900002"><metadata
-     id="metadata861"><rdf:RDF><cc:Work
-         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><defs
-     id="defs859" /><sodipodi:namedview
+   inkscape:export-filename="/Users/sshrestha/Desktop/poll1.png"
+   inkscape:export-xdpi="447.35999"
+   inkscape:export-ydpi="447.35999">
+  <metadata
+     id="metadata841">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs839" />
+  <sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
      borderopacity="1"
@@ -32,49 +45,37 @@
      inkscape:pageshadow="2"
      inkscape:window-width="1536"
      inkscape:window-height="915"
-     id="namedview857"
+     id="namedview837"
      showgrid="false"
-     inkscape:zoom="2.916"
-     inkscape:cx="16.405166"
-     inkscape:cy="90.023759"
+     inkscape:zoom="15.733126"
+     inkscape:cx="5.6705695"
+     inkscape:cy="5.398794"
      inkscape:window-x="0"
      inkscape:window-y="23"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="g845"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg835"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:document-rotation="0" /><switch
-     id="switch849"
-     style="display:inline"
-     transform="translate(-2.7,-2.5)"><foreignObject
-       requiredExtensions="http://ns.adobe.com/AdobeIllustrator/10.0/"
-       x="0"
-       y="0"
-       width="1"
-       height="1" /><g
-       i:extraneous="self"
-       id="g847"><g
-         id="g845"><path
-           d="M 84.9,2.5 H 15.1 C 8.3,2.5 2.7,8.1 2.7,14.9 v 48.4 c 0,6.8 5.6,12.4 12.4,12.4 h 7.6 c -0.4,3.5 -1.1,7.8 -2.3,11.6 -1,3.2 0.1,6.5 2.7,8.5 1.4,1.1 3,1.6 4.7,1.6 1.5,0 3,-0.4 4.3,-1.3 C 41.8,89.7 49.8,81 54.3,75.7 h 30.6 c 6.8,0 12.4,-5.6 12.4,-12.4 V 14.9 C 97.3,8.1 91.7,2.5 84.9,2.5 Z m 4.3,60.8 c 0,2.4 -2,4.4 -4.4,4.4 H 52.4 c -1.2,0 -2.4,0.6 -3.1,1.5 -3.8,4.7 -11.5,13.4 -21,19.8 1.8,-6 2.5,-12.5 2.8,-17.1 0.1,-1.1 -0.3,-2.2 -1.1,-3 -0.8,-0.8 -1.8,-1.3 -2.9,-1.3 h -12 c -2.4,0 -4.4,-2 -4.4,-4.4 V 14.9 c 0,-2.4 2,-4.4 4.4,-4.4 h 69.8 c 2.4,0 4.4,2 4.4,4.4 v 48.4 z"
-           id="path833"
-           style="display:inline;fill:#1a1a1a;fill-opacity:1" /><path
-           d="m 67.8,20.6 c -8.6,0 -11.7,6.5 -11.7,10.6 v 0.3 c 0,1.1 0.9,2 2,2 h 3.3 c 1.1,0 2,-0.9 2,-2 v -0.3 c 0,-0.3 0.1,-3.3 4.5,-3.3 2.4,0 4.1,0.6 4.1,3.5 0,1.7 -2.6,3.9 -4,5 -2.4,1.9 -4.3,3.9 -4.3,7.9 V 45 c 0,1.1 0.9,2 2,2 H 69 c 1.1,0 2,-0.9 2,-2 V 44.3 C 71,43.6 71,43.4 72.7,42 75,40.1 79.3,36.6 79.3,31.4 79.1,26.1 76.1,20.6 67.8,20.6 Z"
-           id="path835"
-           style="display:none" /><path
-           d="m 69.2,50.2 h -4 c -1.1,0 -2,0.9 -2,2 v 3.4 c 0,1.1 0.9,2 2,2 h 4 c 1.1,0 2,-0.9 2,-2 v -3.4 c -0.1,-1.1 -1,-2 -2,-2 z"
-           id="path837"
-           style="display:none" /><path
-           d="M 79.802719,20.478754 22.9,20.6 c -1.099998,0.0023 -2,0.9 -2,2 V 26 c 0,1.1 0.900002,2.002344 2,2 l 56.902719,-0.121246 c 1.099997,-0.0023 2,-0.9 2,-2 v -3.4 c 0,-1.1 -0.900003,-2.002344 -2,-2 z"
-           id="path839"
-           style="fill:#1a1a1a;fill-opacity:1;stroke-width:1.00157;stroke-miterlimit:4;stroke-dasharray:none"
-           sodipodi:nodetypes="sssssssss" /><path
-           d="M 50.582428,35.4 H 22.9 c -1.1,0 -2,0.9 -2,2 v 3.4 c 0,1.1 0.9,2 2,2 h 27.682428 c 1.100001,0 2,-0.9 2,-2 v -3.4 c 0,-1.1 -0.899999,-2 -2,-2 z"
-           id="path841"
-           style="display:inline;fill:#1a1a1a;fill-opacity:1"
-           sodipodi:nodetypes="sssssssss" /><path
-           d="M 67.435625,50.442492 22.9,50.2 c -1.099984,-0.006 -2,0.9 -2,2 v 3.4 c 0,1.1 0.900016,1.994011 2,2 l 44.535625,0.242492 c 1.099983,0.006 2,-0.9 2,-2 v -3.4 c 0,-1.1 -0.900017,-1.994011 -2,-2 z"
-           id="path843"
-           style="display:inline;fill:#1a1a1a;fill-opacity:1"
-           sodipodi:nodetypes="sssssssss" /></g></g></switch></svg>
+     inkscape:document-rotation="0"
+     lock-margins="true"
+     inkscape:snap-others="true" />
+  <g
+     id="g18"
+     transform="scale(1.4385651)"
+     style="stroke-width:0.695137">
+    <path
+       fill-rule="evenodd"
+       d="M 11.25,9 C 10.835786,9 10.5,8.664214 10.5,8.25 V 4.3581611 0.75 c 0,-1 1.5,-1 1.5,0 v 7.5 C 12,8.664214 11.664214,9 11.25,9 Z M 3,8.25 c 0,1 1.5,1 1.5,0 V 2.75 C 4.5,1.7500004 3,1.7500004 3,2.75 Z M 7.5,9 C 7.0857864,9 6.75,8.664214 6.75,8.25 v -3.5 c 0,-0.9999996 1.5,-0.9999996 1.5,0 v 3.5 C 8.25,8.664214 7.9142136,9 7.5,9 Z"
+       id="path833"
+       sodipodi:nodetypes="sscsssssssssssssss"
+       style="stroke-width:0.483216" />
+    <path
+       fill-rule="evenodd"
+       d="m 0,10.587056 c 0,-0.414214 0.335786,-0.75 0.75,-0.75 H 4.641839 14.25 c 1,0 1,1.5 0,1.5 H 0.75 c -0.414214,0 -0.75,-0.335786 -0.75,-0.75 z"
+       id="path833-4"
+       sodipodi:nodetypes="sscssss"
+       style="stroke-width:0.483216" />
+  </g>
+</svg>
