@@ -8,12 +8,14 @@ const ProfileMenu = (props) => {
     const [menu, setMenu] = useState(false)
     const [username, setusername] = useState('Admin')
     const [imageUrl, setImageUrl] = useState(null)
+    const [userUrlId, setUserUrlId] = useState(null)
 
     useEffect(() => {
         if (localStorage.getItem('authUser')) {
             const obj = JSON.parse(localStorage.getItem('authUser'))
             setusername(obj.givenName)
             setImageUrl(obj.imageUrl)
+            setUserUrlId(obj.userUrlId)
         }
     }, [props.success])
 
@@ -26,7 +28,7 @@ const ProfileMenu = (props) => {
                     <i className="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </DropdownToggle>
                 <DropdownMenu right>
-                    <Link className="dropdown-item" to="/profile">
+                    <Link className="dropdown-item" to={'/profile/' + userUrlId}>
                         <i className="bx bx-user font-size-16 align-middle mr-1"></i>
                         {'Profile'}
                     </Link>

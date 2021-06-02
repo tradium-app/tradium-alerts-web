@@ -19,6 +19,7 @@ function* loginUser({ payload: { accessToken, history } }) {
                         accessToken
                         user {
                             _id
+                            userUrlId
                             name
                             imageUrl
                         }
