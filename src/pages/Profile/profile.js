@@ -155,6 +155,7 @@ export const GET_PROFILE_QUERY = gql`
                     imageUrl
                     status
                 }
+                tags
                 createdDate
                 modifiedDate
                 status

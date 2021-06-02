@@ -39,6 +39,7 @@ function* fetchProfile({ payload: { userUrlId } }) {
                                 imageUrl
                                 status
                             }
+                            tags
                             createdDate
                             modifiedDate
                             status

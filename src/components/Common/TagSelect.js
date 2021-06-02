@@ -1,5 +1,5 @@
 import { useField } from 'formik'
-import Select from 'react-select'
+import AsyncCreatableSelect from 'react-select/async-creatable'
 import makeAnimated from 'react-select/animated'
 
 const TagSelect = ({ label, ...props }) => {
@@ -8,20 +8,33 @@ const TagSelect = ({ label, ...props }) => {
     // const { touched, error, value } = meta
     const { setValue } = helpers
 
+    const filterOptions = (inputValue) => {
+        return options.filter((i) => i.label.toLowerCase().includes(inputValue.toLowerCase()))
+    }
+
+    const promiseOptions = (inputValue) =>
+        new Promise((resolve) => {
+            setTimeout(() => {
+                resolve(filterOptions(inputValue))
+            }, 1000)
+        })
+
     return (
-        <Select
+        <AsyncCreatableSelect
             id={props.id}
-            options={options}
             name={field.name}
+            isSearchable
             placeholder="Select tags..."
             isMulti={true}
-            classNamePrefix="select2-selection"
             closeMenuOnSelect={true}
             defaultMenuIsOpen={false}
             components={makeAnimated({ DropdownIndicator: () => null, IndicatorSeparator: () => null })}
             onChange={(option) => {
                 setValue(option.map((o) => o.value))
             }}
+            cacheOptions
+            defaultOptions
+            loadOptions={promiseOptions}
         />
     )
 }
