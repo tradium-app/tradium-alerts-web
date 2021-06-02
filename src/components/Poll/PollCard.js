@@ -6,7 +6,7 @@ import toastr from 'toastr'
 import { getRelativeTime } from '../Common/time'
 import PollBody from './PollBody'
 
-const PollCard = ({ poll, authUser }) => {
+const PollCard = ({ poll, authUser, editPollHandler }) => {
     const [deletePollMutate] = useMutation(DELETE_POLL_MUTATION, {
         onCompleted: deletePollCompleteHandler,
     })
@@ -38,6 +38,7 @@ const PollCard = ({ poll, authUser }) => {
                                 <i className="mdi mdi-dots-horizontal font-size-18"></i>
                             </DropdownToggle>
                             <DropdownMenu right>
+                                {editPollHandler && <DropdownItem onClick={editPollHandler}>Edit</DropdownItem>}
                                 <DropdownItem onClick={deletePollHandler}>Delete</DropdownItem>
                             </DropdownMenu>
                         </UncontrolledDropdown>

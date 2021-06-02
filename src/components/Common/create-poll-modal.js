@@ -13,7 +13,7 @@ toastr.options = {
     newestOnTop: true,
 }
 
-const CreatePollModal = ({ isShowing, toggle }) => {
+const CreatePollModal = ({ poll, isShowing, toggle }) => {
     const [error, setError] = useState(null)
     const [data, setData] = useState(null)
 
@@ -31,12 +31,14 @@ const CreatePollModal = ({ isShowing, toggle }) => {
     })
 
     const initialValues = {
-        question: '',
-        options: [
+        _id: poll?._id || null,
+        question: poll?.question || '',
+        options: poll?.options.map((o) => ({ text: o.text, order: o.order })) || [
             { text: '', order: 1 },
             { text: '', order: 2 },
         ],
-        tags: [''],
+        tags: poll?.tags || [''],
+        status: poll?.status || 'Draft',
     }
 
     const addOption = (values, setValues) => {
@@ -95,23 +97,21 @@ const CreatePollModal = ({ isShowing, toggle }) => {
         return errors
     }
 
+    const handleFormikSubmit = async (values, formikBag) => {
+        await createPollMutate({
+            variables: {
+                pollInput: values,
+            },
+        })
+        formikBag.resetForm()
+        toggle()
+    }
+
     return isShowing ? (
         <Modal isOpen={isShowing} role="dialog" autoFocus={true} tabIndex="-1" toggle={toggle}>
             <div className="modal-content">
                 <ModalHeader toggle={toggle}>Create a Poll</ModalHeader>
-                <Formik
-                    initialValues={initialValues}
-                    validate={validate}
-                    onSubmit={async (values, formikBag) => {
-                        await createPollMutate({
-                            variables: {
-                                pollInput: values,
-                            },
-                        })
-                        formikBag.resetForm()
-                        toggle()
-                    }}
-                >
+                <Formik initialValues={initialValues} validate={validate} onSubmit={handleFormikSubmit}>
                     {({ handleSubmit, handleChange, handleBlur, isSubmitting, touched, values, setValues, errors, handleReset }) => (
                         <Form onSubmit={handleSubmit} className="justify-content-center">
                             <ModalBody>
@@ -132,6 +132,7 @@ const CreatePollModal = ({ isShowing, toggle }) => {
                                     </Col>
                                 </FormGroup>
                                 {values.options
+                                    .slice()
                                     .sort((a, b) => a - b)
                                     .map((option, index) => (
                                         <OptionInput
@@ -156,11 +157,33 @@ const CreatePollModal = ({ isShowing, toggle }) => {
                                 </FormGroup>
                             </ModalBody>
                             <ModalFooter>
-                                <Button type="button" color="secondary" onClick={handleReset}>
+                                <Button
+                                    type="button"
+                                    color="secondary"
+                                    onClick={handleReset}
+                                    disabled={isSubmitting || !touched || Object.keys(touched).length === 0}
+                                >
                                     Reset
                                 </Button>
-                                <Button type="submit" color="primary" disabled={isSubmitting || !touched || Object.keys(touched).length === 0}>
-                                    Publish the Poll
+                                <Button
+                                    type="submit"
+                                    onClick={() => {
+                                        setValues({ ...values, status: 'Published' })
+                                    }}
+                                    color="primary"
+                                    disabled={isSubmitting || !touched || Object.keys(touched).length === 0}
+                                >
+                                    {'Save & Publish'}
+                                </Button>
+                                <Button
+                                    type="submit"
+                                    onClick={() => {
+                                        setValues({ ...values, status: 'Draft' })
+                                    }}
+                                    color="primary"
+                                    disabled={isSubmitting || !touched || Object.keys(touched).length === 0}
+                                >
+                                    Save
                                 </Button>
                             </ModalFooter>
                         </Form>

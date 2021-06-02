@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Helmet } from 'react-helmet'
 import { useParams } from 'react-router'
 import { useQuery } from '@apollo/client'
 import gql from 'graphql-tag'
 import { Container, Row, Col, Card, CardBody, CardTitle } from 'reactstrap'
 import PollCard from '../../components/Poll/PollCard'
+import useModal from '../../components/HomeLayout/useModal'
+import CreatePollModal from '../../components/Common/create-poll-modal'
 
 const socialLinks = [
     {
@@ -25,6 +27,9 @@ const socialLinks = [
 ]
 
 const Profile = () => {
+    const { isShowing, toggle } = useModal()
+    const [currentPoll, setCurrentPoll] = useState(null)
+
     let authUser
     if (localStorage.getItem('authUser')) {
         authUser = JSON.parse(localStorage.getItem('authUser'))
@@ -101,7 +106,18 @@ const Profile = () => {
                             {user &&
                                 !error &&
                                 !loading &&
-                                user.pollsCreated.map((poll) => <PollCard key={poll._id} poll={poll} authUser={authUser} />)}
+                                user.pollsCreated.map((poll) => (
+                                    <PollCard
+                                        key={poll._id}
+                                        poll={poll}
+                                        authUser={authUser}
+                                        editPollHandler={() => {
+                                            setCurrentPoll(poll)
+                                            toggle()
+                                        }}
+                                    />
+                                ))}
+                            <CreatePollModal poll={currentPoll} isShowing={isShowing} toggle={toggle} />
                         </Col>
                     </Row>
                 </Container>
@@ -141,6 +157,7 @@ export const GET_PROFILE_QUERY = gql`
                 }
                 createdDate
                 modifiedDate
+                status
             }
         }
     }

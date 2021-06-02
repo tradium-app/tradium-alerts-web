@@ -41,6 +41,7 @@ function* fetchProfile({ payload: { userUrlId } }) {
                             }
                             createdDate
                             modifiedDate
+                            status
                         }
                     }
                 }
