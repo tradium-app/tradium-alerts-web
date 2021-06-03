@@ -2902,6 +2902,11 @@ anymatch@^3.0.3, anymatch@~3.1.1:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
 
+apollo-link-debounce@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/apollo-link-debounce/-/apollo-link-debounce-3.0.0.tgz#39a82a5d0e53ece75a67f56d7c50d9a122631787"
+  integrity sha512-Ytig2Ml41T2bovBIoKkStPKoIh0r/kTK1dSM9Gpvo5W3BAPxt1WguAkeaPLJqeuvrNJIjQ/Pl38/14VVA0hdYg==
+
 aproba@^1.0.3, aproba@^1.1.1:
   version "1.2.0"
   resolved "https://npm.devergage.com/aproba/-/aproba-1.2.0.tgz#6802e6264efd18c790a1b0d517f0f2627bf2c94a"
