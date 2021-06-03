@@ -17,14 +17,6 @@ const CreatePollModal = ({ poll, isShowing, toggle }) => {
     const [error, setError] = useState(null)
     const [data, setData] = useState(null)
 
-    const availableTags = [
-        { label: 'Java', value: 'Java' },
-        { label: 'JavaScript', value: 'JavaScript' },
-        { label: 'C#', value: 'C#' },
-        { label: '.Net', value: '.Net' },
-        { label: 'Python', value: 'Python' },
-    ]
-
     const [createPollMutate] = useMutation(CREATE_POLL_QUERY, {
         onError: setError,
         onCompleted: setData,
@@ -151,7 +143,7 @@ const CreatePollModal = ({ poll, isShowing, toggle }) => {
                                     <Col xl="12" md="12">
                                         <Label htmlFor="tags">Tags</Label>
                                         <div className="templating-select select2-container">
-                                            <TagSelect id="tags" name="tags" options={availableTags} />
+                                            <TagSelect id="tags" name="tags" />
                                         </div>
                                     </Col>
                                 </FormGroup>

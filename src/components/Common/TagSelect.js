@@ -1,42 +1,40 @@
 import { useField } from 'formik'
-import AsyncCreatableSelect from 'react-select/async-creatable'
-import makeAnimated from 'react-select/animated'
+import CreatableSelect from 'react-select/creatable'
+import { useLazyQuery } from '@apollo/client'
+import gql from 'graphql-tag'
 
 const TagSelect = ({ label, ...props }) => {
     const [field, meta, helpers] = useField(props)
-    const { options } = props
     // const { touched, error, value } = meta
     const { setValue } = helpers
 
-    const filterOptions = (inputValue) => {
-        return options.filter((i) => i.label.toLowerCase().includes(inputValue.toLowerCase()))
-    }
-
-    const promiseOptions = (inputValue) =>
-        new Promise((resolve) => {
-            setTimeout(() => {
-                resolve(filterOptions(inputValue))
-            }, 1000)
-        })
+    const [getTopTags, { loading, data, refetch, error, called }] = useLazyQuery(GET_TOP_TAGS_QUERY)
 
     return (
-        <AsyncCreatableSelect
+        <CreatableSelect
             id={props.id}
             name={field.name}
-            isSearchable
-            placeholder="Select tags..."
-            isMulti={true}
-            closeMenuOnSelect={true}
-            defaultMenuIsOpen={false}
-            components={makeAnimated({ DropdownIndicator: () => null, IndicatorSeparator: () => null })}
+            options={data?.getTopTags.map((t) => ({ label: t.tagId, value: t.tagId }))}
+            onInputChange={(newValue) => getTopTags({ variables: { searchText: newValue } })}
             onChange={(option) => {
                 setValue(option.map((o) => o.value))
             }}
-            cacheOptions
-            defaultOptions
-            loadOptions={promiseOptions}
+            placeholder="Select tags..."
+            isLoading={loading}
+            isMulti
+            isClearable
+            components={{ DropdownIndicator: () => null, IndicatorSeparator: () => null }}
         />
     )
 }
+
+export const GET_TOP_TAGS_QUERY = gql`
+    query getTopTags($searchText: String) {
+        getTopTags(searchText: $searchText) {
+            tagId
+            currentMonthCount
+        }
+    }
+`
 
 export default TagSelect
