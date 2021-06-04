@@ -29,7 +29,7 @@ const CreatePollModal = ({ poll, isShowing, toggle }) => {
             { text: '', order: 1 },
             { text: '', order: 2 },
         ],
-        tags: poll?.tags || [''],
+        tags: poll?.tags || null,
         status: poll?.status || 'Draft',
     }
 
@@ -143,7 +143,7 @@ const CreatePollModal = ({ poll, isShowing, toggle }) => {
                                     <Col xl="12" md="12">
                                         <Label htmlFor="tags">Tags</Label>
                                         <div className="templating-select select2-container">
-                                            <TagSelect id="tags" name="tags" />
+                                            <TagSelect id="tags" name="tags" value={values.tags} />
                                         </div>
                                     </Col>
                                 </FormGroup>
