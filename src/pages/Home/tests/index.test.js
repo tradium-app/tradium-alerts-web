@@ -45,7 +45,7 @@ test('HomePage renders without error when data is empty', () => {
         </MockedProvider>
     )
 
-    const linkElement = getByText(/Top Trending Topics/i)
+    const linkElement = getByText(/Top Trending Tags/i)
     expect(linkElement).toBeInTheDocument()
 })
 

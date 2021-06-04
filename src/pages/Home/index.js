@@ -6,7 +6,7 @@ import { Container, Row, Col } from 'reactstrap'
 
 // Pages Components
 import TopPolls from '../../components/TopTrendingPolls/Index'
-import TopHashtags from '../../components/TopTrendingTopics/Index'
+import TopHashtags from '../../components/TopTrendingTags/Index'
 import PollCard from '../../components/Poll/PollCard'
 
 const HomePage = () => {
