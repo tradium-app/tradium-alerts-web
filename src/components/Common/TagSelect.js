@@ -1,22 +1,28 @@
+import { useState } from 'react'
+import useDebouncedEffect from 'use-debounced-effect-hook'
 import { useField } from 'formik'
 import CreatableSelect from 'react-select/creatable'
 import { useLazyQuery } from '@apollo/client'
 import gql from 'graphql-tag'
 
-const TagSelect = ({ label, ...props }) => {
+const TagSelect = (props) => {
     const [field, meta, helpers] = useField(props)
-    // const { touched, error, value } = meta
-    const { setValue } = helpers
+    const { setValue, setTouched } = helpers
+    const [searchText, setSearchText] = useState('')
 
-    const [getTopTags, { loading, data, refetch, error, called }] = useLazyQuery(GET_TOP_TAGS_QUERY)
+    const [getTopTags, { loading, data }] = useLazyQuery(GET_TOP_TAGS_QUERY)
+
+    useDebouncedEffect(() => getTopTags({ variables: { searchText } }), [searchText], 300)
 
     return (
         <CreatableSelect
             id={props.id}
             name={field.name}
+            defaultValue={props.value?.map((t) => ({ label: t, value: t }))}
             options={data?.getTopTags.map((t) => ({ label: t.tagId, value: t.tagId }))}
-            onInputChange={(newValue) => getTopTags({ variables: { searchText: newValue } })}
+            onInputChange={(newValue) => setSearchText(newValue)}
             onChange={(option) => {
+                setTouched(true)
                 setValue(option.map((o) => o.value))
             }}
             placeholder="Select tags..."

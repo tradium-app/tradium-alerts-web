@@ -1,9 +1,6 @@
-import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client'
+import { ApolloClient, ApolloLink, createHttpLink, InMemoryCache } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
-
-const httpLink = createHttpLink({
-    uri: process.env.REACT_APP_BACKEND_SERVER,
-})
+import DebounceLink from 'apollo-link-debounce'
 
 const authLink = setContext((_, { headers }) => {
     let accessToken = null
@@ -20,8 +17,17 @@ const authLink = setContext((_, { headers }) => {
     }
 })
 
+const DEFAULT_DEBOUNCE_TIMEOUT = 500
+const debounceLink = new DebounceLink(DEFAULT_DEBOUNCE_TIMEOUT)
+
+const httpLink = createHttpLink({
+    uri: process.env.REACT_APP_BACKEND_SERVER,
+})
+
+const link = ApolloLink.from([debounceLink, authLink, httpLink])
+
 const graphqlClient = new ApolloClient({
-    link: authLink.concat(httpLink),
+    link,
     cache: new InMemoryCache(),
     credentials: 'include',
 })
