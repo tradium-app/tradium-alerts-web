@@ -22,10 +22,15 @@ const CreatePollModal = ({ poll, isShowing, toggle }) => {
         onCompleted: setData,
     })
 
+    const [updatePollMutate] = useMutation(UPDATE_POLL_QUERY, {
+        onError: setError,
+        onCompleted: setData,
+    })
+
     const initialValues = {
         _id: poll?._id || null,
         question: poll?.question || '',
-        options: poll?.options.map((o) => ({ text: o.text, order: o.order })) || [
+        options: poll?.options.map((o) => ({ _id: o._id, text: o.text, order: o.order })) || [
             { text: '', order: 1 },
             { text: '', order: 2 },
         ],
@@ -60,8 +65,10 @@ const CreatePollModal = ({ poll, isShowing, toggle }) => {
     }
 
     if (data) {
-        if (data.createPoll.success) {
+        if (data.createPoll?.success) {
             toastr.success('Poll Created.')
+        } else if (data.updatePoll?.success) {
+            toastr.success('Poll Updated.')
         }
         setData(null)
     }
@@ -90,11 +97,20 @@ const CreatePollModal = ({ poll, isShowing, toggle }) => {
     }
 
     const handleFormikSubmit = async (values, formikBag) => {
-        await createPollMutate({
-            variables: {
-                pollInput: values,
-            },
-        })
+        if (!values._id) {
+            await createPollMutate({
+                variables: {
+                    pollInput: values,
+                },
+            })
+        } else {
+            await updatePollMutate({
+                variables: {
+                    pollInput: values,
+                },
+            })
+        }
+
         formikBag.resetForm()
         toggle()
     }
@@ -220,6 +236,15 @@ const OptionInput = ({ option, index, setOption, removeOption, isLastOption, add
 export const CREATE_POLL_QUERY = gql`
     mutation createPoll($pollInput: PollInput!) {
         createPoll(pollInput: $pollInput) {
+            success
+            message
+        }
+    }
+`
+
+export const UPDATE_POLL_QUERY = gql`
+    mutation updatePoll($pollInput: PollInput!) {
+        updatePoll(pollInput: $pollInput) {
             success
             message
         }
