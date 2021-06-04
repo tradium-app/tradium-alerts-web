@@ -46,8 +46,6 @@ export function* watchFetchTopPolls() {
 }
 
 function* fetchTopTags({ payload: { searchText } }) {
-    console.log('printing searchText', searchText)
-
     try {
         const result = yield graphqlClient.query({
             query: gql`

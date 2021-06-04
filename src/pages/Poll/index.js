@@ -7,7 +7,7 @@ import { Container, Row, Col } from 'reactstrap'
 
 // Pages Components
 import TopPolls from '../../components/TopTrendingPolls/Index'
-import TopHashtags from '../../components/TopTrendingTopics/Index'
+import TopTags from '../../components/TopTrendingTags/Index'
 import PollCard from '../../components/Poll/PollCard'
 
 const PollPage = () => {
@@ -35,7 +35,7 @@ const PollPage = () => {
                         <Col xl="8">{poll && !error && !loading && <PollCard key={poll._id} poll={poll} authUser={authUser} />}</Col>
                         <Col xl="4">
                             <TopPolls />
-                            <TopHashtags />
+                            <TopTags />
                         </Col>
                     </Row>
                 </Container>
