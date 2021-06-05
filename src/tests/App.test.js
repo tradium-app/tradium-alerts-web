@@ -3,7 +3,8 @@ import { Provider } from 'react-redux'
 import { render } from '@testing-library/react'
 import { MockedProvider } from '@apollo/client/testing'
 import App from '../App'
-import store from '../store'
+import { store, persistor } from '../store'
+import { PersistGate } from 'redux-persist/integration/react'
 
 test('renders learn react link', () => {
     const mocks = []
@@ -11,7 +12,9 @@ test('renders learn react link', () => {
     const { getByText } = render(
         <MockedProvider mocks={mocks} addTypename={false}>
             <Provider store={store}>
-                <App />
+                <PersistGate loading={null} persistor={persistor}>
+                    <App />
+                </PersistGate>
             </Provider>
         </MockedProvider>
     )

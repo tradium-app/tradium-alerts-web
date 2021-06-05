@@ -68,7 +68,7 @@ export const GET_TOP_POLLS_QUERY = gql`
 
 const mapStateToProps = (state) => {
     return {
-        authUser: state?.Login.authUser,
+        authUser: state?.Login?.authUser,
     }
 }
 
