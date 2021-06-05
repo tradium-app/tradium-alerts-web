@@ -8,7 +8,6 @@ import { profileSuccess, profileError } from './actions'
 
 function* fetchProfile({ payload: { userUrlId } }) {
     try {
-        console.log('printing userUrlId', userUrlId)
         const result = yield graphqlClient.query({
             variables: {
                 userUrlId: userUrlId,

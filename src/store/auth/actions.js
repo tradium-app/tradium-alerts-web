@@ -8,7 +8,6 @@ export const loginUser = (accessToken, history) => {
 }
 
 export const loginSuccess = (user) => {
-    console.log('printing user', user)
     return {
         type: LOGIN_SUCCESS,
         payload: { authUser: user },

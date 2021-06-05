@@ -1,4 +1,5 @@
 import Home from '../pages/Home'
+import Search from '../pages/Search'
 
 import PagesMaintenance from '../pages/Utility/pages-maintenance'
 import Pages404 from '../pages/Utility/pages-404'
@@ -12,6 +13,7 @@ const userRoutes = [{ path: '/settings', component: Settings }]
 
 const publicRoutes = [
     { path: '/', component: Home },
+    { path: '/search/:searchText?', component: Search },
     { path: '/profile/:userUrlId?', component: Profile },
     { path: '/:userUrlId/:pollUrlId', component: Poll },
     { path: '/pages-maintenance', component: PagesMaintenance },

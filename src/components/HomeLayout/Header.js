@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
 import { Button } from 'reactstrap'
@@ -16,7 +16,15 @@ import useModal from './useModal'
 
 const Header = (props) => {
     const { isShowing, toggle } = useModal()
+    const [searchTerm, setSearchTerm] = useState('')
     const isUserLoggedIn = !!props.authUser
+
+    const handleSubmit = (event) => {
+        if (searchTerm) {
+            props.history.push('/search/' + searchTerm)
+        }
+        event.preventDefault()
+    }
 
     return (
         <React.Fragment>
@@ -34,9 +42,16 @@ const Header = (props) => {
                             </Link>
                         </div>
 
-                        <form className="app-search d-none d-lg-block">
+                        <form onSubmit={handleSubmit} className="app-search d-none d-lg-block">
                             <div className="position-relative">
-                                <input type="text" className="form-control" placeholder="Search..." />
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="Search..."
+                                    onChange={(event) => {
+                                        setSearchTerm(event.target.value)
+                                    }}
+                                />
                                 <span className="bx bx-search-alt"></span>
                             </div>
                         </form>
