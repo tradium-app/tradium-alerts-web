@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/client'
 import { Link } from 'react-router-dom'
-import { Badge, Card, CardBody, DropdownItem, DropdownMenu, DropdownToggle, Row, UncontrolledDropdown } from 'reactstrap'
+import { Card, CardBody, DropdownItem, DropdownMenu, DropdownToggle, Row, UncontrolledDropdown } from 'reactstrap'
 import toastr from 'toastr'
 import { getRelativeTime } from '../Common/time'
 import PollBody from './PollBody'
@@ -47,12 +47,12 @@ const PollCard = ({ poll, authUser, editPollHandler }) => {
 
                 <div className="media mb-2">
                     <div className="media-body">
-                        <PollBody poll={poll} key={poll._id} />
+                        <PollBody authUser={authUser} poll={poll} key={poll._id} />
                         <div>
                             {poll?.tags?.map((tag, index) => (
-                                <Badge key={index} className="badge badge-primary font-size-11 mr-1">
+                                <Link to="#" className="badge badge-light font-size-11 mr-1" key={index}>
                                     {tag}
-                                </Badge>
+                                </Link>
                             ))}
                         </div>
                     </div>

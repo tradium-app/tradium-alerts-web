@@ -5,7 +5,7 @@ import { Label, Progress } from 'reactstrap'
 import toastr from 'toastr'
 import { Link } from 'react-router-dom'
 
-const Poll = ({ poll }) => {
+const PollBody = ({ authUser, poll }) => {
     let grandTotalVotes = 0
 
     const optionsInitial = poll.options.map((option) => {
@@ -24,7 +24,7 @@ const Poll = ({ poll }) => {
     })
 
     const submitVote = (optionId) => {
-        if (!localStorage.getItem('authUser')) {
+        if (!authUser) {
             toastr.error('Please Login to vote.')
             return
         }
@@ -88,4 +88,4 @@ export const SUBMIT_VOTE_QUERY = gql`
     }
 `
 
-export default Poll
+export default PollBody

@@ -1,12 +1,16 @@
 import { LOGIN_USER, LOGIN_SUCCESS, LOGOUT_USER, LOGOUT_USER_SUCCESS, API_ERROR } from './actionTypes'
+import { REHYDRATE } from 'redux-persist/lib/constants'
 
 const initialState = {
     error: '',
     loading: false,
+    authUser: null,
 }
 
 const login = (state = initialState, action) => {
     switch (action.type) {
+        case REHYDRATE:
+            return { ...state, authUser: action.payload.Login.authUser }
         case LOGIN_USER:
             state = {
                 ...state,
@@ -17,10 +21,11 @@ const login = (state = initialState, action) => {
             state = {
                 ...state,
                 loading: false,
+                authUser: action.payload.authUser,
             }
             break
         case LOGOUT_USER:
-            state = { ...state }
+            state = { ...state, loading: false }
             break
         case LOGOUT_USER_SUCCESS:
             state = { ...state }

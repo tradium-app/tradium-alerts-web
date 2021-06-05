@@ -41,7 +41,7 @@ const TopTrendingPolls = ({ fetchTopPolls, topPolls }) => {
                                                 <div>
                                                     {poll.tags &&
                                                         poll.tags.map((tag, key) => (
-                                                            <Link to="#" className="badge badge-primary font-size-11 mr-1" key={key}>
+                                                            <Link to="#" className="badge badge-light font-size-11 mr-1" key={key}>
                                                                 {tag}
                                                             </Link>
                                                         ))}

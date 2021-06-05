@@ -16,7 +16,7 @@ import useModal from './useModal'
 
 const Header = (props) => {
     const { isShowing, toggle } = useModal()
-    const isUserLoggedIn = localStorage.getItem('authUser')
+    const isUserLoggedIn = !!props.authUser
 
     return (
         <React.Fragment>
@@ -82,9 +82,12 @@ const GoogleLoginDevPolls = (props) => {
     )
 }
 
-const mapStatetoProps = (state) => {
-    const { error } = state?.Login
-    return { error }
+const mapStateToProps = (state) => {
+    return {
+        error: state?.Login.error,
+        authUser: state?.Login.authUser,
+        profile: state?.Profile.profile,
+    }
 }
 
-export default withRouter(connect(mapStatetoProps, { loginUser, logoutUser })(Header))
+export default withRouter(connect(mapStateToProps, { loginUser, logoutUser })(Header))

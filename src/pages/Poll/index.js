@@ -1,4 +1,6 @@
 import React from 'react'
+import { withRouter } from 'react-router'
+import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
 import { useParams } from 'react-router'
 import { useQuery } from '@apollo/client'
@@ -10,17 +12,12 @@ import TopPolls from '../../components/TopTrendingPolls/Index'
 import TopTags from '../../components/TopTrendingTags/Index'
 import PollCard from '../../components/Poll/PollCard'
 
-const PollPage = () => {
+const PollPage = ({ authUser }) => {
     let { userUrlId, pollUrlId } = useParams()
 
     const { loading, error, data } = useQuery(GET_POLL_QUERY, {
         variables: { userUrlId, pollUrlId },
     })
-
-    let authUser
-    if (localStorage.getItem('authUser')) {
-        authUser = JSON.parse(localStorage.getItem('authUser'))
-    }
 
     const poll = data?.getPoll
 
@@ -71,4 +68,10 @@ export const GET_POLL_QUERY = gql`
     }
 `
 
-export default PollPage
+const mapStateToProps = (state) => {
+    return {
+        authUser: state?.Login.authUser,
+    }
+}
+
+export default withRouter(connect(mapStateToProps, {})(PollPage))

@@ -35,7 +35,7 @@ function* loginUser({ payload: { accessToken, history } }) {
             const authUser = result.data.loginUser.user
             if (authUser) {
                 authUser.accessToken = result.data.loginUser.accessToken
-                localStorage.setItem('authUser', JSON.stringify(authUser))
+                localStorage.setItem('accessToken', result.data.loginUser.accessToken)
                 yield put(loginSuccess(authUser))
             }
         }
@@ -49,7 +49,7 @@ function* loginUser({ payload: { accessToken, history } }) {
 function* logoutUser({ payload: { history } }) {
     try {
         yield firebase.auth().signOut()
-        localStorage.removeItem('authUser')
+        localStorage.removeItem('accessToken')
         yield put(logoutUserSuccess())
 
         history.push('/')

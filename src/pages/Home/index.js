@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import { useQuery } from '@apollo/client'
 import gql from 'graphql-tag'
@@ -9,13 +11,8 @@ import TopPolls from '../../components/TopTrendingPolls/Index'
 import TopHashtags from '../../components/TopTrendingTags/Index'
 import PollCard from '../../components/Poll/PollCard'
 
-const HomePage = () => {
+const HomePage = ({ authUser }) => {
     const { loading, error, data } = useQuery(GET_TOP_POLLS_QUERY)
-
-    let authUser
-    if (localStorage.getItem('authUser')) {
-        authUser = JSON.parse(localStorage.getItem('authUser'))
-    }
 
     return (
         <React.Fragment>
@@ -69,4 +66,10 @@ export const GET_TOP_POLLS_QUERY = gql`
     }
 `
 
-export default HomePage
+const mapStateToProps = (state) => {
+    return {
+        authUser: state?.Login.authUser,
+    }
+}
+
+export default withRouter(connect(mapStateToProps, {})(HomePage))

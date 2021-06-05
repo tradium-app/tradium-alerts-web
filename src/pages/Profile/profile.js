@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
 import { useParams } from 'react-router'
 import { useQuery } from '@apollo/client'
@@ -26,14 +28,9 @@ const socialLinks = [
     },
 ]
 
-const Profile = () => {
+const Profile = ({ authUser }) => {
     const { isShowing, toggle } = useModal()
     const [currentPoll, setCurrentPoll] = useState(null)
-
-    let authUser
-    if (localStorage.getItem('authUser')) {
-        authUser = JSON.parse(localStorage.getItem('authUser'))
-    }
 
     let { userUrlId } = useParams()
 
@@ -77,10 +74,12 @@ const Profile = () => {
                                                 </Row>
                                                 <Row className="mt-4 mb-4">
                                                     <Col className="align-self-center text-center">
-                                                        {socialLinks.map((link) => (
-                                                            <a href={user && user[link.id]} target="_blank" rel="noreferrer noopener" key={link.id}>
+                                                        {socialLinks.map((link, index) => (
+                                                            <a href={user && user[link.id]} target="_blank" rel="noreferrer noopener" key={index}>
                                                                 <img
-                                                                    className="avatar-sm img-thumbnail d-inline-block rounded-circle ml-1 mr-1"
+                                                                    className={`avatar-sm img-thumbnail d-inline-block rounded-circle ml-1 mr-1 ${
+                                                                        user && user[link.id] ? '' : 'disabled_image'
+                                                                    } `}
                                                                     src={link.imgUrl}
                                                                     alt={link.name}
                                                                 />
@@ -164,4 +163,10 @@ export const GET_PROFILE_QUERY = gql`
     }
 `
 
-export default Profile
+const mapStateToProps = (state) => {
+    return {
+        authUser: state?.Login.authUser,
+    }
+}
+
+export default withRouter(connect(mapStateToProps, {})(Profile))

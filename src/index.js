@@ -4,7 +4,8 @@ import App from './App'
 import * as serviceWorker from './serviceWorker'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import store from './store'
+import { PersistGate } from 'redux-persist/integration/react'
+import { store, persistor } from './store'
 import { ApolloProvider } from '@apollo/client/react'
 import graphqlClient from './graphql-client'
 import './firebaseInit'
@@ -12,9 +13,11 @@ import './firebaseInit'
 const app = (
     <ApolloProvider client={graphqlClient}>
         <Provider store={store}>
-            <BrowserRouter>
-                <App />
-            </BrowserRouter>
+            <PersistGate loading={null} persistor={persistor}>
+                <BrowserRouter>
+                    <App />
+                </BrowserRouter>
+            </PersistGate>
         </Provider>
     </ApolloProvider>
 )

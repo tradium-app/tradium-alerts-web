@@ -1,5 +1,4 @@
-
-@import "./icons.scss";
+@import './icons.scss';
 
 // Dark Theme
 // @import "./bootstrap-dark.scss";
@@ -10,8 +9,8 @@
 // @import "./app-rtl.scss";
 
 // Light Theme
-@import "./bootstrap.scss";
-@import "./app.scss";
+@import './bootstrap.scss';
+@import './app.scss';
 
 #sidebar-menu {
     ul {
@@ -27,7 +26,8 @@
 .noti-icon .badge {
     left: 23px;
 }
-.dataTables_filter, .dataTables_paginate {
+.dataTables_filter,
+.dataTables_paginate {
     float: right;
 }
 .rdw-editor-main {
@@ -39,18 +39,19 @@
     padding: 30px;
 }
 // kanban board
-.fcYNFc, .sc-AxmLO.gmtmqV {
-    background-color: $card-bg!important;
+.fcYNFc,
+.sc-AxmLO.gmtmqV {
+    background-color: $card-bg !important;
     margin: 0 20px 0 0 !important;
 }
 .task-box {
-    border : 1px solid $border-color;
+    border: 1px solid $border-color;
 }
 .react-datepicker-wrapper {
-    width: 100%!important;
+    width: 100% !important;
 }
 .ReactModal__Overlay {
-    z-index: 1001!important;
+    z-index: 1001 !important;
 }
 .chat-conversation .right .conversation-list {
     margin-right: 15px;
@@ -66,16 +67,19 @@ a:hover {
 .rating-container {
     background-color: transparent !important;
 }
-.input-group-append{
+.input-group-append {
     z-index: 0;
 }
-.input-color{
+.input-color {
     color: $input-color !important;
 }
 .sketch-picker {
     position: absolute;
     z-index: 1;
 }
-.rangeslider__fill{
+.rangeslider__fill {
     background-color: $primary !important;
+}
+.disabled_image {
+    filter: grayscale(100%) opacity(50%);
 }

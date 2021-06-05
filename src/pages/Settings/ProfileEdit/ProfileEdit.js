@@ -63,9 +63,7 @@ const ProfileEdit = ({ authUser, profile, fetchProfile }) => {
     })
 
     useEffect(() => {
-        if (authUser || localStorage.getItem('authUser')) {
-            fetchProfile()
-        }
+        authUser && fetchProfile(authUser.userUrlId)
     }, [fetchProfile, authUser])
 
     return (

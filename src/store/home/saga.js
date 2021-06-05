@@ -59,8 +59,6 @@ function* fetchTopTags({ payload: { searchText } }) {
             variables: { searchText },
         })
 
-        console.log('printing result.data.getTopTags', result.data.getTopTags)
-
         yield put(fetchTopTagsSuccess(result.data.getTopTags))
     } catch (error) {
         yield put(fetchTopTagsError(error.message))

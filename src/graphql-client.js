@@ -3,11 +3,7 @@ import { setContext } from '@apollo/client/link/context'
 import DebounceLink from 'apollo-link-debounce'
 
 const authLink = setContext((_, { headers }) => {
-    let accessToken = null
-    if (localStorage.getItem('authUser')) {
-        const authUser = JSON.parse(localStorage.getItem('authUser'))
-        accessToken = authUser.accessToken
-    }
+    const accessToken = localStorage.getItem('accessToken')
 
     return {
         headers: {

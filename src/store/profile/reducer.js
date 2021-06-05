@@ -3,12 +3,13 @@ import { FETCH_PROFILE, PROFILE_ERROR, PROFILE_SUCCESS, UPDATE_PROFILE } from '.
 const initialState = {
     error: '',
     success: '',
+    userUrlId: '',
 }
 
 const profile = (state = initialState, action) => {
     switch (action.type) {
         case FETCH_PROFILE:
-            state = { ...state }
+            state = { ...state, userUrlId: action.payload.userUrlId }
             break
         case UPDATE_PROFILE:
             state = { ...state }
