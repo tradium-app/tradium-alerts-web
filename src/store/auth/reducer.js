@@ -10,7 +10,7 @@ const initialState = {
 const login = (state = initialState, action) => {
     switch (action.type) {
         case REHYDRATE:
-            return { ...state, authUser: action.payload.Login.authUser }
+            return { ...state, authUser: action.payload?.Login.authUser }
         case LOGIN_USER:
             state = {
                 ...state,
