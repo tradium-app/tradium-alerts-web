@@ -3,6 +3,7 @@ import { useMutation } from '@apollo/client'
 import { Link } from 'react-router-dom'
 import { Card, CardBody, DropdownItem, DropdownMenu, DropdownToggle, Row, UncontrolledDropdown } from 'reactstrap'
 import toastr from 'toastr'
+import { Confirm } from 'reactstrap-alert'
 import { getRelativeTime } from '../Common/time'
 import PollBody from './PollBody'
 
@@ -11,12 +12,20 @@ const PollCard = ({ poll, authUser, editPollHandler }) => {
         onCompleted: deletePollCompleteHandler,
     })
 
-    const deletePollHandler = () => {
-        deletePollMutate({
-            variables: {
-                pollId: poll._id,
-            },
+    const deletePollHandler = async () => {
+        const answer = await Confirm({
+            message: 'Do you really want to delete this Poll?',
+            title: 'Delete Confirmation',
+            confirmText: 'Yes',
+            cancelText: 'No',
         })
+        if (answer) {
+            deletePollMutate({
+                variables: {
+                    pollId: poll._id,
+                },
+            })
+        }
     }
 
     return (
