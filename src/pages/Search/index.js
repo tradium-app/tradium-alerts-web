@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { useParams, withRouter } from 'react-router-dom'
+import { useLocation, withRouter } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import { Container, Row, Col } from 'reactstrap'
 
@@ -10,8 +10,13 @@ import TopHashtags from '../../components/TopTrendingTags/Index'
 import PollCard from '../../components/Poll/PollCard'
 import { searchPolls } from './store/actions'
 
+function useQuery() {
+    return new URLSearchParams(useLocation().search)
+}
+
 const SearchPage = ({ authUser, searchPolls, searchPollsResult }) => {
-    const { searchText } = useParams()
+    let query = useQuery()
+    const searchText = query.get('q')
 
     useEffect(() => {
         if (searchText) {

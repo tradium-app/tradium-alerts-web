@@ -21,7 +21,7 @@ const Header = (props) => {
 
     const handleSubmit = (event) => {
         if (searchTerm) {
-            props.history.push('/search/' + searchTerm)
+            props.history.push('/search?q=' + searchTerm)
         }
         event.preventDefault()
     }

@@ -13,7 +13,7 @@ const userRoutes = [{ path: '/settings', component: Settings }]
 
 const publicRoutes = [
     { path: '/', component: Home },
-    { path: '/search/:searchText?', component: Search },
+    { path: '/search', component: Search },
     { path: '/profile/:userUrlId?', component: Profile },
     { path: '/:userUrlId/:pollUrlId', component: Poll },
     { path: '/pages-maintenance', component: PagesMaintenance },
