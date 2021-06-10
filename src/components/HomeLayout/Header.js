@@ -41,21 +41,21 @@ const Header = (props) => {
                                 </span>
                             </Link>
                         </div>
-
-                        <form onSubmit={handleSubmit} className="app-search d-none d-lg-block">
-                            <div className="position-relative">
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="Search..."
-                                    onChange={(event) => {
-                                        setSearchTerm(event.target.value)
-                                    }}
-                                />
-                                <span className="bx bx-search-alt"></span>
-                            </div>
-                        </form>
                     </div>
+
+                    <form onSubmit={handleSubmit} className="app-search d-none d-lg-block">
+                        <div className="position-relative">
+                            <input
+                                type="text"
+                                className="form-control"
+                                placeholder="Search Polls..."
+                                onChange={(event) => {
+                                    setSearchTerm(event.target.value)
+                                }}
+                            />
+                            <span className="bx bx-search-alt"></span>
+                        </div>
+                    </form>
 
                     <div className="d-flex">
                         <div className="d-flex mr-2 align-items-center">
