@@ -179,7 +179,7 @@ const CreatePollModal = ({ poll, isShowing, toggle }) => {
                                         setValues({ ...values, status: 'Published' })
                                     }}
                                     color="primary"
-                                    disabled={isSubmitting || !touched || Object.keys(touched).length === 0}
+                                    disabled={isSubmitting}
                                 >
                                     {'Save & Publish'}
                                 </Button>
@@ -189,9 +189,9 @@ const CreatePollModal = ({ poll, isShowing, toggle }) => {
                                         setValues({ ...values, status: 'Draft' })
                                     }}
                                     color="primary"
-                                    disabled={isSubmitting || !touched || Object.keys(touched).length === 0}
+                                    disabled={isSubmitting}
                                 >
-                                    Save
+                                    Save Draft
                                 </Button>
                             </ModalFooter>
                         </Form>
