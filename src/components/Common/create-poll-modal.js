@@ -5,6 +5,7 @@ import { Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Col, Input
 import { Formik } from 'formik'
 import toastr from 'toastr'
 import TagSelect from './TagSelect'
+import OptionInput from './option-input'
 
 toastr.options = {
     positionClass: 'toast-top-center',
@@ -38,27 +39,6 @@ const CreatePollModal = ({ poll, isShowing, toggle }) => {
         status: poll?.status || 'Draft',
     }
 
-    const addOption = (values, setValues) => {
-        const options = [...values.options]
-        const lastOrder = options[options.length - 1].order
-        options.push({ text: '', order: lastOrder + 1 })
-        setValues({ ...values, options })
-    }
-
-    const removeOption = (values, setValues, order) => {
-        const newOptions = values.options
-            .filter((o) => o.order !== order)
-            .map((option) => {
-                if (option.order > order) {
-                    return { ...option, order: option.order - 1 }
-                } else {
-                    return option
-                }
-            })
-
-        setValues({ ...values, options: newOptions })
-    }
-
     if (error) {
         toastr.error(error.message)
         setError(null)
@@ -71,29 +51,6 @@ const CreatePollModal = ({ poll, isShowing, toggle }) => {
             toastr.success('Poll Updated.')
         }
         setData(null)
-    }
-
-    function validate(values) {
-        const errors = {}
-        if (!values.question) {
-            errors.question = 'Question required.'
-        } else if (values.question.trim().split(' ').length < 4) {
-            errors.question = 'Too few words.'
-        } else if (values.question.indexOf('?') === -1) {
-            errors.question = 'Question not valid.'
-        }
-
-        const nonEmptyOptions = values.options.filter((o) => o.text)
-        const optionSet = new Set()
-        nonEmptyOptions.forEach((option) => optionSet.add(option.text))
-
-        if (nonEmptyOptions.length < 2) {
-            errors.options = 'At least two options are required.'
-        } else if (optionSet.size < nonEmptyOptions.length) {
-            errors.options = 'Please remove duplicate options.'
-        }
-
-        return errors
     }
 
     const handleFormikSubmit = async (values, formikBag) => {
@@ -119,7 +76,7 @@ const CreatePollModal = ({ poll, isShowing, toggle }) => {
         <Modal isOpen={isShowing} role="dialog" autoFocus={true} tabIndex="-1" toggle={toggle}>
             <div className="modal-content">
                 <ModalHeader toggle={toggle}>Create a Poll</ModalHeader>
-                <Formik initialValues={initialValues} validate={validate} onSubmit={handleFormikSubmit}>
+                <Formik initialValues={initialValues} validate={validatePoll} onSubmit={handleFormikSubmit}>
                     {({ handleSubmit, handleChange, handleBlur, isSubmitting, touched, values, setValues, errors, handleReset }) => (
                         <Form onSubmit={handleSubmit} className="justify-content-center">
                             <ModalBody>
@@ -202,35 +159,48 @@ const CreatePollModal = ({ poll, isShowing, toggle }) => {
     ) : null
 }
 
-const OptionInput = ({ option, index, setOption, removeOption, isLastOption, addOption, handleChange, handleBlur }) => {
-    return (
-        <FormGroup className="mb-4" row>
-            <Col md="10" xs="10">
-                <Input
-                    type="text"
-                    name={`options.${index}.text`}
-                    value={option.text}
-                    placeholder={'Option ' + (index + 1)}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    className="form-control"
-                    autoComplete="off"
-                />
-            </Col>
-            <Col md="2" xs="2">
-                {!isLastOption && (
-                    <button type="button" className="inner btn btn-secondary" onClick={() => removeOption(option.order)}>
-                        <i className="bx bx-trash"></i>
-                    </button>
-                )}
-                {isLastOption && (
-                    <button type="button" className="inner btn btn-secondary" onClick={addOption}>
-                        <i className="bx bx-plus"></i>
-                    </button>
-                )}
-            </Col>
-        </FormGroup>
-    )
+const addOption = (values, setValues) => {
+    const options = [...values.options]
+    const lastOrder = options[options.length - 1].order
+    options.push({ text: '', order: lastOrder + 1 })
+    setValues({ ...values, options })
+}
+
+const removeOption = (values, setValues, order) => {
+    const newOptions = values.options
+        .filter((o) => o.order !== order)
+        .map((option) => {
+            if (option.order > order) {
+                return { ...option, order: option.order - 1 }
+            } else {
+                return option
+            }
+        })
+
+    setValues({ ...values, options: newOptions })
+}
+
+const validatePoll = (values) => {
+    const errors = {}
+    if (!values.question) {
+        errors.question = 'Question required.'
+    } else if (values.question.trim().split(' ').length < 4) {
+        errors.question = 'Too few words.'
+    } else if (values.question.indexOf('?') === -1) {
+        errors.question = 'Question not valid.'
+    }
+
+    const nonEmptyOptions = values.options.filter((o) => o.text)
+    const optionSet = new Set()
+    nonEmptyOptions.forEach((option) => optionSet.add(option.text))
+
+    if (nonEmptyOptions.length < 2) {
+        errors.options = 'At least two options are required.'
+    } else if (optionSet.size < nonEmptyOptions.length) {
+        errors.options = 'Please remove duplicate options.'
+    }
+
+    return errors
 }
 
 export const CREATE_POLL_QUERY = gql`
