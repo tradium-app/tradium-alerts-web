@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
 import { Button } from 'reactstrap'
+import toastr from 'toastr'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 
@@ -24,6 +25,14 @@ const Header = (props) => {
             props.history.push('/search?q=' + searchTerm)
         }
         event.preventDefault()
+    }
+
+    const createPollHandler = () => {
+        if (props.authUser) {
+            toggle()
+        } else {
+            toastr.error('Please Login to create Poll.')
+        }
     }
 
     return (
@@ -59,7 +68,7 @@ const Header = (props) => {
 
                     <div className="d-flex">
                         <div className="d-flex mr-2 align-items-center">
-                            <Button type="button" color="primary" onClick={toggle}>
+                            <Button type="button" color="primary" onClick={createPollHandler}>
                                 Create a Poll
                             </Button>
                             <CreatePollModal isShowing={isShowing} toggle={toggle} />
