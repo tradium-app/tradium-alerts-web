@@ -7,6 +7,7 @@ import gql from 'graphql-tag'
 import { Container, Row, Col } from 'reactstrap'
 
 // Pages Components
+import Intro from '../../components/Intro/Index'
 import TopPolls from '../../components/TopTrendingPolls/Index'
 import TopHashtags from '../../components/TopTrendingTags/Index'
 import PollCard from '../../components/Poll/PollCard'
@@ -29,6 +30,7 @@ const HomePage = ({ authUser }) => {
                                 data.getTopPolls.map((poll) => <PollCard key={poll._id} poll={poll} authUser={authUser} />)}
                         </Col>
                         <Col xl="4">
+                            {!authUser && <Intro />}
                             <TopPolls />
                             <TopHashtags />
                         </Col>

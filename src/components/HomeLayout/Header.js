@@ -3,17 +3,15 @@ import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
 import { Button } from 'reactstrap'
 import toastr from 'toastr'
-import firebase from 'firebase/app'
-import 'firebase/auth'
 
 import logoLightSm from '../../assets/images/logo-light-sm.svg'
 import logoLightLg from '../../assets/images/logo-light-lg.svg'
-
 import { loginUser, logoutUser } from '../../store/actions'
 import NotificationDropdown from '../Common/TopbarDropdown/NotificationDropdown'
 import ProfileMenu from '../Common/TopbarDropdown/ProfileMenu'
 import CreatePollModal from '../Common/create-poll-modal'
 import useModal from './useModal'
+import GoogleLoginDevPolls from '../Common/GoogleLoginDevPolls'
 
 const Header = (props) => {
     const { isShowing, toggle } = useModal()
@@ -31,7 +29,7 @@ const Header = (props) => {
         if (props.authUser) {
             toggle()
         } else {
-            toastr.error('Please Login to create Poll.')
+            toastr.error('Please login to create a poll.')
         }
     }
 
@@ -83,26 +81,6 @@ const Header = (props) => {
                 </div>
             </header>
         </React.Fragment>
-    )
-}
-
-const GoogleLoginDevPolls = (props) => {
-    const handleGoogleLogin = () => {
-        const googleAuthProvider = new firebase.auth.GoogleAuthProvider()
-        firebase
-            .auth()
-            .signInWithPopup(googleAuthProvider)
-            .then((response) => {
-                props.loginUser(response.credential.accessToken, props.history)
-            })
-    }
-
-    return (
-        <div className="d-lg-inline-block ml-1">
-            <button aria-haspopup="true" className="btn header-item waves-effect" onClick={handleGoogleLogin}>
-                {props.text}
-            </button>
-        </div>
     )
 }
 

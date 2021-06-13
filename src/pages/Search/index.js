@@ -50,7 +50,7 @@ const SearchPage = ({ authUser, searchPolls, searchPollsResult }) => {
 
 const mapStateToProps = (state) => {
     return {
-        authUser: state?.Search?.authUser,
+        authUser: state?.Login?.authUser,
         searchPollsResult: state?.SearchReducer?.searchPollsResult,
     }
 }
