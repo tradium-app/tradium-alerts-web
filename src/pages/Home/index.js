@@ -13,7 +13,7 @@ import TopHashtags from '../../components/TopTrendingTags/Index'
 import PollCard from '../../components/Poll/PollCard'
 
 const HomePage = ({ authUser }) => {
-    const { loading, error, data } = useQuery(GET_TOP_POLLS_QUERY)
+    const { loading, error, data } = useQuery(GET_TOP_POLLS_QUERY, { pollInterval: 30000 })
 
     return (
         <React.Fragment>

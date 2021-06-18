@@ -9,6 +9,11 @@ import { store, persistor } from './store'
 import { ApolloProvider } from '@apollo/client/react'
 import graphqlClient from './graphql-client'
 import './firebaseInit'
+import LogRocket from 'logrocket'
+import setupLogRocketReact from 'logrocket-react'
+
+LogRocket.init('kwnmph/devpolls')
+setupLogRocketReact(LogRocket)
 
 const app = (
     <ApolloProvider client={graphqlClient}>

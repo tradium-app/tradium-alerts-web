@@ -1,12 +1,10 @@
-import { takeEvery, fork, put, all, call } from 'redux-saga/effects'
+import { takeEvery, fork, put, all } from 'redux-saga/effects'
 import firebase from 'firebase/app'
-
-// Login Redux States
+import gql from 'graphql-tag'
+import LogRocket from 'logrocket'
 import { LOGIN_USER, LOGOUT_USER } from './actionTypes'
 import { loginSuccess, logoutUserSuccess, apiError } from './actions'
-
 import graphqlClient from '../../graphql-client'
-import gql from 'graphql-tag'
 
 function* loginUser({ payload: { accessToken, history } }) {
     try {
@@ -38,6 +36,10 @@ function* loginUser({ payload: { accessToken, history } }) {
                 localStorage.setItem('accessToken', result.data.loginUser.accessToken)
                 yield put(loginSuccess(authUser))
             }
+
+            LogRocket.identify(authUser.userUrlId, {
+                name: authUser.name,
+            })
         }
 
         history.push('/')
