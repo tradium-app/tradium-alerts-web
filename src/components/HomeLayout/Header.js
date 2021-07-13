@@ -55,7 +55,7 @@ const Header = (props) => {
                             <input
                                 type="text"
                                 className="form-control"
-                                placeholder="Search Polls..."
+                                placeholder="Search Stocks..."
                                 onChange={(event) => {
                                     setSearchTerm(event.target.value)
                                 }}

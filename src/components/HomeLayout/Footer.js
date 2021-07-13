@@ -7,10 +7,10 @@ const Footer = () => {
             <footer className="footer">
                 <Container fluid={true}>
                     <Row>
-                        <Col md={6}>{new Date().getFullYear()} © DevPolls</Col>
+                        <Col md={6}>{new Date().getFullYear()} © Tradium</Col>
                         <Col md={6}>
                             <a
-                                href="https://github.com/devpolls/devpolls-web/issues"
+                                href="https://github.com/tradium-app/swing-trade-alerts/issues"
                                 target="_blank"
                                 rel="noreferrer noopener"
                                 className="text-reset"
