@@ -24,8 +24,8 @@ const EcommerceCustomers = (props) => {
                         <Card>
                             <CardBody>
                                 <Row className="mb-2">
-                                    <Col sm="8"></Col>
-                                    <Col sm="4">
+                                    <Col sm="9"></Col>
+                                    <Col sm="3">
                                         <div className="position-relative">
                                             <input type="text" className="form-control" placeholder="Search Stocks..." />
                                         </div>

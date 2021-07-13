@@ -48,26 +48,26 @@ const Header = (props) => {
                                 </span>
                             </Link>
                         </div>
-                    </div>
 
-                    <form onSubmit={handleSubmit} className="app-search d-none d-lg-block">
-                        <div className="position-relative">
-                            <input
-                                type="text"
-                                className="form-control"
-                                placeholder="Search Stocks..."
-                                onChange={(event) => {
-                                    setSearchTerm(event.target.value)
-                                }}
-                            />
-                            <span className="bx bx-search-alt"></span>
-                        </div>
-                    </form>
+                        <form onSubmit={handleSubmit} className="app-search d-none d-lg-block">
+                            <div className="position-relative">
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="Search Stocks..."
+                                    onChange={(event) => {
+                                        setSearchTerm(event.target.value)
+                                    }}
+                                />
+                                <span className="bx bx-search-alt"></span>
+                            </div>
+                        </form>
+                    </div>
 
                     <div className="d-flex">
                         <div className="d-flex mr-2 align-items-center">
                             <Button type="button" color="primary" onClick={createPollHandler}>
-                                Create a Poll
+                                Create an Alert
                             </Button>
                             <CreatePollModal isShowing={isShowing} toggle={toggle} />
                         </div>

@@ -9,8 +9,8 @@ const IntroComponent = ({ loginUser }) => {
             <Card>
                 <CardBody className="bg-soft-primary">
                     <div className="text-primary">
-                        <h5 className="text-primary font-size-20">DevPolls</h5>
-                        <div className="font-size-16">It's a platform for developers to create short fun polls.</div>
+                        <h5 className="text-primary font-size-20">Swing Trade Alerts</h5>
+                        <div className="font-size-16">Create smart alerts for Swing Trading</div>
                     </div>
                 </CardBody>
             </Card>

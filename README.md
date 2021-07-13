@@ -1,4 +1,4 @@
-## DevPolls - fun polls for developers
+## Swing Trade Alerts
 
 [![Node CI](https://github.com/tradium-app/swing-trade-alerts/actions/workflows/node.js.yml/badge.svg)](https://github.com/tradium-app/swing-trade-alerts/actions/workflows/node.js.yml)
 [![DeepScan grade](https://deepscan.io/api/teams/5348/projects/17847/branches/423247/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=5348&pid=17847&bid=423247)

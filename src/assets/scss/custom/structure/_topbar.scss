@@ -51,7 +51,7 @@
 .app-search {
     flex: 1;
     max-width: 60%;
-    padding: calc(#{$header-height - 38px} / 2) 80px;
+    padding: calc(#{$header-height - 38px} / 2);
 
     .form-control {
         border: none;
