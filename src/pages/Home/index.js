@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Container, Row, Col, Card, CardBody, Table, Input, Badge } from 'reactstrap'
-
+import { Container, Row, Col, Card, CardBody, Table, Badge } from 'reactstrap'
 import img1 from '../../assets/images/poll.png'
+import SearchStock from '../../components/Common/SearchStock'
 
 const HomePage = (props) => {
     const handleSubmit = (event) => {
@@ -24,8 +24,7 @@ const HomePage = (props) => {
                                     <Col sm="3">
                                         <form onSubmit={handleSubmit} className="search-box mb-2">
                                             <div className="position-relative">
-                                                <Input type="text" className="form-control" placeholder="Search Stocks..." />
-                                                <i className="bx bx-search-alt search-icon"></i>
+                                                <SearchStock className="form-control" />
                                             </div>
                                         </form>
                                     </Col>
