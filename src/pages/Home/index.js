@@ -53,7 +53,9 @@ const HomePage = (props) => {
                                                             <img src={img1} alt="" className="avatar-xs img-thumbnail rounded-circle" />
                                                         </div>
                                                         <Media body>
-                                                            <h5 className="font-size-13 mb-1">TSLA</h5>
+                                                            <h5 className="font-size-13 mb-1">
+                                                                <Link to="/symbol/TSLA">TSLA</Link>
+                                                            </h5>
                                                             <p className="text-muted mb-1">Tesla</p>
                                                         </Media>
                                                     </Media>
