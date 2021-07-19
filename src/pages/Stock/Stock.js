@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { Container, Row, Col, Card, CardBody, CardTitle, Media, Table } from 'reactstrap'
 import { Helmet } from 'react-helmet'
 import { useParams } from 'react-router'
 import { useQuery } from '@apollo/client'
 import gql from 'graphql-tag'
-import { Container, Row, Col, Card, CardBody, CardTitle } from 'reactstrap'
 
 const Stock = ({ authUser }) => {
     let { symbol } = useParams()
@@ -36,8 +36,6 @@ const Stock = ({ authUser }) => {
         })
     }, [symbol])
 
-    const user = data?.getUserProfile
-
     return (
         <React.Fragment>
             <Helmet>
@@ -49,42 +47,103 @@ const Stock = ({ authUser }) => {
                         <Col xl="12">
                             <Card>
                                 <CardBody>
-                                    <CardTitle className="mb-4">{symbol}</CardTitle>
+                                    <Row>
+                                        <Col xl="3" sm="4">
+                                            <Media>
+                                                <div className="avatar-sm mr-3">
+                                                    <span className="avatar-title rounded-circle bg-soft-warning text-warning font-size-22">
+                                                        <i className="mdi mdi-bitcoin"></i>
+                                                    </span>
+                                                </div>
+
+                                                <Media body>
+                                                    <h4 className="card-title">{symbol}</h4>
+                                                    <h5>1.02356 BTC</h5>
+                                                </Media>
+                                            </Media>
+                                        </Col>
+
+                                        <Col xl="3" sm="4">
+                                            <div className="mt-4 mt-sm-0">
+                                                <p className="text-muted mb-2">Last 24 hrs</p>
+                                                <h5>
+                                                    0.24 % <i className="mdi mdi-arrow-up text-success"></i>
+                                                </h5>
+                                            </div>
+                                        </Col>
+                                    </Row>
+
                                     <div id="containerId" ref={containerId} className="m-4"></div>
                                 </CardBody>
                             </Card>
                         </Col>
-
+                    </Row>
+                    <Row>
                         <Col xl="4">
                             <Card className="overflow-hidden">
-                                <CardBody className="pt-0">
-                                    <Row>
-                                        <Col className="text-center">
-                                            <div className="avatar-xl mt-2 mb-2 d-inline-block">
-                                                <img src={user?.imageUrl} alt="" className="img-thumbnail rounded-circle" />
-                                            </div>
-                                            <h5 className="font-size-20 text-truncate">{user?.name}</h5>
-                                        </Col>
-                                    </Row>
-                                    <Row>
-                                        <Col>
-                                            <div className="text-center pt-4">
-                                                <Row>
-                                                    <Col xs="6">
-                                                        <h5 className="font-size-15">{user?.pollsCreated?.length}</h5>
-                                                        <p className="text-muted mb-0">Polls Created</p>
-                                                    </Col>
-                                                    <Col xs="6">
-                                                        <h5 className="font-size-15">0</h5>
-                                                        <p className="text-muted mb-0">Polls Answered</p>
-                                                    </Col>
-                                                </Row>
-                                                <Row className="mt-4 mb-4">
-                                                    <Col className="align-self-center text-center"></Col>
-                                                </Row>
-                                            </div>
-                                        </Col>
-                                    </Row>
+                                <CardBody>
+                                    <CardTitle className="mb-3">Capital Structure</CardTitle>
+
+                                    <div className="table-responsive">
+                                        <Table className="table mb-0">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Market Cap</td>
+                                                    <td>$ 1,857</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Total Debt</td>
+                                                    <td>- $ 157</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Cash</td>
+                                                    <td>$ 25</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Estimated Tax : </td>
+                                                    <td>$ 19.22</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Total :</th>
+                                                    <th>$ 1744.22</th>
+                                                </tr>
+                                            </tbody>
+                                        </Table>
+                                    </div>
+                                </CardBody>
+                            </Card>
+                        </Col>
+                        <Col xl="4">
+                            <Card className="overflow-hidden">
+                                <CardBody>
+                                    <CardTitle className="mb-3">Technical Indicators</CardTitle>
+
+                                    <div className="table-responsive">
+                                        <Table className="table mb-0">
+                                            <tbody>
+                                                <tr>
+                                                    <td>RSI</td>
+                                                    <td>OverSold</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>MACD</td>
+                                                    <td>OverSold</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Cash</td>
+                                                    <td>$ 25</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Estimated Tax : </td>
+                                                    <td>$ 19.22</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Total :</th>
+                                                    <th>$ 1744.22</th>
+                                                </tr>
+                                            </tbody>
+                                        </Table>
+                                    </div>
                                 </CardBody>
                             </Card>
                         </Col>
