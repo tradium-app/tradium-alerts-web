@@ -5,11 +5,8 @@ import img1 from '../../assets/images/poll.png'
 import SearchStock from '../../components/Common/SearchStock'
 
 const HomePage = (props) => {
-    const handleSubmit = (event) => {
-        // if (searchTerm) {
-        //     props.history.push('/search?q=' + searchTerm)
-        // }
-        event.preventDefault()
+    const handleSelect = (symbol) => {
+        props.history.push('/symbol/' + symbol.value)
     }
 
     return (
@@ -22,11 +19,9 @@ const HomePage = (props) => {
                                 <Row className="mb-2">
                                     <Col sm="9"></Col>
                                     <Col sm="3">
-                                        <form onSubmit={handleSubmit} className="search-box mb-2">
-                                            <div className="position-relative">
-                                                <SearchStock className="form-control" />
-                                            </div>
-                                        </form>
+                                        <div className="position-relative">
+                                            <SearchStock className="form-control mb-2" handleSelect={handleSelect} />
+                                        </div>
                                     </Col>
                                 </Row>
 

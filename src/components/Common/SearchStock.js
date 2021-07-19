@@ -14,16 +14,17 @@ const promiseOptions = (inputValue) => {
         })
 }
 
-export const SearchStock = () => {
+export const SearchStock = ({ handleSelect }) => {
     return (
         <AsyncSelect
             loadOptions={promiseOptions}
             placeholder="Search Stocks..."
             isClearable
-            onChange={(value) => {
-                console.log('printing value from onchange', value)
+            onChange={handleSelect}
+            components={{
+                DropdownIndicator: () => null,
+                IndicatorSeparator: () => null,
             }}
-            components={{ DropdownIndicator: () => null, IndicatorSeparator: () => null }}
         />
     )
 }
