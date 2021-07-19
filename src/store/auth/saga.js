@@ -14,10 +14,8 @@ function* loginUser({ payload: { accessToken, history } }) {
                     loginUser(accessToken: $accessToken) {
                         success
                         message
-                        accessToken
                         user {
-                            _id
-                            userUrlId
+                            id
                             name
                             imageUrl
                         }

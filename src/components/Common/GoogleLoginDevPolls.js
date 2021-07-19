@@ -7,8 +7,13 @@ const GoogleLoginDevPolls = (props) => {
         firebase
             .auth()
             .signInWithPopup(googleAuthProvider)
-            .then((response) => {
-                props.loginUser(response.credential.accessToken, props.history)
+            .then(() => {
+                firebase
+                    .auth()
+                    .currentUser.getIdToken()
+                    .then((idToken) => {
+                        props.loginUser(idToken, props.history)
+                    })
             })
     }
 
