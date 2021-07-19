@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { Container, Row, Col, Card, CardBody, CardTitle, Media, Table } from 'reactstrap'
+import { Container, Row, Col, Card, CardBody, CardTitle, Media, Table, Button } from 'reactstrap'
 import { Helmet } from 'react-helmet'
 import { useParams } from 'react-router'
 import { useQuery } from '@apollo/client'
@@ -48,7 +48,7 @@ const Stock = ({ authUser }) => {
                             <Card>
                                 <CardBody>
                                     <Row>
-                                        <Col xl="3" sm="4">
+                                        <Col xl="3" sm="3">
                                             <Media>
                                                 <div className="avatar-sm mr-3">
                                                     <span className="avatar-title rounded-circle bg-soft-warning text-warning font-size-22">
@@ -63,12 +63,28 @@ const Stock = ({ authUser }) => {
                                             </Media>
                                         </Col>
 
-                                        <Col xl="3" sm="4">
+                                        <Col xl="3" sm="3">
                                             <div className="mt-4 mt-sm-0">
                                                 <p className="text-muted mb-2">Last 24 hrs</p>
                                                 <h5>
                                                     0.24 % <i className="mdi mdi-arrow-up text-success"></i>
                                                 </h5>
+                                            </div>
+                                        </Col>
+
+                                        <Col xl="3" sm="3"></Col>
+
+                                        <Col xl="3" sm="3">
+                                            <div className="float-right mt-3">
+                                                <Button
+                                                    type="button"
+                                                    color="primary"
+                                                    onClick={() => {
+                                                        alert('not yet')
+                                                    }}
+                                                >
+                                                    Add to WatchList
+                                                </Button>
                                             </div>
                                         </Col>
                                     </Row>
