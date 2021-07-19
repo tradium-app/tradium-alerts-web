@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
@@ -19,9 +19,9 @@ const Stock = ({ authUser }) => {
 
     useEffect(() => {
         containerId.current = new window.TradingView.widget({
-            width: 980,
-            height: 610,
-            symbol: 'NASDAQ:AAPL',
+            width: containerId.current.clientWidth,
+            height: containerId.current.clientHeight,
+            symbol: symbol,
             interval: 'D',
             timezone: 'Etc/UTC',
             theme: 'light',
@@ -34,20 +34,7 @@ const Stock = ({ authUser }) => {
             studies: ['RSI@tv-basicstudies'],
             container_id: 'containerId',
         })
-        console.log('printing containerId.current', containerId.current)
-        // setCandleSeries(containerId.current.addCandlestickSeries(candleSeriesOptions))
-
-        // const volSeries = containerId.current.addHistogramSeries(volumeSeriesOptions)
-        // setVolumeSeries(volSeries)
-
-        // const emaSeries = containerId.current.addLineSeries(emaSeriesOptions)
-        // setEmaSeries(emaSeries)
-
-        // const rsiSeries = containerId.current.addLineSeries(rsiSeriesOptions)
-        // setRsiSeries(rsiSeries)
-
-        // containerId.current.timeScale().applyOptions({ rightOffset: 15 })
-    }, [])
+    }, [symbol])
 
     const user = data?.getUserProfile
 
