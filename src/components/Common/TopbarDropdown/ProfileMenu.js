@@ -16,15 +16,6 @@ const ProfileMenu = ({ authUser, logoutUser, history }) => {
                     <i className="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </DropdownToggle>
                 <DropdownMenu right>
-                    <Link className="dropdown-item" to={'/profile/' + authUser.userUrlId}>
-                        <i className="bx bx-user font-size-16 align-middle mr-1"></i>
-                        {'Profile'}
-                    </Link>
-                    <Link className="dropdown-item" to="/settings">
-                        <i className="bx bx-cog font-size-16 align-middle mr-1"></i>
-                        {'Settings'}
-                    </Link>
-                    <div className="dropdown-divider"></div>
                     <Link onClick={() => logoutUser(history)} className="dropdown-item btn-primary" to="#">
                         <i className="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i>
                         <span>{'Logout'}</span>

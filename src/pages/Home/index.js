@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Container, Row, Col, Card, CardBody, Table, Badge } from 'reactstrap'
+import { Container, Row, Col, Card, CardBody, Table, Badge, Media } from 'reactstrap'
 import img1 from '../../assets/images/poll.png'
 import SearchStock from '../../components/Common/SearchStock'
 
@@ -48,7 +48,15 @@ const HomePage = (props) => {
                                         <tbody>
                                             <tr>
                                                 <td>
-                                                    <img src={img1} alt="" className="avatar-sm img-thumbnail rounded-circle" />
+                                                    <Media className="mb-4">
+                                                        <div className="mr-3">
+                                                            <img src={img1} alt="" className="avatar-xs img-thumbnail rounded-circle" />
+                                                        </div>
+                                                        <Media body>
+                                                            <h5 className="font-size-13 mb-1">TSLA</h5>
+                                                            <p className="text-muted mb-1">Tesla</p>
+                                                        </Media>
+                                                    </Media>
                                                 </td>
                                                 <td>22.33</td>
                                                 <td>3.44</td>
