@@ -1,21 +1,31 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Container, Row, Col, Card, CardBody, CardTitle, Media, Table, Button } from 'reactstrap'
+import toastr from 'toastr'
 import { Helmet } from 'react-helmet'
 import { useParams } from 'react-router'
-import { useQuery } from '@apollo/client'
+import { useMutation, useQuery } from '@apollo/client'
 import gql from 'graphql-tag'
 
 const Stock = ({ authUser }) => {
     let { symbol } = useParams()
     symbol = symbol.toUpperCase()
-
     const containerId = useRef(null)
-
     const { loading, error, data } = useQuery(GET_STOCK_PROFILE_QUERY, {
         variables: { symbol },
     })
+
+    const [addStockError, setAddStockError] = useState(null)
+    const [addStockResponse, setAddStockResponse] = useState(null)
+    const [addStock] = useMutation(ADD_STOCK_MUTATION, {
+        onError: setAddStockError,
+        onCompleted: setAddStockResponse,
+    })
+
+    if (addStockResponse?.addStock?.success) {
+        toastr.success('Stock added to the WatchList.')
+    }
 
     useEffect(() => {
         containerId.current = new window.TradingView.widget({
@@ -80,7 +90,7 @@ const Stock = ({ authUser }) => {
                                                     type="button"
                                                     color="primary"
                                                     onClick={() => {
-                                                        alert('not yet')
+                                                        addStock({ variables: { symbol } })
                                                     }}
                                                 >
                                                     Add to WatchList
@@ -169,6 +179,15 @@ const Stock = ({ authUser }) => {
         </React.Fragment>
     )
 }
+
+export const ADD_STOCK_MUTATION = gql`
+    mutation addStock($symbol: String) {
+        addStock(symbol: $symbol) {
+            success
+            message
+        }
+    }
+`
 
 export const GET_STOCK_PROFILE_QUERY = gql`
     query getStockProfile($symbol: String) {
