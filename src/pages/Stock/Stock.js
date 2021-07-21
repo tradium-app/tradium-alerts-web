@@ -99,7 +99,7 @@ const Stock = ({ authUser }) => {
                                         </Col>
                                     </Row>
 
-                                    <div id="containerId" ref={containerId} className="m-4"></div>
+                                    <div id="containerId" ref={containerId} className="m-4 align-items-center"></div>
                                 </CardBody>
                             </Card>
                         </Col>

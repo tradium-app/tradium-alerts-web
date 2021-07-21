@@ -43,7 +43,7 @@ const HomePage = (props) => {
                                                 <th></th>
                                             </tr>
                                         </thead>
-                                        <tbody>{data && !error && !loading && data.getWatchList.map(createWatchListRow)}</tbody>
+                                        <tbody>{data && !error && !loading && data.getWatchList?.map(createWatchListRow)}</tbody>
                                     </Table>
                                 </div>
                             </CardBody>
