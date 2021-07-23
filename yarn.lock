@@ -10106,6 +10106,11 @@ react-app-polyfill@^2.0.0:
     regenerator-runtime "^0.13.7"
     whatwg-fetch "^3.4.1"
 
+react-bootstrap-wizard@^0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/react-bootstrap-wizard/-/react-bootstrap-wizard-0.0.9.tgz#548a8de045fa8c3709e015e5035ae7f4484b60dc"
+  integrity sha512-AQNJzihrSs4wZKFp8qc9A5ZJssLF/c5y4iAyxWUQHQojdnsQ4oLsMEoJiWJsuDz1rxLwSB8ScyZsJ1NLSUiU1w==
+
 react-dev-utils@^11.0.3:
   version "11.0.4"
   resolved "https://npm.devergage.com/react-dev-utils/-/react-dev-utils-11.0.4.tgz#a7ccb60257a1ca2e0efe7a83e38e6700d17aa37a"

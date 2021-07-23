@@ -29,7 +29,7 @@ const Stock = ({ authUser }) => {
 
     useEffect(() => {
         containerId.current = new window.TradingView.widget({
-            width: containerId.current.clientWidth,
+            width: containerId.current.clientWidth - 8,
             height: containerId.current.clientHeight,
             symbol: symbol,
             interval: 'D',

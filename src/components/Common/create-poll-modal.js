@@ -4,8 +4,7 @@ import { useMutation } from '@apollo/client'
 import { Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Col, Input, Button, FormFeedback, Label } from 'reactstrap'
 import { Formik } from 'formik'
 import toastr from 'toastr'
-import TagSelect from './TagSelect'
-import OptionInput from './option-input'
+import ReactWizard from 'react-bootstrap-wizard'
 
 toastr.options = {
     positionClass: 'toast-top-center',
@@ -13,6 +12,57 @@ toastr.options = {
     preventDuplicates: true,
     newestOnTop: true,
 }
+
+const FirstStep = React.forwardRef((props, ref) => {
+    const [randomState, setRandomState] = React.useState('1. This is a random state for first step.')
+    React.useImperativeHandle(ref, () => ({
+        isValidated: undefined,
+        state: {
+            randomState,
+        },
+    }))
+    return <div>Hey from First</div>
+})
+
+const SecondStep = React.forwardRef((props, ref) => {
+    const [randomState, setRandomState] = React.useState('2. This is a random state for second step.')
+    const isValidated = () => {
+        // do some validations
+        // decide if you will
+        return true
+        // or you will
+        // return false;
+    }
+    React.useImperativeHandle(ref, () => ({
+        isValidated: () => {
+            return isValidated()
+        },
+        state: {
+            randomState,
+        },
+    }))
+    return <div>Hey from Second</div>
+})
+
+const ThirdStep = React.forwardRef((props, ref) => {
+    const [randomState, setRandomState] = React.useState('3. This is a random state for third step.')
+    React.useImperativeHandle(ref, () => ({
+        isValidated: undefined,
+        state: {
+            randomState,
+        },
+    }))
+    return <div>Hey from Third</div>
+})
+
+var steps = [
+    // this step hasn't got a isValidated() function, so it will be considered to be true
+    { stepName: 'Select Alert Type', component: FirstStep },
+    // this step will be validated to false
+    { stepName: 'Second', component: SecondStep },
+    // this step will never be reachable because of the seconds isValidated() steps function that will always return false
+    { stepName: 'Third', component: ThirdStep },
+]
 
 const CreatePollModal = ({ poll, isShowing, toggle }) => {
     const [error, setError] = useState(null)
@@ -72,112 +122,24 @@ const CreatePollModal = ({ poll, isShowing, toggle }) => {
         toggle()
     }
 
+    const finishButtonClick = (allStates) => {
+        console.log(allStates)
+    }
+
     return isShowing ? (
-        <Modal isOpen={isShowing} role="dialog" autoFocus={true} tabIndex="-1" toggle={toggle}>
+        <Modal isOpen={isShowing} role="dialog" autoFocus={true} tabIndex="-1" toggle={toggle} size="lg">
             <div className="modal-content">
-                <ModalHeader toggle={toggle}>Create a Poll</ModalHeader>
+                <ModalHeader toggle={toggle}>Add an Alert for a Stock</ModalHeader>
                 <Formik initialValues={initialValues} validate={validatePoll} onSubmit={handleFormikSubmit}>
                     {({ handleSubmit, handleChange, handleBlur, isSubmitting, touched, values, setValues, errors, handleReset }) => (
-                        <Form onSubmit={handleSubmit} className="justify-content-center">
-                            <ModalBody>
-                                <FormGroup className="mb-4 justify-content-center" row>
-                                    <Col xl="12" md="12">
-                                        <Input
-                                            id="question"
-                                            value={values.question}
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}
-                                            type="textarea"
-                                            className="form-control font-size-16"
-                                            placeholder="Start with a Question"
-                                            rows="3"
-                                            invalid={!!(touched.question && errors.question)}
-                                        />
-                                        <FormFeedback>{errors.question}</FormFeedback>
-                                    </Col>
-                                </FormGroup>
-                                {values.options
-                                    .slice()
-                                    .sort((a, b) => a - b)
-                                    .map((option, index) => (
-                                        <OptionInput
-                                            option={option}
-                                            index={index}
-                                            removeOption={(order) => removeOption(values, setValues, order)}
-                                            addOption={() => addOption(values, setValues)}
-                                            key={index}
-                                            isLastOption={index === values.options.length - 1}
-                                            handleChange={handleChange}
-                                            handleBlur={handleBlur}
-                                        />
-                                    ))}
-                                {errors && errors.options && touched.options && <div className="invalid-feedback d-block">{errors.options}</div>}
-                                <FormGroup className="mb-4 justify-content-center" row>
-                                    <Col xl="12" md="12">
-                                        <Label htmlFor="tags">Tags</Label>
-                                        <div className="templating-select select2-container">
-                                            <TagSelect id="tags" name="tags" value={values.tags} />
-                                        </div>
-                                    </Col>
-                                </FormGroup>
-                            </ModalBody>
-                            <ModalFooter>
-                                <Button
-                                    type="button"
-                                    color="secondary"
-                                    onClick={handleReset}
-                                    disabled={isSubmitting || !touched || Object.keys(touched).length === 0}
-                                >
-                                    Reset
-                                </Button>
-                                <Button
-                                    type="submit"
-                                    onClick={() => {
-                                        setValues({ ...values, status: 'Published' })
-                                    }}
-                                    color="primary"
-                                    disabled={isSubmitting}
-                                >
-                                    {'Save & Publish'}
-                                </Button>
-                                <Button
-                                    type="submit"
-                                    onClick={() => {
-                                        setValues({ ...values, status: 'Draft' })
-                                    }}
-                                    color="primary"
-                                    disabled={isSubmitting}
-                                >
-                                    Save Draft
-                                </Button>
-                            </ModalFooter>
-                        </Form>
+                        <form onSubmit={handleSubmit} className="justify-content-center">
+                            <ReactWizard steps={steps} navSteps headerTextCenter validate color="primary" finishButtonClick={finishButtonClick} />
+                        </form>
                     )}
                 </Formik>
             </div>
         </Modal>
     ) : null
-}
-
-const addOption = (values, setValues) => {
-    const options = [...values.options]
-    const lastOrder = options[options.length - 1].order
-    options.push({ text: '', order: lastOrder + 1 })
-    setValues({ ...values, options })
-}
-
-const removeOption = (values, setValues, order) => {
-    const newOptions = values.options
-        .filter((o) => o.order !== order)
-        .map((option) => {
-            if (option.order > order) {
-                return { ...option, order: option.order - 1 }
-            } else {
-                return option
-            }
-        })
-
-    setValues({ ...values, options: newOptions })
 }
 
 const validatePoll = (values) => {
