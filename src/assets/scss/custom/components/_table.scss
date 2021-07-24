@@ -1,22 +1,31 @@
-// 
+//
 // _table.scss
-// 
+//
 
 .table {
-  th {
-      font-weight: $font-weight-bold;
-  }
+    th {
+        font-weight: $font-weight-bold;
+    }
+
+    tr {
+        &:hover {
+            background: $gray-300;
+            transition-duration: 0.05s;
+        }
+    }
 }
 
 //Table centered
 .table-centered {
-  td,th {
-      vertical-align: middle !important;
-  }
+    td,
+    th {
+        vertical-align: middle !important;
+    }
 }
 
 .table-nowrap {
-  th, td {
-    white-space: nowrap;
-  }
+    th,
+    td {
+        white-space: nowrap;
+    }
 }

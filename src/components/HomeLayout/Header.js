@@ -9,7 +9,7 @@ import logoLightLg from '../../assets/images/logo-light-lg.svg'
 import { loginUser, logoutUser } from '../../store/actions'
 import NotificationDropdown from '../Common/TopbarDropdown/NotificationDropdown'
 import ProfileMenu from '../Common/TopbarDropdown/ProfileMenu'
-import CreatePollModal from '../Common/create-poll-modal'
+import CreateAlertModal from '../Common/create-alert-modal'
 import useModal from './useModal'
 import GoogleLoginDevPolls from '../Common/GoogleLoginDevPolls'
 
@@ -69,7 +69,7 @@ const Header = (props) => {
                             <Button type="button" color="primary" onClick={createPollHandler}>
                                 Create an Alert
                             </Button>
-                            <CreatePollModal isShowing={isShowing} toggle={toggle} />
+                            <CreateAlertModal isShowing={isShowing} toggle={toggle} />
                         </div>
 
                         {!isUserLoggedIn && <GoogleLoginDevPolls text="Sign Up" {...props} />}
