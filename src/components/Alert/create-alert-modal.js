@@ -11,7 +11,6 @@ import {
     Col,
     Input,
     Button,
-    FormFeedback,
     Label,
     TabPane,
     Row,
@@ -23,6 +22,7 @@ import { Formik } from 'formik'
 import toastr from 'toastr'
 import classnames from 'classnames'
 import { Link } from 'react-router-dom'
+import AlertType from './Components/alert-type'
 
 toastr.options = {
     positionClass: 'toast-top-center',
@@ -31,58 +31,7 @@ toastr.options = {
     newestOnTop: true,
 }
 
-const FirstStep = React.forwardRef((props, ref) => {
-    const [randomState, setRandomState] = React.useState('1. This is a random state for first step.')
-    React.useImperativeHandle(ref, () => ({
-        isValidated: undefined,
-        state: {
-            randomState,
-        },
-    }))
-    return <div>Hey from First</div>
-})
-
-const SecondStep = React.forwardRef((props, ref) => {
-    const [randomState, setRandomState] = React.useState('2. This is a random state for second step.')
-    const isValidated = () => {
-        // do some validations
-        // decide if you will
-        return true
-        // or you will
-        // return false;
-    }
-    React.useImperativeHandle(ref, () => ({
-        isValidated: () => {
-            return isValidated()
-        },
-        state: {
-            randomState,
-        },
-    }))
-    return <div>Hey from Second</div>
-})
-
-const ThirdStep = React.forwardRef((props, ref) => {
-    const [randomState, setRandomState] = React.useState('3. This is a random state for third step.')
-    React.useImperativeHandle(ref, () => ({
-        isValidated: undefined,
-        state: {
-            randomState,
-        },
-    }))
-    return <div>Hey from Third</div>
-})
-
-var steps = [
-    // this step hasn't got a isValidated() function, so it will be considered to be true
-    { stepName: 'Select Alert Type', component: FirstStep },
-    // this step will be validated to false
-    { stepName: 'Second', component: SecondStep },
-    // this step will never be reachable because of the seconds isValidated() steps function that will always return false
-    { stepName: 'Third', component: ThirdStep },
-]
-
-const CreatePollModal = ({ poll, isShowing, toggle }) => {
+const CreateAlertModal = ({ poll, isShowing, toggle }) => {
     const [error, setError] = useState(null)
     const [data, setData] = useState(null)
 
@@ -140,39 +89,12 @@ const CreatePollModal = ({ poll, isShowing, toggle }) => {
         toggle()
     }
 
-    const finishButtonClick = (allStates) => {
-        console.log(allStates)
-    }
-
     const [activeTab, setactiveTab] = useState(1)
-    const [activeTabProgress, setactiveTabProgress] = useState(1)
-    const [progressValue, setprogressValue] = useState(25)
 
     function toggleTab(tab) {
         if (activeTab !== tab) {
             if (tab >= 1 && tab <= 4) {
                 setactiveTab(tab)
-            }
-        }
-    }
-
-    function toggleTabProgress(tab) {
-        if (activeTabProgress !== tab) {
-            if (tab >= 1 && tab <= 4) {
-                setactiveTabProgress(tab)
-
-                if (tab === 1) {
-                    setprogressValue(25)
-                }
-                if (tab === 2) {
-                    setprogressValue(50)
-                }
-                if (tab === 3) {
-                    setprogressValue(75)
-                }
-                if (tab === 4) {
-                    setprogressValue(100)
-                }
             }
         }
     }
@@ -224,43 +146,11 @@ const CreatePollModal = ({ poll, isShowing, toggle }) => {
                                     <TabContent activeTab={activeTab} className="twitter-bs-wizard-tab-content">
                                         <TabPane tabId={1}>
                                             <Form>
-                                                <Row>
-                                                    <Col lg="6">
-                                                        <FormGroup>
-                                                            <Label for="basicpill-firstname-input1">First name</Label>
-                                                            <Input type="text" className="form-control" id="basicpill-firstname-input1" />
-                                                        </FormGroup>
-                                                    </Col>
-                                                    <Col lg="6">
-                                                        <FormGroup>
-                                                            <Label for="basicpill-lastname-input2">Last name</Label>
-                                                            <Input type="text" className="form-control" id="basicpill-lastname-input2" />
-                                                        </FormGroup>
-                                                    </Col>
-                                                </Row>
-
-                                                <Row>
-                                                    <Col lg="6">
-                                                        <FormGroup>
-                                                            <Label for="basicpill-phoneno-input3">Phone</Label>
-                                                            <Input type="text" className="form-control" id="basicpill-phoneno-input3" />
-                                                        </FormGroup>
-                                                    </Col>
-                                                    <Col lg="6">
-                                                        <FormGroup>
-                                                            <Label for="basicpill-email-input4">Email</Label>
-                                                            <Input type="email" className="form-control" id="basicpill-email-input4" />
-                                                        </FormGroup>
-                                                    </Col>
-                                                </Row>
-                                                <Row>
-                                                    <Col lg="12">
-                                                        <FormGroup>
-                                                            <Label for="basicpill-address-input1">Address</Label>
-                                                            <textarea id="basicpill-address-input1" className="form-control" rows="2"></textarea>
-                                                        </FormGroup>
-                                                    </Col>
-                                                </Row>
+                                                <AlertType
+                                                    handleSelect={() => {
+                                                        toggleTab(activeTab + 1)
+                                                    }}
+                                                />
                                             </Form>
                                         </TabPane>
                                         <TabPane tabId={2}>
@@ -343,14 +233,14 @@ const CreatePollModal = ({ poll, isShowing, toggle }) => {
                                             </Link>
                                         </li>
                                         <li className={activeTab === 3 ? 'next disabled' : 'next'}>
-                                            <Link
-                                                to="#"
+                                            <Button
                                                 onClick={() => {
                                                     toggleTab(activeTab + 1)
                                                 }}
+                                                color="primary"
                                             >
                                                 Next
-                                            </Link>
+                                            </Button>
                                         </li>
                                     </ul>
                                 </div>
@@ -404,4 +294,4 @@ export const UPDATE_POLL_QUERY = gql`
     }
 `
 
-export default CreatePollModal
+export default CreateAlertModal
