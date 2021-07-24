@@ -1,28 +1,14 @@
 import React, { useState } from 'react'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/client'
-import {
-    Modal,
-    ModalHeader,
-    ModalBody,
-    ModalFooter,
-    Form,
-    FormGroup,
-    Col,
-    Input,
-    Button,
-    Label,
-    TabPane,
-    Row,
-    NavItem,
-    NavLink,
-    TabContent,
-} from 'reactstrap'
+import { Modal, ModalHeader, ModalBody, Form, Button, TabPane, NavItem, NavLink, TabContent } from 'reactstrap'
 import { Formik } from 'formik'
 import toastr from 'toastr'
 import classnames from 'classnames'
 import { Link } from 'react-router-dom'
 import AlertType from './Components/alert-type'
+import RsiConfig from './Components/rsi-config'
+import ConfirmAlert from './Components/confirm-alert'
 
 toastr.options = {
     positionClass: 'toast-top-center',
@@ -154,70 +140,10 @@ const CreateAlertModal = ({ poll, isShowing, toggle }) => {
                                             </Form>
                                         </TabPane>
                                         <TabPane tabId={2}>
-                                            <div>
-                                                <Form>
-                                                    <Row>
-                                                        <Col lg="6">
-                                                            <FormGroup>
-                                                                <Label for="basicpill-pancard-input5">PAN Card</Label>
-                                                                <Input type="text" className="form-control" id="basicpill-pancard-input5" />
-                                                            </FormGroup>
-                                                        </Col>
-
-                                                        <Col lg="6">
-                                                            <FormGroup>
-                                                                <Label for="basicpill-vatno-input6">VAT/TIN No.</Label>
-                                                                <Input type="text" className="form-control" id="basicpill-vatno-input6" />
-                                                            </FormGroup>
-                                                        </Col>
-                                                    </Row>
-                                                    <Row>
-                                                        <Col lg="6">
-                                                            <FormGroup>
-                                                                <Label for="basicpill-cstno-input7">CST No.</Label>
-                                                                <Input type="text" className="form-control" id="basicpill-cstno-input7" />
-                                                            </FormGroup>
-                                                        </Col>
-
-                                                        <Col lg="6">
-                                                            <FormGroup>
-                                                                <Label for="basicpill-servicetax-input8">Service Tax No.</Label>
-                                                                <Input type="text" className="form-control" id="basicpill-servicetax-input8" />
-                                                            </FormGroup>
-                                                        </Col>
-                                                    </Row>
-                                                    <Row>
-                                                        <Col lg="6">
-                                                            <FormGroup>
-                                                                <Label for="basicpill-companyuin-input9">Company UIN</Label>
-                                                                <Input type="text" className="form-control" id="basicpill-companyuin-input9" />
-                                                            </FormGroup>
-                                                        </Col>
-
-                                                        <Col lg="6">
-                                                            <FormGroup>
-                                                                <Label for="basicpill-declaration-input10">Declaration</Label>
-                                                                <Input type="text" className="form-control" id="basicpill-Declaration-input10" />
-                                                            </FormGroup>
-                                                        </Col>
-                                                    </Row>
-                                                </Form>
-                                            </div>
+                                            <RsiConfig />
                                         </TabPane>
                                         <TabPane tabId={3}>
-                                            <div className="row justify-content-center">
-                                                <Col lg="6">
-                                                    <div className="text-center">
-                                                        <div className="mb-4">
-                                                            <i className="mdi mdi-check-circle-outline text-success display-4"></i>
-                                                        </div>
-                                                        <div>
-                                                            <h5>Confirm Detail</h5>
-                                                            <p className="text-muted">If several languages coalesce, the grammar of the resulting</p>
-                                                        </div>
-                                                    </div>
-                                                </Col>
-                                            </div>
+                                            <ConfirmAlert />
                                         </TabPane>
                                     </TabContent>
 
