@@ -20,13 +20,14 @@ toastr.options = {
 const CreateAlertModal = ({ poll, isShowing, toggle }) => {
     const [error, setError] = useState(null)
     const [data, setData] = useState(null)
+    const [activeTab, setactiveTab] = useState(1)
 
-    const [createPollMutate] = useMutation(CREATE_POLL_QUERY, {
+    const [addAlertMutate] = useMutation(ADD_ALERT_MUTATION, {
         onError: setError,
         onCompleted: setData,
     })
 
-    const [updatePollMutate] = useMutation(UPDATE_POLL_QUERY, {
+    const [updateAlertMutate] = useMutation(UPDATE_ALERT_MUTATION, {
         onError: setError,
         onCompleted: setData,
     })
@@ -58,15 +59,15 @@ const CreateAlertModal = ({ poll, isShowing, toggle }) => {
 
     const handleFormikSubmit = async (values, formikBag) => {
         if (!values._id) {
-            await createPollMutate({
+            await addAlertMutate({
                 variables: {
-                    pollInput: values,
+                    alertInput: values,
                 },
             })
         } else {
-            await updatePollMutate({
+            await updateAlertMutate({
                 variables: {
-                    pollInput: values,
+                    alertInput: values,
                 },
             })
         }
@@ -74,8 +75,6 @@ const CreateAlertModal = ({ poll, isShowing, toggle }) => {
         formikBag.resetForm()
         toggle()
     }
-
-    const [activeTab, setactiveTab] = useState(1)
 
     function toggleTab(tab) {
         if (activeTab !== tab) {
@@ -90,9 +89,9 @@ const CreateAlertModal = ({ poll, isShowing, toggle }) => {
             <div className="modal-content twitter-bs-wizard">
                 <ModalHeader toggle={toggle}>Add an Alert for a Stock</ModalHeader>
                 <ModalBody>
-                    <Formik initialValues={initialValues} validate={validatePoll} onSubmit={handleFormikSubmit}>
+                    <Formik initialValues={initialValues} validate={validateAlert} onSubmit={handleFormikSubmit}>
                         {({ handleSubmit, handleChange, handleBlur, isSubmitting, touched, values, setValues, errors, handleReset }) => (
-                            <form onSubmit={handleSubmit} className="justify-content-center wizard-card">
+                            <Form onSubmit={handleSubmit} className="justify-content-center wizard-card">
                                 <div id="basic-pills-wizard" className="twitter-bs-wizard">
                                     <ul className="twitter-bs-wizard-nav nav nav-pills nav-justified">
                                         <NavItem>
@@ -124,20 +123,18 @@ const CreateAlertModal = ({ poll, isShowing, toggle }) => {
                                                     setactiveTab(3)
                                                 }}
                                             >
-                                                <span className="step-number mr-2">04</span>
-                                                Set Notifications
+                                                <span className="step-number mr-2">03</span>
+                                                Summary
                                             </NavLink>
                                         </NavItem>
                                     </ul>
                                     <TabContent activeTab={activeTab} className="twitter-bs-wizard-tab-content">
                                         <TabPane tabId={1}>
-                                            <Form>
-                                                <AlertType
-                                                    handleSelect={() => {
-                                                        toggleTab(activeTab + 1)
-                                                    }}
-                                                />
-                                            </Form>
+                                            <AlertType
+                                                handleSelect={() => {
+                                                    toggleTab(activeTab + 1)
+                                                }}
+                                            />
                                         </TabPane>
                                         <TabPane tabId={2}>
                                             <RsiConfig />
@@ -158,19 +155,33 @@ const CreateAlertModal = ({ poll, isShowing, toggle }) => {
                                                 Previous
                                             </Link>
                                         </li>
-                                        <li className={activeTab === 3 ? 'next disabled' : 'next'}>
-                                            <Button
-                                                onClick={() => {
-                                                    toggleTab(activeTab + 1)
-                                                }}
-                                                color="primary"
-                                            >
-                                                Next
-                                            </Button>
+                                        <li className={'next'}>
+                                            {activeTab < 3 ? (
+                                                <Button
+                                                    onClick={() => {
+                                                        toggleTab(activeTab + 1)
+                                                    }}
+                                                    color="primary"
+                                                >
+                                                    {'Next'}
+                                                </Button>
+                                            ) : (
+                                                <Button
+                                                    type="submit"
+                                                    onClick={() => {
+                                                        console.log('printing submit')
+                                                        setValues({ ...values, status: 'Published' })
+                                                    }}
+                                                    color="primary"
+                                                    disabled={isSubmitting}
+                                                >
+                                                    {'Add Alert'}
+                                                </Button>
+                                            )}
                                         </li>
                                     </ul>
                                 </div>
-                            </form>
+                            </Form>
                         )}
                     </Formik>
                 </ModalBody>
@@ -179,7 +190,7 @@ const CreateAlertModal = ({ poll, isShowing, toggle }) => {
     ) : null
 }
 
-const validatePoll = (values) => {
+const validateAlert = (values) => {
     const errors = {}
     if (!values.question) {
         errors.question = 'Question required.'
@@ -199,21 +210,22 @@ const validatePoll = (values) => {
         errors.options = 'Please remove duplicate options.'
     }
 
-    return errors
+    // return errors
+    return {}
 }
 
-export const CREATE_POLL_QUERY = gql`
-    mutation createPoll($pollInput: PollInput!) {
-        createPoll(pollInput: $pollInput) {
+export const ADD_ALERT_MUTATION = gql`
+    mutation addAlert($alertInput: AlertInput!) {
+        addAlert(alertInput: $alertInput) {
             success
             message
         }
     }
 `
 
-export const UPDATE_POLL_QUERY = gql`
-    mutation updatePoll($pollInput: PollInput!) {
-        updatePoll(pollInput: $pollInput) {
+export const UPDATE_ALERT_MUTATION = gql`
+    mutation updateAlert($alertInput: AlertInput!) {
+        updateAlert(alertInput: $alertInput) {
             success
             message
         }
