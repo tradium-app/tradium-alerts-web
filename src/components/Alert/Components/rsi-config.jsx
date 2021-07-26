@@ -4,7 +4,22 @@ import { Col, Input, Label, Row } from 'reactstrap'
 const RsiConfig = () => {
     return (
         <>
-            <Row className="mb-2">
+            <Row className="mb-4">
+                <Col sm="1"></Col>
+                <Col sm="4">
+                    <Label>TimeFrame</Label>
+                </Col>
+                <Col sm="3">
+                    <input id="time1" name="radioTime" type="radio" value="vertical" className="mr-2" />
+                    <Label htmlFor="time1">Daily</Label>
+                </Col>
+                <Col sm="3">
+                    <input id="time2" name="radioTime" type="radio" value="vertical" className="mr-2" />
+                    <Label htmlFor="time2">Hourly</Label>
+                </Col>
+                <Col sm="1"></Col>
+            </Row>
+            <Row className="mb-4">
                 <Col sm="1"></Col>
                 <Col sm="4">
                     <Label>Action</Label>
@@ -23,17 +38,44 @@ const RsiConfig = () => {
                 </Col>
                 <Col sm="1"></Col>
             </Row>
+            <Row className="mb-4">
+                <Col sm="1"></Col>
+                <Col sm="4">
+                    <Label htmlFor="linkedinLink" className="col-form-label">
+                        Target Range
+                    </Label>
+                </Col>
+                <Col sm="6">
+                    <Row>
+                        <Col sm="2" className="text-right">
+                            <Label htmlFor="linkedinLink" className="col-form-label">
+                                From:
+                            </Label>
+                        </Col>
+                        <Col sm="4">
+                            <input className="form-control" type="text" placeholder="80" />
+                        </Col>
+                        <Col sm="2" className="text-right">
+                            <Label htmlFor="linkedinLink" className="col-form-label">
+                                To:
+                            </Label>
+                        </Col>
+                        <Col sm="4">
+                            <input className="form-control" type="text" placeholder="80" />
+                        </Col>
+                    </Row>
+                </Col>
+            </Row>
             <Row>
                 <Col sm="1"></Col>
                 <Col sm="4">
                     <Label htmlFor="linkedinLink" className="col-form-label">
-                        Target Value
+                        Title
                     </Label>
                 </Col>
                 <Col sm="6">
-                    <input className="form-control" type="text" defaultValue="80" />
+                    <input className="form-control" type="text" placeholder="e.g. RSI Overbought" />
                 </Col>
-                <Col sm="1"></Col>
             </Row>
         </>
     )

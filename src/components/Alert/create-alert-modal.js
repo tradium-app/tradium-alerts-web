@@ -17,7 +17,7 @@ toastr.options = {
     newestOnTop: true,
 }
 
-const CreateAlertModal = ({ poll, isShowing, toggle }) => {
+const CreateAlertModal = ({ alert, isShowing, toggle }) => {
     const [error, setError] = useState(null)
     const [data, setData] = useState(null)
     const [activeTab, setactiveTab] = useState(1)
@@ -33,14 +33,12 @@ const CreateAlertModal = ({ poll, isShowing, toggle }) => {
     })
 
     const initialValues = {
-        _id: poll?._id || null,
-        question: poll?.question || '',
-        options: poll?.options.map((o) => ({ _id: o._id, text: o.text, order: o.order })) || [
-            { text: '', order: 1 },
-            { text: '', order: 2 },
-        ],
-        tags: poll?.tags || null,
-        status: poll?.status || 'Draft',
+        id: alert?.id || null,
+        symbol: alert?.symbol,
+        type: alert?.type,
+        action: alert?.action,
+        title: alert?.title,
+        targetValue: alert?.targetValue,
     }
 
     if (error) {
@@ -131,13 +129,18 @@ const CreateAlertModal = ({ poll, isShowing, toggle }) => {
                                     <TabContent activeTab={activeTab} className="twitter-bs-wizard-tab-content">
                                         <TabPane tabId={1}>
                                             <AlertType
-                                                handleSelect={() => {
+                                                handleSelect={(type) => {
                                                     toggleTab(activeTab + 1)
+                                                    setValues({ type }, false)
                                                 }}
                                             />
                                         </TabPane>
                                         <TabPane tabId={2}>
-                                            <RsiConfig />
+                                            <RsiConfig
+                                                handleSubmit={(config) => {
+                                                    //
+                                                }}
+                                            />
                                         </TabPane>
                                         <TabPane tabId={3}>
                                             <ConfirmAlert />
@@ -192,26 +195,14 @@ const CreateAlertModal = ({ poll, isShowing, toggle }) => {
 
 const validateAlert = (values) => {
     const errors = {}
-    if (!values.question) {
-        errors.question = 'Question required.'
-    } else if (values.question.trim().split(' ').length < 4) {
-        errors.question = 'Too few words.'
-    } else if (values.question.indexOf('?') === -1) {
-        errors.question = 'Question not valid.'
+    if (!values.type) {
+        errors.type = 'Indicator type not selected.'
+    } else if (!values.action) {
+        errors.action = 'Action type not selected.'
     }
 
-    const nonEmptyOptions = values.options.filter((o) => o.text)
-    const optionSet = new Set()
-    nonEmptyOptions.forEach((option) => optionSet.add(option.text))
-
-    if (nonEmptyOptions.length < 2) {
-        errors.options = 'At least two options are required.'
-    } else if (optionSet.size < nonEmptyOptions.length) {
-        errors.options = 'Please remove duplicate options.'
-    }
-
-    // return errors
-    return {}
+    console.log('printing errors', errors)
+    return errors
 }
 
 export const ADD_ALERT_MUTATION = gql`
