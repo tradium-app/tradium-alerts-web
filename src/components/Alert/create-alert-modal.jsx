@@ -136,11 +136,7 @@ const CreateAlertModal = ({ alert, isShowing, toggle }) => {
                                             />
                                         </TabPane>
                                         <TabPane tabId={2}>
-                                            <RsiConfig
-                                                handleSubmit={(config) => {
-                                                    //
-                                                }}
-                                            />
+                                            <RsiConfig setValues={setValues} />
                                         </TabPane>
                                         <TabPane tabId={3}>
                                             <ConfirmAlert />
@@ -194,6 +190,7 @@ const CreateAlertModal = ({ alert, isShowing, toggle }) => {
 }
 
 const validateAlert = (values) => {
+    console.log('printing values', values)
     const errors = {}
     if (!values.type) {
         errors.type = 'Indicator type not selected.'
