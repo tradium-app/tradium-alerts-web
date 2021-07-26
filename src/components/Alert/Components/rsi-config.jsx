@@ -53,7 +53,7 @@ const RsiConfig = () => {
                             </Label>
                         </Col>
                         <Col sm="4">
-                            <input className="form-control" type="text" placeholder="80" />
+                            <Input type="text" placeholder="80" autoComplete="off" />
                         </Col>
                         <Col sm="2" className="text-right">
                             <Label htmlFor="linkedinLink" className="col-form-label">
@@ -61,7 +61,7 @@ const RsiConfig = () => {
                             </Label>
                         </Col>
                         <Col sm="4">
-                            <input className="form-control" type="text" placeholder="80" />
+                            <Input type="text" placeholder="80" autoComplete="off" />
                         </Col>
                     </Row>
                 </Col>
@@ -69,12 +69,12 @@ const RsiConfig = () => {
             <Row>
                 <Col sm="1"></Col>
                 <Col sm="4">
-                    <Label htmlFor="linkedinLink" className="col-form-label">
+                    <Label htmlFor="title" className="col-form-label">
                         Title
                     </Label>
                 </Col>
                 <Col sm="6">
-                    <input className="form-control" type="text" placeholder="e.g. RSI Overbought" />
+                    <Input id="title" type="text" placeholder="e.g. RSI Overbought" />
                 </Col>
             </Row>
         </>
