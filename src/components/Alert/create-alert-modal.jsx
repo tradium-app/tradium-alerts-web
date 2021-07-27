@@ -5,7 +5,6 @@ import { Modal, ModalHeader, ModalBody, Form, Button, TabPane, NavItem, NavLink,
 import { Formik } from 'formik'
 import toastr from 'toastr'
 import classnames from 'classnames'
-import { Link } from 'react-router-dom'
 import AlertType from './Components/alert-type'
 import RsiConfig from './Components/rsi-config'
 import ConfirmAlert from './Components/confirm-alert'
@@ -38,7 +37,7 @@ const CreateAlertModal = ({ alert, isShowing, toggle }) => {
         type: alert?.type,
         action: alert?.action,
         title: alert?.title,
-        targetValue: alert?.targetValue,
+        targetRange: alert?.targetRange,
     }
 
     if (error) {
@@ -76,7 +75,7 @@ const CreateAlertModal = ({ alert, isShowing, toggle }) => {
 
     function toggleTab(tab) {
         if (activeTab !== tab) {
-            if (tab >= 1 && tab <= 4) {
+            if (tab >= 1 && tab <= 3) {
                 setactiveTab(tab)
             }
         }
@@ -144,39 +143,24 @@ const CreateAlertModal = ({ alert, isShowing, toggle }) => {
                                     </TabContent>
 
                                     <ul className="pager wizard twitter-bs-wizard-pager-link">
-                                        <li className={activeTab === 1 ? 'previous disabled' : 'previous'}>
-                                            <Link
-                                                to="#"
-                                                onClick={() => {
-                                                    toggleTab(activeTab - 1)
-                                                }}
-                                            >
-                                                Previous
-                                            </Link>
+                                        <li>
+                                            <Button onClick={() => toggleTab(activeTab - 1)} color="primary">
+                                                {'Previous'}
+                                            </Button>
                                         </li>
                                         <li className={'next'}>
-                                            {activeTab < 3 ? (
-                                                <Button
-                                                    onClick={() => {
-                                                        toggleTab(activeTab + 1)
-                                                    }}
-                                                    color="primary"
-                                                >
-                                                    {'Next'}
-                                                </Button>
-                                            ) : (
-                                                <Button
-                                                    type="submit"
-                                                    onClick={() => {
-                                                        console.log('printing submit')
-                                                        setValues({ ...values, status: 'Published' })
-                                                    }}
-                                                    color="primary"
-                                                    disabled={isSubmitting}
-                                                >
-                                                    {'Add Alert'}
-                                                </Button>
-                                            )}
+                                            <Button onClick={() => toggleTab(activeTab + 1)} color="primary" hidden={activeTab === 3}>
+                                                {'Next'}
+                                            </Button>
+                                            <Button
+                                                type="submit"
+                                                onClick={() => setValues(values)}
+                                                color="primary"
+                                                disabled={isSubmitting}
+                                                hidden={activeTab < 3}
+                                            >
+                                                {'Add Alert'}
+                                            </Button>
                                         </li>
                                     </ul>
                                 </div>
@@ -190,7 +174,6 @@ const CreateAlertModal = ({ alert, isShowing, toggle }) => {
 }
 
 const validateAlert = (values) => {
-    console.log('printing values', values)
     const errors = {}
     if (!values.symbol) {
         errors.symbol = 'Symbol not selected.'
@@ -200,7 +183,7 @@ const validateAlert = (values) => {
         errors.action = 'Action type not selected.'
     }
 
-    console.log('printing errors', errors)
+    errors && console.log('printing errors', errors)
     return errors
 }
 
