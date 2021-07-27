@@ -16,11 +16,11 @@ const RsiConfig = ({ values, setValues }) => {
                 <Col sm="4">
                     <Label>TimeFrame</Label>
                 </Col>
-                <Col sm="3">
+                <Col sm="6">
                     <input id="time1" name="radioTime" type="radio" className="mr-2" onClick={() => setValue({ timeFrame: 'daily' })} />
-                    <Label htmlFor="time1">Daily</Label>
-                </Col>
-                <Col sm="3">
+                    <Label htmlFor="time1" className="mr-4">
+                        Daily
+                    </Label>
                     <input id="time2" name="radioTime" type="radio" className="mr-2" onClick={() => setValue({ timeFrame: 'hourly' })} />
                     <Label htmlFor="time2">Hourly</Label>
                 </Col>
@@ -69,7 +69,7 @@ const RsiConfig = ({ values, setValues }) => {
                                 type="text"
                                 placeholder="80"
                                 autoComplete="off"
-                                onChange={(event) => setValue({ targetRange: { from: event.currentTarget.value } })}
+                                onChange={(event) => setValue({ targetRange: { from: event.currentTarget.value, to: newValues?.targetRange?.to } })}
                             />
                         </Col>
                         <Col sm="2" className="text-right">
@@ -82,7 +82,7 @@ const RsiConfig = ({ values, setValues }) => {
                                 type="text"
                                 placeholder="80"
                                 autoComplete="off"
-                                onChange={(event) => setValue({ targetRange: { to: event.currentTarget.value } })}
+                                onChange={(event) => setValue({ targetRange: { from: newValues?.targetRange?.from, to: event.currentTarget.value } })}
                             />
                         </Col>
                     </Row>

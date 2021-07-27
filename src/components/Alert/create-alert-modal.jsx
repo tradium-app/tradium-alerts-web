@@ -34,7 +34,7 @@ const CreateAlertModal = ({ alert, isShowing, toggle }) => {
 
     const initialValues = {
         id: alert?.id || null,
-        symbol: alert?.symbol,
+        symbol: 'TSLA',
         type: alert?.type,
         action: alert?.action,
         title: alert?.title,
@@ -131,12 +131,12 @@ const CreateAlertModal = ({ alert, isShowing, toggle }) => {
                                             <AlertType
                                                 handleSelect={(type) => {
                                                     toggleTab(activeTab + 1)
-                                                    setValues({ type }, false)
+                                                    setValues({ ...values, type }, false)
                                                 }}
                                             />
                                         </TabPane>
                                         <TabPane tabId={2}>
-                                            <RsiConfig setValues={setValues} />
+                                            <RsiConfig values={values} setValues={setValues} />
                                         </TabPane>
                                         <TabPane tabId={3}>
                                             <ConfirmAlert />
@@ -192,7 +192,9 @@ const CreateAlertModal = ({ alert, isShowing, toggle }) => {
 const validateAlert = (values) => {
     console.log('printing values', values)
     const errors = {}
-    if (!values.type) {
+    if (!values.symbol) {
+        errors.symbol = 'Symbol not selected.'
+    } else if (!values.type) {
         errors.type = 'Indicator type not selected.'
     } else if (!values.action) {
         errors.action = 'Action type not selected.'
