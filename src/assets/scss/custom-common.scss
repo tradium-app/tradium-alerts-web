@@ -52,10 +52,14 @@
 
 .button-items {
     margin-left: -8px;
-    margin-bottom: -12px;
+    padding-top: 12px;
+    padding-bottom: 12px;
 
     .btn {
-        margin-bottom: 12px;
         margin-left: 8px;
     }
+}
+
+.border-top {
+    border-top: 1px solid $gray-300 !important;
 }

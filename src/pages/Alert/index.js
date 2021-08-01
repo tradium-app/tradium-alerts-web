@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
-import { useParams, withRouter } from 'react-router-dom'
+import { Link, useParams, withRouter } from 'react-router-dom'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/client'
-import { Form, Button, NavItem, NavLink, Container, Row, Col, CardBody, Card, Label, Input, CardTitle } from 'reactstrap'
+import { Form, Button, NavItem, NavLink, Container, Row, Col, CardBody, Card, Label, Input, CardTitle as h4, CardFooter as div } from 'reactstrap'
 import { Formik } from 'formik'
 import toastr from 'toastr'
 import AlertType from './Components/alert-type'
@@ -94,7 +94,7 @@ const AlertPage = ({ authUser }) => {
                 <Container fluid>
                     <Card>
                         <CardBody>
-                            <CardTitle className="mb-4 font-size-20 text-muted">Configure Alert for {symbol} stock</CardTitle>
+                            <h4 className="mb-5">Configure Alert for {symbol} stock</h4>
                             <Container>
                                 <Formik initialValues={initialValues} validate={validateAlert} onSubmit={handleFormikSubmit}>
                                     {({ handleSubmit, handleChange, handleBlur, isSubmitting, touched, values, setValues, errors, handleReset }) => (
@@ -114,10 +114,7 @@ const AlertPage = ({ authUser }) => {
                                                     <div id="basic-pills-wizard" className="twitter-bs-wizard mb-2">
                                                         <ul className="twitter-bs-wizard-nav nav nav-pills nav-justified">
                                                             <NavItem>
-                                                                <NavLink className="text-center">
-                                                                    <span className="step-number mr-2">01</span>
-                                                                    Select Alert Type
-                                                                </NavLink>
+                                                                <NavLink className="text-center">Select Alert Type</NavLink>
                                                             </NavItem>
                                                         </ul>
                                                     </div>
@@ -132,10 +129,7 @@ const AlertPage = ({ authUser }) => {
                                                     <div id="basic-pills-wizard" className="twitter-bs-wizard mb-2">
                                                         <ul className="twitter-bs-wizard-nav nav nav-pills nav-justified">
                                                             <NavItem>
-                                                                <NavLink className="text-center">
-                                                                    <span className="step-number mr-2">02</span>
-                                                                    Customize Alert
-                                                                </NavLink>
+                                                                <NavLink className="text-center">Customize Alert</NavLink>
                                                             </NavItem>
                                                         </ul>
                                                     </div>
@@ -145,10 +139,7 @@ const AlertPage = ({ authUser }) => {
                                                     <div id="basic-pills-wizard" className="twitter-bs-wizard mb-2">
                                                         <ul className="twitter-bs-wizard-nav nav nav-pills nav-justified">
                                                             <NavItem>
-                                                                <NavLink className="text-center">
-                                                                    <span className="step-number mr-2">03</span>
-                                                                    Summary
-                                                                </NavLink>
+                                                                <NavLink className="text-center">Summary</NavLink>
                                                             </NavItem>
                                                         </ul>
                                                     </div>
@@ -156,20 +147,14 @@ const AlertPage = ({ authUser }) => {
                                                 </Col>
                                             </Row>
 
-                                            <Row>
-                                                <Col className="d-flex justify-content-end">
-                                                    <div className="mt-3 button-items">
-                                                        <Button
-                                                            type="submit"
-                                                            onClick={() => setValues(values)}
-                                                            color="primary"
-                                                            disabled={isSubmitting}
-                                                        >
-                                                            {'Add Alert'}
-                                                        </Button>
-                                                    </div>
-                                                </Col>
-                                            </Row>
+                                            <div className="d-flex justify-content-end button-items border-top">
+                                                <Link to={`/symbol/${symbol.toUpperCase()}`} className="btn waves-effect waves-light">
+                                                    Cancel
+                                                </Link>
+                                                <Button type="submit" onClick={() => setValues(values)} color="primary" disabled={isSubmitting}>
+                                                    {'Save Alert'}
+                                                </Button>
+                                            </div>
                                         </Form>
                                     )}
                                 </Formik>
