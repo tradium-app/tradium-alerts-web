@@ -5,9 +5,9 @@ import Pages404 from '../pages/Utility/pages-404'
 import Pages500 from '../pages/Utility/pages-500'
 
 import Stock from '../pages/Stock/Stock'
-import Settings from '../pages/Settings'
+import Alert from '../pages/Alert'
 
-const userRoutes = [{ path: '/settings', component: Settings }]
+const userRoutes = [{ path: '/symbol/:symbol/alert', component: Alert }]
 
 const publicRoutes = [
     { path: '/', component: Home },

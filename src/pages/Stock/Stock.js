@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { withRouter } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Container, Row, Col, Card, CardBody, CardTitle, Media, Table, Button } from 'reactstrap'
 import toastr from 'toastr'
@@ -93,9 +93,9 @@ const Stock = ({ authUser }) => {
                                                     Add to WatchList
                                                 </Button>
 
-                                                <Button type="button" color="primary" onClick={() => {}}>
+                                                <Link to={`/symbol/${symbol.toUpperCase()}/alert`} className="btn btn-primary">
                                                     Add an Alert
-                                                </Button>
+                                                </Link>
                                             </div>
                                         </Col>
                                     </Row>
