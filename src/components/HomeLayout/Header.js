@@ -1,20 +1,15 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
-import { Button } from 'reactstrap'
-import toastr from 'toastr'
 
 import logoLightSm from '../../assets/images/logo-light-sm.svg'
 import logoLightLg from '../../assets/images/logo-light-lg.svg'
 import { loginUser, logoutUser } from '../../store/actions'
 import NotificationDropdown from '../Common/TopbarDropdown/NotificationDropdown'
 import ProfileMenu from '../Common/TopbarDropdown/ProfileMenu'
-import CreateAlertModal from '../Alert/create-alert-modal'
-import useModal from './useModal'
 import GoogleLoginDevPolls from '../Common/GoogleLoginDevPolls'
 
 const Header = (props) => {
-    const { isShowing, toggle } = useModal()
     const [searchTerm, setSearchTerm] = useState('')
     const isUserLoggedIn = !!props.authUser
 
@@ -23,14 +18,6 @@ const Header = (props) => {
             props.history.push('/search?q=' + searchTerm)
         }
         event.preventDefault()
-    }
-
-    const createPollHandler = () => {
-        if (props.authUser) {
-            toggle()
-        } else {
-            toastr.error('Please login to create a poll.')
-        }
     }
 
     return (
@@ -49,7 +36,7 @@ const Header = (props) => {
                             </Link>
                         </div>
 
-                        <form onSubmit={handleSubmit} className="app-search d-none d-lg-block">
+                        <form onSubmit={handleSubmit} className="app-search">
                             <div className="position-relative">
                                 <input
                                     type="text"
@@ -65,13 +52,6 @@ const Header = (props) => {
                     </div>
 
                     <div className="d-flex">
-                        <div className="d-flex mr-2 align-items-center">
-                            <Button type="button" color="primary" onClick={createPollHandler}>
-                                Create an Alert
-                            </Button>
-                            <CreateAlertModal isShowing={isShowing} toggle={toggle} />
-                        </div>
-
                         {!isUserLoggedIn && <GoogleLoginDevPolls text="Sign Up" {...props} />}
                         {!isUserLoggedIn && <GoogleLoginDevPolls text="Login" {...props} />}
 

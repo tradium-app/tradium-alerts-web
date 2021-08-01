@@ -81,11 +81,8 @@ const Stock = ({ authUser }) => {
                                                 </h5>
                                             </div>
                                         </Col>
-
-                                        <Col xl="3" sm="3"></Col>
-
-                                        <Col xl="3" sm="3">
-                                            <div className="float-right mt-3">
+                                        <Col xl="6" sm="6" className="d-flex justify-content-end">
+                                            <div className="mt-3 button-items">
                                                 <Button
                                                     type="button"
                                                     color="primary"
@@ -94,6 +91,10 @@ const Stock = ({ authUser }) => {
                                                     }}
                                                 >
                                                     Add to WatchList
+                                                </Button>
+
+                                                <Button type="button" color="primary" onClick={() => {}}>
+                                                    Add an Alert
                                                 </Button>
                                             </div>
                                         </Col>

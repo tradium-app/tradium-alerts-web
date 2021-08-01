@@ -12,7 +12,7 @@ import TopPolls from '../../components/TopTrendingPolls/Index'
 import TopTags from '../../components/TopTrendingTags/Index'
 import PollCard from '../../components/Poll/PollCard'
 
-const PollPage = ({ authUser }) => {
+const AlertPage = ({ authUser }) => {
     let { userUrlId, pollUrlId } = useParams()
 
     const { loading, error, data } = useQuery(GET_POLL_QUERY, {
@@ -74,4 +74,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default withRouter(connect(mapStateToProps, {})(PollPage))
+export default withRouter(connect(mapStateToProps, {})(AlertPage))
