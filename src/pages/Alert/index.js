@@ -102,34 +102,19 @@ const AlertPage = ({ authUser }) => {
                                             <div id="basic-pills-wizard" className="twitter-bs-wizard">
                                                 <ul className="twitter-bs-wizard-nav nav nav-pills nav-justified">
                                                     <NavItem>
-                                                        <NavLink
-                                                            className={classnames({ active: activeTab === 1 })}
-                                                            onClick={() => {
-                                                                setactiveTab(1)
-                                                            }}
-                                                        >
+                                                        <NavLink className="text-center">
                                                             <span className="step-number mr-2">01</span>
                                                             Select Alert Type
                                                         </NavLink>
                                                     </NavItem>
                                                     <NavItem>
-                                                        <NavLink
-                                                            className={classnames({ active: activeTab === 2 })}
-                                                            onClick={() => {
-                                                                setactiveTab(2)
-                                                            }}
-                                                        >
+                                                        <NavLink className="text-center">
                                                             <span className="step-number mr-2">02</span>
                                                             <span>Customize Alert</span>
                                                         </NavLink>
                                                     </NavItem>
                                                     <NavItem>
-                                                        <NavLink
-                                                            className={classnames({ active: activeTab === 3 })}
-                                                            onClick={() => {
-                                                                setactiveTab(3)
-                                                            }}
-                                                        >
+                                                        <NavLink className="text-center">
                                                             <span className="step-number mr-2">03</span>
                                                             Summary
                                                         </NavLink>
@@ -137,7 +122,7 @@ const AlertPage = ({ authUser }) => {
                                                 </ul>
                                             </div>
 
-                                            <Row>
+                                            <Row className="mt-2">
                                                 <Col xl="4" lg="4" sm="4">
                                                     <AlertType
                                                         handleSelect={(type) => {
