@@ -135,45 +135,39 @@ const AlertPage = ({ authUser }) => {
                                                         </NavLink>
                                                     </NavItem>
                                                 </ul>
-                                                <TabContent activeTab={activeTab} className="twitter-bs-wizard-tab-content">
-                                                    <TabPane tabId={1}>
-                                                        <AlertType
-                                                            handleSelect={(type) => {
-                                                                toggleTab(activeTab + 1)
-                                                                setValues({ ...values, type }, false)
-                                                            }}
-                                                        />
-                                                    </TabPane>
-                                                    <TabPane tabId={2}>
-                                                        <RsiConfig values={values} setValues={setValues} />
-                                                    </TabPane>
-                                                    <TabPane tabId={3}>
-                                                        <ConfirmAlert />
-                                                    </TabPane>
-                                                </TabContent>
+                                            </div>
 
-                                                <ul className="pager wizard twitter-bs-wizard-pager-link">
-                                                    <li>
-                                                        <Button onClick={() => toggleTab(activeTab - 1)} color="primary">
-                                                            {'Previous'}
-                                                        </Button>
-                                                    </li>
-                                                    <li className={'next'}>
-                                                        <Button onClick={() => toggleTab(activeTab + 1)} color="primary" hidden={activeTab === 3}>
-                                                            {'Next'}
-                                                        </Button>
+                                            <Row>
+                                                <Col xl="4" lg="4" sm="4">
+                                                    <AlertType
+                                                        handleSelect={(type) => {
+                                                            toggleTab(activeTab + 1)
+                                                            setValues({ ...values, type }, false)
+                                                        }}
+                                                    />
+                                                </Col>
+                                                <Col xl="4" lg="4" sm="4">
+                                                    <RsiConfig values={values} setValues={setValues} />
+                                                </Col>
+                                                <Col xl="4" lg="4" sm="4">
+                                                    <ConfirmAlert />
+                                                </Col>
+                                            </Row>
+
+                                            <Row>
+                                                <Col className="d-flex justify-content-end">
+                                                    <div className="mt-3 button-items">
                                                         <Button
                                                             type="submit"
                                                             onClick={() => setValues(values)}
                                                             color="primary"
                                                             disabled={isSubmitting}
-                                                            hidden={activeTab < 3}
                                                         >
                                                             {'Add Alert'}
                                                         </Button>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                                    </div>
+                                                </Col>
+                                            </Row>
                                         </Form>
                                     )}
                                 </Formik>
