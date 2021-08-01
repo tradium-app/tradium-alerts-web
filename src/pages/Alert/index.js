@@ -4,10 +4,9 @@ import { connect } from 'react-redux'
 import { useParams, withRouter } from 'react-router-dom'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/client'
-import { Form, Button, TabPane, NavItem, NavLink, TabContent, Container, Row, Col, CardBody, Card } from 'reactstrap'
+import { Form, Button, NavItem, NavLink, Container, Row, Col, CardBody, Card, Label, Input, CardTitle } from 'reactstrap'
 import { Formik } from 'formik'
 import toastr from 'toastr'
-import classnames from 'classnames'
 import AlertType from './Components/alert-type'
 import RsiConfig from './Components/rsi-config'
 import ConfirmAlert from './Components/confirm-alert'
@@ -95,35 +94,33 @@ const AlertPage = ({ authUser }) => {
                 <Container fluid>
                     <Card>
                         <CardBody>
+                            <CardTitle className="mb-4 font-size-20 text-muted">Configure Alert for {symbol} stock</CardTitle>
                             <Container>
                                 <Formik initialValues={initialValues} validate={validateAlert} onSubmit={handleFormikSubmit}>
                                     {({ handleSubmit, handleChange, handleBlur, isSubmitting, touched, values, setValues, errors, handleReset }) => (
                                         <Form onSubmit={handleSubmit} className="justify-content-center wizard-card">
-                                            <div id="basic-pills-wizard" className="twitter-bs-wizard">
-                                                <ul className="twitter-bs-wizard-nav nav nav-pills nav-justified">
-                                                    <NavItem>
-                                                        <NavLink className="text-center">
-                                                            <span className="step-number mr-2">01</span>
-                                                            Select Alert Type
-                                                        </NavLink>
-                                                    </NavItem>
-                                                    <NavItem>
-                                                        <NavLink className="text-center">
-                                                            <span className="step-number mr-2">02</span>
-                                                            <span>Customize Alert</span>
-                                                        </NavLink>
-                                                    </NavItem>
-                                                    <NavItem>
-                                                        <NavLink className="text-center">
-                                                            <span className="step-number mr-2">03</span>
-                                                            Summary
-                                                        </NavLink>
-                                                    </NavItem>
-                                                </ul>
-                                            </div>
-
-                                            <Row className="mt-2">
+                                            <Row className="mb-4">
+                                                <Col sm="2">
+                                                    <Label htmlFor="title" className="col-form-label">
+                                                        Title
+                                                    </Label>
+                                                </Col>
+                                                <Col sm="4">
+                                                    <Input id="title" type="text" placeholder="e.g. RSI Overbought" autoComplete="off" />
+                                                </Col>
+                                            </Row>
+                                            <Row>
                                                 <Col xl="4" lg="4" sm="4">
+                                                    <div id="basic-pills-wizard" className="twitter-bs-wizard mb-2">
+                                                        <ul className="twitter-bs-wizard-nav nav nav-pills nav-justified">
+                                                            <NavItem>
+                                                                <NavLink className="text-center">
+                                                                    <span className="step-number mr-2">01</span>
+                                                                    Select Alert Type
+                                                                </NavLink>
+                                                            </NavItem>
+                                                        </ul>
+                                                    </div>
                                                     <AlertType
                                                         handleSelect={(type) => {
                                                             toggleTab(activeTab + 1)
@@ -132,9 +129,29 @@ const AlertPage = ({ authUser }) => {
                                                     />
                                                 </Col>
                                                 <Col xl="4" lg="4" sm="4">
+                                                    <div id="basic-pills-wizard" className="twitter-bs-wizard mb-2">
+                                                        <ul className="twitter-bs-wizard-nav nav nav-pills nav-justified">
+                                                            <NavItem>
+                                                                <NavLink className="text-center">
+                                                                    <span className="step-number mr-2">02</span>
+                                                                    Customize Alert
+                                                                </NavLink>
+                                                            </NavItem>
+                                                        </ul>
+                                                    </div>
                                                     <RsiConfig values={values} setValues={setValues} />
                                                 </Col>
                                                 <Col xl="4" lg="4" sm="4">
+                                                    <div id="basic-pills-wizard" className="twitter-bs-wizard mb-2">
+                                                        <ul className="twitter-bs-wizard-nav nav nav-pills nav-justified">
+                                                            <NavItem>
+                                                                <NavLink className="text-center">
+                                                                    <span className="step-number mr-2">03</span>
+                                                                    Summary
+                                                                </NavLink>
+                                                            </NavItem>
+                                                        </ul>
+                                                    </div>
                                                     <ConfirmAlert />
                                                 </Col>
                                             </Row>
