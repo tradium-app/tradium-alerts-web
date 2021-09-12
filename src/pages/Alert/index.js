@@ -7,9 +7,7 @@ import { useMutation } from '@apollo/client'
 import { Form, Button, NavItem, NavLink, Container, Row, Col, CardBody, Card, Label, Input, CardTitle as h4, CardFooter as div } from 'reactstrap'
 import { Formik } from 'formik'
 import toastr from 'toastr'
-import Indicator from './Components/indicator'
-import RsiConfig from './Components/rsi-config'
-import ConfirmAlert from './Components/confirm-alert'
+import Condition from './Components/Condition'
 
 toastr.options = {
     positionClass: 'toast-top-center',
@@ -18,12 +16,11 @@ toastr.options = {
     newestOnTop: true,
 }
 
-const AlertPage = ({ authUser }) => {
+const AlertPage = ({ authUser, alert }) => {
     let { symbol } = useParams()
 
     const [error, setError] = useState(null)
     const [data, setData] = useState(null)
-    const [activeTab, setactiveTab] = useState(1)
 
     const [addAlertMutate] = useMutation(ADD_ALERT_MUTATION, {
         onError: setError,
@@ -38,10 +35,11 @@ const AlertPage = ({ authUser }) => {
     const initialValues = {
         id: alert?.id || null,
         symbol: 'TSLA',
-        type: alert?.type,
-        action: alert?.action,
         title: alert?.title,
-        targetRange: alert?.targetRange,
+        conditions: alert?.conditions.map((o) => ({ _id: o._id, text: o.text, order: o.order })) || [
+            { text: '', order: 1 },
+            { text: '', order: 2 },
+        ],
     }
 
     if (error) {
@@ -77,12 +75,25 @@ const AlertPage = ({ authUser }) => {
         // toggle()
     }
 
-    function toggleTab(tab) {
-        if (activeTab !== tab) {
-            if (tab >= 1 && tab <= 3) {
-                setactiveTab(tab)
-            }
-        }
+    const addOption = (values, setValues) => {
+        const conditions = [...values.conditions]
+        const lastOrder = conditions[conditions.length - 1].order
+        conditions.push({ text: '', order: lastOrder + 1 })
+        setValues({ ...values, conditions: conditions })
+    }
+
+    const removeOption = (values, setValues, order) => {
+        const newConditions = values.conditions
+            .filter((o) => o.order !== order)
+            .map((option) => {
+                if (option.order > order) {
+                    return { ...option, order: option.order - 1 }
+                } else {
+                    return option
+                }
+            })
+
+        setValues({ ...values, conditions: newConditions })
     }
 
     return (
@@ -109,7 +120,7 @@ const AlertPage = ({ authUser }) => {
                                                     <Input id="title" type="text" placeholder="e.g. RSI Overbought" autoComplete="off" />
                                                 </Col>
                                             </Row>
-                                            <Row>
+                                            <Row className="mb-4">
                                                 <Col xl="4" lg="4" sm="4">
                                                     <div id="basic-pills-wizard" className="twitter-bs-wizard mb-2">
                                                         <ul className="twitter-bs-wizard-nav nav nav-pills nav-justified">
@@ -138,41 +149,21 @@ const AlertPage = ({ authUser }) => {
                                                     </div>
                                                 </Col>
                                             </Row>
-                                            <Row>
-                                                <Col xl="4" lg="4" sm="4">
-                                                    <select id="ddlCreditCardType" name="ddlCreditCardType" className="form-control">
-                                                        <option value="">--Please Select--</option>
-                                                        <option value="AE">RSI</option>
-                                                        <option value="VI">MACD</option>
-                                                    </select>
-                                                </Col>
-                                                <Col xl="3" lg="3" sm="3">
-                                                    <select id="ddlCreditCardType" name="ddlCreditCardType" className="form-control">
-                                                        <option value="AE">Daily</option>
-                                                    </select>
-                                                </Col>
-                                                <Col xl="4" lg="4" sm="4">
-                                                    <select id="ddlCreditCardType" name="ddlCreditCardType" className="form-control">
-                                                        <option value="">--Please Select--</option>
-                                                        <option value="AE">Overbought (60)</option>
-                                                        <option value="AE">Overbought (70)</option>
-                                                        <option value="AE">Overbought (80)</option>
-                                                        <option value="AE">Overbought (90)</option>
-                                                        <option value="AE">OverSold (40)</option>
-                                                        <option value="AE">OverSold (30)</option>
-                                                        <option value="AE">OverSold (20)</option>
-                                                        <option value="AE">OverSold (10)</option>
-                                                    </select>
-                                                </Col>
-                                                <Col xl="1" lg="1" sm="1" className="d-flex">
-                                                    <button onClick={() => {}} type="button" className="btn btn-lg">
-                                                        <i className="bx bx-cog"></i>
-                                                    </button>
-                                                    <button onClick={() => {}} type="button" className="btn btn-lg">
-                                                        <i className="bx bx-plus"></i>
-                                                    </button>
-                                                </Col>
-                                            </Row>
+                                            {values.conditions
+                                                .slice()
+                                                .sort((a, b) => a - b)
+                                                .map((condition, index) => (
+                                                    <Condition
+                                                        condition={condition}
+                                                        index={index}
+                                                        removeOption={(order) => removeOption(values, setValues, order)}
+                                                        addOption={() => addOption(values, setValues)}
+                                                        key={index}
+                                                        isLastOption={index === values.conditions.length - 1}
+                                                        handleChange={handleChange}
+                                                        handleBlur={handleBlur}
+                                                    />
+                                                ))}
 
                                             <div className="d-flex justify-content-end button-items border-top">
                                                 <Link to={`/symbol/${symbol.toUpperCase()}`} className="btn waves-effect waves-light">
@@ -198,8 +189,8 @@ const validateAlert = (values) => {
     const errors = {}
     if (!values.symbol) {
         errors.symbol = 'Symbol not selected.'
-    } else if (!values.type) {
-        errors.type = 'Indicator type not selected.'
+    } else if (!values.indicator) {
+        errors.indicator = 'Indicator not selected.'
     } else if (!values.action) {
         errors.action = 'Action type not selected.'
     }
