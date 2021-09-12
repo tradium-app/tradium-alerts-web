@@ -7,7 +7,7 @@ import { useMutation } from '@apollo/client'
 import { Form, Button, NavItem, NavLink, Container, Row, Col, CardBody, Card, Label, Input, CardTitle as h4, CardFooter as div } from 'reactstrap'
 import { Formik } from 'formik'
 import toastr from 'toastr'
-import AlertType from './Components/alert-type'
+import Indicator from './Components/indicator'
 import RsiConfig from './Components/rsi-config'
 import ConfirmAlert from './Components/confirm-alert'
 
@@ -114,36 +114,63 @@ const AlertPage = ({ authUser }) => {
                                                     <div id="basic-pills-wizard" className="twitter-bs-wizard mb-2">
                                                         <ul className="twitter-bs-wizard-nav nav nav-pills nav-justified">
                                                             <NavItem>
-                                                                <NavLink className="text-center">Select Alert Type</NavLink>
+                                                                <NavLink className="text-center">Indicator</NavLink>
                                                             </NavItem>
                                                         </ul>
                                                     </div>
-                                                    <AlertType
-                                                        handleSelect={(type) => {
-                                                            toggleTab(activeTab + 1)
-                                                            setValues({ ...values, type }, false)
-                                                        }}
-                                                    />
+                                                </Col>
+                                                <Col xl="3" lg="3" sm="3">
+                                                    <div id="basic-pills-wizard" className="twitter-bs-wizard mb-2">
+                                                        <ul className="twitter-bs-wizard-nav nav nav-pills nav-justified">
+                                                            <NavItem>
+                                                                <NavLink className="text-center">TimeFrame</NavLink>
+                                                            </NavItem>
+                                                        </ul>
+                                                    </div>
                                                 </Col>
                                                 <Col xl="4" lg="4" sm="4">
                                                     <div id="basic-pills-wizard" className="twitter-bs-wizard mb-2">
                                                         <ul className="twitter-bs-wizard-nav nav nav-pills nav-justified">
                                                             <NavItem>
-                                                                <NavLink className="text-center">Customize Alert</NavLink>
+                                                                <NavLink className="text-center">Value</NavLink>
                                                             </NavItem>
                                                         </ul>
                                                     </div>
-                                                    <RsiConfig values={values} setValues={setValues} />
+                                                </Col>
+                                            </Row>
+                                            <Row>
+                                                <Col xl="4" lg="4" sm="4">
+                                                    <select id="ddlCreditCardType" name="ddlCreditCardType" className="form-control">
+                                                        <option value="">--Please Select--</option>
+                                                        <option value="AE">RSI</option>
+                                                        <option value="VI">MACD</option>
+                                                    </select>
+                                                </Col>
+                                                <Col xl="3" lg="3" sm="3">
+                                                    <select id="ddlCreditCardType" name="ddlCreditCardType" className="form-control">
+                                                        <option value="AE">Daily</option>
+                                                    </select>
                                                 </Col>
                                                 <Col xl="4" lg="4" sm="4">
-                                                    <div id="basic-pills-wizard" className="twitter-bs-wizard mb-2">
-                                                        <ul className="twitter-bs-wizard-nav nav nav-pills nav-justified">
-                                                            <NavItem>
-                                                                <NavLink className="text-center">Summary</NavLink>
-                                                            </NavItem>
-                                                        </ul>
-                                                    </div>
-                                                    <ConfirmAlert />
+                                                    <select id="ddlCreditCardType" name="ddlCreditCardType" className="form-control">
+                                                        <option value="">--Please Select--</option>
+                                                        <option value="AE">Overbought (60)</option>
+                                                        <option value="AE">Overbought (70)</option>
+                                                        <option value="AE">Overbought (80)</option>
+                                                        <option value="AE">Overbought (90)</option>
+                                                        <option value="AE">OverSold (40)</option>
+                                                        <option value="AE">OverSold (30)</option>
+                                                        <option value="AE">OverSold (20)</option>
+                                                        <option value="AE">OverSold (10)</option>
+                                                    </select>
+                                                </Col>
+                                                <Col xl="1" lg="1" sm="1" className="d-flex">
+                                                    <button onClick={() => {}} type="button" className="btn btn-lg">
+                                                        <i className="bx bx-cog"></i>
+                                                    </button>
+                                                    <button onClick={() => {}} type="button" className="btn btn-lg">
+                                                        <i className="bx bx-plus"></i>
+                                                    </button>
                                                 </Col>
                                             </Row>
 
