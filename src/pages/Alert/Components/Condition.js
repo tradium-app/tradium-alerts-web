@@ -5,28 +5,46 @@ const Condition = ({ condition, index, removeOption, isLastOption, addOption, ha
     return (
         <Row className="mb-4">
             <Col xl="4" lg="4" sm="4">
-                <select id="indicator" name="indicator" className="form-control">
+                <select
+                    name={`conditions.${index}.indicator`}
+                    value={condition.indicator}
+                    className="form-control"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                >
                     <option value="">--Please Select--</option>
-                    <option value="AE">RSI</option>
-                    <option value="VI">MACD</option>
+                    <option value="rsi">RSI</option>
+                    <option value="macd">MACD</option>
                 </select>
             </Col>
             <Col xl="3" lg="3" sm="3">
-                <select id="timeframe" name="timeframe" className="form-control">
-                    <option value="AE">Daily</option>
+                <select
+                    name={`conditions.${index}.timeframe`}
+                    value={condition.timeframe}
+                    className="form-control"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                >
+                    <option value="daily">Daily</option>
                 </select>
             </Col>
             <Col xl="4" lg="4" sm="4">
-                <select id="value" name="value" className="form-control">
+                <select
+                    name={`conditions.${index}.value`}
+                    value={condition.value}
+                    className="form-control"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                >
                     <option value="">--Please Select--</option>
-                    <option value="AE">Overbought (60)</option>
-                    <option value="AE">Overbought (70)</option>
-                    <option value="AE">Overbought (80)</option>
-                    <option value="AE">Overbought (90)</option>
-                    <option value="AE">OverSold (40)</option>
-                    <option value="AE">OverSold (30)</option>
-                    <option value="AE">OverSold (20)</option>
-                    <option value="AE">OverSold (10)</option>
+                    <option value="overbought_60">Overbought (60)</option>
+                    <option value="overbought_70">Overbought (70)</option>
+                    <option value="overbought_80">Overbought (80)</option>
+                    <option value="overbought_90">Overbought (90)</option>
+                    <option value="oversold_40">OverSold (40)</option>
+                    <option value="oversold_30">OverSold (30)</option>
+                    <option value="oversold_20">OverSold (20)</option>
+                    <option value="oversold_10">OverSold (10)</option>
                 </select>
             </Col>
             <Col xl="1" lg="1" sm="1" className="d-flex">

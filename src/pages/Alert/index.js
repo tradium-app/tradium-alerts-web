@@ -36,10 +36,7 @@ const AlertPage = ({ authUser, alert }) => {
         id: alert?.id || null,
         symbol: 'TSLA',
         title: alert?.title,
-        conditions: alert?.conditions.map((o) => ({ _id: o._id, text: o.text, order: o.order })) || [
-            { text: '', order: 1 },
-            { text: '', order: 2 },
-        ],
+        conditions: alert?.conditions.map((o) => ({ _id: o._id, order: o.order })) || [{ timeframe: 'daily', order: 1 }],
     }
 
     if (error) {
@@ -48,10 +45,10 @@ const AlertPage = ({ authUser, alert }) => {
     }
 
     if (data) {
-        if (data.createPoll?.success) {
-            toastr.success('Poll Created.')
-        } else if (data.updatePoll?.success) {
-            toastr.success('Poll Updated.')
+        if (data.createAlert?.success) {
+            toastr.success('Alert Created.')
+        } else if (data.updateAlert?.success) {
+            toastr.success('Alert Updated.')
         }
         setData(null)
     }
@@ -78,7 +75,7 @@ const AlertPage = ({ authUser, alert }) => {
     const addOption = (values, setValues) => {
         const conditions = [...values.conditions]
         const lastOrder = conditions[conditions.length - 1].order
-        conditions.push({ text: '', order: lastOrder + 1 })
+        conditions.push({ timeframe: 'daily', order: lastOrder + 1 })
         setValues({ ...values, conditions: conditions })
     }
 
@@ -117,10 +114,17 @@ const AlertPage = ({ authUser, alert }) => {
                                                     </Label>
                                                 </Col>
                                                 <Col sm="4">
-                                                    <Input id="title" type="text" placeholder="e.g. RSI Overbought" autoComplete="off" />
+                                                    <Input
+                                                        name="title"
+                                                        type="text"
+                                                        onChange={handleChange}
+                                                        onBlur={handleBlur}
+                                                        placeholder="e.g. RSI Overbought"
+                                                        autoComplete="off"
+                                                    />
                                                 </Col>
                                             </Row>
-                                            <Row className="mb-4">
+                                            <Row className="mb-2">
                                                 <Col xl="4" lg="4" sm="4">
                                                     <div id="basic-pills-wizard" className="twitter-bs-wizard mb-2">
                                                         <ul className="twitter-bs-wizard-nav nav nav-pills nav-justified">
@@ -187,12 +191,10 @@ const AlertPage = ({ authUser, alert }) => {
 
 const validateAlert = (values) => {
     const errors = {}
-    if (!values.symbol) {
-        errors.symbol = 'Symbol not selected.'
-    } else if (!values.indicator) {
+    if (!values.title) {
+        errors.title = 'Alert title is empty.'
+    } else if (!values.conditions[0].indicator || !values.conditions[0].timeframe || !values.conditions[0].value) {
         errors.indicator = 'Indicator not selected.'
-    } else if (!values.action) {
-        errors.action = 'Action type not selected.'
     }
 
     errors && console.log('printing errors', errors)
