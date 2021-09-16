@@ -1,5 +1,6 @@
 import React from 'react'
 import { Col, Row } from 'reactstrap'
+import ConditionValueSelect from './ConditionValueSelect'
 
 const Condition = ({ condition, index, removeOption, isLastOption, addOption, handleChange, handleBlur }) => {
     return (
@@ -29,23 +30,7 @@ const Condition = ({ condition, index, removeOption, isLastOption, addOption, ha
                 </select>
             </Col>
             <Col xl="4" lg="4" sm="4">
-                <select
-                    name={`conditions.${index}.value`}
-                    value={condition.value}
-                    className="form-control"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                >
-                    <option value="">--Please Select--</option>
-                    <option value="overbought_60">Overbought (60)</option>
-                    <option value="overbought_70">Overbought (70)</option>
-                    <option value="overbought_80">Overbought (80)</option>
-                    <option value="overbought_90">Overbought (90)</option>
-                    <option value="oversold_40">OverSold (40)</option>
-                    <option value="oversold_30">OverSold (30)</option>
-                    <option value="oversold_20">OverSold (20)</option>
-                    <option value="oversold_10">OverSold (10)</option>
-                </select>
+                <ConditionValueSelect value={`conditions.${index}.value`} valueConfig={`conditions.${index}.valueConfig`} />
             </Col>
             <Col xl="1" lg="1" sm="1" className="d-flex">
                 {!isLastOption && (
