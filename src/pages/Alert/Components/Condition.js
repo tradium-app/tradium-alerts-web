@@ -2,7 +2,9 @@ import React from 'react'
 import { Col, Row } from 'reactstrap'
 import ConditionValueSelect from './ConditionValueSelect'
 
-const Condition = ({ condition, index, removeOption, isLastOption, addOption, handleChange, handleBlur }) => {
+const Condition = ({ condition, index, removeOption, totalOptions, addOption, handleChange, handleBlur }) => {
+    const isLastOption = index === totalOptions - 1
+
     return (
         <Row className="mb-4">
             <Col xl="4" lg="4" sm="4">
@@ -38,8 +40,8 @@ const Condition = ({ condition, index, removeOption, isLastOption, addOption, ha
                 />
             </Col>
             <Col xl="1" lg="1" sm="1" className="d-flex">
-                {!isLastOption && (
-                    <button type="button" className="inner btn btn-secondary" onClick={() => removeOption(condition.order)}>
+                {totalOptions > 1 && (
+                    <button type="button" className="inner btn btn-secondary mr-2" onClick={() => removeOption(condition.order)}>
                         <i className="bx bx-trash"></i>
                     </button>
                 )}

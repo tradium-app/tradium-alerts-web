@@ -163,7 +163,7 @@ const AlertPage = ({ authUser, alert }) => {
                                                         removeOption={(order) => removeOption(values, setValues, order)}
                                                         addOption={() => addOption(values, setValues)}
                                                         key={index}
-                                                        isLastOption={index === values.conditions.length - 1}
+                                                        totalOptions={values.conditions.length}
                                                         handleChange={handleChange}
                                                         handleBlur={handleBlur}
                                                     />
