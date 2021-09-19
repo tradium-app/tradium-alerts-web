@@ -16,6 +16,7 @@ const Condition = ({ condition, index, removeOption, isLastOption, addOption, ha
                     <option value="">--Please Select--</option>
                     <option value="rsi">RSI</option>
                     <option value="macd">MACD</option>
+                    <option value="stock_trend">Stock Trend</option>
                 </select>
             </Col>
             <Col xl="3" lg="3" sm="3">
@@ -30,7 +31,11 @@ const Condition = ({ condition, index, removeOption, isLastOption, addOption, ha
                 </select>
             </Col>
             <Col xl="4" lg="4" sm="4">
-                <ConditionValueSelect value={`conditions.${index}.value`} valueConfig={`conditions.${index}.valueConfig`} />
+                <ConditionValueSelect
+                    indicator={condition.indicator}
+                    value={`conditions.${index}.value`}
+                    valueConfig={`conditions.${index}.valueConfig`}
+                />
             </Col>
             <Col xl="1" lg="1" sm="1" className="d-flex">
                 {!isLastOption && (

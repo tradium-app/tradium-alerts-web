@@ -1,4 +1,4 @@
-const RsiValues = {
+const RsiValueConfigs = {
     overbought_60: { length: 14, value: 60, upDirection: true },
     overbought_70: { length: 14, value: 70, upDirection: true },
     overbought_80: { length: 14, value: 80, upDirection: true },
@@ -9,4 +9,4 @@ const RsiValues = {
     oversold_10: { length: 14, value: 10, upDirection: false },
 }
 
-export default RsiValues
+export default RsiValueConfigs
