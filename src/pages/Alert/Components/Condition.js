@@ -1,6 +1,7 @@
 import React from 'react'
 import { Col, Row } from 'reactstrap'
 import ConditionValueSelect from './ConditionValueSelect'
+import IndicatorValues from './IndicatorValues'
 
 const Condition = ({ condition, index, removeOption, totalOptions, addOption, handleChange, handleBlur }) => {
     const isLastOption = index === totalOptions - 1
@@ -16,9 +17,11 @@ const Condition = ({ condition, index, removeOption, totalOptions, addOption, ha
                     onBlur={handleBlur}
                 >
                     <option value="">--Please Select--</option>
-                    <option value="rsi">RSI</option>
-                    <option value="macd">MACD</option>
-                    <option value="stock_trend">Stock Trend</option>
+                    {IndicatorValues.map(({ name, text }) => (
+                        <option key={name} value={name}>
+                            {text}
+                        </option>
+                    ))}
                 </select>
             </Col>
             <Col xl="3" lg="3" sm="3">

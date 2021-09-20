@@ -193,9 +193,13 @@ const validateAlert = (values) => {
     const errors = {}
     if (!values.title) {
         errors.title = 'Alert title is empty.'
-    } else if (!values.conditions[0].indicator || !values.conditions[0].timeframe || !values.conditions[0].value) {
-        errors.indicator = 'Indicator not selected.'
     }
+
+    values.conditions.forEach((condition) => {
+        if (!condition.indicator || !condition.timeframe || !condition.value) {
+            errors.indicator = 'Alert condition not properly set.'
+        }
+    })
 
     errors && console.log('printing errors', errors)
     return errors

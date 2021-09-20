@@ -19,12 +19,11 @@ const ConditionValueSelect = ({ indicator, value, valueConfig }) => {
     return (
         <select className="form-control" onChange={handleChange}>
             <option>--Please Select--</option>
-            {IndicatorValues[indicator] &&
-                IndicatorValues[indicator].map(({ value, valueText }) => (
-                    <option key={value} value={value}>
-                        {valueText}
-                    </option>
-                ))}
+            {IndicatorValues.find((element) => element.name === indicator)?.values.map(({ value, valueText }) => (
+                <option key={value} value={value}>
+                    {valueText}
+                </option>
+            ))}
         </select>
     )
 }
