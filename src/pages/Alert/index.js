@@ -104,7 +104,13 @@ const AlertPage = ({ authUser, alert }) => {
                         <CardBody>
                             <h4 className="mb-5">Configure Alert for {symbol} stock</h4>
                             <Container>
-                                <Formik initialValues={initialValues} validate={validateAlert} onSubmit={handleFormikSubmit}>
+                                <Formik
+                                    initialValues={initialValues}
+                                    validate={validateAlert}
+                                    onSubmit={handleFormikSubmit}
+                                    validateOnChange={false}
+                                    validateOnBlur={false}
+                                >
                                     {({ handleSubmit, handleChange, handleBlur, isSubmitting, touched, values, setValues, errors, handleReset }) => (
                                         <Form onSubmit={handleSubmit} className="justify-content-center wizard-card">
                                             <Row className="mb-4">
@@ -201,7 +207,7 @@ const validateAlert = (values) => {
         }
     })
 
-    errors && console.log('printing errors', errors)
+    !!Object.keys(errors).length && toastr.error(Object.values(errors).join('</br>'))
     return errors
 }
 
