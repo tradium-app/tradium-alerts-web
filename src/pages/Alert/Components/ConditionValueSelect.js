@@ -1,6 +1,5 @@
 import React from 'react'
 import { useField } from 'formik'
-import RsiValueConfigs from './RsiValueConfigs'
 import IndicatorValues from './IndicatorValues'
 
 const ConditionValueSelect = ({ indicator, value, valueConfig }) => {
@@ -13,7 +12,11 @@ const ConditionValueSelect = ({ indicator, value, valueConfig }) => {
     const handleChange = (event) => {
         setValueTouched(true)
         setValueField(event.target.value)
-        setValueConfigField(RsiValueConfigs[event.target.value])
+        const valueConfig = IndicatorValues.find((element) => element.name === indicator)?.values?.find(
+            (element) => element.value === event.target.value
+        ).valueConfig
+
+        setValueConfigField(valueConfig)
     }
 
     return (
