@@ -32,13 +32,14 @@ const Condition = ({ condition, index, removeOption, totalOptions, addOption, ha
                     onChange={handleChange}
                     onBlur={handleBlur}
                 >
-                    <option value="daily">Daily</option>
+                    <option value="Daily">Daily</option>
                 </select>
             </Col>
             <Col xl="4" lg="4" sm="4">
                 <ConditionValueSelect
                     indicator={condition.indicator}
                     value={`conditions.${index}.value`}
+                    valueText={`conditions.${index}.valueText`}
                     valueConfig={`conditions.${index}.valueConfig`}
                 />
             </Col>

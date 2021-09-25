@@ -34,7 +34,7 @@ const AlertPage = ({ authUser, alert }) => {
 
     const initialValues = {
         id: alert?.id || null,
-        symbol: 'TSLA',
+        symbol,
         title: alert?.title,
         conditions: alert?.conditions.map((o) => ({ _id: o._id, order: o.order })) || [{ timeframe: 'daily', order: 1 }],
     }
