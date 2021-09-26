@@ -132,7 +132,9 @@ const Stock = ({ authUser }) => {
                                                                 <h5>{alert.title}</h5>
                                                                 {alert.conditions.map((condition, index) => (
                                                                     <div key={index}>
-                                                                        {`${condition.timeframe} ${condition.indicator.toUpperCase()} equals
+                                                                        {`${condition.timeframe[0].toUpperCase()}${condition.timeframe.substring(
+                                                                            1
+                                                                        )} ${condition.indicator.toUpperCase()} equals
                                                                         ${condition.valueText}`}
                                                                     </div>
                                                                 ))}
