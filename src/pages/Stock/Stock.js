@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Container, Row, Col, Card, CardBody, CardTitle, Media, Table, Button } from 'reactstrap'
@@ -12,7 +12,8 @@ import SweetAlert from 'react-bootstrap-sweetalert'
 const Stock = ({ authUser }) => {
     let { symbol } = useParams()
     symbol = symbol.toUpperCase()
-    const containerId = useRef(null)
+
+    let chartContainerRef = null
     const [showDeleteAlert, setShowDeleteAlert] = useState(false)
 
     const { data: alerts } = useQuery(GET_ALERTS, {
@@ -42,23 +43,25 @@ const Stock = ({ authUser }) => {
     }
 
     useEffect(() => {
-        containerId.current = new window.TradingView.widget({
-            width: containerId.current.clientWidth - 8,
-            height: containerId.current.clientHeight,
-            symbol: symbol,
-            interval: 'D',
-            timezone: 'Etc/UTC',
-            theme: 'light',
-            style: '1',
-            locale: 'en',
-            toolbar_bg: '#f1f3f6',
-            enable_publishing: false,
-            hide_top_toolbar: true,
-            save_image: false,
-            studies: ['RSI@tv-basicstudies'],
-            container_id: 'containerId',
-        })
-    }, [symbol])
+        if (chartContainerRef) {
+            new window.TradingView.widget({
+                width: chartContainerRef.clientWidth - 8,
+                height: chartContainerRef.clientHeight,
+                symbol: symbol,
+                interval: 'D',
+                timezone: 'Etc/UTC',
+                theme: 'light',
+                style: '1',
+                locale: 'en',
+                toolbar_bg: '#f1f3f6',
+                enable_publishing: false,
+                hide_top_toolbar: true,
+                save_image: false,
+                studies: ['RSI@tv-basicstudies'],
+                container_id: 'containerId',
+            })
+        }
+    }, [chartContainerRef, symbol])
 
     return (
         <React.Fragment>
@@ -114,7 +117,13 @@ const Stock = ({ authUser }) => {
                                         </Col>
                                     </Row>
 
-                                    <div id="containerId" ref={containerId} className="m-4 align-items-center"></div>
+                                    <div
+                                        id="containerId"
+                                        ref={(element) => {
+                                            chartContainerRef = element
+                                        }}
+                                        className="m-4 align-items-center"
+                                    ></div>
                                 </CardBody>
                             </Card>
                         </Col>
