@@ -12,7 +12,7 @@ const Stock = ({ authUser }) => {
     let { symbol } = useParams()
     symbol = symbol.toUpperCase()
     const containerId = useRef(null)
-    const { loading, error, data } = useQuery(GET_STOCK_PROFILE_QUERY, {
+    const { data: alerts } = useQuery(GET_ALERTS, {
         variables: { symbol },
     })
 
@@ -109,6 +109,35 @@ const Stock = ({ authUser }) => {
                         <Col xl="4">
                             <Card className="overflow-hidden">
                                 <CardBody>
+                                    <CardTitle className="mb-3">Alerts</CardTitle>
+
+                                    <div className="table-responsive">
+                                        <Table className="table mb-0">
+                                            <tbody>
+                                                {alerts?.getAlerts.map((alert, index) => {
+                                                    return (
+                                                        <tr key={index}>
+                                                            <td>
+                                                                <h5>{alert.title}</h5>
+                                                                {alert.conditions.map((condition, index) => (
+                                                                    <div key={index}>
+                                                                        {`${condition.timeframe} ${condition.indicator.toUpperCase()} equals
+                                                                        ${condition.valueText}`}
+                                                                    </div>
+                                                                ))}
+                                                            </td>
+                                                        </tr>
+                                                    )
+                                                })}
+                                            </tbody>
+                                        </Table>
+                                    </div>
+                                </CardBody>
+                            </Card>
+                        </Col>
+                        <Col xl="4">
+                            <Card className="overflow-hidden">
+                                <CardBody>
                                     <CardTitle className="mb-3">Capital Structure</CardTitle>
 
                                     <div className="table-responsive">
@@ -190,39 +219,18 @@ export const ADD_STOCK_MUTATION = gql`
     }
 `
 
-export const GET_STOCK_PROFILE_QUERY = gql`
-    query getStockProfile($symbol: String) {
-        getStockProfile(symbol: $symbol) {
-            _id
-            name
-            imageUrl
+export const GET_ALERTS = gql`
+    query getAlerts($symbol: String) {
+        getAlerts(symbol: $symbol) {
+            id
+            symbol
             title
-            shortBio
-            githubLink
-            linkedinLink
-            stackOverflowLink
-            pollsCreated {
-                _id
-                pollUrlId
-                question
-                options {
-                    _id
-                    text
-                    order
-                    selected
-                    totalVotes
-                }
-                author {
-                    _id
-                    userUrlId
-                    name
-                    imageUrl
-                    status
-                }
-                tags
-                createdDate
-                modifiedDate
-                status
+            conditions {
+                order
+                indicator
+                timeframe
+                value
+                valueText
             }
         }
     }
