@@ -7,11 +7,14 @@ import { Helmet } from 'react-helmet'
 import { useParams } from 'react-router'
 import { useMutation, useQuery } from '@apollo/client'
 import gql from 'graphql-tag'
+import SweetAlert from 'react-bootstrap-sweetalert'
 
 const Stock = ({ authUser }) => {
     let { symbol } = useParams()
     symbol = symbol.toUpperCase()
     const containerId = useRef(null)
+    const [showDeleteAlert, setShowDeleteAlert] = useState(false)
+
     const { data: alerts } = useQuery(GET_ALERTS, {
         variables: { symbol },
     })
@@ -142,13 +145,31 @@ const Stock = ({ authUser }) => {
                                                             <td>
                                                                 <Link
                                                                     onClick={() => {
-                                                                        deleteAlert({ variables: { alertId: alert.id } })
+                                                                        setShowDeleteAlert(true)
                                                                     }}
                                                                     className="action-icon text-danger"
                                                                     to="#"
                                                                 >
                                                                     <i className="mdi mdi-trash-can font-size-18"></i>
                                                                 </Link>
+                                                                {showDeleteAlert ? (
+                                                                    <SweetAlert
+                                                                        title="Are you sure you want to delete the alert?"
+                                                                        warning
+                                                                        showCancel
+                                                                        focusCancelBtn
+                                                                        allowEscape
+                                                                        confirmBtnBsStyle="danger"
+                                                                        cancelBtnBsStyle="primary"
+                                                                        onConfirm={() => {
+                                                                            deleteAlert({ variables: { alertId: alert.id } })
+                                                                            setShowDeleteAlert(false)
+                                                                        }}
+                                                                        onCancel={() => {
+                                                                            setShowDeleteAlert(false)
+                                                                        }}
+                                                                    ></SweetAlert>
+                                                                ) : null}
                                                             </td>
                                                         </tr>
                                                     )

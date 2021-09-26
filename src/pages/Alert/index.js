@@ -177,7 +177,7 @@ const AlertPage = ({ authUser, alert }) => {
 
                                             <div className="d-flex justify-content-end button-items border-top">
                                                 <Link to={`/symbol/${symbol.toUpperCase()}`} className="btn waves-effect waves-light">
-                                                    Cancel
+                                                    {'Cancel'}
                                                 </Link>
                                                 <Button type="submit" onClick={() => setValues(values)} color="primary" disabled={isSubmitting}>
                                                     {'Save Alert'}
