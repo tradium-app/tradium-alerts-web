@@ -137,7 +137,7 @@ const Stock = ({ authUser }) => {
                                                                     <div key={index}>
                                                                         {`${condition.timeframe[0].toUpperCase()}${condition.timeframe.substring(
                                                                             1
-                                                                        )} ${condition.indicator.toUpperCase()} equals
+                                                                        )} ${condition.indicator.toUpperCase()} =
                                                                         ${condition.valueText}`}
                                                                     </div>
                                                                 ))}
@@ -174,6 +174,7 @@ const Stock = ({ authUser }) => {
                                                         </tr>
                                                     )
                                                 })}
+                                                {alerts?.getAlerts && alerts?.getAlerts.length == 0 && 'No Alerts configured yet.'}
                                             </tbody>
                                         </Table>
                                     </div>
