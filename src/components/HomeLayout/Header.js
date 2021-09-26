@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
 
+import SearchStock from '../../components/Common/SearchStock'
 import logoLightSm from '../../assets/images/logo-light-sm.svg'
 import logoLightLg from '../../assets/images/logo-light-lg.svg'
 import { loginUser, logoutUser } from '../../store/actions'
@@ -38,14 +39,7 @@ const Header = (props) => {
 
                         <form onSubmit={handleSubmit} className="app-search">
                             <div className="position-relative">
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="Search Stocks..."
-                                    onChange={(event) => {
-                                        setSearchTerm(event.target.value)
-                                    }}
-                                />
+                                <SearchStock className="form-control mb-2" handleSelect={(symbol) => handleSelect(symbol, props.history)} />
                                 <span className="bx bx-search-alt"></span>
                             </div>
                         </form>
@@ -62,6 +56,10 @@ const Header = (props) => {
             </header>
         </React.Fragment>
     )
+}
+
+const handleSelect = (symbol, history) => {
+    symbol?.value && history.push('/symbol/' + symbol.value)
 }
 
 const mapStateToProps = (state) => {

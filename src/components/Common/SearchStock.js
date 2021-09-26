@@ -14,7 +14,26 @@ const promiseOptions = (inputValue) => {
         })
 }
 
-export const SearchStock = ({ handleSelect }) => {
+export const SearchStock = ({ handleSelect, className }) => {
+    const customStyles = {
+        menu: (provided, state) => ({
+            ...provided,
+            width: state.selectProps.width,
+            color: 'black',
+        }),
+
+        control: (_, { selectProps: { width } }) => ({
+            width: width,
+        }),
+
+        singleValue: (provided, state) => {
+            const opacity = state.isDisabled ? 0.5 : 1
+            const transition = 'opacity 300ms'
+
+            return { ...provided, opacity, transition, color: 'white' }
+        },
+    }
+
     return (
         <AsyncSelect
             loadOptions={promiseOptions}
@@ -24,7 +43,11 @@ export const SearchStock = ({ handleSelect }) => {
             components={{
                 DropdownIndicator: () => null,
                 IndicatorSeparator: () => null,
+                ClearIndicator: () => null,
             }}
+            width="200px"
+            className={className}
+            styles={customStyles}
         />
     )
 }

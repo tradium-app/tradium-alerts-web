@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { Container, Row, Col, Card, CardBody, Table, Badge, Media } from 'reactstrap'
 import gql from 'graphql-tag'
 import img1 from '../../assets/images/poll.png'
-import SearchStock from '../../components/Common/SearchStock'
 import { useQuery } from '@apollo/client'
 
 const HomePage = (props) => {
@@ -16,18 +15,6 @@ const HomePage = (props) => {
                     <Col xs="12">
                         <Card>
                             <CardBody>
-                                <Row className="mb-2">
-                                    <Col sm="9"></Col>
-                                    <Col sm="3">
-                                        <div className="position-relative">
-                                            <SearchStock
-                                                className="form-control mb-2"
-                                                handleSelect={(symbol) => handleSelect(symbol, props.history)}
-                                            />
-                                        </div>
-                                    </Col>
-                                </Row>
-
                                 <div className="table-responsive">
                                     <Table className="table-centered table-nowrap">
                                         <thead>
@@ -102,7 +89,4 @@ export const GET_WATCHLIST_QUERY = gql`
     }
 `
 
-const handleSelect = (symbol, history) => {
-    history.push('/symbol/' + symbol.value)
-}
 export default HomePage

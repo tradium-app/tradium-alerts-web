@@ -174,9 +174,9 @@ const Stock = ({ authUser }) => {
                                                         </tr>
                                                     )
                                                 })}
-                                                {alerts?.getAlerts && alerts?.getAlerts.length == 0 && 'No Alerts configured yet.'}
                                             </tbody>
                                         </Table>
+                                        {alerts?.getAlerts && alerts?.getAlerts.length == 0 && 'No Alerts configured yet.'}
                                     </div>
                                 </CardBody>
                             </Card>
