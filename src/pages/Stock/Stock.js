@@ -27,6 +27,17 @@ const Stock = ({ authUser }) => {
         toastr.success('Stock added to the WatchList.')
     }
 
+    const [deleteAlertError, setDeleteAlertError] = useState(null)
+    const [deleteAlertResponse, setDeleteAlertResponse] = useState(null)
+    const [deleteAlert] = useMutation(DELETE_ALERT_MUTATION, {
+        onError: setDeleteAlertError,
+        onCompleted: setDeleteAlertResponse,
+    })
+
+    if (deleteAlertResponse?.deleteAlert?.success) {
+        toastr.success('Alert deleted successfully.')
+    }
+
     useEffect(() => {
         containerId.current = new window.TradingView.widget({
             width: containerId.current.clientWidth - 8,
@@ -125,6 +136,17 @@ const Stock = ({ authUser }) => {
                                                                         ${condition.valueText}`}
                                                                     </div>
                                                                 ))}
+                                                            </td>
+                                                            <td>
+                                                                <Link
+                                                                    onClick={() => {
+                                                                        deleteAlert({ variables: { alertId: alert.id } })
+                                                                    }}
+                                                                    className="action-icon text-danger"
+                                                                    to="#"
+                                                                >
+                                                                    <i className="mdi mdi-trash-can font-size-18"></i>
+                                                                </Link>
                                                             </td>
                                                         </tr>
                                                     )
@@ -232,6 +254,15 @@ export const GET_ALERTS = gql`
                 value
                 valueText
             }
+        }
+    }
+`
+
+export const DELETE_ALERT_MUTATION = gql`
+    mutation deleteAlert($alertId: String) {
+        deleteAlert(alertId: $alertId) {
+            success
+            message
         }
     }
 `
