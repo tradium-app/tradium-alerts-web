@@ -30,8 +30,7 @@ function* loginUser({ payload: { accessToken, history } }) {
         if (result.data.loginUser.success) {
             const authUser = result.data.loginUser.user
             if (authUser) {
-                authUser.accessToken = result.data.loginUser.accessToken
-                localStorage.setItem('accessToken', result.data.loginUser.accessToken)
+                localStorage.setItem('accessToken', accessToken)
                 yield put(loginSuccess(authUser))
             }
 

@@ -8,7 +8,7 @@ const authLink = setContext((_, { headers }) => {
     return {
         headers: {
             ...headers,
-            authorization: accessToken ? `Bearer ${accessToken}` : '',
+            'x-authorization-tradium': accessToken || '',
         },
     }
 })
