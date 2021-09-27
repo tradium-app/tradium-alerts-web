@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Container, Row, Col, Card, CardBody, Table, Badge, Media } from 'reactstrap'
 import gql from 'graphql-tag'
-import img1 from '../../assets/images/poll.png'
 import { useQuery } from '@apollo/client'
 
 const HomePage = (props) => {
@@ -48,7 +47,7 @@ const createWatchListRow = (stock, index) => {
             <td>
                 <Media>
                     <div className="mr-3">
-                        <img src={img1} alt="" className="avatar-xs img-thumbnail rounded-circle" />
+                        <img src={`https://finnhub.io/api/logo?symbol=${stock.symbol}`} alt="" className="avatar-xs img-thumbnail rounded-circle" />
                     </div>
                     <Media body>
                         <h5 className="font-size-13 mb-1">

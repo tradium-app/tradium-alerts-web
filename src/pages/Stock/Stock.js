@@ -30,7 +30,7 @@ const Stock = ({ authUser }) => {
     if (addStockResponse?.addStock?.success) {
         toastr.success('Stock added to the WatchList.')
     } else if (addStockResponse?.addStock?.success === false || addStockError) {
-        toastr.error('Stock addition failed')
+        toastr.error('Stock addition failed.')
     }
 
     const [deleteAlertError, setDeleteAlertError] = useState(null)
@@ -82,8 +82,12 @@ const Stock = ({ authUser }) => {
                                         <Col xl="3" sm="3">
                                             <Media>
                                                 <div className="avatar-sm mr-3">
-                                                    <span className="avatar-title rounded-circle bg-soft-warning text-warning font-size-22">
-                                                        <i className="mdi mdi-bitcoin"></i>
+                                                    <span className="avatar-title rounded-circle bg-soft-secondary p-1">
+                                                        <img
+                                                            src={`https://finnhub.io/api/logo?symbol=${symbol}`}
+                                                            alt=""
+                                                            className="avatar img-thumbnail rounded-circle"
+                                                        />
                                                     </span>
                                                 </div>
 
