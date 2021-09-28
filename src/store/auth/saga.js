@@ -25,6 +25,11 @@ function* loginUser({ payload: { accessToken, history } }) {
             variables: {
                 accessToken: accessToken,
             },
+            context: {
+                headers: {
+                    'x-authorization-tradium': accessToken,
+                },
+            },
         })
 
         if (result.data.loginUser.success) {
