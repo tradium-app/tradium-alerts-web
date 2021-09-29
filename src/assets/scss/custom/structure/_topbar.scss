@@ -50,13 +50,13 @@
 
 .app-search {
     flex: 1;
-    max-width: 60%;
+    width: 300px;
     padding: calc(#{$header-height - 38px} / 2);
 
     .form-control {
         border: none;
         height: 38px;
-        padding-left: 40px;
+        padding-left: 30px;
         padding-right: 20px;
         background-color: $topbar-search-bg;
         box-shadow: none;
@@ -71,6 +71,18 @@
         left: 13px;
         top: 0;
         color: $gray-600;
+    }
+}
+
+@media (max-width: 992px) {
+    .app-search {
+        width: 160px;
+
+        .search__control {
+            .search__placeholder {
+                font-size: 0px;
+            }
+        }
     }
 }
 

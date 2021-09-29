@@ -23,7 +23,7 @@ export const SearchStock = ({ handleSelect, className }) => {
         }),
 
         control: (_, { selectProps: { width } }) => ({
-            width: width,
+            width,
         }),
 
         singleValue: (provided, state) => {
@@ -45,8 +45,8 @@ export const SearchStock = ({ handleSelect, className }) => {
                 IndicatorSeparator: () => null,
                 ClearIndicator: () => null,
             }}
-            width="200px"
             className={className}
+            classNamePrefix={'search'}
             styles={customStyles}
         />
     )
