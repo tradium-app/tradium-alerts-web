@@ -19,7 +19,7 @@ const GoogleLoginDevPolls = (props) => {
 
     return (
         <div className="d-lg-inline-block ml-1">
-            <button aria-haspopup="true" className="btn header-item waves-effect" onClick={handleGoogleLogin}>
+            <button aria-haspopup="true" className="btn btn-primary waves-effect" onClick={handleGoogleLogin}>
                 {props.text}
             </button>
         </div>

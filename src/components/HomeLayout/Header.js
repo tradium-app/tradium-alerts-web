@@ -46,7 +46,6 @@ const Header = (props) => {
                     </div>
 
                     <div className="d-flex">
-                        {!isUserLoggedIn && <GoogleLoginDevPolls text="Sign Up" {...props} />}
                         {!isUserLoggedIn && <GoogleLoginDevPolls text="Login" {...props} />}
 
                         {isUserLoggedIn && <NotificationDropdown />}
