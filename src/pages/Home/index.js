@@ -64,11 +64,11 @@ const createWatchListRow = (stock, index) => {
                     </Media>
                 </Media>
             </td>
-            <td>{numberWithCommas(stock.price)}</td>
-            <td>{numberWithCommas(stock.changePercent)}</td>
+            <td>{numberWithCommas(Math.floor(stock.price))}</td>
+            <td className={stock.changePercent < 0 ? 'text-danger' : 'text-success'}>{numberWithCommas(stock.changePercent.toFixed(2))}</td>
             <td>{formatMarketCap(stock.marketCap)}</td>
-            <td>{numberWithCommas(stock.week52Low)}</td>
-            <td>{numberWithCommas(stock.week52High)}</td>
+            <td>{numberWithCommas(Math.floor(stock.week52Low))}</td>
+            <td>{numberWithCommas(Math.floor(stock.week52High))}</td>
             <td>{stock.beta.toFixed(2)}</td>
             <td>
                 <Link onClick={() => {}} className="action-icon text-danger" to="#">
@@ -80,16 +80,14 @@ const createWatchListRow = (stock, index) => {
 }
 
 function numberWithCommas(x) {
-    return Math.floor(x)
-        .toString()
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }
 
 function formatMarketCap(x) {
     if (x > 1000) {
-        return numberWithCommas(x / 1000) + ' B'
+        return numberWithCommas(Math.floor(x / 1000)) + 'B'
     } else {
-        return numberWithCommas(x) + ' M'
+        return numberWithCommas(Math.floor(x)) + 'M'
     }
 }
 
