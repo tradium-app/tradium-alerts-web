@@ -4,6 +4,9 @@ import firebase from 'firebase/app'
 const GoogleLoginDevPolls = (props) => {
     const handleGoogleLogin = () => {
         const googleAuthProvider = new firebase.auth.GoogleAuthProvider()
+        googleAuthProvider.setCustomParameters({
+            prompt: 'select_account',
+        })
         firebase
             .auth()
             .signInWithPopup(googleAuthProvider)
