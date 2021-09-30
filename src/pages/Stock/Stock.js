@@ -8,6 +8,7 @@ import { useParams } from 'react-router'
 import { useMutation, useQuery } from '@apollo/client'
 import gql from 'graphql-tag'
 import SweetAlert from 'react-bootstrap-sweetalert'
+import stockImg from '../../assets/images/stock-default-icon.png'
 
 const Stock = ({ authUser }) => {
     let { symbol } = useParams()
@@ -87,6 +88,9 @@ const Stock = ({ authUser }) => {
                                                             src={`https://finnhub.io/api/logo?symbol=${symbol}`}
                                                             alt=""
                                                             className="avatar img-thumbnail rounded-circle"
+                                                            onError={(e) => {
+                                                                if (e.target.src != stockImg) e.target.src = stockImg
+                                                            }}
                                                         />
                                                     </span>
                                                 </div>

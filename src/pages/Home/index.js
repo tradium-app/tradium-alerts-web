@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Container, Row, Col, Card, CardBody, Table, Badge, Media } from 'reactstrap'
 import gql from 'graphql-tag'
 import { useQuery } from '@apollo/client'
+import stockImg from '../../assets/images/stock-default-icon.png'
 
 const HomePage = (props) => {
     const { loading, error, data } = useQuery(GET_WATCHLIST_QUERY, { pollInterval: 30000 })
@@ -47,7 +48,14 @@ const createWatchListRow = (stock, index) => {
             <td>
                 <Media>
                     <div className="mr-3">
-                        <img src={`https://finnhub.io/api/logo?symbol=${stock.symbol}`} alt="" className="avatar-xs img-thumbnail rounded-circle" />
+                        <img
+                            src={`https://finnhub.io/api/logo?symbol=${stock.symbol}`}
+                            alt=""
+                            className="avatar-xs img-thumbnail rounded-circle"
+                            onError={(e) => {
+                                if (e.target.src != stockImg) e.target.src = stockImg
+                            }}
+                        />
                     </div>
                     <Media body>
                         <h5 className="font-size-13 mb-1">
