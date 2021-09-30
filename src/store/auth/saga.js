@@ -54,6 +54,7 @@ function* logoutUser({ payload: { history } }) {
     try {
         yield firebase.auth().signOut()
         localStorage.removeItem('accessToken')
+        yield fetch(`${process.env.REACT_APP_BACKEND_SERVER}/perform_logout`, { credentials: 'include' })
         yield put(logoutUserSuccess())
 
         history.push('/')

@@ -6,7 +6,7 @@ const DEFAULT_DEBOUNCE_TIMEOUT = 500
 const debounceLink = new DebounceLink(DEFAULT_DEBOUNCE_TIMEOUT)
 
 const httpLink = createHttpLink({
-    uri: process.env.REACT_APP_BACKEND_SERVER,
+    uri: process.env.REACT_APP_BACKEND_SERVER + '/graphql',
     credentials: 'include',
 })
 
