@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Container, Row, Col, Card, CardBody, Table, Badge, Media } from 'reactstrap'
+import { Container, Row, Col, Card, CardBody, Table, Media } from 'reactstrap'
 import gql from 'graphql-tag'
 import { useQuery } from '@apollo/client'
 import stockImg from '../../assets/images/stock-default-icon.png'
@@ -72,7 +72,7 @@ const createWatchListRow = (stock, index) => {
             <td>{stock.beta.toFixed(2)}</td>
             <td>
                 <Link onClick={() => {}} className="action-icon text-danger" to="#">
-                    <i className="mdi mdi-trash-can font-size-18"></i>
+                    <i className="mdi mdi-bell font-size-18"></i>
                 </Link>
             </td>
         </tr>
