@@ -4,10 +4,12 @@
 
 .table {
     th {
+        border-top: none;
         font-weight: $font-weight-bold;
+        border-bottom: 1px solid $gray-400 !important;
     }
 
-    tr {
+    tbody tr {
         &:hover {
             background: $gray-300;
             transition-duration: 0.05s;
@@ -15,6 +17,7 @@
         td {
             border-top: none;
             border-bottom: 1px solid $gray-300;
+            padding: 0.2rem;
         }
     }
 }

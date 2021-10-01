@@ -23,8 +23,7 @@ const HomePage = (props) => {
                                                 <th>Price</th>
                                                 <th>Change%</th>
                                                 <th>Market Cap.</th>
-                                                <th>52 Week Low</th>
-                                                <th>52 Week High</th>
+                                                <th>52 Week Range</th>
                                                 <th>Beta</th>
                                                 <th></th>
                                             </tr>
@@ -57,11 +56,24 @@ const createWatchListRow = (stock, index) => {
                     <h5 className="font-size-13 d-inline-block">{stock.symbol.toUpperCase()}</h5>
                 </Link>
             </td>
-            <td>{numberWithCommas(Math.floor(stock.price))}</td>
-            <td className={stock.changePercent < 0 ? 'text-danger' : 'text-success'}>{numberWithCommas(Math.abs(stock.changePercent).toFixed(2))}</td>
+            <td>{Math.floor(stock.price)}</td>
+            <td className={stock.changePercent < 0 ? 'text-danger' : 'text-success'}>{Math.abs(stock.changePercent).toFixed(2)}</td>
             <td>{formatMarketCap(stock.marketCap)}</td>
-            <td>{numberWithCommas(Math.floor(stock.week52Low))}</td>
-            <td>{numberWithCommas(Math.floor(stock.week52High))}</td>
+            <td>
+                <div className="text-muted font-size-10 d-inline-block mr-2">{Math.floor(stock.week52Low)}</div>
+                <div className="d-inline-block">
+                    <input
+                        type="range"
+                        className="form-control-range"
+                        min={Math.floor(stock.week52Low)}
+                        max={Math.floor(stock.week52High)}
+                        value={Math.floor(stock.price)}
+                        disabled
+                        style={{ width: '50px' }}
+                    />
+                </div>
+                <div className="text-muted font-size-10 d-inline-block ml-2">{Math.floor(stock.week52High)}</div>
+            </td>
             <td>{stock.beta.toFixed(2)}</td>
             <td>
                 <Link onClick={() => {}} className="action-icon text-danger" to="#">
