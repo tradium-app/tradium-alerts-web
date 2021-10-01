@@ -44,28 +44,21 @@ const HomePage = (props) => {
 const createWatchListRow = (stock, index) => {
     return (
         <tr key={index}>
-            <td>
-                <Media>
-                    <div className="mr-3">
-                        <img
-                            src={`https://finnhub.io/api/logo?symbol=${stock.symbol}`}
-                            alt=""
-                            className="avatar-xs img-thumbnail rounded-circle"
-                            onError={(e) => {
-                                if (e.target.src != stockImg) e.target.src = stockImg
-                            }}
-                        />
-                    </div>
-                    <Media body>
-                        <h5 className="font-size-13 mb-1">
-                            <Link to={`/symbol/${stock.symbol.toUpperCase()}`}>{stock.symbol.toUpperCase()}</Link>
-                        </h5>
-                        <p className="text-muted mb-1">Tesla</p>
-                    </Media>
-                </Media>
+            <td className="align-middle">
+                <Link to={`/symbol/${stock.symbol.toUpperCase()}`}>
+                    <img
+                        src={`https://finnhub.io/api/logo?symbol=${stock.symbol}`}
+                        alt=""
+                        className="avatar-xs img-thumbnail rounded-circle d-inline-block mr-2"
+                        onError={(e) => {
+                            if (e.target.src != stockImg) e.target.src = stockImg
+                        }}
+                    />
+                    <h5 className="font-size-13 d-inline-block">{stock.symbol.toUpperCase()}</h5>
+                </Link>
             </td>
             <td>{numberWithCommas(Math.floor(stock.price))}</td>
-            <td className={stock.changePercent < 0 ? 'text-danger' : 'text-success'}>{numberWithCommas(stock.changePercent.toFixed(2))}</td>
+            <td className={stock.changePercent < 0 ? 'text-danger' : 'text-success'}>{numberWithCommas(Math.abs(stock.changePercent).toFixed(2))}</td>
             <td>{formatMarketCap(stock.marketCap)}</td>
             <td>{numberWithCommas(Math.floor(stock.week52Low))}</td>
             <td>{numberWithCommas(Math.floor(stock.week52High))}</td>
