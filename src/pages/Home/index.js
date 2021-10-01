@@ -43,8 +43,8 @@ const HomePage = (props) => {
 const createWatchListRow = (stock, index) => {
     return (
         <tr key={index}>
-            <td className="align-middle">
-                <Link to={`/symbol/${stock.symbol.toUpperCase()}`}>
+            <td style={{ textAlign: 'left' }}>
+                <Link to={`/symbol/${stock.symbol.toUpperCase()}`} className="ml-2">
                     <img
                         src={`https://finnhub.io/api/logo?symbol=${stock.symbol}`}
                         alt=""
