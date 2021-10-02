@@ -1,12 +1,25 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Container, Row, Col, Card, CardBody, Table, Media } from 'reactstrap'
+import { Container, Row, Col, Card, CardBody, Table } from 'reactstrap'
 import gql from 'graphql-tag'
 import { useQuery } from '@apollo/client'
 import stockImg from '../../assets/images/stock-default-icon.png'
+import useSortableData from '../../hooks/useSortableData'
+
+const colNames = {
+    symbol: 'Symbol',
+    price: 'Price',
+    changePercent: 'Change%',
+    marketCap: 'Market Cap.',
+    week52Low: '52 Week Range',
+    revenueGrowthQuarterlyYoy: 'Rev. Quarter YOY',
+    revenueGrowthTTMYoy: 'Rev. TTM YOY',
+    beta: 'Beta',
+}
 
 const HomePage = (props) => {
     const { loading, error, data } = useQuery(GET_WATCHLIST_QUERY, { pollInterval: 30000 })
+    const { items, requestSort, sortConfig } = useSortableData(data?.getWatchList)
 
     return (
         <div className="page-content">
@@ -19,18 +32,26 @@ const HomePage = (props) => {
                                     <Table className="table-centered table-nowrap">
                                         <thead>
                                             <tr>
-                                                <th>Symbol</th>
-                                                <th>Price</th>
-                                                <th>Change%</th>
-                                                <th>Market Cap.</th>
-                                                <th>52 Week Range</th>
-                                                <th>Beta</th>
-                                                <th>Rev. Quarter YOY</th>
-                                                <th>Rev. TTM YOY</th>
+                                                {Object.keys(colNames).map((colName) => (
+                                                    <th>
+                                                        <Link onClick={() => requestSort(colName)} to="#" className="text-muted">
+                                                            {colNames[colName]}
+                                                        </Link>
+                                                        <i
+                                                            className={
+                                                                colName != sortConfig?.key
+                                                                    ? ''
+                                                                    : sortConfig.direction == 'ascending'
+                                                                    ? 'bx bx-up-arrow-alt'
+                                                                    : 'bx bx-down-arrow-alt'
+                                                            }
+                                                        ></i>
+                                                    </th>
+                                                ))}
                                                 <th></th>
                                             </tr>
                                         </thead>
-                                        <tbody>{data && !error && !loading && data.getWatchList?.map(createWatchListRow)}</tbody>
+                                        <tbody>{!error && !loading && items?.map(createWatchListRow)}</tbody>
                                     </Table>
                                 </div>
                             </CardBody>
