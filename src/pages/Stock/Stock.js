@@ -15,7 +15,7 @@ const Stock = ({ authUser }) => {
     symbol = symbol.toUpperCase()
 
     let chartContainerRef = null
-    const [showDeleteAlert, setShowDeleteAlert] = useState(false)
+    const [showDeleteAlert, setShowDeleteAlert] = useState({ show: false })
 
     const { data: alerts } = useQuery(GET_ALERTS, {
         variables: { symbol },
@@ -166,35 +166,35 @@ const Stock = ({ authUser }) => {
                                                             <td>
                                                                 <Link
                                                                     onClick={() => {
-                                                                        setShowDeleteAlert(true)
+                                                                        setShowDeleteAlert({ show: true, alertId: alert.id })
                                                                     }}
                                                                     className="action-icon text-danger"
                                                                     to="#"
                                                                 >
                                                                     <i className="mdi mdi-trash-can font-size-18"></i>
                                                                 </Link>
-                                                                {showDeleteAlert ? (
-                                                                    <SweetAlert
-                                                                        title="Are you sure you want to delete the alert?"
-                                                                        warning
-                                                                        showCancel
-                                                                        focusCancelBtn
-                                                                        allowEscape
-                                                                        confirmBtnBsStyle="danger"
-                                                                        cancelBtnBsStyle="primary"
-                                                                        onConfirm={() => {
-                                                                            deleteAlert({ variables: { alertId: alert.id } })
-                                                                            setShowDeleteAlert(false)
-                                                                        }}
-                                                                        onCancel={() => {
-                                                                            setShowDeleteAlert(false)
-                                                                        }}
-                                                                    ></SweetAlert>
-                                                                ) : null}
                                                             </td>
                                                         </tr>
                                                     )
                                                 })}
+                                                {showDeleteAlert.show ? (
+                                                    <SweetAlert
+                                                        title="Are you sure you want to delete the alert?"
+                                                        warning
+                                                        showCancel
+                                                        focusCancelBtn
+                                                        allowEscape
+                                                        confirmBtnBsStyle="danger"
+                                                        cancelBtnBsStyle="primary"
+                                                        onConfirm={() => {
+                                                            deleteAlert({ variables: { alertId: showDeleteAlert.alertId } })
+                                                            setShowDeleteAlert({ show: false })
+                                                        }}
+                                                        onCancel={() => {
+                                                            setShowDeleteAlert({ show: false })
+                                                        }}
+                                                    ></SweetAlert>
+                                                ) : null}
                                             </tbody>
                                         </Table>
                                         {alerts?.getAlerts && alerts?.getAlerts.length == 0 && 'No Alerts configured yet.'}
