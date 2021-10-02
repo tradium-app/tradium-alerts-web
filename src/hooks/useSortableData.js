@@ -1,7 +1,8 @@
-import { useState, useMemo } from 'react'
+import { useMemo } from 'react'
+import useLocalStorage from './useLocalStorage'
 
 const useSortableData = (items, config = null) => {
-    const [sortConfig, setSortConfig] = useState(config)
+    const [sortConfig, setSortConfig] = useLocalStorage(config.storageKey, config)
 
     const sortedItems = useMemo(() => {
         if (!items) return

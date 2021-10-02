@@ -16,10 +16,15 @@ const colNames = {
     revenueGrowthTTMYoy: 'Rev. TTM YOY',
     beta: 'Beta',
 }
+const initialSortConfig = {
+    storageKey: 'stocks-list',
+    key: 'symbol',
+    direction: 'ascending',
+}
 
 const HomePage = (props) => {
     const { loading, error, data } = useQuery(GET_WATCHLIST_QUERY, { pollInterval: 30000 })
-    const { items, requestSort, sortConfig } = useSortableData(data?.getWatchList)
+    const { items, requestSort, sortConfig } = useSortableData(data?.getWatchList, initialSortConfig)
 
     return (
         <div className="page-content">
@@ -32,8 +37,8 @@ const HomePage = (props) => {
                                     <Table className="table-centered table-nowrap">
                                         <thead>
                                             <tr>
-                                                {Object.keys(colNames).map((colName) => (
-                                                    <th>
+                                                {Object.keys(colNames).map((colName, index) => (
+                                                    <th key={index}>
                                                         <Link onClick={() => requestSort(colName)} to="#" className="text-muted">
                                                             {colNames[colName]}
                                                         </Link>
