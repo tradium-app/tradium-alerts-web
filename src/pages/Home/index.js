@@ -76,7 +76,7 @@ const createWatchListRow = (stock, index) => {
             </td>
             <td>{stock.beta.toFixed(2)}</td>
             <td>
-                <Link onClick={() => {}} className="action-icon text-danger" to="#">
+                <Link onClick={() => {}} className={stock.alertStatus ? 'text-danger' : 'text-muted'} to="#">
                     <i className="mdi mdi-bell font-size-18"></i>
                 </Link>
             </td>
@@ -108,6 +108,7 @@ export const GET_WATCHLIST_QUERY = gql`
             week52High
             week52Low
             beta
+            alertStatus
         }
     }
 `
