@@ -43,7 +43,7 @@ const NotificationDropdown = () => {
                                     <div className="media">
                                         <img
                                             src={`https://finnhub.io/api/logo?symbol=${alert.symbol}`}
-                                            className="mr-3 rounded-circle avatar-xs"
+                                            className="avatar-xs img-thumbnail rounded-circle d-inline-block mr-2"
                                             alt=""
                                         />
                                         <div className="media-body">

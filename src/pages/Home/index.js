@@ -25,6 +25,8 @@ const HomePage = (props) => {
                                                 <th>Market Cap.</th>
                                                 <th>52 Week Range</th>
                                                 <th>Beta</th>
+                                                <th>Rev. Quarter YOY</th>
+                                                <th>Rev. TTM YOY</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -75,6 +77,8 @@ const createWatchListRow = (stock, index) => {
                 <div className="text-muted font-size-10 d-inline-block ml-2">{Math.floor(stock.week52High)}</div>
             </td>
             <td>{stock.beta.toFixed(2)}</td>
+            <td>{stock.revenueGrowthQuarterlyYoy.toFixed(2)}</td>
+            <td>{stock.revenueGrowthTTMYoy.toFixed(2)}</td>
             <td>
                 <Link onClick={() => {}} className={stock.alertStatus ? 'text-danger' : 'text-muted'} to="#">
                     <i className="mdi mdi-bell font-size-18"></i>
@@ -108,6 +112,8 @@ export const GET_WATCHLIST_QUERY = gql`
             week52High
             week52Low
             beta
+            revenueGrowthQuarterlyYoy
+            revenueGrowthTTMYoy
             alertStatus
         }
     }
