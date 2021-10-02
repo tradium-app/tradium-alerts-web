@@ -9,11 +9,11 @@ moment.updateLocale('en', {
 })
 
 export const getRelativeTime = (date) => {
-    const momentDate = moment.utc(Number(date))
+    const momentDate = moment.utc(date)
 
     const minsAgo = moment.duration({ from: momentDate, to: new Date() }).asMinutes()
 
     const relativeDateString = minsAgo < 60 ? momentDate.startOf('minute').fromNow() : momentDate.startOf('hour').fromNow()
 
-    return momentDate.format('MMMM Do') + ' (' + relativeDateString + ')'
+    return relativeDateString
 }

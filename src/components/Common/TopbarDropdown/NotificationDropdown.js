@@ -8,15 +8,15 @@ import { getRelativeTime } from '../time'
 
 const NotificationDropdown = () => {
     const [menu, setMenu] = useState(false)
-    const { loading, error, data } = useQuery(GET_NOTIFICATIONS_QUERY)
+    const { loading, error, data } = useQuery(GET_ALERTS_QUERY)
 
-    const notificationLength = data?.getNotifications?.filter((n) => !n.isRead).length
+    const alertsLength = data?.getAlerts?.filter((n) => n.status == 'On').length
 
     return (
         <Dropdown isOpen={menu} toggle={() => setMenu(!menu)} className="dropdown d-inline-block" tag="li">
             <DropdownToggle className="btn header-item noti-icon waves-effect" tag="button" id="page-header-notifications-dropdown">
                 <i className="bx bx-bell"></i>
-                {notificationLength > 0 && <span className="badge badge-danger badge-pill">{notificationLength}</span>}
+                {alertsLength > 0 && <span className="badge badge-danger badge-pill">{alertsLength}</span>}
             </DropdownToggle>
 
             <DropdownMenu className="dropdown-menu dropdown-menu-lg p-0" right>
@@ -31,45 +31,62 @@ const NotificationDropdown = () => {
                 <SimpleBar style={{ maxHeight: '400px' }}>
                     {!error &&
                         !loading &&
-                        data?.getNotifications?.map((notification, index) => (
-                            <Link
-                                to={`/${notification.user?.userUrlId}/${notification.poll?.pollUrlId}`}
-                                className="text-reset notification-item"
-                                key={index}
-                                onClick={() => setMenu(false)}
-                            >
-                                <div className="media">
-                                    <img src={notification.imageUrl} className="mr-3 rounded-circle avatar-xs" alt="" />
-                                    <div className="media-body">
-                                        <div className="font-size-12 text-muted">
-                                            <p className="mb-1">{notification.message}</p>
-                                            <p className="mb-0">
-                                                <i className="mdi mdi-clock-outline"></i> {getRelativeTime(notification.modifiedDate)}{' '}
+                        data?.getAlerts
+                            ?.filter((n) => n.status == 'On')
+                            .map((alert, index) => (
+                                <Link
+                                    to={`/symbol/${alert.symbol}`}
+                                    className="text-reset notification-item"
+                                    key={index}
+                                    onClick={() => setMenu(false)}
+                                >
+                                    <div className="media">
+                                        <img
+                                            src={`https://finnhub.io/api/logo?symbol=${alert.symbol}`}
+                                            className="mr-3 rounded-circle avatar-xs"
+                                            alt=""
+                                        />
+                                        <div className="media-body">
+                                            <h5 className="font-size-14 mb-1">{alert.title}</h5>
+                                            <p className="font-size-12 text-muted mb-0">
+                                                <i className="mdi mdi-clock-outline"></i> {getRelativeTime(alert.modifiedDate)}{' '}
                                             </p>
                                         </div>
                                     </div>
+                                </Link>
+                            ))}
+                    {alertsLength == 0 && (
+                        <div className="text-reset notification-item">
+                            <div className="media">
+                                <div className="media-body">
+                                    <div className="font-size-12 text-muted">
+                                        <p className="mb-1">{`No notifications yet.`}</p>
+                                        <p className="mb-1">{`Configure some alerts to get notifications.`}</p>
+                                    </div>
                                 </div>
-                            </Link>
-                        ))}
+                            </div>
+                        </div>
+                    )}
                 </SimpleBar>
             </DropdownMenu>
         </Dropdown>
     )
 }
 
-export const GET_NOTIFICATIONS_QUERY = gql`
-    query getNotifications {
-        getNotifications {
-            _id
-            message
-            imageUrl
-            isRead
+export const GET_ALERTS_QUERY = gql`
+    query getAlerts {
+        getAlerts {
+            id
+            symbol
+            title
+            status
             modifiedDate
-            poll {
-                pollUrlId
-            }
-            user {
-                userUrlId
+            conditions {
+                order
+                indicator
+                timeframe
+                value
+                valueText
             }
         }
     }
