@@ -81,7 +81,7 @@ const createWatchListRow = (stock, index) => {
             <td>{stock.revenueGrowthTTMYoy.toFixed(2)}</td>
             <td>
                 <Link onClick={() => {}} className={stock.alertStatus ? 'text-danger' : 'text-muted'} to="#">
-                    <i className="mdi mdi-bell font-size-18"></i>
+                    <i className="bx bx-bell font-size-18"></i>
                 </Link>
             </td>
         </tr>

@@ -153,26 +153,38 @@ const Stock = ({ authUser }) => {
                                                     return (
                                                         <tr key={index}>
                                                             <td>
-                                                                <h5>{alert.title}</h5>
-                                                                {alert.conditions.map((condition, index) => (
-                                                                    <div key={index}>
-                                                                        {`${condition.timeframe[0].toUpperCase()}${condition.timeframe.substring(
-                                                                            1
-                                                                        )} ${condition.indicator.toUpperCase()} =
-                                                                        ${condition.valueText}`}
+                                                                <div className="media">
+                                                                    <div className="mt-2 mr-3">
+                                                                        <div className={alert.status == 'On' ? 'text-danger' : 'text-muted'}>
+                                                                            <i className="bx bx-bell font-size-18"></i>
+                                                                        </div>
                                                                     </div>
-                                                                ))}
+                                                                    <div className="media-body">
+                                                                        <h5>{alert.title}</h5>
+                                                                        {alert.conditions.map((condition, index) => (
+                                                                            <div key={index}>
+                                                                                {toProperCase(condition.timeframe) +
+                                                                                    ' ' +
+                                                                                    condition.indicator.toUpperCase() +
+                                                                                    ' = ' +
+                                                                                    condition.valueText}
+                                                                            </div>
+                                                                        ))}
+                                                                    </div>
+                                                                </div>
                                                             </td>
-                                                            <td>
-                                                                <Link
-                                                                    onClick={() => {
-                                                                        setShowDeleteAlert({ show: true, alertId: alert.id })
-                                                                    }}
-                                                                    className="action-icon text-danger"
-                                                                    to="#"
-                                                                >
-                                                                    <i className="mdi mdi-trash-can font-size-18"></i>
-                                                                </Link>
+                                                            <td className="text-right">
+                                                                <div className="mt-2 mr-3">
+                                                                    <Link
+                                                                        onClick={() => {
+                                                                            setShowDeleteAlert({ show: true, alertId: alert.id })
+                                                                        }}
+                                                                        className="action-icon text-muted"
+                                                                        to="#"
+                                                                    >
+                                                                        <i className="bx bx-trash font-size-18"></i>
+                                                                    </Link>
+                                                                </div>
                                                             </td>
                                                         </tr>
                                                     )
@@ -277,6 +289,10 @@ const Stock = ({ authUser }) => {
     )
 }
 
+function toProperCase(text) {
+    return text[0].toUpperCase() + text.substring(1)
+}
+
 export const ADD_STOCK_MUTATION = gql`
     mutation addStock($symbol: String) {
         addStock(symbol: $symbol) {
@@ -292,6 +308,7 @@ export const GET_ALERTS = gql`
             id
             symbol
             title
+            status
             conditions {
                 order
                 indicator
