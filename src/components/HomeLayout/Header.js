@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
 
@@ -11,15 +11,7 @@ import ProfileMenu from '../Common/TopbarDropdown/ProfileMenu'
 import GoogleLoginDevPolls from '../Common/GoogleLoginDevPolls'
 
 const Header = (props) => {
-    const [searchTerm, setSearchTerm] = useState('')
     const isUserLoggedIn = !!props.authUser
-
-    const handleSubmit = (event) => {
-        if (searchTerm) {
-            props.history.push('/search?q=' + searchTerm)
-        }
-        event.preventDefault()
-    }
 
     return (
         <React.Fragment>
@@ -37,12 +29,12 @@ const Header = (props) => {
                             </Link>
                         </div>
 
-                        <form onSubmit={handleSubmit} className="app-search">
+                        <div className="app-search">
                             <div className="position-relative">
                                 <SearchStock className="form-control mb-2" handleSelect={(symbol) => handleSelect(symbol, props.history)} />
                                 <span className="bx bx-search-alt"></span>
                             </div>
-                        </form>
+                        </div>
                     </div>
 
                     <div className="d-flex">
