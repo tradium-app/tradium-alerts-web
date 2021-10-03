@@ -30,8 +30,10 @@ const Stock = ({ authUser }) => {
 
     if (addStockResponse?.addStock?.success) {
         toastr.success('Stock added to the WatchList.')
+        setAddStockResponse(null)
     } else if (addStockResponse?.addStock?.success === false || addStockError) {
         toastr.error('Stock addition failed.')
+        setAddStockResponse(null)
     }
 
     const [deleteAlertError, setDeleteAlertError] = useState(null)
@@ -43,8 +45,10 @@ const Stock = ({ authUser }) => {
 
     if (deleteAlertResponse?.deleteAlert?.success) {
         toastr.success('Alert deleted successfully.')
+        setDeleteAlertResponse(null)
     } else if (deleteAlertResponse?.deleteAlert?.success === false || deleteAlertError) {
         toastr.error('Alert deletion failed.')
+        setDeleteAlertResponse(null)
     }
 
     useEffect(() => {
