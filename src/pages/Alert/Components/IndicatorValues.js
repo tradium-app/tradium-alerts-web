@@ -57,6 +57,15 @@ const IndicatorValues = [
             },
         ],
     },
+    {
+        name: 'reddit',
+        text: 'Reddit Trending',
+        values: [
+            { value: 'top10', valueText: 'In Top 10', valueConfig: { value: 10, upDirection: true } },
+            { value: 'top20', valueText: 'In Top 20', valueConfig: { value: 20, upDirection: true } },
+            { value: 'top50', valueText: 'In Top 50', valueConfig: { value: 50, upDirection: true } },
+        ],
+    },
 ]
 
 export default IndicatorValues
