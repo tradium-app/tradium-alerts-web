@@ -160,7 +160,11 @@ const Stock = ({ authUser }) => {
                                                                 <div className="media">
                                                                     <div className="mt-2 mr-3">
                                                                         <div className={alert.status == 'On' ? 'text-danger' : 'text-muted'}>
-                                                                            <i className="bx bx-bell font-size-18"></i>
+                                                                            {alert.status == 'On' ? (
+                                                                                <i className="mdi mdi-bell-ring font-size-18"></i>
+                                                                            ) : (
+                                                                                <i className="bx bx-bell font-size-18"></i>
+                                                                            )}
                                                                         </div>
                                                                     </div>
                                                                     <div className="media-body">
