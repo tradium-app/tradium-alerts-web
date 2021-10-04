@@ -5,6 +5,7 @@ import gql from 'graphql-tag'
 import { Dropdown, DropdownToggle, DropdownMenu, Row, Col } from 'reactstrap'
 import SimpleBar from 'simplebar-react'
 import { getRelativeTime } from '../time'
+import stockImg from '../../../assets/images/stock-default-icon.png'
 
 const NotificationDropdown = () => {
     const [menu, setMenu] = useState(false)
@@ -45,10 +46,21 @@ const NotificationDropdown = () => {
                                             src={`https://finnhub.io/api/logo?symbol=${alert.symbol}`}
                                             className="avatar-xs img-thumbnail rounded-circle d-inline-block mr-2"
                                             alt=""
+                                            onError={(e) => {
+                                                if (e.target.src != stockImg) e.target.src = stockImg
+                                            }}
                                         />
                                         <div className="media-body">
-                                            <h5 className="font-size-14 mb-1">{alert.title}</h5>
-                                            <p className="font-size-12 text-muted mb-0">
+                                            <h5 className="font-size-14 mb-1">{alert.symbol + ' : ' + alert.title}</h5>
+                                            <div key={index} className="text-muted font-size-11 mb-1">
+                                                {toProperCase(alert.conditions[0].timeframe) +
+                                                    ' ' +
+                                                    alert.conditions[0].indicator.toUpperCase() +
+                                                    ' = ' +
+                                                    alert.conditions[0].valueText +
+                                                    ' ..'}
+                                            </div>
+                                            <p className="font-size-11 text-muted mb-0">
                                                 <i className="mdi mdi-clock-outline"></i> {getRelativeTime(alert.modifiedDate)}{' '}
                                             </p>
                                         </div>
@@ -71,6 +83,10 @@ const NotificationDropdown = () => {
             </DropdownMenu>
         </Dropdown>
     )
+}
+
+function toProperCase(text) {
+    return text[0].toUpperCase() + text.substring(1)
 }
 
 export const GET_ALERTS_QUERY = gql`
