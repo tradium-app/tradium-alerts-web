@@ -197,26 +197,26 @@ const Stock = ({ authUser }) => {
                                                         </tr>
                                                     )
                                                 })}
-                                                {showDeleteAlert.show ? (
-                                                    <SweetAlert
-                                                        title="Are you sure you want to delete the alert?"
-                                                        warning
-                                                        showCancel
-                                                        focusCancelBtn
-                                                        allowEscape
-                                                        confirmBtnBsStyle="danger"
-                                                        cancelBtnBsStyle="primary"
-                                                        onConfirm={() => {
-                                                            deleteAlert({ variables: { alertId: showDeleteAlert.alertId } })
-                                                            setShowDeleteAlert({ show: false })
-                                                        }}
-                                                        onCancel={() => {
-                                                            setShowDeleteAlert({ show: false })
-                                                        }}
-                                                    ></SweetAlert>
-                                                ) : null}
                                             </tbody>
                                         </Table>
+                                        {showDeleteAlert.show ? (
+                                            <SweetAlert
+                                                title="Are you sure you want to delete the alert?"
+                                                warning
+                                                showCancel
+                                                focusCancelBtn
+                                                allowEscape
+                                                confirmBtnBsStyle="danger"
+                                                cancelBtnBsStyle="primary"
+                                                onConfirm={() => {
+                                                    deleteAlert({ variables: { alertId: showDeleteAlert.alertId } })
+                                                    setShowDeleteAlert({ show: false })
+                                                }}
+                                                onCancel={() => {
+                                                    setShowDeleteAlert({ show: false })
+                                                }}
+                                            ></SweetAlert>
+                                        ) : null}
                                         {alerts?.getAlerts && alerts?.getAlerts.length == 0 && 'No Alerts configured yet.'}
                                     </div>
                                 </CardBody>

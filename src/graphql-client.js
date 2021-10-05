@@ -24,7 +24,9 @@ const link = ApolloLink.from([errorLink, debounceLink, httpLink])
 
 const graphqlClient = new ApolloClient({
     link,
-    cache: new InMemoryCache(),
+    cache: new InMemoryCache({
+        addTypename: false,
+    }),
 })
 
 export default graphqlClient
