@@ -10,7 +10,7 @@ import gql from 'graphql-tag'
 import SweetAlert from 'react-bootstrap-sweetalert'
 import stockImg from '../../assets/images/stock-default-icon.png'
 
-const Stock = ({ authUser }) => {
+const Stock = () => {
     let { symbol } = useParams()
     symbol = symbol.toUpperCase()
 
@@ -101,7 +101,7 @@ const Stock = ({ authUser }) => {
 
                                         <Media body>
                                             <h4 className="card-title">{symbol}</h4>
-                                            <h5>1.02356 BTC</h5>
+                                            <h5>{stockProfile?.price.toFixed(2)}</h5>
                                         </Media>
                                     </Media>
                                 </Col>
@@ -110,7 +110,12 @@ const Stock = ({ authUser }) => {
                                     <div className="mt-4 mt-sm-0">
                                         <p className="text-muted mb-2">Last 24 hrs</p>
                                         <h5>
-                                            0.24 % <i className="mdi mdi-arrow-up text-success"></i>
+                                            {stockProfile?.changePercent.toFixed(2)} %
+                                            {stockProfile?.changePercent > 0 ? (
+                                                <i className="mdi mdi-arrow-up text-success"></i>
+                                            ) : (
+                                                <i className="mdi mdi-arrow-down text-danger"></i>
+                                            )}
                                         </h5>
                                     </div>
                                 </Col>

@@ -16,7 +16,7 @@ toastr.options = {
     newestOnTop: true,
 }
 
-const AlertPage = ({ authUser }) => {
+const AlertPage = () => {
     let { symbol, alertId } = useParams()
     const isAddMode = !alertId
 

@@ -21,8 +21,8 @@ const colNames = {
 
 const initialSortConfig = {
     storageKey: 'stocks-list',
-    key: 'symbol',
-    direction: 'ascending',
+    key: 'alertStatus',
+    direction: 'descending',
 }
 
 const HomePage = () => {
