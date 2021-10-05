@@ -7,7 +7,10 @@ import Pages500 from '../pages/Utility/pages-500'
 import Stock from '../pages/Stock/Stock'
 import Alert from '../pages/Alert'
 
-const userRoutes = [{ path: '/symbol/:symbol/alert', component: Alert }]
+const userRoutes = [
+    { path: '/symbol/:symbol/alert', component: Alert },
+    { path: '/symbol/:symbol/alert/:alertId', component: Alert },
+]
 
 const publicRoutes = [
     { path: '/', component: Home },

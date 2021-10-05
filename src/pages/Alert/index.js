@@ -1,13 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
-import { Link, useParams, withRouter } from 'react-router-dom'
+import { Link, useParams, withRouter, Redirect } from 'react-router-dom'
 import gql from 'graphql-tag'
-import { useMutation } from '@apollo/client'
+import { useLazyQuery, useMutation } from '@apollo/client'
 import { Form, Button, NavItem, NavLink, Container, Row, Col, CardBody, Card, Label, Input, CardTitle as h4, CardFooter as div } from 'reactstrap'
 import { Formik } from 'formik'
 import toastr from 'toastr'
 import Condition from './Components/Condition'
+import { GET_ALERTS } from '../Stock/Stock'
 
 toastr.options = {
     positionClass: 'toast-top-center',
@@ -16,8 +17,9 @@ toastr.options = {
     newestOnTop: true,
 }
 
-const AlertPage = ({ authUser, alert }) => {
-    let { symbol } = useParams()
+const AlertPage = ({ authUser }) => {
+    let { symbol, alertId } = useParams()
+    const isAddMode = !alertId
 
     const [error, setError] = useState(null)
     const [data, setData] = useState(null)
@@ -32,11 +34,23 @@ const AlertPage = ({ authUser, alert }) => {
         onCompleted: setData,
     })
 
+    const [getAlerts, { loading, data: initialAlertData }] = useLazyQuery(GET_ALERTS, {
+        variables: { symbol },
+    })
+
+    useEffect(() => {
+        if (!isAddMode) {
+            getAlerts({ variables: { symbol } })
+        }
+    }, [getAlerts, isAddMode, symbol])
+
+    const initialAlert = initialAlertData?.getAlerts?.find((a) => a.id == alertId)
+
     const initialValues = {
-        id: alert?.id || null,
+        id: alertId || null,
         symbol,
-        title: alert?.title,
-        conditions: alert?.conditions.map((o) => ({ _id: o._id, order: o.order })) || [{ timeframe: 'daily', order: 1 }],
+        title: initialAlert?.title || '',
+        conditions: initialAlert?.conditions || [{ timeframe: 'daily', order: 1 }],
     }
 
     if (error) {
@@ -45,16 +59,17 @@ const AlertPage = ({ authUser, alert }) => {
     }
 
     if (data) {
-        if (data.createAlert?.success) {
-            toastr.success('Alert Created.')
+        if (data.addAlert?.success) {
+            toastr.success(`Alert Created for ${data.addAlert.alert.symbol}`)
+            return <Redirect to={`/symbol/${symbol}/alert/${data.addAlert.alert.id}`} />
         } else if (data.updateAlert?.success) {
             toastr.success('Alert Updated.')
         }
         setData(null)
     }
 
-    const handleFormikSubmit = async (values, formikBag) => {
-        if (!values._id) {
+    const handleFormikSubmit = async (values) => {
+        if (isAddMode) {
             await addAlertMutate({
                 variables: {
                     alertInput: values,
@@ -67,9 +82,6 @@ const AlertPage = ({ authUser, alert }) => {
                 },
             })
         }
-
-        formikBag.resetForm()
-        // toggle()
     }
 
     const addOption = (values, setValues) => {
@@ -105,6 +117,7 @@ const AlertPage = ({ authUser, alert }) => {
                             <h4 className="mb-5">Configure Alert for {symbol} stock</h4>
                             <Container>
                                 <Formik
+                                    enableReinitialize={true}
                                     initialValues={initialValues}
                                     validate={validateAlert}
                                     onSubmit={handleFormikSubmit}
@@ -123,6 +136,7 @@ const AlertPage = ({ authUser, alert }) => {
                                                     <Input
                                                         name="title"
                                                         type="text"
+                                                        value={values?.title}
                                                         onChange={handleChange}
                                                         onBlur={handleBlur}
                                                         placeholder="e.g. RSI Overbought"
@@ -216,6 +230,10 @@ export const ADD_ALERT_MUTATION = gql`
         addAlert(alertInput: $alertInput) {
             success
             message
+            alert {
+                id
+                symbol
+            }
         }
     }
 `
