@@ -20,19 +20,19 @@ const IndicatorValues = [
             { value: 'above_sma20', valueText: 'Price above SMA20', valueConfig: { length: 20, value: 0, upDirection: true } },
             { value: 'above_10_sma20', valueText: 'Price 10% above SMA20', valueConfig: { length: 20, value: 10, upDirection: true } },
             { value: 'above_20_sma20', valueText: 'Price 20% above SMA20', valueConfig: { length: 20, value: 20, upDirection: true } },
-            {
-                value: 'golden_cross_sma20_sma50',
-                valueText: 'Golden Cross (SMA20 above SMA50)',
-                valueConfig: { length: 20, value: 10, upDirection: true },
-            },
+            // {
+            //     value: 'golden_cross_sma20_sma50',
+            //     valueText: 'Golden Cross (SMA20 above SMA50)',
+            //     valueConfig: { length: 20, value: 10, upDirection: true },
+            // },
             { value: 'below_sma20', valueText: 'Price below SMA20', valueConfig: { length: 20, value: 0, upDirection: false } },
             { value: 'below_10_sma20', valueText: 'Price 10% below SMA20', valueConfig: { length: 20, value: 10, upDirection: false } },
             { value: 'below_20_sma20', valueText: 'Price 20% below SMA20', valueConfig: { length: 20, value: 20, upDirection: false } },
-            {
-                value: 'death_cross_sma20_sma50',
-                valueText: 'Death Cross (SMA20 above SMA50)',
-                valueConfig: { length: 20, value: 10, upDirection: true },
-            },
+            // {
+            //     value: 'death_cross_sma20_sma50',
+            //     valueText: 'Death Cross (SMA20 above SMA50)',
+            //     valueConfig: { length: 20, value: 10, upDirection: true },
+            // },
         ],
     },
     {
@@ -42,19 +42,19 @@ const IndicatorValues = [
             { value: 'above_ema20', valueText: 'Price above EMA20', valueConfig: { length: 20, value: 0, upDirection: true } },
             { value: 'above_10_ema20', valueText: 'Price 10% above EMA20', valueConfig: { length: 20, value: 10, upDirection: true } },
             { value: 'above_20_ema20', valueText: 'Price 20% above EMA20', valueConfig: { length: 20, value: 20, upDirection: true } },
-            {
-                value: 'golden_cross_ema20_ema50',
-                valueText: 'Golden Cross (EMA20 above EMA50)',
-                valueConfig: { length: 20, value: 10, upDirection: true },
-            },
+            // {
+            //     value: 'golden_cross_ema20_ema50',
+            //     valueText: 'Golden Cross (EMA20 above EMA50)',
+            //     valueConfig: { length: 20, value: 10, upDirection: true },
+            // },
             { value: 'below_ema20', valueText: 'Price below EMA20', valueConfig: { length: 20, value: 0, upDirection: false } },
             { value: 'below_10_ema20', valueText: 'Price 10% below EMA20', valueConfig: { length: 20, value: 10, upDirection: false } },
-            { value: 'below_20_ema20', valueText: 'Price 10% below EMA20', valueConfig: { length: 20, value: 20, upDirection: false } },
-            {
-                value: 'death_cross_ema20_ema50',
-                valueText: 'Death Cross (EMA20 above EMA50)',
-                valueConfig: { length: 20, value: 10, upDirection: true },
-            },
+            { value: 'below_20_ema20', valueText: 'Price 20% below EMA20', valueConfig: { length: 20, value: 20, upDirection: false } },
+            // {
+            //     value: 'death_cross_ema20_ema50',
+            //     valueText: 'Death Cross (EMA20 above EMA50)',
+            //     valueConfig: { length: 20, value: 10, upDirection: true },
+            // },
         ],
     },
     {
