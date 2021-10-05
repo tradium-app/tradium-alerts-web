@@ -1,12 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Container, Row, Col, Card, CardBody, Table } from 'reactstrap'
+import { Container, Table } from 'reactstrap'
 import gql from 'graphql-tag'
 import { useQuery } from '@apollo/client'
 import stockImg from '../../assets/images/stock-default-icon.png'
 import useSortableData from '../../hooks/useSortableData'
 
 const colNames = {
+    alertStatus: 'Alert',
     symbol: 'Symbol',
     price: 'Price',
     changePercent: 'Change%',
@@ -16,7 +17,6 @@ const colNames = {
     revenueGrowthQuarterlyYoy: 'Rev. Quarter YOY',
     revenueGrowthTTMYoy: 'Rev. TTM YOY',
     redditRank: 'Reddit Rank',
-    alertStatus: 'Alert',
 }
 
 const initialSortConfig = {
@@ -67,6 +67,11 @@ const HomePage = () => {
 const createWatchListRow = (stock, index) => {
     return (
         <tr key={index}>
+            <td>
+                <Link onClick={() => {}} className={stock.alertStatus ? 'text-danger' : 'text-muted'} to="#">
+                    {stock.alertStatus ? <i className="mdi mdi-bell-ring font-size-18"></i> : <i className="mdi mdi-bell-outline font-size-18"></i>}
+                </Link>
+            </td>
             <td style={{ textAlign: 'left' }}>
                 <Link to={`/symbol/${stock.symbol.toUpperCase()}`} className="ml-1">
                     <img
@@ -102,11 +107,6 @@ const createWatchListRow = (stock, index) => {
             <td>{stock.revenueGrowthQuarterlyYoy.toFixed(2)}</td>
             <td>{stock.revenueGrowthTTMYoy.toFixed(2)}</td>
             <td>{stock.redditRank > 0 ? stock.redditRank : ''}</td>
-            <td>
-                <Link onClick={() => {}} className={stock.alertStatus ? 'text-danger' : 'text-muted'} to="#">
-                    {stock.alertStatus ? <i className="mdi mdi-bell-ring font-size-18"></i> : <i className="mdi mdi-bell-outline font-size-18"></i>}
-                </Link>
-            </td>
         </tr>
     )
 }
