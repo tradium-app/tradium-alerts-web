@@ -8,7 +8,6 @@ import { Form, Button, NavItem, NavLink, Container, Row, Col, CardBody, Card, La
 import { Formik } from 'formik'
 import toastr from 'toastr'
 import Condition from './Components/Condition'
-import { GET_ALERTS } from '../Stock/Stock'
 
 toastr.options = {
     positionClass: 'toast-top-center',
@@ -224,6 +223,24 @@ const validateAlert = (values) => {
     !!Object.keys(errors).length && toastr.error(Object.values(errors).join('</br>'))
     return errors
 }
+
+export const GET_ALERTS = gql`
+    query getAlerts($symbol: String) {
+        getAlerts(symbol: $symbol) {
+            id
+            symbol
+            title
+            status
+            conditions {
+                order
+                indicator
+                timeframe
+                value
+                valueText
+            }
+        }
+    }
+`
 
 export const ADD_ALERT_MUTATION = gql`
     mutation addAlert($alertInput: AlertInput!) {

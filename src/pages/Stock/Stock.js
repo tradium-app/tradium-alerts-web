@@ -17,9 +17,11 @@ const Stock = ({ authUser }) => {
     let chartContainerRef = null
     const [showDeleteAlert, setShowDeleteAlert] = useState({ show: false })
 
-    const { data: alerts } = useQuery(GET_ALERTS, {
+    const { data } = useQuery(GET_STOCK_PROFILE, {
         variables: { symbol },
     })
+
+    const stockProfile = data?.getStockProfile
 
     const [addStockError, setAddStockError] = useState(null)
     const [addStockResponse, setAddStockResponse] = useState(null)
@@ -149,7 +151,7 @@ const Stock = ({ authUser }) => {
                                     <div className="table-responsive">
                                         <Table className="table mb-0">
                                             <tbody>
-                                                {alerts?.getAlerts.map((alert, index) => {
+                                                {stockProfile?.alerts?.map((alert, index) => {
                                                     return (
                                                         <tr key={index}>
                                                             <td>
@@ -213,7 +215,7 @@ const Stock = ({ authUser }) => {
                                                 }}
                                             ></SweetAlert>
                                         ) : null}
-                                        {alerts?.getAlerts && alerts?.getAlerts.length == 0 && 'No Alerts configured yet.'}
+                                        {(!stockProfile?.alerts || stockProfile?.alerts.length == 0) && 'No Alerts configured yet.'}
                                     </div>
                                 </CardBody>
                             </Card>
@@ -306,19 +308,31 @@ export const ADD_STOCK_MUTATION = gql`
     }
 `
 
-export const GET_ALERTS = gql`
-    query getAlerts($symbol: String) {
-        getAlerts(symbol: $symbol) {
+export const GET_STOCK_PROFILE = gql`
+    query getStockProfile($symbol: String) {
+        getStockProfile(symbol: $symbol) {
             id
             symbol
-            title
-            status
-            conditions {
-                order
-                indicator
-                timeframe
-                value
-                valueText
+            company
+            price
+            changePercent
+            marketCap
+            week52High
+            week52Low
+            alertStatus
+            isOnWatchList
+            alerts {
+                id
+                symbol
+                title
+                status
+                conditions {
+                    order
+                    indicator
+                    timeframe
+                    value
+                    valueText
+                }
             }
         }
     }
