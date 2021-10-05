@@ -15,6 +15,7 @@ const colNames = {
     revenueGrowthQuarterlyYoy: 'Rev. Quarter YOY',
     revenueGrowthTTMYoy: 'Rev. TTM YOY',
     beta: 'Beta',
+    alertStatus: 'Alert',
 }
 const initialSortConfig = {
     storageKey: 'stocks-list',
@@ -53,7 +54,6 @@ const HomePage = (props) => {
                                                         ></i>
                                                     </th>
                                                 ))}
-                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>{!error && !loading && items?.map(createWatchListRow)}</tbody>
