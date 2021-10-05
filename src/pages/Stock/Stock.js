@@ -235,23 +235,19 @@ const Stock = () => {
                                             <tbody>
                                                 <tr>
                                                     <td>Market Cap</td>
-                                                    <td>$ 1,857</td>
+                                                    <td>{formatMarketCap(stockProfile?.marketCap)}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Total Debt</td>
-                                                    <td>- $ 157</td>
+                                                    <td>-</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Cash</td>
-                                                    <td>$ 25</td>
+                                                    <td>-</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Estimated Tax : </td>
-                                                    <td>$ 19.22</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Total :</th>
-                                                    <th>$ 1744.22</th>
+                                                    <td>-</td>
                                                 </tr>
                                             </tbody>
                                         </Table>
@@ -269,23 +265,15 @@ const Stock = () => {
                                             <tbody>
                                                 <tr>
                                                     <td>RSI</td>
-                                                    <td>OverSold</td>
+                                                    <td>{stockProfile?.rsi}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>MACD</td>
-                                                    <td>OverSold</td>
+                                                    <td>{stockProfile?.macd}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Cash</td>
-                                                    <td>$ 25</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Estimated Tax : </td>
-                                                    <td>$ 19.22</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Total :</th>
-                                                    <th>$ 1744.22</th>
+                                                    <td>Beta</td>
+                                                    <td>{stockProfile?.beta.toFixed(2)}</td>
                                                 </tr>
                                             </tbody>
                                         </Table>
@@ -302,6 +290,18 @@ const Stock = () => {
 
 function toProperCase(text) {
     return text[0].toUpperCase() + text.substring(1)
+}
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+}
+
+function formatMarketCap(x) {
+    if (x > 1000) {
+        return numberWithCommas(Math.floor(x / 1000)) + 'B'
+    } else {
+        return numberWithCommas(Math.floor(x)) + 'M'
+    }
 }
 
 export const ADD_STOCK_MUTATION = gql`
@@ -324,6 +324,11 @@ export const GET_STOCK_PROFILE = gql`
             marketCap
             week52High
             week52Low
+            beta
+            revenueGrowthQuarterlyYoy
+            revenueGrowthTTMYoy
+            rsi
+            redditRank
             alertStatus
             isOnWatchList
             alerts {
