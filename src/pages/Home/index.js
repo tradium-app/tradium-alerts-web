@@ -12,9 +12,10 @@ const colNames = {
     changePercent: 'Change%',
     marketCap: 'Market Cap.',
     week52Low: '52 Week Range',
+    beta: 'Beta',
     revenueGrowthQuarterlyYoy: 'Rev. Quarter YOY',
     revenueGrowthTTMYoy: 'Rev. TTM YOY',
-    beta: 'Beta',
+    redditRank: 'Reddit Rank',
     alertStatus: 'Alert',
 }
 const initialSortConfig = {
@@ -105,6 +106,7 @@ const createWatchListRow = (stock, index) => {
             <td>{stock.beta.toFixed(2)}</td>
             <td>{stock.revenueGrowthQuarterlyYoy.toFixed(2)}</td>
             <td>{stock.revenueGrowthTTMYoy.toFixed(2)}</td>
+            <td>{stock.redditRank}</td>
             <td>
                 <Link onClick={() => {}} className={stock.alertStatus ? 'text-danger' : 'text-muted'} to="#">
                     {stock.alertStatus ? <i className="mdi mdi-bell-ring font-size-18"></i> : <i className="mdi mdi-bell-outline font-size-18"></i>}
@@ -140,6 +142,8 @@ export const GET_WATCHLIST_QUERY = gql`
             beta
             revenueGrowthQuarterlyYoy
             revenueGrowthTTMYoy
+            rsi
+            redditRank
             alertStatus
         }
     }
