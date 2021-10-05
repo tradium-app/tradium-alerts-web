@@ -34,39 +34,31 @@ const HomePage = () => {
     return (
         <div className="page-content">
             <Container fluid>
-                <Row>
-                    <Col xs="12">
-                        <Card>
-                            <CardBody>
-                                <div className="table-responsive">
-                                    <Table className="table-centered table-nowrap">
-                                        <thead>
-                                            <tr>
-                                                {Object.keys(colNames).map((colName, index) => (
-                                                    <th key={index}>
-                                                        <Link onClick={() => requestSort(colName)} to="#" className="text-muted">
-                                                            {colNames[colName]}
-                                                        </Link>
-                                                        <i
-                                                            className={
-                                                                colName != sortConfig?.key
-                                                                    ? ''
-                                                                    : sortConfig.direction == 'ascending'
-                                                                    ? 'bx bx-up-arrow-alt'
-                                                                    : 'bx bx-down-arrow-alt'
-                                                            }
-                                                        ></i>
-                                                    </th>
-                                                ))}
-                                            </tr>
-                                        </thead>
-                                        <tbody>{!error && !loading && items?.map(createWatchListRow)}</tbody>
-                                    </Table>
-                                </div>
-                            </CardBody>
-                        </Card>
-                    </Col>
-                </Row>
+                <div className="table-responsive">
+                    <Table className="table-centered table-nowrap">
+                        <thead>
+                            <tr>
+                                {Object.keys(colNames).map((colName, index) => (
+                                    <th key={index}>
+                                        <Link onClick={() => requestSort(colName)} to="#" className="text-muted">
+                                            {colNames[colName]}
+                                        </Link>
+                                        <i
+                                            className={
+                                                colName != sortConfig?.key
+                                                    ? ''
+                                                    : sortConfig.direction == 'ascending'
+                                                    ? 'bx bx-up-arrow-alt'
+                                                    : 'bx bx-down-arrow-alt'
+                                            }
+                                        ></i>
+                                    </th>
+                                ))}
+                            </tr>
+                        </thead>
+                        <tbody>{!error && !loading && items?.map(createWatchListRow)}</tbody>
+                    </Table>
+                </div>
             </Container>
         </div>
     )

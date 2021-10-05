@@ -81,67 +81,63 @@ const Stock = ({ authUser }) => {
                 <Container fluid>
                     <Row>
                         <Col xl="12">
-                            <Card>
-                                <CardBody>
-                                    <Row>
-                                        <Col xl="3" sm="3">
-                                            <Media>
-                                                <div className="avatar-sm mr-3">
-                                                    <span className="avatar-title rounded-circle bg-soft-secondary p-1">
-                                                        <img
-                                                            src={`https://finnhub.io/api/logo?symbol=${symbol}`}
-                                                            alt=""
-                                                            className="avatar img-thumbnail rounded-circle"
-                                                            onError={(e) => {
-                                                                if (e.target.src != stockImg) e.target.src = stockImg
-                                                            }}
-                                                        />
-                                                    </span>
-                                                </div>
-
-                                                <Media body>
-                                                    <h4 className="card-title">{symbol}</h4>
-                                                    <h5>1.02356 BTC</h5>
-                                                </Media>
-                                            </Media>
-                                        </Col>
-
-                                        <Col xl="3" sm="3">
-                                            <div className="mt-4 mt-sm-0">
-                                                <p className="text-muted mb-2">Last 24 hrs</p>
-                                                <h5>
-                                                    0.24 % <i className="mdi mdi-arrow-up text-success"></i>
-                                                </h5>
-                                            </div>
-                                        </Col>
-                                        <Col xl="6" sm="6" className="d-flex justify-content-end">
-                                            <div className="mt-3 button-items">
-                                                <Button
-                                                    type="button"
-                                                    color="primary"
-                                                    onClick={() => {
-                                                        addStock({ variables: { symbol } })
+                            <Row>
+                                <Col xl="3" sm="3">
+                                    <Media>
+                                        <div className="avatar-sm mr-3">
+                                            <span className="avatar-title rounded-circle bg-soft-secondary p-1">
+                                                <img
+                                                    src={`https://finnhub.io/api/logo?symbol=${symbol}`}
+                                                    alt=""
+                                                    className="avatar img-thumbnail rounded-circle"
+                                                    onError={(e) => {
+                                                        if (e.target.src != stockImg) e.target.src = stockImg
                                                     }}
-                                                >
-                                                    Add to WatchList
-                                                </Button>
+                                                />
+                                            </span>
+                                        </div>
 
-                                                <Link to={`/symbol/${symbol.toUpperCase()}/alert`} className="btn btn-primary">
-                                                    Add an Alert
-                                                </Link>
-                                            </div>
-                                        </Col>
-                                    </Row>
+                                        <Media body>
+                                            <h4 className="card-title">{symbol}</h4>
+                                            <h5>1.02356 BTC</h5>
+                                        </Media>
+                                    </Media>
+                                </Col>
 
-                                    <div
-                                        id="containerId"
-                                        ref={(element) => {
-                                            chartContainerRef = element
-                                        }}
-                                        className="m-4 align-items-center"
-                                    ></div>
-                                </CardBody>
-                            </Card>
+                                <Col xl="3" sm="3">
+                                    <div className="mt-4 mt-sm-0">
+                                        <p className="text-muted mb-2">Last 24 hrs</p>
+                                        <h5>
+                                            0.24 % <i className="mdi mdi-arrow-up text-success"></i>
+                                        </h5>
+                                    </div>
+                                </Col>
+                                <Col xl="6" sm="6" className="d-flex justify-content-end">
+                                    <div className="mt-3 button-items">
+                                        <Button
+                                            type="button"
+                                            color="primary"
+                                            onClick={() => {
+                                                addStock({ variables: { symbol } })
+                                            }}
+                                        >
+                                            Add to WatchList
+                                        </Button>
+
+                                        <Link to={`/symbol/${symbol.toUpperCase()}/alert`} className="btn btn-primary">
+                                            Add an Alert
+                                        </Link>
+                                    </div>
+                                </Col>
+                            </Row>
+
+                            <div
+                                id="containerId"
+                                ref={(element) => {
+                                    chartContainerRef = element
+                                }}
+                                className="m-4 align-items-center"
+                            ></div>
                         </Col>
                     </Row>
                     <Row>
