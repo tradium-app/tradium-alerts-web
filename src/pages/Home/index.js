@@ -28,7 +28,11 @@ const initialSortConfig = {
 const HomePage = () => {
     const { loading, error, data } = useQuery(GET_WATCHLIST_QUERY, { pollInterval: 30000 })
 
-    const watchList = data?.getWatchList.map((s) => ({ ...s, week52DrawDown: (s.week52High - s.price) / s.week52High || 0 }))
+    const watchList = data?.getWatchList.map((s) => ({
+        ...s,
+        week52DrawDown: (s.week52High - s.price) / s.week52High || 0,
+        redditRank: s.redditRank <= 0 ? 999 : s.redditRank,
+    }))
     const { items, requestSort, sortConfig } = useSortableData(watchList, initialSortConfig)
 
     return (
@@ -106,7 +110,7 @@ const createWatchListRow = (stock, index) => {
             <td>{stock.beta.toFixed(2)}</td>
             <td>{stock.revenueGrowthQuarterlyYoy.toFixed(2)}</td>
             <td>{stock.revenueGrowthTTMYoy.toFixed(2)}</td>
-            <td>{stock.redditRank > 0 ? stock.redditRank : ''}</td>
+            <td>{stock.redditRank < 999 ? stock.redditRank : ''}</td>
         </tr>
     )
 }
