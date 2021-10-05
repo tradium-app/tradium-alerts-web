@@ -5,6 +5,15 @@ import { onError } from '@apollo/client/link/error'
 
 const DEFAULT_DEBOUNCE_TIMEOUT = 500
 
+const defaultOptions = {
+    watchQuery: {
+        fetchPolicy: 'no-cache',
+    },
+    query: {
+        fetchPolicy: 'no-cache',
+    },
+}
+
 const debounceLink = new DebounceLink(DEFAULT_DEBOUNCE_TIMEOUT)
 
 const httpLink = createHttpLink({
@@ -27,6 +36,7 @@ const graphqlClient = new ApolloClient({
     cache: new InMemoryCache({
         addTypename: false,
     }),
+    defaultOptions,
 })
 
 export default graphqlClient
