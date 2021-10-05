@@ -11,22 +11,25 @@ const colNames = {
     price: 'Price',
     changePercent: 'Change%',
     marketCap: 'Market Cap.',
-    week52Low: '52 Week Range',
+    week52DrawDown: '52 Week Range',
     beta: 'Beta',
     revenueGrowthQuarterlyYoy: 'Rev. Quarter YOY',
     revenueGrowthTTMYoy: 'Rev. TTM YOY',
     redditRank: 'Reddit Rank',
     alertStatus: 'Alert',
 }
+
 const initialSortConfig = {
     storageKey: 'stocks-list',
     key: 'symbol',
     direction: 'ascending',
 }
 
-const HomePage = (props) => {
+const HomePage = () => {
     const { loading, error, data } = useQuery(GET_WATCHLIST_QUERY, { pollInterval: 30000 })
-    const { items, requestSort, sortConfig } = useSortableData(data?.getWatchList, initialSortConfig)
+
+    const watchList = data?.getWatchList.map((s) => ({ ...s, week52DrawDown: (s.week52High - s.price) / s.week52High || 0 }))
+    const { items, requestSort, sortConfig } = useSortableData(watchList, initialSortConfig)
 
     return (
         <div className="page-content">
@@ -106,7 +109,7 @@ const createWatchListRow = (stock, index) => {
             <td>{stock.beta.toFixed(2)}</td>
             <td>{stock.revenueGrowthQuarterlyYoy.toFixed(2)}</td>
             <td>{stock.revenueGrowthTTMYoy.toFixed(2)}</td>
-            <td>{stock.redditRank}</td>
+            <td>{stock.redditRank > 0 ? stock.redditRank : ''}</td>
             <td>
                 <Link onClick={() => {}} className={stock.alertStatus ? 'text-danger' : 'text-muted'} to="#">
                     {stock.alertStatus ? <i className="mdi mdi-bell-ring font-size-18"></i> : <i className="mdi mdi-bell-outline font-size-18"></i>}
