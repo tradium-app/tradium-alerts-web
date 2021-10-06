@@ -8,6 +8,31 @@ const Condition = ({ condition, index, removeOption, totalOptions, addOption, ha
 
     return (
         <Row className="mb-4">
+            <Col xl="1" lg="1" sm="1" className="d-flex">
+                {index > 0 && (
+                    <select
+                        name={`conditions.${index}.operator`}
+                        value={condition.operator}
+                        className="form-control"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                    >
+                        <option value="And">And</option>
+                        <option value="Not">Not</option>
+                    </select>
+                )}
+            </Col>
+            <Col xl="2" lg="2" sm="2">
+                <select
+                    name={`conditions.${index}.timeframe`}
+                    value={condition.timeframe}
+                    className="form-control"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                >
+                    <option value="daily">Daily</option>
+                </select>
+            </Col>
             <Col xl="4" lg="4" sm="4">
                 <select
                     name={`conditions.${index}.indicator`}
@@ -22,17 +47,6 @@ const Condition = ({ condition, index, removeOption, totalOptions, addOption, ha
                             {text}
                         </option>
                     ))}
-                </select>
-            </Col>
-            <Col xl="3" lg="3" sm="3">
-                <select
-                    name={`conditions.${index}.timeframe`}
-                    value={condition.timeframe}
-                    className="form-control"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                >
-                    <option value="daily">Daily</option>
                 </select>
             </Col>
             <Col xl="4" lg="4" sm="4">

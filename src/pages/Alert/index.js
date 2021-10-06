@@ -50,7 +50,7 @@ const AlertPage = () => {
         symbol,
         signal: initialAlert?.signal || 'Buy',
         title: initialAlert?.title || '',
-        conditions: initialAlert?.conditions || [{ timeframe: 'daily', order: 1 }],
+        conditions: initialAlert?.conditions || [{ order: 1, operator: 'And', timeframe: 'daily' }],
     }
 
     if (error) {
@@ -87,7 +87,7 @@ const AlertPage = () => {
     const addOption = (values, setValues) => {
         const conditions = [...values.conditions]
         const lastOrder = conditions[conditions.length - 1].order
-        conditions.push({ timeframe: 'daily', order: lastOrder + 1 })
+        conditions.push({ timeframe: 'daily', operator: 'And', order: lastOrder + 1 })
         setValues({ ...values, conditions: conditions })
     }
 
@@ -181,20 +181,21 @@ const AlertPage = () => {
                                                 </Col>
                                             </Row>
                                             <Row className="mb-2">
+                                                <Col xl="1" lg="1" sm="1"></Col>
+                                                <Col xl="2" lg="2" sm="2">
+                                                    <div id="basic-pills-wizard" className="twitter-bs-wizard mb-2">
+                                                        <ul className="twitter-bs-wizard-nav nav nav-pills nav-justified">
+                                                            <NavItem>
+                                                                <NavLink className="text-center">TimeFrame</NavLink>
+                                                            </NavItem>
+                                                        </ul>
+                                                    </div>
+                                                </Col>
                                                 <Col xl="4" lg="4" sm="4">
                                                     <div id="basic-pills-wizard" className="twitter-bs-wizard mb-2">
                                                         <ul className="twitter-bs-wizard-nav nav nav-pills nav-justified">
                                                             <NavItem>
                                                                 <NavLink className="text-center">Indicator</NavLink>
-                                                            </NavItem>
-                                                        </ul>
-                                                    </div>
-                                                </Col>
-                                                <Col xl="3" lg="3" sm="3">
-                                                    <div id="basic-pills-wizard" className="twitter-bs-wizard mb-2">
-                                                        <ul className="twitter-bs-wizard-nav nav nav-pills nav-justified">
-                                                            <NavItem>
-                                                                <NavLink className="text-center">TimeFrame</NavLink>
                                                             </NavItem>
                                                         </ul>
                                                     </div>
@@ -271,6 +272,7 @@ export const GET_ALERTS = gql`
             status
             conditions {
                 order
+                operator
                 indicator
                 timeframe
                 value
