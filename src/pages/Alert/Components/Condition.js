@@ -52,9 +52,10 @@ const Condition = ({ condition, index, removeOption, totalOptions, addOption, ha
             <Col xl="4" lg="4" sm="4">
                 <ConditionValueSelect
                     indicator={condition.indicator}
-                    value={`conditions.${index}.value`}
-                    valueText={`conditions.${index}.valueText`}
-                    valueConfig={`conditions.${index}.valueConfig`}
+                    valueField={`conditions.${index}.value`}
+                    value={condition.value}
+                    valueTextField={`conditions.${index}.valueText`}
+                    valueConfigField={`conditions.${index}.valueConfig`}
                 />
             </Col>
             <Col xl="1" lg="1" sm="1" className="d-flex">

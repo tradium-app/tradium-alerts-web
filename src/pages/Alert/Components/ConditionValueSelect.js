@@ -2,14 +2,14 @@ import React from 'react'
 import { useField } from 'formik'
 import IndicatorValues from './IndicatorValues'
 
-const ConditionValueSelect = ({ indicator, value, valueText, valueConfig }) => {
-    const [, , valueHelpers] = useField(value)
+const ConditionValueSelect = ({ indicator, valueField, value, valueTextField, valueConfigField }) => {
+    const [, , valueHelpers] = useField(valueField)
     const { setValue: setValueField, setTouched: setValueTouched } = valueHelpers
 
-    const [, , valueTextHelpers] = useField(valueText)
+    const [, , valueTextHelpers] = useField(valueTextField)
     const { setValue: setValueTextField } = valueTextHelpers
 
-    const [, , valueConfigHelpers] = useField(valueConfig)
+    const [, , valueConfigHelpers] = useField(valueConfigField)
     const { setValue: setValueConfigField } = valueConfigHelpers
 
     const handleChange = (event) => {
@@ -21,7 +21,7 @@ const ConditionValueSelect = ({ indicator, value, valueText, valueConfig }) => {
     }
 
     return (
-        <select className="form-control" onChange={handleChange}>
+        <select className="form-control" onChange={handleChange} value={value}>
             <option>--Please Select--</option>
             {IndicatorValues.find((element) => element.name === indicator)?.values.map(({ value, valueText }) => (
                 <option key={value} value={value}>
