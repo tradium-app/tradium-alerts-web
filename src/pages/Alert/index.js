@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 import { Link, useParams, withRouter, Redirect } from 'react-router-dom'
 import gql from 'graphql-tag'
 import { useLazyQuery, useMutation } from '@apollo/client'
-import { Form, Button, NavItem, NavLink, Container, Row, Col, CardBody, Card, Label, Input, CardTitle as h4, CardFooter as div } from 'reactstrap'
-import { Formik } from 'formik'
+import { Form, Button, NavItem, NavLink, Container, Row, Col, CardBody, Card, Label, Input } from 'reactstrap'
+import { Formik, Field } from 'formik'
 import toastr from 'toastr'
 import Condition from './Components/Condition'
 
@@ -48,6 +48,7 @@ const AlertPage = () => {
     const initialValues = {
         id: alertId || null,
         symbol,
+        signal: initialAlert?.signal || 'Buy',
         title: initialAlert?.title || '',
         conditions: initialAlert?.conditions || [{ timeframe: 'daily', order: 1 }],
     }
@@ -125,6 +126,42 @@ const AlertPage = () => {
                                 >
                                     {({ handleSubmit, handleChange, handleBlur, isSubmitting, touched, values, setValues, errors, handleReset }) => (
                                         <Form onSubmit={handleSubmit} className="justify-content-center wizard-card">
+                                            <Row className="mb-4">
+                                                <Col sm="2">
+                                                    <Label htmlFor="title" className="col-form-label">
+                                                        Signal
+                                                    </Label>
+                                                </Col>
+                                                <Col sm="4">
+                                                    <div className="col-form-label">
+                                                        <div className="custom-control custom-radio custom-control-inline">
+                                                            <Field
+                                                                type="radio"
+                                                                id="radioBuy"
+                                                                name="signal"
+                                                                className="custom-control-input"
+                                                                value="Buy"
+                                                            />
+                                                            <Label className="custom-control-label" htmlFor="radioBuy">
+                                                                Buy
+                                                            </Label>
+                                                        </div>
+                                                        &nbsp;
+                                                        <div className="custom-control custom-radio custom-control-inline">
+                                                            <Field
+                                                                type="radio"
+                                                                id="radioSell"
+                                                                name="signal"
+                                                                className="custom-control-input"
+                                                                value="Sell"
+                                                            />
+                                                            <Label className="custom-control-label" htmlFor="radioSell">
+                                                                Sell
+                                                            </Label>
+                                                        </div>
+                                                    </div>
+                                                </Col>
+                                            </Row>
                                             <Row className="mb-4">
                                                 <Col sm="2">
                                                     <Label htmlFor="title" className="col-form-label">
@@ -229,6 +266,7 @@ export const GET_ALERTS = gql`
         getAlerts(symbol: $symbol) {
             id
             symbol
+            signal
             title
             status
             conditions {
