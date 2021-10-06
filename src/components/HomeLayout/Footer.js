@@ -10,7 +10,7 @@ const Footer = () => {
                         <Col md={6}>{new Date().getFullYear()} © Tradium</Col>
                         <Col md={6}>
                             <a
-                                href="https://github.com/tradium-app/swing-trade-alerts/issues"
+                                href="mailto:info@tradiumapp.com?subject=Customer%20Feedback"
                                 target="_blank"
                                 rel="noreferrer noopener"
                                 className="text-reset"

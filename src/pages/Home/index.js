@@ -1,8 +1,9 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
+import { Link, withRouter } from 'react-router-dom'
 import { Container, Table } from 'reactstrap'
 import gql from 'graphql-tag'
-import { useQuery } from '@apollo/client'
+import { useLazyQuery } from '@apollo/client'
 import stockImg from '../../assets/images/stock-default-icon.png'
 import useSortableData from '../../hooks/useSortableData'
 
@@ -26,8 +27,12 @@ const initialSortConfig = {
     direction: 'descending',
 }
 
-const HomePage = () => {
-    const { loading, error, data } = useQuery(GET_WATCHLIST_QUERY, { pollInterval: 30000 })
+const HomePage = ({ authUser }) => {
+    const [getWatchList, { loading, error, data }] = useLazyQuery(GET_WATCHLIST_QUERY, { pollInterval: 30000 })
+
+    useEffect(() => {
+        authUser && getWatchList()
+    }, [authUser, getWatchList])
 
     const watchList = data?.getWatchList.map((s) => ({
         ...s,
@@ -155,4 +160,10 @@ export const GET_WATCHLIST_QUERY = gql`
     }
 `
 
-export default HomePage
+const mapStateToProps = (state) => {
+    return {
+        authUser: state?.Login.authUser,
+    }
+}
+
+export default withRouter(connect(mapStateToProps, {})(HomePage))
