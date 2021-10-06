@@ -7,7 +7,8 @@ import stockImg from '../../assets/images/stock-default-icon.png'
 import useSortableData from '../../hooks/useSortableData'
 
 const colNames = {
-    alertStatus: 'Alert',
+    isBuyAlert: 'Buy',
+    isSellAlert: 'Sell',
     symbol: 'Symbol',
     price: 'Price',
     changePercent: 'Change%',
@@ -21,7 +22,7 @@ const colNames = {
 
 const initialSortConfig = {
     storageKey: 'stocks-list',
-    key: 'alertStatus',
+    key: 'isBuyAlert',
     direction: 'descending',
 }
 
@@ -72,8 +73,13 @@ const createWatchListRow = (stock, index) => {
     return (
         <tr key={index}>
             <td>
-                <Link onClick={() => {}} className={stock.alertStatus ? 'text-danger' : 'text-muted'} to="#">
-                    {stock.alertStatus ? <i className="mdi mdi-bell-ring font-size-18"></i> : <i className="mdi mdi-bell-outline font-size-18"></i>}
+                <Link onClick={() => {}} className={stock.isBuyAlert ? 'text-success' : 'text-muted'} to="#">
+                    {stock.isBuyAlert ? <i className="mdi mdi-bell-ring font-size-18"></i> : <i className="mdi mdi-bell-outline font-size-18"></i>}
+                </Link>
+            </td>
+            <td>
+                <Link onClick={() => {}} className={stock.isSellAlert ? 'text-danger' : 'text-muted'} to="#">
+                    {stock.isSellAlert ? <i className="mdi mdi-bell-ring font-size-18"></i> : <i className="mdi mdi-bell-outline font-size-18"></i>}
                 </Link>
             </td>
             <td style={{ textAlign: 'left' }}>
@@ -143,7 +149,8 @@ export const GET_WATCHLIST_QUERY = gql`
             revenueGrowthTTMYoy
             rsi
             redditRank
-            alertStatus
+            isBuyAlert
+            isSellAlert
         }
     }
 `
