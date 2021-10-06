@@ -161,14 +161,16 @@ const Stock = () => {
                                                         <tr key={index}>
                                                             <td>
                                                                 <div className="media">
-                                                                    <div className="mt-2 mr-3">
-                                                                        <div className={alert.status == 'On' ? 'text-danger' : 'text-muted'}>
-                                                                            {alert.status == 'On' ? (
-                                                                                <i className="mdi mdi-bell-ring font-size-18"></i>
-                                                                            ) : (
-                                                                                <i className="bx bx-bell font-size-18"></i>
-                                                                            )}
-                                                                        </div>
+                                                                    <div className="col-form-label mr-3">
+                                                                        {alert.status == 'On' && alert.signal == 'Buy' && (
+                                                                            <i className="mdi mdi-bell-ring text-success font-size-18"></i>
+                                                                        )}
+                                                                        {alert.status == 'On' && alert.signal == 'Sell' && (
+                                                                            <i className="mdi mdi-bell-ring text-danger font-size-18"></i>
+                                                                        )}
+                                                                        {alert.status == 'Off' && (
+                                                                            <i className="mdi mdi-bell-outline text-muted font-size-18"></i>
+                                                                        )}
                                                                     </div>
                                                                     <div className="media-body">
                                                                         <h5>{alert.title}</h5>
@@ -184,8 +186,14 @@ const Stock = () => {
                                                                     </div>
                                                                 </div>
                                                             </td>
-                                                            <td className="text-right">
-                                                                <div className="mt-2 mr-3">
+                                                            <td className="text-right mr-0">
+                                                                <div className="col-form-label">
+                                                                    <Link
+                                                                        className="action-icon text-muted mr-2"
+                                                                        to={`/symbol/${alert.symbol}/alert/${alert.id}`}
+                                                                    >
+                                                                        <i className="bx bx-edit-alt font-size-18"></i>
+                                                                    </Link>
                                                                     <Link
                                                                         onClick={() => {
                                                                             setShowDeleteAlert({ show: true, alertId: alert.id })
@@ -334,6 +342,7 @@ export const GET_STOCK_PROFILE = gql`
             alerts {
                 id
                 symbol
+                signal
                 title
                 status
                 conditions {
