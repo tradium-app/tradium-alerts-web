@@ -38,6 +38,21 @@ const Stock = () => {
         setAddStockResponse(null)
     }
 
+    const [removeStockError, setRemoveStockError] = useState(null)
+    const [removeStockResponse, setRemoveStockResponse] = useState(null)
+    const [removeStock] = useMutation(REMOVE_STOCK_MUTATION, {
+        onError: setRemoveStockError,
+        onCompleted: setRemoveStockResponse,
+    })
+
+    if (removeStockResponse?.removeStock?.success) {
+        toastr.success('Stock removed from the WatchList.')
+        setRemoveStockResponse(null)
+    } else if (removeStockResponse?.removeStock?.success === false || removeStockError) {
+        toastr.error('Stock removal failed.')
+        setRemoveStockResponse(null)
+    }
+
     const [deleteAlertError, setDeleteAlertError] = useState(null)
     const [deleteAlertResponse, setDeleteAlertResponse] = useState(null)
     const [deleteAlert] = useMutation(DELETE_ALERT_MUTATION, {
@@ -121,15 +136,28 @@ const Stock = () => {
                                 </Col>
                                 <Col xl="6" sm="6" className="d-flex justify-content-end">
                                     <div className="mt-3 button-items">
-                                        <Button
-                                            type="button"
-                                            color="primary"
-                                            onClick={() => {
-                                                addStock({ variables: { symbol } })
-                                            }}
-                                        >
-                                            Add to WatchList
-                                        </Button>
+                                        {!stockProfile?.isOnWatchList && (
+                                            <Button
+                                                type="button"
+                                                color="primary"
+                                                onClick={() => {
+                                                    addStock({ variables: { symbol } })
+                                                }}
+                                            >
+                                                Add to WatchList
+                                            </Button>
+                                        )}
+                                        {stockProfile?.isOnWatchList && (
+                                            <Button
+                                                type="button"
+                                                color="danger"
+                                                onClick={() => {
+                                                    removeStock({ variables: { symbol } })
+                                                }}
+                                            >
+                                                Remove from WatchList
+                                            </Button>
+                                        )}
 
                                         <Link to={`/symbol/${symbol.toUpperCase()}/alert`} className="btn btn-primary">
                                             Add an Alert
@@ -313,6 +341,14 @@ function formatMarketCap(x) {
 export const ADD_STOCK_MUTATION = gql`
     mutation addStock($symbol: String) {
         addStock(symbol: $symbol) {
+            success
+            message
+        }
+    }
+`
+export const REMOVE_STOCK_MUTATION = gql`
+    mutation removeStock($symbol: String) {
+        removeStock(symbol: $symbol) {
             success
             message
         }
