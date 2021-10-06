@@ -161,7 +161,7 @@ const Stock = () => {
                                                         <tr key={index}>
                                                             <td>
                                                                 <div className="media">
-                                                                    <div className="col-form-label mr-3">
+                                                                    <div className="col-form-label mr-2">
                                                                         {alert.status == 'On' && alert.signal == 'Buy' && (
                                                                             <i className="mdi mdi-bell-ring text-success font-size-18"></i>
                                                                         )}
@@ -184,25 +184,23 @@ const Stock = () => {
                                                                             </div>
                                                                         ))}
                                                                     </div>
-                                                                </div>
-                                                            </td>
-                                                            <td className="text-right mr-0">
-                                                                <div className="col-form-label">
-                                                                    <Link
-                                                                        className="action-icon text-muted mr-2"
-                                                                        to={`/symbol/${alert.symbol}/alert/${alert.id}`}
-                                                                    >
-                                                                        <i className="bx bx-edit-alt font-size-18"></i>
-                                                                    </Link>
-                                                                    <Link
-                                                                        onClick={() => {
-                                                                            setShowDeleteAlert({ show: true, alertId: alert.id })
-                                                                        }}
-                                                                        className="action-icon text-muted"
-                                                                        to="#"
-                                                                    >
-                                                                        <i className="bx bx-trash font-size-18"></i>
-                                                                    </Link>
+                                                                    <div className="col-form-label ml-1">
+                                                                        <Link
+                                                                            className="action-icon text-muted mr-2"
+                                                                            to={`/symbol/${alert.symbol}/alert/${alert.id}`}
+                                                                        >
+                                                                            <i className="bx bx-edit-alt font-size-18"></i>
+                                                                        </Link>
+                                                                        <Link
+                                                                            onClick={() => {
+                                                                                setShowDeleteAlert({ show: true, alertId: alert.id })
+                                                                            }}
+                                                                            className="action-icon text-muted"
+                                                                            to="#"
+                                                                        >
+                                                                            <i className="bx bx-trash font-size-18"></i>
+                                                                        </Link>
+                                                                    </div>
                                                                 </div>
                                                             </td>
                                                         </tr>
