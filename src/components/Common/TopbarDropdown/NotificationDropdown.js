@@ -51,7 +51,7 @@ const NotificationDropdown = () => {
                                             }}
                                         />
                                         <div className="media-body">
-                                            <h5 className="font-size-14 mb-1">{alert.symbol + ' : ' + alert.title}</h5>
+                                            <h5 className="font-size-14 mb-1">{alert.signal + ' ' + alert.symbol + ' : ' + alert.title}</h5>
                                             <div key={index} className="text-muted font-size-11 mb-1">
                                                 {toProperCase(alert.conditions[0].timeframe) +
                                                     ' ' +
@@ -94,6 +94,7 @@ export const GET_ALERTS_QUERY = gql`
         getAlerts {
             id
             symbol
+            signal
             title
             status
             modifiedDate

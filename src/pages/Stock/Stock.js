@@ -173,7 +173,7 @@ const Stock = () => {
                                                                         )}
                                                                     </div>
                                                                     <div className="media-body">
-                                                                        <h5>{alert.title}</h5>
+                                                                        <h5>{alert.signal + ' : ' + alert.title}</h5>
                                                                         {alert.conditions.map((condition, index) => (
                                                                             <div key={index}>
                                                                                 {toProperCase(condition.timeframe) +
