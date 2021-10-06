@@ -179,7 +179,7 @@ const Stock = () => {
                                                                                 {toProperCase(condition.timeframe) +
                                                                                     ' ' +
                                                                                     condition.indicator.toUpperCase() +
-                                                                                    ' = ' +
+                                                                                    (condition.operator == 'Not' ? ' ≠ ' : ' = ') +
                                                                                     condition.valueText}
                                                                             </div>
                                                                         ))}
@@ -345,6 +345,7 @@ export const GET_STOCK_PROFILE = gql`
                 status
                 conditions {
                     order
+                    operator
                     indicator
                     timeframe
                     value

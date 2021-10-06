@@ -56,7 +56,7 @@ const NotificationDropdown = () => {
                                                 {toProperCase(alert.conditions[0].timeframe) +
                                                     ' ' +
                                                     alert.conditions[0].indicator.toUpperCase() +
-                                                    ' = ' +
+                                                    (alert.conditions[0].operator == 'Not' ? ' ≠ ' : ' = ') +
                                                     alert.conditions[0].valueText +
                                                     ' ..'}
                                             </div>
