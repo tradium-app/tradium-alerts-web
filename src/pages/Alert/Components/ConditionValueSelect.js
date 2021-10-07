@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useField } from 'formik'
 import IndicatorValues from './IndicatorValues'
 
@@ -12,16 +12,25 @@ const ConditionValueSelect = ({ indicator, valueField, value, valueTextField, va
     const [, , valueConfigHelpers] = useField(valueConfigField)
     const { setValue: setValueConfigField } = valueConfigHelpers
 
+    useEffect(() => {
+        setValueFieldsBasedOnValue(value)
+    }, [value])
+
     const handleChange = (event) => {
         setValueTouched(true)
-        const value = IndicatorValues.find((element) => element.name === indicator)?.values?.find((element) => element.value === event.target.value)
-        setValueField(value.value)
-        setValueTextField(value.valueText)
-        setValueConfigField(value.valueConfig)
+        setValueFieldsBasedOnValue(event.target.value)
+    }
+
+    const setValueFieldsBasedOnValue = (newValue) => {
+        if (newValue == null) return
+        const valueObj = IndicatorValues.find((element) => element.name === indicator)?.values?.find((element) => element.value === newValue)
+        setValueField(valueObj.value)
+        setValueTextField(valueObj.valueText)
+        setValueConfigField(valueObj.valueConfig)
     }
 
     return (
-        <select className="form-control" onChange={handleChange} value={value}>
+        <select className="form-control" onChange={handleChange} onBlur={handleChange} value={value}>
             <option>--Please Select--</option>
             {IndicatorValues.find((element) => element.name === indicator)?.values.map(({ value, valueText }) => (
                 <option key={value} value={value}>
