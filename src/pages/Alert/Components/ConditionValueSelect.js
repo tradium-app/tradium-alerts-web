@@ -24,9 +24,11 @@ const ConditionValueSelect = ({ indicator, valueField, value, valueTextField, va
     const setValueFieldsBasedOnValue = (newValue) => {
         if (newValue == null) return
         const valueObj = IndicatorValues.find((element) => element.name === indicator)?.values?.find((element) => element.value === newValue)
-        setValueField(valueObj.value)
-        setValueTextField(valueObj.valueText)
-        setValueConfigField(valueObj.valueConfig)
+        if (valueObj != null) {
+            setValueField(valueObj.value)
+            setValueTextField(valueObj.valueText)
+            setValueConfigField(valueObj.valueConfig)
+        }
     }
 
     return (

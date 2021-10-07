@@ -69,6 +69,24 @@ const IndicatorValues = [
             { value: 'not_top50', valueText: 'Not in Top 50', valueConfig: { value: 50, upDirection: false } },
         ],
     },
+    {
+        name: 'week52high',
+        text: '52 Week High',
+        values: [
+            { value: '20_below_week52high', valueText: 'Price 20% below 52 Week High', valueConfig: { value: 20, upDirection: false } },
+            { value: '30_below_week52high', valueText: 'Price 30% below 52 Week High', valueConfig: { value: 30, upDirection: false } },
+            { value: '40_below_week52high', valueText: 'Price 40% below 52 Week High', valueConfig: { value: 40, upDirection: false } },
+            { value: '50_below_week52high', valueText: 'Price 50% below 52 Week High', valueConfig: { value: 50, upDirection: false } },
+        ],
+    },
+    {
+        name: 'week52low',
+        text: '52 Week Low',
+        values: [
+            { value: '10_above_week52low', valueText: 'Price 10% above 52 Week Low', valueConfig: { value: 10, upDirection: true } },
+            { value: '20_above_week52low', valueText: 'Price 20% above 52 Week Low', valueConfig: { value: 20, upDirection: true } },
+        ],
+    },
 ]
 
 export default IndicatorValues
