@@ -8,6 +8,7 @@ import { Form, Button, NavItem, NavLink, Container, Row, Col, CardBody, Card, La
 import { Formik, Field } from 'formik'
 import toastr from '../../toastrCustom'
 import Condition from './Components/Condition'
+import CopyAlert from './Components/CopyAlert'
 
 const AlertPage = () => {
     let { symbol, alertId } = useParams()
@@ -223,6 +224,7 @@ const AlertPage = () => {
                                                 <Link to={`/symbol/${symbol.toUpperCase()}`} className="btn waves-effect waves-light">
                                                     {'Cancel'}
                                                 </Link>
+                                                {!isAddMode && <CopyAlert alertId={alertId} isSubmitting={isSubmitting} />}
                                                 <Button type="submit" onClick={() => setValues(values)} color="primary" disabled={isSubmitting}>
                                                     {'Save Alert'}
                                                 </Button>
