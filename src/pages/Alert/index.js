@@ -6,15 +6,8 @@ import gql from 'graphql-tag'
 import { useLazyQuery, useMutation } from '@apollo/client'
 import { Form, Button, NavItem, NavLink, Container, Row, Col, CardBody, Card, Label, Input } from 'reactstrap'
 import { Formik, Field } from 'formik'
-import toastr from 'toastr'
+import toastr from '../../toastrCustom'
 import Condition from './Components/Condition'
-
-toastr.options = {
-    positionClass: 'toast-top-center',
-    closeButton: true,
-    preventDuplicates: true,
-    newestOnTop: true,
-}
 
 const AlertPage = () => {
     let { symbol, alertId } = useParams()

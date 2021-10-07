@@ -5,7 +5,7 @@ import { useMutation } from '@apollo/client'
 import gql from 'graphql-tag'
 import { Row, Col, Card, CardBody, CardTitle, Form, FormGroup, Label, Input } from 'reactstrap'
 import { useFormik } from 'formik'
-import toastr from 'toastr'
+import toastr from '../../../toastrCustom'
 import { fetchProfile } from '../../../store/actions'
 
 const ProfileEdit = ({ authUser, profile, fetchProfile }) => {
