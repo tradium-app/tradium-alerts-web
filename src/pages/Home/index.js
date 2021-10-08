@@ -120,11 +120,11 @@ const createWatchListRow = (stock, index) => {
                 </div>
                 <div className="text-muted font-size-10 d-inline-block ml-2">{Math.floor(stock.week52High)}</div>
             </td>
-            <td>{stock.beta.toFixed(2)}</td>
-            <td>{stock.revenueGrowthQuarterlyYoy.toFixed(2)}</td>
-            <td>{stock.revenueGrowthTTMYoy.toFixed(2)}</td>
+            <td>{stock.beta.toFixed(1)}</td>
+            <td>{stock.revenueGrowthQuarterlyYoy.toFixed(0)}</td>
+            <td>{stock.revenueGrowthTTMYoy.toFixed(0)}</td>
             <td>{stock.redditRank < 999 ? stock.redditRank : ''}</td>
-            <td>{stock.rsi != 100 && stock.rsi != 0 && stock.rsi.toFixed(2)}</td>
+            <td>{stock.rsi != 100 && stock.rsi != 0 && stock.rsi.toFixed(0)}</td>
             <td>
                 <div className="font-size-16">
                     <i className={stock.trend == 'Up' ? 'bx bx-up-arrow-alt text-success' : 'bx bx-down-arrow-alt text-danger'}></i>
