@@ -19,6 +19,8 @@ const colNames = {
     revenueGrowthQuarterlyYoy: 'Rev. Quarter YOY',
     revenueGrowthTTMYoy: 'Rev. TTM YOY',
     redditRank: 'Reddit Rank',
+    rsi: 'Rsi',
+    trend: 'Trend',
 }
 
 const initialSortConfig = {
@@ -122,6 +124,12 @@ const createWatchListRow = (stock, index) => {
             <td>{stock.revenueGrowthQuarterlyYoy.toFixed(2)}</td>
             <td>{stock.revenueGrowthTTMYoy.toFixed(2)}</td>
             <td>{stock.redditRank < 999 ? stock.redditRank : ''}</td>
+            <td>{stock.rsi != 100 && stock.rsi != 0 && stock.rsi.toFixed(2)}</td>
+            <td>
+                <div className="font-size-16">
+                    <i className={stock.trend == 'Up' ? 'bx bx-up-arrow-alt text-success' : 'bx bx-down-arrow-alt text-danger'}></i>
+                </div>
+            </td>
         </tr>
     )
 }
@@ -153,6 +161,7 @@ export const GET_WATCHLIST_QUERY = gql`
             revenueGrowthQuarterlyYoy
             revenueGrowthTTMYoy
             rsi
+            trend
             redditRank
             isBuyAlert
             isSellAlert
