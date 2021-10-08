@@ -4,6 +4,7 @@ import { Link, withRouter } from 'react-router-dom'
 import { Container, Table } from 'reactstrap'
 import gql from 'graphql-tag'
 import { useLazyQuery } from '@apollo/client'
+import { LineChart, Line } from 'recharts'
 import stockImg from '../../assets/images/stock-default-icon.png'
 import useSortableData from '../../hooks/useSortableData'
 
@@ -13,6 +14,7 @@ const colNames = {
     symbol: 'Symbol',
     price: 'Price',
     changePercent: 'Change%',
+    last30DaysClosePrices: 'Chart',
     marketCap: 'Market Cap.',
     week52DrawDown: '52 Week Range',
     beta: 'Beta',
@@ -77,6 +79,8 @@ const HomePage = ({ authUser }) => {
 }
 
 const createWatchListRow = (stock, index) => {
+    const last30DaysClosePrices = stock.last30DaysClosePrices.map((p) => ({ key: p }))
+
     return (
         <tr key={index}>
             <td>
@@ -104,6 +108,11 @@ const createWatchListRow = (stock, index) => {
             </td>
             <td>{Math.floor(stock.price)}</td>
             <td className={stock.changePercent < 0 ? 'text-danger' : 'text-success'}>{Math.abs(stock.changePercent).toFixed(2)}</td>
+            <td>
+                <LineChart width={50} height={30} data={last30DaysClosePrices}>
+                    <Line type="monotone" dataKey="key" isAnimationActive={false} dot={false} />
+                </LineChart>
+            </td>
             <td>{formatMarketCap(stock.marketCap)}</td>
             <td>
                 <div className="text-muted font-size-10 d-inline-block mr-2">{Math.floor(stock.week52Low)}</div>
@@ -153,6 +162,7 @@ export const GET_WATCHLIST_QUERY = gql`
             symbol
             company
             price
+            last30DaysClosePrices
             changePercent
             marketCap
             week52High
