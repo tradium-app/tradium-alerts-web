@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useMutation } from '@apollo/client'
 import gql from 'graphql-tag'
 import { Button } from 'reactstrap'
-import toastr from '../../toastrCustom'
+import toastr from '../../../toastrCustom'
 
 const AddRemoveStock = ({ symbol, isOnWatchList }) => {
     const [onWatchList, setOnWatchList] = useState(isOnWatchList)

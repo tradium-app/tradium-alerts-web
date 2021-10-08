@@ -12,7 +12,7 @@ import './firebaseInit'
 import LogRocket from 'logrocket'
 import setupLogRocketReact from 'logrocket-react'
 
-LogRocket.init('kwnmph/devpolls')
+LogRocket.init('jmcfph/swingtradealerts')
 setupLogRocketReact(LogRocket)
 
 const app = (

@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
 import { Container, Table } from 'reactstrap'
 import gql from 'graphql-tag'
-import { useLazyQuery } from '@apollo/client'
+import { useLazyQuery, useQuery } from '@apollo/client'
 import { Sparklines, SparklinesLine } from 'react-sparklines'
 import stockImg from '../../assets/images/stock-default-icon.png'
 import useSortableData from '../../hooks/useSortableData'
+import AlertListModal from './Components/alert-list-modal'
+import useModal from '../../components/Common/useModal'
+import { GET_ALERTS_QUERY } from '../../components/Common/TopbarDropdown/NotificationDropdown'
 
 const colNames = {
     isBuyAlert: 'Buy',
@@ -32,7 +35,11 @@ const initialSortConfig = {
 }
 
 const HomePage = ({ authUser }) => {
+    const { isShowing, toggle } = useModal()
+    const [symbolInModal, setSymbolInModal] = useState(null)
+    const [alertsInModal, setAlertsInModal] = useState(null)
     const [getWatchList, { loading, error, data }] = useLazyQuery(GET_WATCHLIST_QUERY, { pollInterval: 30000 })
+    const { data: alertData } = useQuery(GET_ALERTS_QUERY)
 
     useEffect(() => {
         authUser && getWatchList()
@@ -44,6 +51,13 @@ const HomePage = ({ authUser }) => {
         redditRank: s.redditRank <= 0 ? 999 : s.redditRank,
     }))
     const { items, requestSort, sortConfig } = useSortableData(watchList, initialSortConfig)
+
+    const showAlertList = (symbol) => {
+        const alerts = alertData.getAlerts.filter((a) => a.symbol == symbol)
+        setSymbolInModal(symbol)
+        setAlertsInModal(alerts)
+        toggle()
+    }
 
     return (
         <div className="page-content">
@@ -70,26 +84,25 @@ const HomePage = ({ authUser }) => {
                                 ))}
                             </tr>
                         </thead>
-                        <tbody>{!error && !loading && items?.map(createWatchListRow)}</tbody>
+                        <tbody>{!error && !loading && items?.map((stock, index) => createWatchListRow(index, stock, showAlertList))}</tbody>
                     </Table>
+                    <AlertListModal symbol={symbolInModal} alerts={alertsInModal} isShowing={isShowing} toggle={toggle} />
                 </div>
             </Container>
         </div>
     )
 }
 
-const createWatchListRow = (stock, index) => {
-    const last30DaysClosePrices = stock.last30DaysClosePrices.map((p) => ({ key: p }))
-
+const createWatchListRow = (index, stock, showAlertList) => {
     return (
         <tr key={index}>
             <td>
-                <Link onClick={() => {}} className={stock.isBuyAlert ? 'text-success' : 'text-muted'} to="#">
+                <Link onClick={() => showAlertList(stock.symbol)} className={stock.isBuyAlert ? 'text-success' : 'text-muted'} to="#">
                     {stock.isBuyAlert ? <i className="mdi mdi-bell-ring font-size-18"></i> : <i className="mdi mdi-bell-outline font-size-18"></i>}
                 </Link>
             </td>
             <td>
-                <Link onClick={() => {}} className={stock.isSellAlert ? 'text-danger' : 'text-muted'} to="#">
+                <Link onClick={() => showAlertList(stock.symbol)} className={stock.isSellAlert ? 'text-danger' : 'text-muted'} to="#">
                     {stock.isSellAlert ? <i className="mdi mdi-bell-ring font-size-18"></i> : <i className="mdi mdi-bell-outline font-size-18"></i>}
                 </Link>
             </td>

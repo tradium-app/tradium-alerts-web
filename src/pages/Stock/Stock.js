@@ -9,7 +9,7 @@ import { useMutation, useQuery } from '@apollo/client'
 import gql from 'graphql-tag'
 import SweetAlert from 'react-bootstrap-sweetalert'
 import stockImg from '../../assets/images/stock-default-icon.png'
-import AddRemoveStock from './AddRemoveStock'
+import AddRemoveStock from './Components/AddRemoveStock'
 
 const Stock = () => {
     let { symbol } = useParams()
