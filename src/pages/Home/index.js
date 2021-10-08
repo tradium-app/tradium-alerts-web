@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom'
 import { Container, Table } from 'reactstrap'
 import gql from 'graphql-tag'
 import { useLazyQuery } from '@apollo/client'
-import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, Legend } from 'recharts'
+import Trend from 'react-trend'
 import stockImg from '../../assets/images/stock-default-icon.png'
 import useSortableData from '../../hooks/useSortableData'
 
@@ -109,9 +109,9 @@ const createWatchListRow = (stock, index) => {
             <td>{Math.floor(stock.price)}</td>
             <td className={stock.changePercent < 0 ? 'text-danger' : 'text-success'}>{Math.abs(stock.changePercent).toFixed(2)}</td>
             <td className="p-0 d-flex justify-content-center align-items-center">
-                <LineChart width={50} height={40} data={last30DaysClosePrices}>
-                    <Line type="monotone" dataKey="key" isAnimationActive={false} dot={false} width={50} height={40} accentHeight={40} />
-                </LineChart>
+                <div style={{ width: 50, height: 40 }}>
+                    <Trend data={stock.last30DaysClosePrices} radius={1.8} strokeWidth={1.2} strokeLinecap={'butt'} />
+                </div>
             </td>
             <td>{formatMarketCap(stock.marketCap)}</td>
             <td>
