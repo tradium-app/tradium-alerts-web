@@ -46,7 +46,7 @@ const AlertListModal = ({ symbol, alertSignal, alerts, isShowing, toggle }) => {
                                         return (
                                             <tr key={index}>
                                                 <td>
-                                                    <div className="media">
+                                                    <div className="media pt-1 pb-1">
                                                         <div className="col-form-label mr-2">
                                                             {alert.status == 'On' && alert.signal == 'Buy' && (
                                                                 <i className="mdi mdi-bell-ring text-success font-size-18"></i>

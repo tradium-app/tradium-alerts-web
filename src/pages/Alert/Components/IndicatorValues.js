@@ -73,6 +73,7 @@ const IndicatorValues = [
         name: 'week52high',
         text: '52 Week High',
         values: [
+            { value: '5_below_week52high', valueText: 'Price 5% below 52 Week High', valueConfig: { value: 5, upDirection: false } },
             { value: '20_below_week52high', valueText: 'Price 20% below 52 Week High', valueConfig: { value: 20, upDirection: false } },
             { value: '30_below_week52high', valueText: 'Price 30% below 52 Week High', valueConfig: { value: 30, upDirection: false } },
             { value: '40_below_week52high', valueText: 'Price 40% below 52 Week High', valueConfig: { value: 40, upDirection: false } },
