@@ -100,6 +100,7 @@ export const GET_ALERTS_QUERY = gql`
             modifiedDate
             conditions {
                 order
+                operator
                 indicator
                 timeframe
                 value

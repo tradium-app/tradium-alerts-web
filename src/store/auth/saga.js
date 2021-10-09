@@ -39,7 +39,7 @@ function* loginUser({ payload: { accessToken, history } }) {
                 yield put(loginSuccess(authUser))
             }
 
-            LogRocket.identify(authUser.userUrlId, {
+            LogRocket.identify(authUser.id, {
                 name: authUser.name,
             })
         }

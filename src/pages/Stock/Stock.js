@@ -248,7 +248,7 @@ const Stock = () => {
                                             <tbody>
                                                 <tr>
                                                     <td>RSI</td>
-                                                    <td>{stockProfile?.rsi}</td>
+                                                    <td>{stockProfile?.rsi.toFixed(0)}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>MACD</td>
