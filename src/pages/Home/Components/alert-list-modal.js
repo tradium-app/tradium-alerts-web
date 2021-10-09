@@ -13,11 +13,11 @@ toastr.options = {
     newestOnTop: true,
 }
 
-const AlertListModal = ({ symbol, alerts, isShowing, toggle }) => {
+const AlertListModal = ({ symbol, alertSignal, alerts, isShowing, toggle }) => {
     const [showDeleteAlert, setShowDeleteAlert] = useState({ show: false })
-
     const [deleteAlertError, setDeleteAlertError] = useState(null)
     const [deleteAlertResponse, setDeleteAlertResponse] = useState(null)
+
     const [deleteAlert] = useMutation(DELETE_ALERT_MUTATION, {
         onError: setDeleteAlertError,
         onCompleted: setDeleteAlertResponse,
@@ -32,9 +32,11 @@ const AlertListModal = ({ symbol, alerts, isShowing, toggle }) => {
     }
 
     return isShowing ? (
-        <Modal isOpen={isShowing} role="dialog" autoFocus={true} tabIndex="-1" toggle={toggle}>
+        <Modal isOpen={isShowing} role="dialog" autoFocus={true} tabIndex="-1" toggle={toggle} fade={false} centered>
             <div className="modal-content">
-                <ModalHeader toggle={toggle}>Alerts for {symbol}</ModalHeader>
+                <ModalHeader toggle={toggle}>
+                    {alertSignal} Alerts configured for {symbol}
+                </ModalHeader>
                 <Card className="overflow-hidden">
                     <CardBody>
                         <div className="table-responsive">

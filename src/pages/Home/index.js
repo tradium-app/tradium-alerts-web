@@ -37,6 +37,7 @@ const initialSortConfig = {
 const HomePage = ({ authUser }) => {
     const { isShowing, toggle } = useModal()
     const [symbolInModal, setSymbolInModal] = useState(null)
+    const [alertSignalInModal, setAlertSignalInModal] = useState(null)
     const [alertsInModal, setAlertsInModal] = useState(null)
     const [getWatchList, { loading, error, data }] = useLazyQuery(GET_WATCHLIST_QUERY, { pollInterval: 30000 })
     const { data: alertData } = useQuery(GET_ALERTS_QUERY)
@@ -52,9 +53,10 @@ const HomePage = ({ authUser }) => {
     }))
     const { items, requestSort, sortConfig } = useSortableData(watchList, initialSortConfig)
 
-    const showAlertList = (symbol) => {
-        const alerts = alertData.getAlerts.filter((a) => a.symbol == symbol)
+    const showAlertList = (symbol, signal) => {
+        const alerts = alertData.getAlerts.filter((a) => a.symbol == symbol && a.signal == signal)
         setSymbolInModal(symbol)
+        setAlertSignalInModal(signal)
         setAlertsInModal(alerts)
         toggle()
     }
@@ -86,7 +88,13 @@ const HomePage = ({ authUser }) => {
                         </thead>
                         <tbody>{!error && !loading && items?.map((stock, index) => createWatchListRow(index, stock, showAlertList))}</tbody>
                     </Table>
-                    <AlertListModal symbol={symbolInModal} alerts={alertsInModal} isShowing={isShowing} toggle={toggle} />
+                    <AlertListModal
+                        symbol={symbolInModal}
+                        alertSignal={alertSignalInModal}
+                        alerts={alertsInModal}
+                        isShowing={isShowing}
+                        toggle={toggle}
+                    />
                 </div>
             </Container>
         </div>
@@ -97,12 +105,12 @@ const createWatchListRow = (index, stock, showAlertList) => {
     return (
         <tr key={index}>
             <td>
-                <Link onClick={() => showAlertList(stock.symbol)} className={stock.isBuyAlert ? 'text-success' : 'text-muted'} to="#">
+                <Link onClick={() => showAlertList(stock.symbol, 'Buy')} className={stock.isBuyAlert ? 'text-success' : 'text-muted'} to="#">
                     {stock.isBuyAlert ? <i className="mdi mdi-bell-ring font-size-18"></i> : <i className="mdi mdi-bell-outline font-size-18"></i>}
                 </Link>
             </td>
             <td>
-                <Link onClick={() => showAlertList(stock.symbol)} className={stock.isSellAlert ? 'text-danger' : 'text-muted'} to="#">
+                <Link onClick={() => showAlertList(stock.symbol, 'Sell')} className={stock.isSellAlert ? 'text-danger' : 'text-muted'} to="#">
                     {stock.isSellAlert ? <i className="mdi mdi-bell-ring font-size-18"></i> : <i className="mdi mdi-bell-outline font-size-18"></i>}
                 </Link>
             </td>
