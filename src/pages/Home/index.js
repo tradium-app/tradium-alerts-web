@@ -10,6 +10,7 @@ import useSortableData from '../../hooks/useSortableData'
 import AlertListModal from './Components/alert-list-modal'
 import useModal from '../../components/Common/useModal'
 import { GET_ALERTS_QUERY } from '../../components/Common/TopbarDropdown/NotificationDropdown'
+import NewsListModal from './Components/news-list-modal'
 
 const colNames = {
     isBuyAlert: 'Buy',
@@ -36,10 +37,13 @@ const initialSortConfig = {
 }
 
 const HomePage = ({ authUser }) => {
-    const { isShowing, toggle } = useModal()
+    const { isShowing: isShowingAlertListModal, toggle: toggleAlertListModal } = useModal()
     const [symbolInModal, setSymbolInModal] = useState(null)
     const [alertSignalInModal, setAlertSignalInModal] = useState(null)
     const [alertsInModal, setAlertsInModal] = useState(null)
+
+    const { isShowing: isShowingNewsModal, toggle: toggleNewsModal } = useModal()
+    const [newsInModal, setNewsInModal] = useState(null)
 
     const [getWatchList, { loading, error, data }] = useLazyQuery(GET_WATCHLIST_QUERY, { pollInterval: 30000 })
     const { data: alertData } = useQuery(GET_ALERTS_QUERY)
@@ -67,7 +71,13 @@ const HomePage = ({ authUser }) => {
         setSymbolInModal(symbol)
         setAlertSignalInModal(signal)
         setAlertsInModal(alerts)
-        toggle()
+        toggleAlertListModal()
+    }
+
+    const showNewsList = (symbol) => {
+        const news = newsData.getWatchListNews.filter((a) => a.symbol == symbol)
+        setNewsInModal(news)
+        toggleNewsModal()
     }
 
     return (
@@ -95,22 +105,25 @@ const HomePage = ({ authUser }) => {
                                 ))}
                             </tr>
                         </thead>
-                        <tbody>{!error && !loading && items?.map((stock, index) => createWatchListRow(index, stock, showAlertList))}</tbody>
+                        <tbody>
+                            {!error && !loading && items?.map((stock, index) => createWatchListRow(index, stock, showAlertList, showNewsList))}
+                        </tbody>
                     </Table>
                     <AlertListModal
                         symbol={symbolInModal}
                         alertSignal={alertSignalInModal}
                         alerts={alertsInModal}
-                        isShowing={isShowing}
-                        toggle={toggle}
+                        isShowing={isShowingAlertListModal}
+                        toggle={toggleAlertListModal}
                     />
+                    <NewsListModal news={newsInModal} isShowing={isShowingNewsModal} toggle={toggleNewsModal} />
                 </div>
             </Container>
         </div>
     )
 }
 
-const createWatchListRow = (index, stock, showAlertList) => {
+const createWatchListRow = (index, stock, showAlertList, showNewsList) => {
     return (
         <tr key={index}>
             <td>
@@ -133,7 +146,7 @@ const createWatchListRow = (index, stock, showAlertList) => {
                             if (e.target.src != stockImg) e.target.src = stockImg
                         }}
                     />
-                    <h5 className="font-size-13 d-inline-block">{stock.symbol.toUpperCase()}</h5>
+                    <h5 className="font-size-13 d-inline-block text-primary">{stock.symbol.toUpperCase()}</h5>
                 </Link>
             </td>
             <td>{Math.floor(stock.price)}</td>
@@ -176,8 +189,13 @@ const createWatchListRow = (index, stock, showAlertList) => {
             <td>
                 <div className="font-size-14">
                     {stock?.news > 0 && (
-                        <Link onClick={() => {}} to="#">
-                            <span className="badge badge-danger badge-pill">{stock?.news}</span>
+                        <Link
+                            onClick={() => {
+                                showNewsList(stock.symbol)
+                            }}
+                            to="#"
+                        >
+                            <span className="badge badge-primary badge-pill">{stock?.news}</span>
                         </Link>
                     )}
                 </div>
@@ -235,6 +253,7 @@ export const GET_STOCK_NEWS_QUERY = gql`
             symbol
             headline
             link
+            createdDate
         }
     }
 `
