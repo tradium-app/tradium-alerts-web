@@ -30,8 +30,8 @@ const colNames = {
 
 const initialSortConfig = {
     storageKey: 'stocks-list',
-    key: 'isBuyAlert',
-    direction: 'descending',
+    key: 'symbol',
+    direction: 'ascending',
 }
 
 const HomePage = ({ authUser }) => {
@@ -39,8 +39,10 @@ const HomePage = ({ authUser }) => {
     const [symbolInModal, setSymbolInModal] = useState(null)
     const [alertSignalInModal, setAlertSignalInModal] = useState(null)
     const [alertsInModal, setAlertsInModal] = useState(null)
+
     const [getWatchList, { loading, error, data }] = useLazyQuery(GET_WATCHLIST_QUERY, { pollInterval: 30000 })
     const { data: alertData } = useQuery(GET_ALERTS_QUERY)
+    const { data: trendData } = useQuery(GET_STOCK_TRENDLINES_QUERY)
 
     useEffect(() => {
         authUser && getWatchList()
@@ -50,7 +52,11 @@ const HomePage = ({ authUser }) => {
         ...s,
         week52DrawDown: (s.week52High - s.price) / s.week52High || 0,
         redditRank: s.redditRank <= 0 ? 999 : s.redditRank,
+        isBuyAlert: alertData?.getAlerts.some((a) => a.symbol == s.symbol && a.signal == 'Buy' && a.status == 'On'),
+        isSellAlert: alertData?.getAlerts.some((a) => a.symbol == s.symbol && a.signal == 'Sell' && a.status == 'On'),
+        last30DaysClosePrices: trendData?.getWatchListStockTrendlines.find((a) => a.symbol == s.symbol).last30DaysClosePrices,
     }))
+
     const { items, requestSort, sortConfig } = useSortableData(watchList, initialSortConfig)
 
     const showAlertList = (symbol, signal) => {
@@ -131,9 +137,11 @@ const createWatchListRow = (index, stock, showAlertList) => {
             <td className={stock.changePercent < 0 ? 'text-danger' : 'text-success'}>{Math.abs(stock.changePercent).toFixed(2)}</td>
             <td className="p-0 d-flex justify-content-center align-items-center">
                 <div style={{ width: 50, height: 40 }}>
-                    <Sparklines data={stock.last30DaysClosePrices} svgWidth={80} svgHeight={30} margin={5} limit={30}>
-                        <SparklinesLine />
-                    </Sparklines>
+                    {stock.last30DaysClosePrices && (
+                        <Sparklines data={stock.last30DaysClosePrices} svgWidth={80} svgHeight={30} margin={5} limit={30}>
+                            <SparklinesLine />
+                        </Sparklines>
+                    )}
                 </div>
             </td>
             <td>{formatMarketCap(stock.marketCap)}</td>
@@ -196,8 +204,15 @@ export const GET_WATCHLIST_QUERY = gql`
             rsi
             trend
             redditRank
-            isBuyAlert
-            isSellAlert
+        }
+    }
+`
+
+export const GET_STOCK_TRENDLINES_QUERY = gql`
+    query getWatchListStockTrendlines {
+        getWatchListStockTrendlines {
+            symbol
+            last30DaysClosePrices
         }
     }
 `
