@@ -11,6 +11,7 @@ import AlertListModal from './Components/alert-list-modal'
 import useModal from '../../components/Common/useModal'
 import { GET_ALERTS_QUERY } from '../../components/Common/TopbarDropdown/NotificationDropdown'
 import NewsListModal from './Components/news-list-modal'
+import { Helmet } from 'react-helmet'
 
 const colNames = {
     isBuyAlert: 'Buy',
@@ -82,6 +83,9 @@ const HomePage = ({ authUser }) => {
 
     return (
         <div className="page-content">
+            <Helmet>
+                <title>{'Swing Trade Alerts'}</title>
+            </Helmet>
             <Container fluid>
                 <div className="table-responsive">
                     <Table className="table-centered table-nowrap">
@@ -187,7 +191,7 @@ const createWatchListRow = (index, stock, showAlertList, showNewsList) => {
                 </div>
             </td>
             <td>
-                <div className="font-size-14">
+                <div className="font-size-16">
                     {stock?.news > 0 && (
                         <Link
                             onClick={() => {
