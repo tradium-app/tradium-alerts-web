@@ -26,6 +26,7 @@ const colNames = {
     redditRank: 'Reddit Rank',
     rsi: 'Rsi',
     trend: 'Trend',
+    news: 'News',
 }
 
 const initialSortConfig = {
@@ -43,6 +44,7 @@ const HomePage = ({ authUser }) => {
     const [getWatchList, { loading, error, data }] = useLazyQuery(GET_WATCHLIST_QUERY, { pollInterval: 30000 })
     const { data: alertData } = useQuery(GET_ALERTS_QUERY)
     const { data: trendData } = useQuery(GET_STOCK_TRENDLINES_QUERY)
+    const { data: newsData } = useQuery(GET_STOCK_NEWS_QUERY)
 
     useEffect(() => {
         authUser && getWatchList()
@@ -55,6 +57,7 @@ const HomePage = ({ authUser }) => {
         isBuyAlert: alertData?.getAlerts.some((a) => a.symbol == s.symbol && a.signal == 'Buy' && a.status == 'On'),
         isSellAlert: alertData?.getAlerts.some((a) => a.symbol == s.symbol && a.signal == 'Sell' && a.status == 'On'),
         last30DaysClosePrices: trendData?.getWatchListStockTrendlines.find((a) => a.symbol == s.symbol).last30DaysClosePrices,
+        news: newsData?.getWatchListNews.filter((a) => a.symbol == s.symbol).length,
     }))
 
     const { items, requestSort, sortConfig } = useSortableData(watchList, initialSortConfig)
@@ -170,6 +173,15 @@ const createWatchListRow = (index, stock, showAlertList) => {
                     <i className={stock.trend == 'Up' ? 'bx bx-up-arrow-alt text-success' : 'bx bx-down-arrow-alt text-danger'}></i>
                 </div>
             </td>
+            <td>
+                <div className="font-size-14">
+                    {stock?.news > 0 && (
+                        <Link onClick={() => {}} to="#">
+                            <span className="badge badge-danger badge-pill">{stock?.news}</span>
+                        </Link>
+                    )}
+                </div>
+            </td>
         </tr>
     )
 }
@@ -213,6 +225,16 @@ export const GET_STOCK_TRENDLINES_QUERY = gql`
         getWatchListStockTrendlines {
             symbol
             last30DaysClosePrices
+        }
+    }
+`
+
+export const GET_STOCK_NEWS_QUERY = gql`
+    query getWatchListNews {
+        getWatchListNews {
+            symbol
+            headline
+            link
         }
     }
 `
