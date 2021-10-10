@@ -12,27 +12,29 @@ const NewsListModal = ({ news, isShowing, toggle }) => {
                         <div className="table-responsive">
                             <Table className="table mb-0">
                                 <tbody>
-                                    {news?.map((article, index) => {
-                                        return (
-                                            <tr key={index}>
-                                                <td>
-                                                    <div className="media">
-                                                        <div className="media-body">
-                                                            <a href={article.link} target="_blank" rel="noreferrer">
-                                                                <div className="font-size-14 pt-1 pb-1">
-                                                                    {article.headline}
-                                                                    <p className="font-size-11 text-muted mb-0">
-                                                                        <i className="mdi mdi-clock-outline"></i>{' '}
-                                                                        {getRelativeTime(article.createdDate)}
-                                                                    </p>
-                                                                </div>
-                                                            </a>
+                                    {news
+                                        ?.sort((a, b) => b.createdDate - a.createdDate)
+                                        .map((article, index) => {
+                                            return (
+                                                <tr key={index}>
+                                                    <td>
+                                                        <div className="media">
+                                                            <div className="media-body">
+                                                                <a href={article.link} target="_blank" rel="noreferrer">
+                                                                    <div className="font-size-14 pt-1 pb-1">
+                                                                        {article.headline}
+                                                                        <p className="font-size-11 text-muted mb-0">
+                                                                            <i className="mdi mdi-clock-outline"></i>{' '}
+                                                                            {getRelativeTime(article.createdDate)}
+                                                                        </p>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        )
-                                    })}
+                                                    </td>
+                                                </tr>
+                                            )
+                                        })}
                                 </tbody>
                             </Table>
                         </div>

@@ -34,6 +34,7 @@ const NotificationDropdown = () => {
                         !loading &&
                         data?.getAlerts
                             ?.filter((n) => n.status == 'On')
+                            .sort((a, b) => b.modifiedDate - a.modifiedDate)
                             .map((alert, index) => (
                                 <Link
                                     to={`/symbol/${alert.symbol}`}

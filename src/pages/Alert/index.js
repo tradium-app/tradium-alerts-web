@@ -205,8 +205,7 @@ const AlertPage = () => {
                                                 </Col>
                                             </Row>
                                             {values.conditions
-                                                .slice()
-                                                .sort((a, b) => a - b)
+                                                .sort((a, b) => a.order - b.order)
                                                 .map((condition, index) => (
                                                     <Condition
                                                         condition={condition}
