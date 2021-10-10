@@ -86,26 +86,28 @@ const Stock = () => {
                                         </div>
 
                                         <Media body>
-                                            <h4 className="card-title">{symbol}</h4>
-                                            <h5>{stockProfile?.price.toFixed(2)}</h5>
+                                            <div className="mt-md-0 mt-sm-0 d-inline-block">
+                                                <h4 className="card-title">{symbol}</h4>
+                                                <div className="d-inline-block">
+                                                    <h5>{stockProfile?.price.toFixed(2)} </h5>
+                                                </div>
+                                                <div className="d-inline-block">
+                                                    <h6 className={stockProfile?.changePercent > 0 ? 'text-success' : 'text-danger'}>
+                                                        &nbsp;(
+                                                        {stockProfile?.changePercent.toFixed(2)} %
+                                                        {stockProfile?.changePercent > 0 ? (
+                                                            <i className="mdi mdi-arrow-up text-success"></i>
+                                                        ) : (
+                                                            <i className="mdi mdi-arrow-down text-danger"></i>
+                                                        )}
+                                                        )
+                                                    </h6>
+                                                </div>
+                                            </div>
                                         </Media>
                                     </Media>
                                 </Col>
-
-                                <Col xl="3" sm="3">
-                                    <div className="mt-4 mt-sm-0">
-                                        <p className="text-muted mb-2">Last 24 hrs</p>
-                                        <h5>
-                                            {stockProfile?.changePercent.toFixed(2)} %
-                                            {stockProfile?.changePercent > 0 ? (
-                                                <i className="mdi mdi-arrow-up text-success"></i>
-                                            ) : (
-                                                <i className="mdi mdi-arrow-down text-danger"></i>
-                                            )}
-                                        </h5>
-                                    </div>
-                                </Col>
-                                <Col xl="6" sm="6" className="d-flex justify-content-end">
+                                <Col xl="9" sm="9" className="d-flex justify-content-end">
                                     <div className="mt-3 button-items">
                                         {stockProfile && <AddRemoveStock symbol={symbol} isOnWatchList={stockProfile.isOnWatchList} />}
                                         <Link to={`/symbol/${symbol.toUpperCase()}/alert`} className="btn btn-primary">
@@ -120,7 +122,7 @@ const Stock = () => {
                                 ref={(element) => {
                                     chartContainerRef = element
                                 }}
-                                className="m-4 align-items-center"
+                                className="mb-4 align-items-center"
                             ></div>
                         </Col>
                     </Row>

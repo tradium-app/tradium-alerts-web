@@ -63,7 +63,7 @@ const WatchListRow = ({ stock, showAlertList, showNewsList }) => {
             <td>{stock.rsi != 100 && stock.rsi != 0 && stock.rsi.toFixed(0)}</td>
             <td>
                 <div className="font-size-16">
-                    <i className={stock.trend == 'Up' ? 'bx bx-up-arrow-alt text-success' : 'bx bx-down-arrow-alt text-danger'}></i>
+                    <i className={stock.trend == 'Up' ? 'bx bx-trending-up text-success' : 'bx bx-trending-down text-danger'}></i>
                 </div>
             </td>
             <td>
