@@ -111,8 +111,8 @@ const HomePage = ({ authUser }) => {
                         <tbody>
                             {!error &&
                                 !loading &&
-                                items?.map((stock, index) => (
-                                    <WatchListRow index={index} stock={stock} showAlertList={showAlertList} showNewsList={showNewsList} />
+                                items?.map((stock) => (
+                                    <WatchListRow stock={stock} showAlertList={showAlertList} showNewsList={showNewsList} key={stock.symbol} />
                                 ))}
                         </tbody>
                     </Table>
@@ -137,7 +137,6 @@ export const GET_WATCHLIST_QUERY = gql`
             symbol
             company
             price
-            last30DaysClosePrices
             changePercent
             marketCap
             week52High

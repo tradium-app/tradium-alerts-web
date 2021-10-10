@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 import { Sparklines, SparklinesLine } from 'react-sparklines'
 import stockImg from '../../../assets/images/stock-default-icon.png'
 
-const WatchListRow = ({ index, stock, showAlertList, showNewsList }) => {
+const WatchListRow = ({ stock, showAlertList, showNewsList }) => {
     return (
-        <tr key={index}>
+        <tr>
             <td>
                 <Link onClick={() => showAlertList(stock.symbol, 'Buy')} className={stock.isBuyAlert ? 'text-success' : 'text-muted'} to="#">
                     {stock.isBuyAlert ? <i className="mdi mdi-bell-ring font-size-18"></i> : <i className="mdi mdi-bell-outline font-size-18"></i>}

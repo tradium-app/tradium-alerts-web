@@ -41,7 +41,7 @@ const mockWatchList = [
 ]
 
 const mockStore = configureMockStore([])
-const store = mockStore({})
+const store = mockStore({ Login: { authUser: { id: '1', name: 'testUser' } } })
 
 async function wait(ms = 0) {
     await act(() => {
