@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import gql from 'graphql-tag'
 import AsyncSelect from 'react-select/async'
 import client from '../../graphql-client'
+import { useHotkeys } from 'react-hotkeys-hook'
 
 const promiseOptions = (inputValue) => {
     return client
@@ -15,6 +16,13 @@ const promiseOptions = (inputValue) => {
 }
 
 export const SearchStock = ({ handleSelect, className }) => {
+    const selectInputRef = useRef(null)
+    useHotkeys('/', () => {
+        selectInputRef.current.focus()
+        selectInputRef.current.value = ''
+        console.log('printing selectInputRef.current.value', selectInputRef.current.value)
+    })
+
     const customStyles = {
         menu: (provided, state) => ({
             ...provided,
@@ -48,6 +56,7 @@ export const SearchStock = ({ handleSelect, className }) => {
             className={className}
             classNamePrefix={'search'}
             styles={customStyles}
+            ref={selectInputRef}
         />
     )
 }
