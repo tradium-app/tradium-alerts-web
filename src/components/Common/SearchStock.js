@@ -18,30 +18,10 @@ const promiseOptions = debounce((inputValue, callback) => {
 
 export const SearchStock = ({ handleSelect, className }) => {
     const selectInputRef = useRef(null)
-    useHotkeys('/', () => {
+    useHotkeys('/', (event) => {
         selectInputRef.current.focus()
-        selectInputRef.current.value = ''
-        console.log('printing selectInputRef.current.value', selectInputRef.current.value)
+        event.preventDefault()
     })
-
-    const customStyles = {
-        menu: (provided, state) => ({
-            ...provided,
-            width: state.selectProps.width,
-            color: 'black',
-        }),
-
-        control: (_, { selectProps: { width } }) => ({
-            width,
-        }),
-
-        singleValue: (provided, state) => {
-            const opacity = state.isDisabled ? 0.5 : 1
-            const transition = 'opacity 300ms'
-
-            return { ...provided, opacity, transition, color: 'white' }
-        },
-    }
 
     return (
         <AsyncSelect
@@ -60,6 +40,25 @@ export const SearchStock = ({ handleSelect, className }) => {
             ref={selectInputRef}
         />
     )
+}
+
+const customStyles = {
+    menu: (provided, state) => ({
+        ...provided,
+        width: state.selectProps.width,
+        color: 'black',
+    }),
+
+    control: (_, { selectProps: { width } }) => ({
+        width,
+    }),
+
+    singleValue: (provided, state) => {
+        const opacity = state.isDisabled ? 0.5 : 1
+        const transition = 'opacity 300ms'
+
+        return { ...provided, opacity, transition, color: 'white' }
+    },
 }
 
 export const SEARCH_STOCKS_QUERY = gql`
