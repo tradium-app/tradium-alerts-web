@@ -96,7 +96,7 @@ const AlertListModal = ({ symbol, alertSignal, alerts, isShowing, toggle }) => {
                             </Table>
                             {showDeleteAlert.show ? (
                                 <SweetAlert
-                                    title="Are you sure you want to delete the alert?"
+                                    title="Are you sure you want to delete this alert?"
                                     warning
                                     showCancel
                                     focusCancelBtn

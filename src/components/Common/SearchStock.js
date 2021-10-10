@@ -3,17 +3,18 @@ import gql from 'graphql-tag'
 import AsyncSelect from 'react-select/async'
 import client from '../../graphql-client'
 import { useHotkeys } from 'react-hotkeys-hook'
+import debounce from 'lodash.debounce'
 
-const promiseOptions = (inputValue) => {
-    return client
+const promiseOptions = debounce((inputValue, callback) => {
+    client
         .query({
             query: SEARCH_STOCKS_QUERY,
             variables: { searchTerm: inputValue },
         })
         .then((result) => {
-            return result.data.searchStocks.map((t) => ({ label: t.symbol, value: t.symbol }))
+            callback(result.data.searchStocks.map((t) => ({ label: t.symbol, value: t.symbol })))
         })
-}
+}, 500)
 
 export const SearchStock = ({ handleSelect, className }) => {
     const selectInputRef = useRef(null)
