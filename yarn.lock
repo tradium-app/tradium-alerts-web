@@ -1829,6 +1829,11 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
+"@juggle/resize-observer@^3.3.1":
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/@juggle/resize-observer/-/resize-observer-3.3.1.tgz#b50a781709c81e10701004214340f25475a171a0"
+  integrity sha512-zMM9Ds+SawiUkakS7y94Ymqx+S0ORzpG3frZirN3l+UlXUmSUR7hF4wxCVqW+ei94JzV5kt0uXBcoOEAuiydrw==
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"
@@ -4204,6 +4209,11 @@ core-js@^2.4.0:
   version "2.6.12"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.12.tgz#d9333dfa7b065e347cc5682219d6f690859cc2ec"
   integrity sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==
+
+core-js@^3.0.1:
+  version "3.18.2"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.18.2.tgz#63a551e8a29f305cd4123754846e65896619ba5b"
+  integrity sha512-zNhPOUoSgoizoSQFdX1MeZO16ORRb9FFQLts8gSYbZU5FcgXhp24iMWMxnOQo5uIaIG7/6FA/IqJPwev1o9ZXQ==
 
 core-js@^3.6.5:
   version "3.15.2"
@@ -7887,7 +7897,7 @@ locate-path@^5.0.0:
   dependencies:
     p-locate "^4.1.0"
 
-lodash-es@^4.17.15, lodash-es@^4.17.21:
+lodash-es@^4.17.21:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
   integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
@@ -7941,6 +7951,11 @@ lodash.templatesettings@^4.0.0:
   integrity sha512-stgLz+i3Aa9mZgnjr/O+v9ruKZsPsndy7qPZOchbqk2cnTU1ZaldKK+v7m54WoKIyxiuMZTKT2H81F8BeAc3ZQ==
   dependencies:
     lodash._reinterpolate "^3.0.0"
+
+lodash.throttle@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
+  integrity sha1-wj6RtxAkKscMN/HhzaknTMOb8vQ=
 
 lodash.truncate@^4.4.2:
   version "4.4.2"
@@ -11230,25 +11245,25 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
-simplebar-core@^1.0.7:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/simplebar-core/-/simplebar-core-1.0.7.tgz#762cd0db534525184a5f96492664d40f27ce4fb5"
-  integrity sha512-hO1/nStBwXRwxeu7TT8PFVe1INEi2+RFf1Tjn1EvTwRB9yf84dJyWC7CFJfRvO2F/8Cdp0tg6MHVUGVbqFdebQ==
+simplebar-react@^2.3.6:
+  version "2.3.6"
+  resolved "https://registry.yarnpkg.com/simplebar-react/-/simplebar-react-2.3.6.tgz#27945a80b221caae8f241155cdba1bb6c201ebff"
+  integrity sha512-Igm/MRdt+LQ8edTTzjRoaATfXPPMByuUsVvHQHrkX7SH4jmvL85VshtOVcXFrOBspv9vqQtnIrOq/j9VmRSNDQ==
   dependencies:
-    "@babel/runtime" "^7.11.2"
-    can-use-dom "^0.1.0"
-    lodash-es "^4.17.15"
-
-simplebar-react@^3.0.0-beta.2:
-  version "3.0.0-beta.10"
-  resolved "https://registry.yarnpkg.com/simplebar-react/-/simplebar-react-3.0.0-beta.10.tgz#de85c7c07e537a6057e113070e1720e5b5948f58"
-  integrity sha512-Y7+5bSL/w+0RuY5o5KH1pdqEr+TZ3KE/zG2G9Ccn0UMhoNCkwEko9noVL84VIborJ+Mkmrcwz1gKUhdxwK6hUQ==
-  dependencies:
-    babel-runtime "^6.26.0"
-    core-js "^3.6.5"
-    lodash-es "^4.17.15"
     prop-types "^15.6.1"
-    simplebar-core "^1.0.7"
+    simplebar "^5.3.6"
+
+simplebar@^5.3.6:
+  version "5.3.6"
+  resolved "https://registry.yarnpkg.com/simplebar/-/simplebar-5.3.6.tgz#d9383576a09a6fd09e19543f8e9906a3e87c3896"
+  integrity sha512-FJUMbV+hNDd/m+1/fvD41TXKd5mSdlI5zgBygkaQIV3SffNbcLhSbJT6ufTs8ZNRLJ6i+qc/KCFMqWmvlGWMhA==
+  dependencies:
+    "@juggle/resize-observer" "^3.3.1"
+    can-use-dom "^0.1.0"
+    core-js "^3.0.1"
+    lodash.debounce "^4.0.8"
+    lodash.memoize "^4.1.2"
+    lodash.throttle "^4.1.1"
 
 sisteransi@^1.0.5:
   version "1.0.5"
