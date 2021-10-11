@@ -9,6 +9,7 @@ import { loginUser, logoutUser } from '../../store/actions'
 import NotificationDropdown from '../Common/TopbarDropdown/NotificationDropdown'
 import ProfileMenu from '../Common/TopbarDropdown/ProfileMenu'
 import GoogleLoginDevPolls from '../Common/GoogleLoginDevPolls'
+import NewsDropdown from '../Common/TopbarDropdown/NewsDropdown'
 
 const Header = (props) => {
     const isUserLoggedIn = !!props.authUser
@@ -41,6 +42,7 @@ const Header = (props) => {
                         {!isUserLoggedIn && <GoogleLoginDevPolls text="Login" {...props} />}
 
                         {isUserLoggedIn && <NotificationDropdown />}
+                        {isUserLoggedIn && <NewsDropdown />}
                         {isUserLoggedIn && <ProfileMenu logoutUser={logoutUser} />}
                     </div>
                 </div>

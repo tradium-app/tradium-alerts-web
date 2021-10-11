@@ -11,6 +11,7 @@ import { GET_ALERTS_QUERY } from '../../components/Common/TopbarDropdown/Notific
 import NewsListModal from './Components/news-list-modal'
 import { Helmet } from 'react-helmet'
 import WatchListRow from './Components/watch-list-row'
+import { GET_STOCK_NEWS_QUERY } from '../../components/Common/TopbarDropdown/NewsDropdown'
 
 const colNames = {
     isBuyAlert: 'Buy',
@@ -81,7 +82,7 @@ const HomePage = ({ authUser }) => {
     }
 
     return (
-        <div className="page-content">
+        <div className="page-content bg-white">
             <Helmet>
                 <title>{'Swing Trade Alerts'}</title>
             </Helmet>
@@ -156,17 +157,6 @@ export const GET_STOCK_TRENDLINES_QUERY = gql`
         getWatchListStockTrendlines {
             symbol
             last30DaysClosePrices
-        }
-    }
-`
-
-export const GET_STOCK_NEWS_QUERY = gql`
-    query getWatchListNews {
-        getWatchListNews {
-            symbol
-            headline
-            link
-            createdDate
         }
     }
 `
