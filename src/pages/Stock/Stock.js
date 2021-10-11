@@ -88,11 +88,9 @@ const Stock = () => {
                                         <Media body>
                                             <div className="mt-md-0 mt-sm-0 d-inline-block">
                                                 <h4 className="card-title">{symbol}</h4>
-                                                <div className="d-inline-block">
-                                                    <h5>{stockProfile?.price.toFixed(2)} </h5>
-                                                </div>
-                                                <div className="d-inline-block">
-                                                    <h6 className={stockProfile?.changePercent > 0 ? 'text-success' : 'text-danger'}>
+                                                <div>
+                                                    <span className="font-size-16">{stockProfile?.price.toFixed(2)} </span>
+                                                    <span className={stockProfile?.changePercent > 0 ? 'text-success' : 'text-danger'}>
                                                         &nbsp;(
                                                         {stockProfile?.changePercent.toFixed(2)} %
                                                         {stockProfile?.changePercent > 0 ? (
@@ -101,14 +99,14 @@ const Stock = () => {
                                                             <i className="mdi mdi-arrow-down text-danger"></i>
                                                         )}
                                                         )
-                                                    </h6>
+                                                    </span>
                                                 </div>
                                             </div>
                                         </Media>
                                     </Media>
                                 </Col>
                                 <Col xl="9" sm="9" className="d-flex justify-content-end">
-                                    <div className="mt-3 button-items">
+                                    <div className="mb-2 button-items">
                                         {stockProfile && <AddRemoveStock symbol={symbol} isOnWatchList={stockProfile.isOnWatchList} />}
                                         <Link to={`/symbol/${symbol.toUpperCase()}/alert`} className="btn btn-primary">
                                             Add an Alert

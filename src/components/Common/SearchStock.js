@@ -26,7 +26,7 @@ export const SearchStock = ({ handleSelect, className }) => {
     return (
         <AsyncSelect
             loadOptions={promiseOptions}
-            placeholder="Search Stocks..."
+            placeholder="Search Stocks... (shortcut /)"
             isClearable
             onChange={handleSelect}
             components={{

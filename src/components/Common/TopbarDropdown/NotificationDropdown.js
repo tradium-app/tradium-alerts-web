@@ -6,6 +6,7 @@ import { Dropdown, DropdownToggle, DropdownMenu, Row, Col } from 'reactstrap'
 import SimpleBar from 'simplebar-react'
 import { getRelativeTime } from '../time'
 import stockImg from '../../../assets/images/stock-default-icon.png'
+import classnames from 'classnames'
 
 const NotificationDropdown = () => {
     const [menu, setMenu] = useState(false)
@@ -52,7 +53,15 @@ const NotificationDropdown = () => {
                                             }}
                                         />
                                         <div className="media-body">
-                                            <h5 className="font-size-14 mb-1">{alert.signal + ' ' + alert.symbol + ' : ' + alert.title}</h5>
+                                            <h5
+                                                className={classnames({
+                                                    'font-size-14 mb-1': true,
+                                                    'text-success': alert.signal == 'Buy',
+                                                    'text-danger': alert.signal == 'Sell',
+                                                })}
+                                            >
+                                                {alert.signal + ' ' + alert.symbol + ' : ' + alert.title}
+                                            </h5>
                                             <div key={index} className="text-muted font-size-11 mb-1">
                                                 {toProperCase(alert.conditions[0].timeframe) +
                                                     ' ' +
