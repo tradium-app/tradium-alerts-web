@@ -47,7 +47,7 @@ const NewsDropdown = () => {
                                         <div className="media-body">
                                             <div className="font-size-14 mb-1">{news.symbol + ' : ' + news.headline}</div>
                                             <p className="font-size-11 text-muted mb-0">
-                                                <i className="mdi mdi-clock-outline"></i> {getRelativeTime(news.modifiedDate)}{' '}
+                                                <i className="mdi mdi-clock-outline"></i> {getRelativeTime(news.createdDate)}{' '}
                                             </p>
                                         </div>
                                     </div>
