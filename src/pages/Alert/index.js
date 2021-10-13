@@ -9,6 +9,7 @@ import { Formik, Field } from 'formik'
 import toastr from '../../toastrCustom'
 import Condition from './Components/Condition'
 import CopyAlert from './Components/CopyAlert'
+import ToggleSwitch from './Components/ToggleSwitch'
 
 const AlertPage = () => {
     let { symbol, alertId } = useParams()
@@ -45,6 +46,7 @@ const AlertPage = () => {
         signal: initialAlert?.signal || 'Buy',
         title: initialAlert?.title || '',
         conditions: initialAlert?.conditions || [{ order: 1, operator: 'And', timeframe: 'daily' }],
+        enabled: initialAlert?.enabled == undefined ? true : initialAlert?.enabled,
     }
 
     if (error) {
@@ -63,6 +65,7 @@ const AlertPage = () => {
     }
 
     const handleFormikSubmit = async (values) => {
+        delete values.status
         if (isAddMode) {
             await addAlertMutate({
                 variables: {
@@ -154,6 +157,9 @@ const AlertPage = () => {
                                                             </Label>
                                                         </div>
                                                     </div>
+                                                </Col>
+                                                <Col sm="6" className="d-flex justify-content-end">
+                                                    <ToggleSwitch field="enabled" />
                                                 </Col>
                                             </Row>
                                             <Row className="mb-4">
@@ -264,6 +270,7 @@ export const GET_ALERTS = gql`
             signal
             title
             status
+            enabled
             conditions {
                 order
                 operator
