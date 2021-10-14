@@ -44,7 +44,7 @@ const IndicatorValues = [
             { value: 'above_20_ema20', valueText: 'Price 20% above EMA20', valueConfig: { length: 20, value: 20, upDirection: true } },
             {
                 value: 'golden_cross_ema20_ema50',
-                valueText: 'Golden Cross (EMA20 above EMA50) --',
+                valueText: 'Golden Cross (EMA20 above EMA50)',
                 valueConfig: { length: 20, length2: 50, upDirection: true },
             },
             { value: 'below_ema20', valueText: 'Price below EMA20', valueConfig: { length: 20, value: 0, upDirection: false } },
@@ -52,7 +52,7 @@ const IndicatorValues = [
             { value: 'below_20_ema20', valueText: 'Price 20% below EMA20', valueConfig: { length: 20, value: 20, upDirection: false } },
             {
                 value: 'death_cross_ema20_ema50',
-                valueText: 'Death Cross (EMA20 above EMA50)',
+                valueText: 'Death Cross (EMA20 below EMA50)',
                 valueConfig: { length: 20, length2: 50, upDirection: false },
             },
         ],
