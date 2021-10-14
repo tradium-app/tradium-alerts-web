@@ -61,7 +61,7 @@ const HomePage = ({ authUser }) => {
         redditRank: s.redditRank <= 0 ? 999 : s.redditRank,
         isBuyAlert: alertData?.getAlerts.some((a) => a.symbol == s.symbol && a.signal == 'Buy' && a.status == 'On'),
         isSellAlert: alertData?.getAlerts.some((a) => a.symbol == s.symbol && a.signal == 'Sell' && a.status == 'On'),
-        last30DaysClosePrices: trendData?.getWatchListStockTrendlines.find((a) => a.symbol == s.symbol).last30DaysClosePrices,
+        last30DaysClosePrices: trendData?.getWatchListStockTrendlines.find((a) => a.symbol == s.symbol)?.last30DaysClosePrices,
         news: newsData?.getWatchListNews.filter((a) => a.symbol == s.symbol).length,
     }))
 
