@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useMutation } from '@apollo/client'
 import gql from 'graphql-tag'
 import { Button } from 'reactstrap'
@@ -8,6 +8,11 @@ const AddRemoveStock = ({ symbol, isOnWatchList }) => {
     const [onWatchList, setOnWatchList] = useState(isOnWatchList)
     const [addStockError, setAddStockError] = useState(null)
     const [addStockResponse, setAddStockResponse] = useState(null)
+
+    useEffect(() => {
+        setOnWatchList(isOnWatchList)
+    }, [isOnWatchList])
+
     const [addStock] = useMutation(ADD_STOCK_MUTATION, {
         onError: setAddStockError,
         onCompleted: setAddStockResponse,
