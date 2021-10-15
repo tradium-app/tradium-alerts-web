@@ -70,7 +70,16 @@ const WatchListRow = ({ stock, showAlertList, showNewsList }) => {
                 </div>
                 <div className="text-muted font-size-10 d-inline-block ml-2">{Math.floor(stock.week52High)}</div>
             </td>
-            <td>{stock.tipranksUpside != 0 && stock.tipranksUpside.toFixed(0)}</td>
+            <td>
+                <a
+                    href={`https://www.tipranks.com/stocks/${stock.symbol}/forecast`}
+                    className="text-muted text-decoration-underline"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    {stock.tipranksUpside == 0 ? '-' : stock.tipranksUpside.toFixed(0)}
+                </a>{' '}
+            </td>
             <td>{stock.revenueGrowthQuarterlyYoy.toFixed(0)}</td>
             <td>{stock.revenueGrowthTTMYoy.toFixed(0)}</td>
             <td>{stock.redditRank < 999 ? stock.redditRank : ''}</td>

@@ -241,7 +241,7 @@ const Stock = () => {
                         <Col xl="4">
                             <Card className="overflow-hidden">
                                 <CardBody>
-                                    <CardTitle className="mb-3">Technical Indicators</CardTitle>
+                                    <CardTitle className="mb-3">Technicals</CardTitle>
 
                                     <div className="table-responsive">
                                         <Table className="table mb-0">
@@ -257,6 +257,14 @@ const Stock = () => {
                                                 <tr>
                                                     <td>Beta</td>
                                                     <td>{stockProfile?.beta.toFixed(2)}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>TipRanks PriceTarget</td>
+                                                    <td>{stockProfile?.tipranksPriceTarget.toFixed(0)}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Reddit Rank</td>
+                                                    <td>{stockProfile?.redditRank.toFixed(0)}</td>
                                                 </tr>
                                             </tbody>
                                         </Table>
