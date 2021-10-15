@@ -57,6 +57,7 @@ const WatchListRow = ({ stock, showAlertList, showNewsList }) => {
                 <div className="text-muted font-size-10 d-inline-block ml-2">{Math.floor(stock.week52High)}</div>
             </td>
             <td>{stock.beta.toFixed(1)}</td>
+            <td>{stock.tipranksUpside != 0 && stock.tipranksUpside.toFixed(0)}</td>
             <td>{stock.revenueGrowthQuarterlyYoy.toFixed(0)}</td>
             <td>{stock.revenueGrowthTTMYoy.toFixed(0)}</td>
             <td>{stock.redditRank < 999 ? stock.redditRank : ''}</td>

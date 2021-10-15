@@ -303,6 +303,7 @@ export const GET_STOCK_PROFILE = gql`
             revenueGrowthTTMYoy
             rsi
             redditRank
+            tipranksPriceTarget
             alertStatus
             isOnWatchList
             alerts {

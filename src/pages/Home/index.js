@@ -23,6 +23,7 @@ const colNames = {
     marketCap: 'Market Cap.',
     week52DrawDown: '52 Week Range',
     beta: 'Beta',
+    tipranksUpside: 'TR Upside (1yr%)',
     revenueGrowthQuarterlyYoy: 'Rev. Quarter YOY',
     revenueGrowthTTMYoy: 'Rev. TTM YOY',
     redditRank: 'Reddit Rank',
@@ -57,6 +58,7 @@ const HomePage = ({ authUser }) => {
 
     const watchList = data?.getWatchList.map((s) => ({
         ...s,
+        tipranksUpside: s.tipranksPriceTarget != 0 ? ((s.tipranksPriceTarget - s.price) * 100) / s.price : 0,
         week52DrawDown: (s.week52High - s.price) / s.week52High || 0,
         redditRank: s.redditRank <= 0 ? 999 : s.redditRank,
         isBuyAlert: alertData?.getAlerts.some((a) => a.symbol == s.symbol && a.signal == 'Buy' && a.status == 'On'),
@@ -148,6 +150,7 @@ export const GET_WATCHLIST_QUERY = gql`
             rsi
             trend
             redditRank
+            tipranksPriceTarget
         }
     }
 `
