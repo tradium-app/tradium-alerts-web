@@ -32,9 +32,9 @@ const WatchListRow = ({ stock, showAlertList, showNewsList }) => {
             <td>{Math.floor(stock.price)}</td>
             <td className={stock.changePercent < 0 ? 'text-danger' : 'text-success'}>{Math.abs(stock.changePercent).toFixed(2)}</td>
             <td className="p-0 d-flex justify-content-center align-items-center">
-                <div style={{ width: 50, height: 40 }}>
-                    {stock.last30DaysClosePrices && (
-                        <Sparklines data={stock.last30DaysClosePrices} svgWidth={80} svgHeight={30} margin={5} limit={30}>
+                <div style={{ width: 80, height: 40 }}>
+                    {stock.recentClosePrices && (
+                        <Sparklines data={stock.recentClosePrices} svgWidth={80} svgHeight={30} margin={5} limit={30}>
                             <SparklinesLine />
                         </Sparklines>
                     )}

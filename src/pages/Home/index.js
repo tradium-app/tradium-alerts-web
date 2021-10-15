@@ -19,7 +19,7 @@ const colNames = {
     symbol: 'Symbol',
     price: 'Price',
     changePercent: 'Change%',
-    last30DaysClosePrices: 'Chart',
+    recentClosePrices: 'Chart',
     marketCap: 'Market Cap.',
     week52DrawDown: '52 Week Range',
     beta: 'Beta',
@@ -61,7 +61,7 @@ const HomePage = ({ authUser }) => {
         redditRank: s.redditRank <= 0 ? 999 : s.redditRank,
         isBuyAlert: alertData?.getAlerts.some((a) => a.symbol == s.symbol && a.signal == 'Buy' && a.status == 'On'),
         isSellAlert: alertData?.getAlerts.some((a) => a.symbol == s.symbol && a.signal == 'Sell' && a.status == 'On'),
-        last30DaysClosePrices: trendData?.getWatchListStockTrendlines.find((a) => a.symbol == s.symbol)?.last30DaysClosePrices,
+        recentClosePrices: trendData?.getWatchListStockTrendlines.find((a) => a.symbol == s.symbol)?.recentClosePrices,
         news: newsData?.getWatchListNews.filter((a) => a.symbol == s.symbol).length,
     }))
 
@@ -156,7 +156,7 @@ export const GET_STOCK_TRENDLINES_QUERY = gql`
     query getWatchListStockTrendlines {
         getWatchListStockTrendlines {
             symbol
-            last30DaysClosePrices
+            recentClosePrices
         }
     }
 `
