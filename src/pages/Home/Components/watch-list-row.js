@@ -40,6 +40,20 @@ const WatchListRow = ({ stock, showAlertList, showNewsList }) => {
                     )}
                 </div>
             </td>
+            <td>
+                <div className="font-size-16">
+                    {stock?.news > 0 && (
+                        <Link
+                            onClick={() => {
+                                showNewsList(stock.symbol)
+                            }}
+                            to="#"
+                        >
+                            <span className="badge badge-secondary badge-pill">{stock?.news}</span>
+                        </Link>
+                    )}
+                </div>
+            </td>
             <td>{formatMarketCap(stock.marketCap)}</td>
             <td>
                 <div className="text-muted font-size-10 d-inline-block mr-2">{Math.floor(stock.week52Low)}</div>
@@ -56,29 +70,15 @@ const WatchListRow = ({ stock, showAlertList, showNewsList }) => {
                 </div>
                 <div className="text-muted font-size-10 d-inline-block ml-2">{Math.floor(stock.week52High)}</div>
             </td>
-            <td>{stock.beta.toFixed(1)}</td>
             <td>{stock.tipranksUpside != 0 && stock.tipranksUpside.toFixed(0)}</td>
             <td>{stock.revenueGrowthQuarterlyYoy.toFixed(0)}</td>
             <td>{stock.revenueGrowthTTMYoy.toFixed(0)}</td>
             <td>{stock.redditRank < 999 ? stock.redditRank : ''}</td>
             <td>{stock.rsi != 100 && stock.rsi != 0 && stock.rsi.toFixed(0)}</td>
+            <td>{stock.beta.toFixed(1)}</td>
             <td>
                 <div className="font-size-16">
                     <i className={stock.trend == 'Up' ? 'bx bx-trending-up text-success' : 'bx bx-trending-down text-danger'}></i>
-                </div>
-            </td>
-            <td>
-                <div className="font-size-16">
-                    {stock?.news > 0 && (
-                        <Link
-                            onClick={() => {
-                                showNewsList(stock.symbol)
-                            }}
-                            to="#"
-                        >
-                            <span className="badge badge-primary badge-pill">{stock?.news}</span>
-                        </Link>
-                    )}
                 </div>
             </td>
         </tr>

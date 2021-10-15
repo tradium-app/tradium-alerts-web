@@ -20,16 +20,16 @@ const colNames = {
     price: 'Price',
     changePercent: 'Change%',
     recentClosePrices: 'Chart',
+    news: 'News',
     marketCap: 'Market Cap.',
     week52DrawDown: '52 Week Range',
-    beta: 'Beta',
     tipranksUpside: 'TR Upside (1yr%)',
     revenueGrowthQuarterlyYoy: 'Rev. Quarter YOY',
     revenueGrowthTTMYoy: 'Rev. TTM YOY',
     redditRank: 'Reddit Rank',
     rsi: 'Rsi',
+    beta: 'Beta',
     trend: 'Trend',
-    news: 'News',
 }
 
 const initialSortConfig = {
