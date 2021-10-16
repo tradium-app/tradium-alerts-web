@@ -19,7 +19,7 @@ const colNames = {
     symbol: 'Symbol',
     changePercent: 'Change%',
     price: 'Price',
-    recentClosePrices: 'Chart',
+    chart: 'Chart',
     news: 'News',
     marketCap: 'Mar Cap.',
     week52DrawDown: '52 Week Range',
@@ -58,6 +58,7 @@ const HomePage = ({ authUser }) => {
 
     const watchList = data?.getWatchList.map((s) => ({
         ...s,
+        chart: calculateChangePercent(trendData?.getWatchListStockTrendlines.find((a) => a.symbol == s.symbol)?.recentClosePrices),
         tipranksUpside: s.tipranksPriceTarget != 0 ? ((s.tipranksPriceTarget - s.price) * 100) / s.price : 0,
         week52DrawDown: (s.week52High - s.price) / s.week52High || 0,
         redditRank: s.redditRank <= 0 ? 999 : s.redditRank,
@@ -131,6 +132,10 @@ const HomePage = ({ authUser }) => {
             </Container>
         </div>
     )
+}
+
+const calculateChangePercent = (prices) => {
+    return (prices[prices.length - 1] - prices[0]) / prices[0]
 }
 
 export const GET_WATCHLIST_QUERY = gql`
