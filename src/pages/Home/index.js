@@ -135,6 +135,7 @@ const HomePage = ({ authUser }) => {
 }
 
 const calculateChangePercent = (prices) => {
+    if (!prices) return 0
     return (prices[prices.length - 1] - prices[0]) / prices[0]
 }
 
