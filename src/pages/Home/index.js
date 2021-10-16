@@ -70,7 +70,7 @@ const HomePage = ({ authUser }) => {
     const { items, requestSort, sortConfig } = useSortableData(watchList, initialSortConfig)
 
     const showAlertList = (symbol, signal) => {
-        const alerts = alertData.getAlerts.filter((a) => a.symbol == symbol && a.signal == signal)
+        const alerts = alertData?.getAlerts.filter((a) => a.symbol == symbol && a.signal == signal)
         setSymbolInModal(symbol)
         setAlertSignalInModal(signal)
         setAlertsInModal(alerts)

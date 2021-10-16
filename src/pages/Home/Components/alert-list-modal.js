@@ -5,6 +5,7 @@ import toastr from 'toastr'
 import SweetAlert from 'react-bootstrap-sweetalert'
 import { Link } from 'react-router-dom'
 import { DELETE_ALERT_MUTATION } from '../../Stock/Stock'
+import { getRelativeTime } from '../../../components/Common/time'
 
 toastr.options = {
     positionClass: 'toast-top-center',
@@ -69,6 +70,11 @@ const AlertListModal = ({ symbol, alertSignal, alerts, isShowing, toggle }) => {
                                                                         condition.valueText}
                                                                 </div>
                                                             ))}
+                                                            {alert.alertOnDate != null && (
+                                                                <div className="font-size-11 text-muted mt-1 mb-1">
+                                                                    <i className="mdi mdi-clock-outline"></i> {getRelativeTime(alert.alertOnDate)}{' '}
+                                                                </div>
+                                                            )}
                                                         </div>
                                                         <div className="col-form-label ml-1">
                                                             <Link

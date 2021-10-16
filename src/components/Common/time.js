@@ -9,6 +9,7 @@ moment.updateLocale('en', {
 })
 
 export const getRelativeTime = (date) => {
+    if (date == null) return ''
     const momentDate = moment.utc(date)
 
     const minsAgo = moment.duration({ from: momentDate, to: new Date() }).asMinutes()

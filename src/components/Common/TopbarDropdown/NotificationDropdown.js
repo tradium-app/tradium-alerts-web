@@ -35,7 +35,7 @@ const NotificationDropdown = () => {
                         !loading &&
                         data?.getAlerts
                             ?.filter((n) => n.status == 'On')
-                            .sort((a, b) => b.modifiedDate - a.modifiedDate)
+                            .sort((a, b) => b.alertOnDate - a.alertOnDate)
                             .map((alert, index) => (
                                 <Link
                                     to={`/symbol/${alert.symbol}`}
@@ -71,7 +71,7 @@ const NotificationDropdown = () => {
                                                     ' ..'}
                                             </div>
                                             <p className="font-size-11 text-muted mb-0">
-                                                <i className="mdi mdi-clock-outline"></i> {getRelativeTime(alert.modifiedDate)}{' '}
+                                                <i className="mdi mdi-clock-outline"></i> {getRelativeTime(alert.alertOnDate)}{' '}
                                             </p>
                                         </div>
                                     </div>
@@ -107,7 +107,7 @@ export const GET_ALERTS_QUERY = gql`
             signal
             title
             status
-            modifiedDate
+            alertOnDate
             conditions {
                 order
                 operator
