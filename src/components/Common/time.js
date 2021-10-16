@@ -18,3 +18,8 @@ export const getRelativeTime = (date) => {
 
     return relativeDateString
 }
+
+export const getFormattedDate = (date, format) => {
+    if (date == null) return ''
+    return moment.utc(date).format(format || 'YYYY-MM-DD')
+}

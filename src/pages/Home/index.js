@@ -27,6 +27,7 @@ const colNames = {
     revenueGrowthQuarterlyYoy: 'Rev. Q. YOY',
     revenueGrowthTTMYoy: 'Rev. Ttm YOY',
     redditRank: 'Reddit Rank',
+    nextEarningsDate: 'Next Earnings',
     rsi: 'Rsi',
     beta: 'Beta',
     trend: 'Trend',
@@ -153,6 +154,7 @@ export const GET_WATCHLIST_QUERY = gql`
             beta
             revenueGrowthQuarterlyYoy
             revenueGrowthTTMYoy
+            nextEarningsDate
             rsi
             trend
             redditRank

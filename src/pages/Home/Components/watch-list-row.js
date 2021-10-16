@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Sparklines, SparklinesLine } from 'react-sparklines'
 import stockImg from '../../../assets/images/stock-default-icon.png'
+import { getFormattedDate } from '../../../components/Common/time'
 
 const WatchListRow = ({ stock, showAlertList, showNewsList }) => {
     return (
@@ -83,6 +84,7 @@ const WatchListRow = ({ stock, showAlertList, showNewsList }) => {
             <td>{stock.revenueGrowthQuarterlyYoy == 0 ? '' : stock.revenueGrowthQuarterlyYoy.toFixed(0)}</td>
             <td>{stock.revenueGrowthTTMYoy == 0 ? '' : stock.revenueGrowthTTMYoy.toFixed(0)}</td>
             <td>{stock.redditRank < 999 ? stock.redditRank : ''}</td>
+            <td>{getFormattedDate(stock.nextEarningsDate, 'MM-DD')}</td>
             <td>{stock.rsi != 100 && stock.rsi != 0 && stock.rsi.toFixed(0)}</td>
             <td>{stock.beta == 0 ? '' : stock.beta.toFixed(1)}</td>
             <td>
