@@ -26,11 +26,11 @@ const WatchListRow = ({ stock, showAlertList, showNewsList }) => {
                             if (e.target.src != stockImg) e.target.src = stockImg
                         }}
                     />
-                    <h5 className="font-size-13 d-inline-block text-primary">{stock.symbol.toUpperCase()}</h5>
+                    <h5 className="font-size-13 d-inline-block">{stock.symbol.toUpperCase()}</h5>
                 </Link>
             </td>
-            <td>{Math.floor(stock.price)}</td>
             <td className={stock.changePercent < 0 ? 'text-danger' : 'text-success'}>{Math.abs(stock.changePercent).toFixed(2)}</td>
+            <td>{Math.floor(stock.price)}</td>
             <td className="p-0 d-flex justify-content-center align-items-center">
                 <div style={{ width: 80, height: 40 }}>
                     {stock.recentClosePrices && (
@@ -78,13 +78,13 @@ const WatchListRow = ({ stock, showAlertList, showNewsList }) => {
                     rel="noreferrer"
                 >
                     {stock.tipranksUpside == 0 ? '-' : stock.tipranksUpside.toFixed(0)}
-                </a>{' '}
+                </a>
             </td>
-            <td>{stock.revenueGrowthQuarterlyYoy.toFixed(0)}</td>
-            <td>{stock.revenueGrowthTTMYoy.toFixed(0)}</td>
+            <td>{stock.revenueGrowthQuarterlyYoy == 0 ? '' : stock.revenueGrowthQuarterlyYoy.toFixed(0)}</td>
+            <td>{stock.revenueGrowthTTMYoy == 0 ? '' : stock.revenueGrowthTTMYoy.toFixed(0)}</td>
             <td>{stock.redditRank < 999 ? stock.redditRank : ''}</td>
             <td>{stock.rsi != 100 && stock.rsi != 0 && stock.rsi.toFixed(0)}</td>
-            <td>{stock.beta.toFixed(1)}</td>
+            <td>{stock.beta == 0 ? '' : stock.beta.toFixed(1)}</td>
             <td>
                 <div className="font-size-16">
                     <i className={stock.trend == 'Up' ? 'bx bx-trending-up text-success' : 'bx bx-trending-down text-danger'}></i>
