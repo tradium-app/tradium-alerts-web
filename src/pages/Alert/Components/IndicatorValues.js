@@ -88,6 +88,15 @@ const IndicatorValues = [
             { value: '20_above_week52low', valueText: 'Price 20% above 52 Week Low', valueConfig: { value: 20, upDirection: true } },
         ],
     },
+    {
+        name: 'earnings',
+        text: 'Next Earnings Date',
+        values: [
+            { value: 'in_10_days', valueText: 'In 10 days', valueConfig: { value: 10, upDirection: true } },
+            { value: 'in_20_days', valueText: 'In 20 days', valueConfig: { value: 20, upDirection: true } },
+            { value: 'in_30_days', valueText: 'In 30 days', valueConfig: { value: 30, upDirection: true } },
+        ],
+    },
 ]
 
 export default IndicatorValues
