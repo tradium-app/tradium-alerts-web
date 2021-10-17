@@ -247,6 +247,21 @@ const Stock = () => {
                                         <Table className="table mb-0">
                                             <tbody>
                                                 <tr>
+                                                    <td>Nearest Support</td>
+                                                    <td>
+                                                        {stockProfile?.sr &&
+                                                            Math.max(...stockProfile?.sr.filter((sp) => sp < stockProfile?.price)).toFixed(0)}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Nearest Resistance</td>
+                                                    <td>
+                                                        {console.log(stockProfile?.sr)}
+                                                        {stockProfile?.sr &&
+                                                            Math.min(...stockProfile?.sr.filter((sp) => sp > stockProfile?.price)).toFixed(0)}
+                                                    </td>
+                                                </tr>
+                                                <tr>
                                                     <td>RSI</td>
                                                     <td>{stockProfile?.rsi.toFixed(0)}</td>
                                                 </tr>
@@ -312,6 +327,7 @@ export const GET_STOCK_PROFILE = gql`
             rsi
             redditRank
             tipranksPriceTarget
+            sr
             alertStatus
             isOnWatchList
             alerts {

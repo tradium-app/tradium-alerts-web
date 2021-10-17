@@ -92,6 +92,8 @@ const WatchListRow = ({ stock, showAlertList, showNewsList }) => {
                     <i className={stock.trend == 'Up' ? 'bx bx-trending-up text-success' : 'bx bx-trending-down text-danger'}></i>
                 </div>
             </td>
+            <td>{!isFinite(stock.nextSupport) ? '' : stock.nextSupport.toFixed(1)}</td>
+            <td>{!isFinite(stock.nextResistance) ? '' : stock.nextResistance.toFixed(1)}</td>
         </tr>
     )
 }

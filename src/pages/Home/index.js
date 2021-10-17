@@ -31,6 +31,8 @@ const colNames = {
     rsi: 'Rsi',
     beta: 'Beta',
     trend: 'Trend',
+    nextSupport: 'Support distance(%)',
+    nextResistance: 'Resistance distance(%)',
 }
 
 const initialSortConfig = {
@@ -67,6 +69,8 @@ const HomePage = ({ authUser }) => {
         isSellAlert: alertData?.getAlerts.some((a) => a.symbol == s.symbol && a.signal == 'Sell' && a.status == 'On'),
         recentClosePrices: trendData?.getWatchListStockTrendlines.find((a) => a.symbol == s.symbol)?.recentClosePrices,
         news: newsData?.getWatchListNews.filter((a) => a.symbol == s.symbol).length,
+        nextSupport: ((s.price - Math.max(...s.sr.filter((sp) => sp < s.price))) * 100) / s.price,
+        nextResistance: ((Math.min(...s.sr.filter((sp) => sp > s.price)) - s.price) * 100) / s.price,
     }))
 
     const { items, requestSort, sortConfig } = useSortableData(watchList, initialSortConfig)
@@ -159,6 +163,7 @@ export const GET_WATCHLIST_QUERY = gql`
             trend
             redditRank
             tipranksPriceTarget
+            sr
         }
     }
 `
