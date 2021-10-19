@@ -247,18 +247,27 @@ const Stock = () => {
                                         <Table className="table mb-0">
                                             <tbody>
                                                 <tr>
-                                                    <td>Nearest Support</td>
+                                                    <td>Supports</td>
                                                     <td>
                                                         {stockProfile?.sr &&
-                                                            Math.max(...stockProfile?.sr.filter((sp) => sp < stockProfile?.price)).toFixed(0)}
+                                                            stockProfile?.sr
+                                                                .filter((sp) => sp < stockProfile?.price)
+                                                                .sort((a, b) => b - a)
+                                                                .slice(0, 3)
+                                                                .map((sp) => sp.toFixed(0))
+                                                                .join(', ')}
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Nearest Resistance</td>
+                                                    <td>Resistances</td>
                                                     <td>
-                                                        {console.log(stockProfile?.sr)}
                                                         {stockProfile?.sr &&
-                                                            Math.min(...stockProfile?.sr.filter((sp) => sp > stockProfile?.price)).toFixed(0)}
+                                                            stockProfile?.sr
+                                                                .filter((sp) => sp > stockProfile?.price)
+                                                                .sort()
+                                                                .slice(0, 3)
+                                                                .map((sp) => sp.toFixed(0))
+                                                                .join(', ')}
                                                     </td>
                                                 </tr>
                                                 <tr>
