@@ -64,9 +64,6 @@ const IndicatorValues = [
             { value: 'top10', valueText: 'In Top 10', valueConfig: { value: 10, upDirection: true } },
             { value: 'top20', valueText: 'In Top 20', valueConfig: { value: 20, upDirection: true } },
             { value: 'top50', valueText: 'In Top 50', valueConfig: { value: 50, upDirection: true } },
-            { value: 'not_top10', valueText: 'Not in Top 10', valueConfig: { value: 10, upDirection: false } },
-            { value: 'not_top20', valueText: 'Not in Top 20', valueConfig: { value: 20, upDirection: false } },
-            { value: 'not_top50', valueText: 'Not in Top 50', valueConfig: { value: 50, upDirection: false } },
         ],
     },
     {
