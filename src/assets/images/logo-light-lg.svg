@@ -9,9 +9,9 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.1"
    id="svg409"
-   width="340.42624"
-   height="63.735138"
-   viewBox="0 0 340.42625 63.735137"
+   width="421.00955"
+   height="53.466408"
+   viewBox="0 0 421.00957 53.466407"
    sodipodi:docname="logo-light-lg.svg"
    inkscape:version="1.0.1 (c497b03c, 2020-09-10)"
    inkscape:export-filename="/Users/sshrestha/Desktop/webtutor-logo-3.png"
@@ -53,12 +53,12 @@
      id="namedview411"
      showgrid="false"
      inkscape:zoom="2.2587842"
-     inkscape:cx="132.60905"
+     inkscape:cx="194.48992"
      inkscape:cy="40.256332"
      inkscape:window-x="0"
      inkscape:window-y="23"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g417"
      inkscape:pagecheckerboard="true" />
   <g
      transform="translate(3.946,-6.8910217)"
@@ -150,13 +150,14 @@
        id="text240"
        y="59.292835"
        x="77.933578"
-       style="font-size:45.3333px;line-height:1.25;font-family:Silom;-inkscape-font-specification:Silom;letter-spacing:-4px;fill:#f2f2f2;fill-opacity:1"
+       style="font-size:45.33330000000000126px;line-height:1.25;font-family:Silom;-inkscape-font-specification:Silom;letter-spacing:-1.5px;fill:#f2f2f2;fill-opacity:1"
        xml:space="preserve"><tspan
-         style="font-size:45.3333px;fill:#f2f2f2;fill-opacity:1"
+         style="font-size:45.33330000000000126px;fill:#f2f2f2;fill-opacity:1;"
          y="59.292835"
          x="77.933578"
          id="tspan238"
-         sodipodi:role="line">Swing Alerts</tspan></text>
+         sodipodi:role="line"
+         dx="0 0 0 0 0 0 0.44271603">Tradium Alerts</tspan></text>
   </g>
   <g
      inkscape:groupmode="layer"
