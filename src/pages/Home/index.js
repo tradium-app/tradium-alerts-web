@@ -92,7 +92,7 @@ const HomePage = ({ authUser }) => {
     return (
         <div className="page-content bg-white">
             <Helmet>
-                <title>{'Swing Trade Alerts'}</title>
+                <title>{'Tradium Alerts : for swing traders'}</title>
             </Helmet>
             <Container fluid>
                 <div className="table-responsive">
