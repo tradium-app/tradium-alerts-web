@@ -26,6 +26,8 @@ const colNames = {
     tipranksUpside: 'TR Upside (1yr%)',
     revenueGrowthQuarterlyYoy: 'Rev. Q. YOY',
     revenueGrowthTTMYoy: 'Rev. Ttm YOY',
+    priceToSalesTTM: 'P/S',
+    priceToEarningsTTM: 'P/E',
     redditRank: 'Reddit Rank',
     nextEarningsDate: 'Next Earnings',
     rsi: 'Rsi',
@@ -69,8 +71,8 @@ const HomePage = ({ authUser }) => {
         isSellAlert: alertData?.getAlerts.some((a) => a.symbol == s.symbol && a.signal == 'Sell' && a.status == 'On'),
         recentClosePrices: trendData?.getWatchListStockTrendlines.find((a) => a.symbol == s.symbol)?.recentClosePrices,
         news: newsData?.getWatchListNews.filter((a) => a.symbol == s.symbol).length,
-        nextSupport: ((s.price - Math.max(...s.sr.filter((sp) => sp < s.price))) * 100) / s.price,
-        nextResistance: ((Math.min(...s.sr.filter((sp) => sp > s.price)) - s.price) * 100) / s.price,
+        nextSupport: s.sr && ((s.price - Math.max(...s.sr.filter((sp) => sp < s.price))) * 100) / s.price,
+        nextResistance: s.sr && ((Math.min(...s.sr.filter((sp) => sp > s.price)) - s.price) * 100) / s.price,
     }))
 
     const { items, requestSort, sortConfig } = useSortableData(watchList, initialSortConfig)
@@ -158,6 +160,8 @@ export const GET_WATCHLIST_QUERY = gql`
             beta
             revenueGrowthQuarterlyYoy
             revenueGrowthTTMYoy
+            priceToSalesTTM
+            priceToEarningsTTM
             nextEarningsDate
             rsi
             trend

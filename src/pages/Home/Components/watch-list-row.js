@@ -83,6 +83,8 @@ const WatchListRow = ({ stock, showAlertList, showNewsList }) => {
             </td>
             <td>{stock.revenueGrowthQuarterlyYoy == 0 ? '' : stock.revenueGrowthQuarterlyYoy.toFixed(0)}</td>
             <td>{stock.revenueGrowthTTMYoy == 0 ? '' : stock.revenueGrowthTTMYoy.toFixed(0)}</td>
+            <td>{stock.priceToSalesTTM == 0 ? '' : stock.priceToSalesTTM.toFixed(0)}</td>
+            <td>{stock.priceToEarningsTTM == 0 ? '' : stock.priceToEarningsTTM.toFixed(0)}</td>
             <td>{stock.redditRank < 999 ? stock.redditRank : ''}</td>
             <td>{getFormattedDate(stock.nextEarningsDate, 'MM-DD')}</td>
             <td>{stock.rsi != 100 && stock.rsi != 0 && stock.rsi.toFixed(0)}</td>
@@ -92,8 +94,8 @@ const WatchListRow = ({ stock, showAlertList, showNewsList }) => {
                     <i className={stock.trend == 'Up' ? 'bx bx-trending-up text-success' : 'bx bx-trending-down text-danger'}></i>
                 </div>
             </td>
-            <td>{!isFinite(stock.nextSupport) ? '' : stock.nextSupport.toFixed(1)}</td>
-            <td>{!isFinite(stock.nextResistance) ? '' : stock.nextResistance.toFixed(1)}</td>
+            <td>{!isFinite(stock.nextSupport) ? '' : stock.nextSupport?.toFixed(1)}</td>
+            <td>{!isFinite(stock.nextResistance) ? '' : stock.nextResistance?.toFixed(1)}</td>
         </tr>
     )
 }
