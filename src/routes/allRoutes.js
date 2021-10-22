@@ -1,4 +1,5 @@
 import Home from '../pages/Home'
+import Home2 from '../pages/Home2'
 
 import PagesMaintenance from '../pages/Utility/pages-maintenance'
 import Pages404 from '../pages/Utility/pages-404'
@@ -14,6 +15,7 @@ const userRoutes = [
 
 const publicRoutes = [
     { path: '/', component: Home },
+    { path: '/Home2', component: Home2 },
     { path: '/symbol/:symbol', component: Stock },
     { path: '/pages-maintenance', component: PagesMaintenance },
     { path: '/pages-404', component: Pages404 },
