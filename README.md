@@ -6,4 +6,7 @@
 
 #### ScreenShots
 
-<img src="public/home-page.png" height="300">
+<img src="public/home-page.png" width="700">
+<br />
+<br />
+<img src="public/alert-config.png" width="700">
