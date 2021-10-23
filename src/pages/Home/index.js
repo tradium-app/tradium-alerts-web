@@ -96,47 +96,45 @@ const HomePage = ({ authUser }) => {
             <Helmet>
                 <title>{'Tradium Alerts : for swing traders'}</title>
             </Helmet>
-            <Container fluid>
-                <div className="table-responsive">
-                    <Table className="table-centered table-nowrap">
-                        <thead>
-                            <tr>
-                                {Object.keys(colNames).map((colName, index) => (
-                                    <th key={index}>
-                                        <Link onClick={() => requestSort(colName)} to="#" className="text-muted">
-                                            {colNames[colName]}
-                                        </Link>
-                                        <i
-                                            className={
-                                                colName != sortConfig?.key
-                                                    ? ''
-                                                    : sortConfig.direction == 'ascending'
-                                                    ? 'bx bx-up-arrow-alt'
-                                                    : 'bx bx-down-arrow-alt'
-                                            }
-                                        ></i>
-                                    </th>
-                                ))}
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {!error &&
-                                !loading &&
-                                items?.map((stock) => (
-                                    <WatchListRow stock={stock} showAlertList={showAlertList} showNewsList={showNewsList} key={stock.symbol} />
-                                ))}
-                        </tbody>
-                    </Table>
-                    <AlertListModal
-                        symbol={symbolInModal}
-                        alertSignal={alertSignalInModal}
-                        alerts={alertsInModal}
-                        isShowing={isShowingAlertListModal}
-                        toggle={toggleAlertListModal}
-                    />
-                    <NewsListModal news={newsInModal} isShowing={isShowingNewsModal} toggle={toggleNewsModal} />
-                </div>
-            </Container>
+            <div className="table-responsive">
+                <Table className="table-centered table-nowrap">
+                    <thead>
+                        <tr>
+                            {Object.keys(colNames).map((colName, index) => (
+                                <th key={index}>
+                                    <Link onClick={() => requestSort(colName)} to="#" className="text-muted">
+                                        {colNames[colName]}
+                                    </Link>
+                                    <i
+                                        className={
+                                            colName != sortConfig?.key
+                                                ? ''
+                                                : sortConfig.direction == 'ascending'
+                                                ? 'bx bx-up-arrow-alt'
+                                                : 'bx bx-down-arrow-alt'
+                                        }
+                                    ></i>
+                                </th>
+                            ))}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {!error &&
+                            !loading &&
+                            items?.map((stock) => (
+                                <WatchListRow stock={stock} showAlertList={showAlertList} showNewsList={showNewsList} key={stock.symbol} />
+                            ))}
+                    </tbody>
+                </Table>
+                <AlertListModal
+                    symbol={symbolInModal}
+                    alertSignal={alertSignalInModal}
+                    alerts={alertsInModal}
+                    isShowing={isShowingAlertListModal}
+                    toggle={toggleAlertListModal}
+                />
+                <NewsListModal news={newsInModal} isShowing={isShowingNewsModal} toggle={toggleNewsModal} />
+            </div>
         </div>
     )
 }
