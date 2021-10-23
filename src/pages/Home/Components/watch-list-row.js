@@ -32,14 +32,12 @@ const WatchListRow = ({ stock, showAlertList, showNewsList }) => {
             </td>
             <td className={stock.changePercent < 0 ? 'text-danger' : 'text-success'}>{Math.abs(stock.changePercent).toFixed(2)}</td>
             <td>{Math.floor(stock.price)}</td>
-            <td className="p-0 d-flex justify-content-center align-items-center">
-                <div style={{ width: 80, height: 40 }}>
-                    {stock.recentClosePrices && (
-                        <Sparklines data={stock.recentClosePrices} svgWidth={80} svgHeight={30} margin={5} limit={30}>
-                            <SparklinesLine />
-                        </Sparklines>
-                    )}
-                </div>
+            <td className="p-0 d-flex justify-content-center align-items-center" style={{ width: 80, height: 40 }}>
+                {stock.recentClosePrices && (
+                    <Sparklines data={stock.recentClosePrices} svgWidth={80} svgHeight={30} margin={5} limit={30}>
+                        <SparklinesLine />
+                    </Sparklines>
+                )}
             </td>
             <td>
                 <div className="font-size-16">
@@ -80,6 +78,13 @@ const WatchListRow = ({ stock, showAlertList, showNewsList }) => {
                 >
                     {stock.tipranksUpside == 0 ? '-' : stock.tipranksUpside.toFixed(0)}
                 </a>
+            </td>
+            <td className="p-0 d-flex justify-content-center align-items-center" style={{ width: 80, height: 40 }}>
+                {stock.nextPredictions && (
+                    <Sparklines data={stock.nextPredictions} svgWidth={80} svgHeight={30} margin={5} limit={30}>
+                        <SparklinesLine />
+                    </Sparklines>
+                )}
             </td>
             <td>{stock.revenueGrowthQuarterlyYoy == 0 ? '' : stock.revenueGrowthQuarterlyYoy.toFixed(0)}</td>
             <td>{stock.revenueGrowthTTMYoy == 0 ? '' : stock.revenueGrowthTTMYoy.toFixed(0)}</td>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
-import { Container, Table } from 'reactstrap'
+import { Table } from 'reactstrap'
 import gql from 'graphql-tag'
 import { useLazyQuery, useQuery } from '@apollo/client'
 import useSortableData from '../../hooks/useSortableData'
@@ -24,6 +24,7 @@ const colNames = {
     marketCap: 'Mar Cap.',
     week52DrawDown: '52 Week Range',
     tipranksUpside: 'TR Upside (1yr%)',
+    prediction: 'Prediction',
     revenueGrowthQuarterlyYoy: 'Rev. Q. YOY',
     revenueGrowthTTMYoy: 'Rev. Ttm YOY',
     priceToSalesTTM: 'P/S',
@@ -64,12 +65,14 @@ const HomePage = ({ authUser }) => {
     const watchList = data?.getWatchList.map((s) => ({
         ...s,
         chart: calculateChangePercent(trendData?.getWatchListStockTrendlines.find((a) => a.symbol == s.symbol)?.recentClosePrices),
+        prediction: calculateChangePercent(trendData?.getWatchListStockTrendlines.find((a) => a.symbol == s.symbol)?.nextPredictions),
         tipranksUpside: s.tipranksPriceTarget != 0 ? ((s.tipranksPriceTarget - s.price) * 100) / s.price : 0,
         week52DrawDown: (s.week52High - s.price) / s.week52High || 0,
         redditRank: s.redditRank <= 0 ? 999 : s.redditRank,
         isBuyAlert: alertData?.getAlerts.some((a) => a.symbol == s.symbol && a.signal == 'Buy' && a.status == 'On'),
         isSellAlert: alertData?.getAlerts.some((a) => a.symbol == s.symbol && a.signal == 'Sell' && a.status == 'On'),
         recentClosePrices: trendData?.getWatchListStockTrendlines.find((a) => a.symbol == s.symbol)?.recentClosePrices,
+        nextPredictions: trendData?.getWatchListStockTrendlines.find((a) => a.symbol == s.symbol)?.nextPredictions,
         news: newsData?.getWatchListNews.filter((a) => a.symbol == s.symbol).length,
         nextSupport: s.sr && ((s.price - Math.max(...s.sr.filter((sp) => sp < s.price))) * 100) / s.price,
         nextResistance: s.sr && ((Math.min(...s.sr.filter((sp) => sp > s.price)) - s.price) * 100) / s.price,
@@ -175,6 +178,7 @@ export const GET_STOCK_TRENDLINES_QUERY = gql`
         getWatchListStockTrendlines {
             symbol
             recentClosePrices
+            nextPredictions
         }
     }
 `
