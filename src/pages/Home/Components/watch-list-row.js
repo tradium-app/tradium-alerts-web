@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Sparklines, SparklinesLine } from 'react-sparklines'
 import stockImg from '../../../assets/images/stock-default-icon.png'
 import { getFormattedDate } from '../../../components/Common/time'
+import MiniChart from 'react-mini-chart'
 
 const WatchListRow = ({ stock, showAlertList, showNewsList }) => {
     return (
@@ -34,9 +34,7 @@ const WatchListRow = ({ stock, showAlertList, showNewsList }) => {
             <td>{Math.floor(stock.price)}</td>
             <td className="p-0 d-flex justify-content-center align-items-center" style={{ width: 80, height: 40 }}>
                 {stock.recentClosePrices && (
-                    <Sparklines data={stock.recentClosePrices} svgWidth={80} svgHeight={30} margin={5} limit={30}>
-                        <SparklinesLine />
-                    </Sparklines>
+                    <MiniChart dataSet={stock.recentClosePrices.slice(-40)} width={80} height={40} strokeWidth={1} strokeColor="#D3A299" />
                 )}
             </td>
             <td>
@@ -81,9 +79,13 @@ const WatchListRow = ({ stock, showAlertList, showNewsList }) => {
             </td>
             <td className="p-0 d-flex justify-content-center align-items-center" style={{ width: 80, height: 40 }}>
                 {stock.nextPredictions && (
-                    <Sparklines data={stock.nextPredictions} svgWidth={80} svgHeight={30} margin={5} limit={30}>
-                        <SparklinesLine />
-                    </Sparklines>
+                    <MiniChart
+                        dataSet={stock.nextPredictions.map((s) => s.toFixed(1))}
+                        width={80}
+                        height={40}
+                        strokeWidth={1}
+                        strokeColor="#D3A299"
+                    />
                 )}
             </td>
             <td>{stock.revenueGrowthQuarterlyYoy == 0 ? '' : stock.revenueGrowthQuarterlyYoy.toFixed(0)}</td>
