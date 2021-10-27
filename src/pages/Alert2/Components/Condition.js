@@ -8,20 +8,7 @@ const Condition = ({ condition, index, removeOption, totalOptions, addOption, ha
 
     return (
         <Row className="mb-4">
-            <Col xl="1" lg="1" sm="1" className="d-flex">
-                {index > 0 && (
-                    <select
-                        name={`conditions.${index}.operator`}
-                        value={condition.operator}
-                        className="form-control"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                    >
-                        <option value="And">And</option>
-                        <option value="Not">Not</option>
-                    </select>
-                )}
-            </Col>
+            <Col xl="1" lg="1" sm="1" className="d-flex"></Col>
             <Col xl="3" lg="3" sm="3">
                 <select
                     name={`conditions.${index}.indicator`}

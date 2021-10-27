@@ -204,7 +204,7 @@ const AlertPage = () => {
                                                     <div id="basic-pills-wizard" className="twitter-bs-wizard mb-2">
                                                         <ul className="twitter-bs-wizard-nav nav nav-pills nav-justified">
                                                             <NavItem>
-                                                                <NavLink className="text-center">Indicator / Value</NavLink>
+                                                                <NavLink className="text-center">Compare To</NavLink>
                                                             </NavItem>
                                                         </ul>
                                                     </div>
@@ -213,7 +213,7 @@ const AlertPage = () => {
                                                     <div id="basic-pills-wizard" className="twitter-bs-wizard mb-2">
                                                         <ul className="twitter-bs-wizard-nav nav nav-pills nav-justified">
                                                             <NavItem>
-                                                                <NavLink className="text-center">Add. Config</NavLink>
+                                                                <NavLink className="text-center">Diff. Percentage</NavLink>
                                                             </NavItem>
                                                         </ul>
                                                     </div>

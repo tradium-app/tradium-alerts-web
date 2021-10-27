@@ -34,9 +34,14 @@ const ConditionValueSelect = ({ indicator, valueField, value, valueTextField, va
     return (
         <select className="form-control" onChange={handleChange} onBlur={handleChange} value={value}>
             <option>--Please Select--</option>
-            {IndicatorValues.find((element) => element.name === indicator)?.values.map(({ value, valueText }) => (
+            {IndicatorValues.find((element) => element.name === indicator)?.values?.map(({ value, valueText }) => (
                 <option key={value} value={value}>
-                    {valueText}
+                    {valueText || value}
+                </option>
+            ))}
+            {IndicatorValues.find((element) => element.name === indicator)?.comparable_to?.map((indicator2) => (
+                <option key={indicator2} value={indicator2}>
+                    {indicator2}
                 </option>
             ))}
         </select>
