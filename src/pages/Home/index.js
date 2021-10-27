@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
-import { Container, Table } from 'reactstrap'
+import { Table } from 'reactstrap'
 import gql from 'graphql-tag'
 import { useLazyQuery, useQuery } from '@apollo/client'
 import useSortableData from '../../hooks/useSortableData'
@@ -24,8 +24,11 @@ const colNames = {
     marketCap: 'Mar Cap.',
     week52DrawDown: '52 Week Range',
     tipranksUpside: 'TR Upside (1yr%)',
+    prediction: 'Prediction',
     revenueGrowthQuarterlyYoy: 'Rev. Q. YOY',
     revenueGrowthTTMYoy: 'Rev. Ttm YOY',
+    priceToSalesTTM: 'P/S',
+    priceToEarningsTTM: 'P/E',
     redditRank: 'Reddit Rank',
     nextEarningsDate: 'Next Earnings',
     rsi: 'Rsi',
@@ -62,15 +65,17 @@ const HomePage = ({ authUser }) => {
     const watchList = data?.getWatchList.map((s) => ({
         ...s,
         chart: calculateChangePercent(trendData?.getWatchListStockTrendlines.find((a) => a.symbol == s.symbol)?.recentClosePrices),
+        prediction: calculateChangePercent(trendData?.getWatchListStockTrendlines.find((a) => a.symbol == s.symbol)?.nextPredictions),
         tipranksUpside: s.tipranksPriceTarget != 0 ? ((s.tipranksPriceTarget - s.price) * 100) / s.price : 0,
         week52DrawDown: (s.week52High - s.price) / s.week52High || 0,
         redditRank: s.redditRank <= 0 ? 999 : s.redditRank,
         isBuyAlert: alertData?.getAlerts.some((a) => a.symbol == s.symbol && a.signal == 'Buy' && a.status == 'On'),
         isSellAlert: alertData?.getAlerts.some((a) => a.symbol == s.symbol && a.signal == 'Sell' && a.status == 'On'),
         recentClosePrices: trendData?.getWatchListStockTrendlines.find((a) => a.symbol == s.symbol)?.recentClosePrices,
+        nextPredictions: trendData?.getWatchListStockTrendlines.find((a) => a.symbol == s.symbol)?.nextPredictions,
         news: newsData?.getWatchListNews.filter((a) => a.symbol == s.symbol).length,
-        nextSupport: ((s.price - Math.max(...s.sr.filter((sp) => sp < s.price))) * 100) / s.price,
-        nextResistance: ((Math.min(...s.sr.filter((sp) => sp > s.price)) - s.price) * 100) / s.price,
+        nextSupport: s.sr && ((s.price - Math.max(...s.sr.filter((sp) => sp < s.price))) * 100) / s.price,
+        nextResistance: s.sr && ((Math.min(...s.sr.filter((sp) => sp > s.price)) - s.price) * 100) / s.price,
     }))
 
     const { items, requestSort, sortConfig } = useSortableData(watchList, initialSortConfig)
@@ -92,49 +97,47 @@ const HomePage = ({ authUser }) => {
     return (
         <div className="page-content bg-white">
             <Helmet>
-                <title>{'Swing Trade Alerts'}</title>
+                <title>{'Tradium Alerts : for swing traders'}</title>
             </Helmet>
-            <Container fluid>
-                <div className="table-responsive">
-                    <Table className="table-centered table-nowrap">
-                        <thead>
-                            <tr>
-                                {Object.keys(colNames).map((colName, index) => (
-                                    <th key={index}>
-                                        <Link onClick={() => requestSort(colName)} to="#" className="text-muted">
-                                            {colNames[colName]}
-                                        </Link>
-                                        <i
-                                            className={
-                                                colName != sortConfig?.key
-                                                    ? ''
-                                                    : sortConfig.direction == 'ascending'
-                                                    ? 'bx bx-up-arrow-alt'
-                                                    : 'bx bx-down-arrow-alt'
-                                            }
-                                        ></i>
-                                    </th>
-                                ))}
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {!error &&
-                                !loading &&
-                                items?.map((stock) => (
-                                    <WatchListRow stock={stock} showAlertList={showAlertList} showNewsList={showNewsList} key={stock.symbol} />
-                                ))}
-                        </tbody>
-                    </Table>
-                    <AlertListModal
-                        symbol={symbolInModal}
-                        alertSignal={alertSignalInModal}
-                        alerts={alertsInModal}
-                        isShowing={isShowingAlertListModal}
-                        toggle={toggleAlertListModal}
-                    />
-                    <NewsListModal news={newsInModal} isShowing={isShowingNewsModal} toggle={toggleNewsModal} />
-                </div>
-            </Container>
+            <div className="table-responsive">
+                <Table className="table-centered table-nowrap">
+                    <thead>
+                        <tr>
+                            {Object.keys(colNames).map((colName, index) => (
+                                <th key={index}>
+                                    <Link onClick={() => requestSort(colName)} to="#" className="text-muted">
+                                        {colNames[colName]}
+                                    </Link>
+                                    <i
+                                        className={
+                                            colName != sortConfig?.key
+                                                ? ''
+                                                : sortConfig.direction == 'ascending'
+                                                ? 'bx bx-up-arrow-alt'
+                                                : 'bx bx-down-arrow-alt'
+                                        }
+                                    ></i>
+                                </th>
+                            ))}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {!error &&
+                            !loading &&
+                            items?.map((stock) => (
+                                <WatchListRow stock={stock} showAlertList={showAlertList} showNewsList={showNewsList} key={stock.symbol} />
+                            ))}
+                    </tbody>
+                </Table>
+                <AlertListModal
+                    symbol={symbolInModal}
+                    alertSignal={alertSignalInModal}
+                    alerts={alertsInModal}
+                    isShowing={isShowingAlertListModal}
+                    toggle={toggleAlertListModal}
+                />
+                <NewsListModal news={newsInModal} isShowing={isShowingNewsModal} toggle={toggleNewsModal} />
+            </div>
         </div>
     )
 }
@@ -158,6 +161,8 @@ export const GET_WATCHLIST_QUERY = gql`
             beta
             revenueGrowthQuarterlyYoy
             revenueGrowthTTMYoy
+            priceToSalesTTM
+            priceToEarningsTTM
             nextEarningsDate
             rsi
             trend
@@ -173,6 +178,7 @@ export const GET_STOCK_TRENDLINES_QUERY = gql`
         getWatchListStockTrendlines {
             symbol
             recentClosePrices
+            nextPredictions
         }
     }
 `

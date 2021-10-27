@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Sparklines, SparklinesLine } from 'react-sparklines'
 import stockImg from '../../../assets/images/stock-default-icon.png'
 import { getFormattedDate } from '../../../components/Common/time'
+import MiniChart from 'react-mini-chart'
 
 const WatchListRow = ({ stock, showAlertList, showNewsList }) => {
     return (
@@ -32,14 +32,10 @@ const WatchListRow = ({ stock, showAlertList, showNewsList }) => {
             </td>
             <td className={stock.changePercent < 0 ? 'text-danger' : 'text-success'}>{Math.abs(stock.changePercent).toFixed(2)}</td>
             <td>{Math.floor(stock.price)}</td>
-            <td className="p-0 d-flex justify-content-center align-items-center">
-                <div style={{ width: 80, height: 40 }}>
-                    {stock.recentClosePrices && (
-                        <Sparklines data={stock.recentClosePrices} svgWidth={80} svgHeight={30} margin={5} limit={30}>
-                            <SparklinesLine />
-                        </Sparklines>
-                    )}
-                </div>
+            <td className="p-0 d-flex justify-content-center align-items-center" style={{ width: 80, height: 40 }}>
+                {stock.recentClosePrices && (
+                    <MiniChart dataSet={stock.recentClosePrices.slice(-40)} width={80} height={40} strokeWidth={1} strokeColor="#D3A299" />
+                )}
             </td>
             <td>
                 <div className="font-size-16">
@@ -81,8 +77,21 @@ const WatchListRow = ({ stock, showAlertList, showNewsList }) => {
                     {stock.tipranksUpside == 0 ? '-' : stock.tipranksUpside.toFixed(0)}
                 </a>
             </td>
+            <td className="p-0 d-flex justify-content-center align-items-center" style={{ width: 80, height: 40 }}>
+                {stock.nextPredictions && (
+                    <MiniChart
+                        dataSet={stock.nextPredictions.map((s) => s.toFixed(1))}
+                        width={80}
+                        height={40}
+                        strokeWidth={1}
+                        strokeColor="#D3A299"
+                    />
+                )}
+            </td>
             <td>{stock.revenueGrowthQuarterlyYoy == 0 ? '' : stock.revenueGrowthQuarterlyYoy.toFixed(0)}</td>
             <td>{stock.revenueGrowthTTMYoy == 0 ? '' : stock.revenueGrowthTTMYoy.toFixed(0)}</td>
+            <td>{stock.priceToSalesTTM == 0 ? '' : stock.priceToSalesTTM.toFixed(0)}</td>
+            <td>{stock.priceToEarningsTTM == 0 ? '' : stock.priceToEarningsTTM.toFixed(0)}</td>
             <td>{stock.redditRank < 999 ? stock.redditRank : ''}</td>
             <td>{getFormattedDate(stock.nextEarningsDate, 'MM-DD')}</td>
             <td>{stock.rsi != 100 && stock.rsi != 0 && stock.rsi.toFixed(0)}</td>
@@ -92,8 +101,8 @@ const WatchListRow = ({ stock, showAlertList, showNewsList }) => {
                     <i className={stock.trend == 'Up' ? 'bx bx-trending-up text-success' : 'bx bx-trending-down text-danger'}></i>
                 </div>
             </td>
-            <td>{!isFinite(stock.nextSupport) ? '' : stock.nextSupport.toFixed(1)}</td>
-            <td>{!isFinite(stock.nextResistance) ? '' : stock.nextResistance.toFixed(1)}</td>
+            <td>{!isFinite(stock.nextSupport) ? '' : stock.nextSupport?.toFixed(1)}</td>
+            <td>{!isFinite(stock.nextResistance) ? '' : stock.nextResistance?.toFixed(1)}</td>
         </tr>
     )
 }
