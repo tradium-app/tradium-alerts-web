@@ -65,9 +65,10 @@ const NotificationDropdown = () => {
                                             <div key={index} className="text-muted font-size-11 mb-1">
                                                 {toProperCase(alert.conditions[0].timeframe) +
                                                     ' ' +
-                                                    alert.conditions[0].indicator.toUpperCase() +
-                                                    (alert.conditions[0].operator == 'Not' ? ' ≠ ' : ' = ') +
-                                                    alert.conditions[0].valueText +
+                                                    alert.conditions[0].indicator1.toUpperCase() +
+                                                    (alert.conditions[0].operator == 'above' ? ' > ' : ' < ') +
+                                                    (alert.conditions[0].indicator2 && alert.conditions[0].indicator2.toUpperCase()) +
+                                                    (alert.conditions[0].value && alert.conditions[0].value.toUpperCase()) +
                                                     ' ..'}
                                             </div>
                                             <p className="font-size-11 text-muted mb-0">
@@ -110,10 +111,12 @@ export const GET_ALERTS_QUERY = gql`
             alertOnDate
             conditions {
                 order
-                operator
-                indicator
                 timeframe
+                indicator1
+                operator
+                indicator2
                 value
+                diff_percent
                 valueText
             }
         }

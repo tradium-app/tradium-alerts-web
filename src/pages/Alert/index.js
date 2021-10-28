@@ -10,6 +10,7 @@ import toastr from '../../toastrCustom'
 import Condition from './Components/Condition'
 import CopyAlert from './Components/CopyAlert'
 import ToggleSwitch from './Components/ToggleSwitch'
+import { GET_ALERTS_QUERY } from '../../components/Common/TopbarDropdown/NotificationDropdown'
 
 const AlertPage = () => {
     let { symbol, alertId } = useParams()
@@ -28,7 +29,7 @@ const AlertPage = () => {
         onCompleted: setData,
     })
 
-    const [getAlerts, { loading, data: initialAlertData }] = useLazyQuery(GET_ALERTS, {
+    const [getAlerts, { loading, data: initialAlertData }] = useLazyQuery(GET_ALERTS_QUERY, {
         variables: { symbol },
     })
 
@@ -182,16 +183,7 @@ const AlertPage = () => {
                                             </Row>
                                             <Row className="mb-2">
                                                 <Col xl="1" lg="1" sm="1"></Col>
-                                                <Col xl="2" lg="2" sm="2">
-                                                    <div id="basic-pills-wizard" className="twitter-bs-wizard mb-2">
-                                                        <ul className="twitter-bs-wizard-nav nav nav-pills nav-justified">
-                                                            <NavItem>
-                                                                <NavLink className="text-center">TimeFrame</NavLink>
-                                                            </NavItem>
-                                                        </ul>
-                                                    </div>
-                                                </Col>
-                                                <Col xl="4" lg="4" sm="4">
+                                                <Col xl="3" lg="3" sm="3">
                                                     <div id="basic-pills-wizard" className="twitter-bs-wizard mb-2">
                                                         <ul className="twitter-bs-wizard-nav nav nav-pills nav-justified">
                                                             <NavItem>
@@ -200,11 +192,29 @@ const AlertPage = () => {
                                                         </ul>
                                                     </div>
                                                 </Col>
-                                                <Col xl="4" lg="4" sm="4">
+                                                <Col xl="2" lg="2" sm="2">
                                                     <div id="basic-pills-wizard" className="twitter-bs-wizard mb-2">
                                                         <ul className="twitter-bs-wizard-nav nav nav-pills nav-justified">
                                                             <NavItem>
-                                                                <NavLink className="text-center">Value</NavLink>
+                                                                <NavLink className="text-center">Operator</NavLink>
+                                                            </NavItem>
+                                                        </ul>
+                                                    </div>
+                                                </Col>
+                                                <Col xl="3" lg="3" sm="3">
+                                                    <div id="basic-pills-wizard" className="twitter-bs-wizard mb-2">
+                                                        <ul className="twitter-bs-wizard-nav nav nav-pills nav-justified">
+                                                            <NavItem>
+                                                                <NavLink className="text-center">Compare To</NavLink>
+                                                            </NavItem>
+                                                        </ul>
+                                                    </div>
+                                                </Col>
+                                                <Col xl="2" lg="2" sm="2">
+                                                    <div id="basic-pills-wizard" className="twitter-bs-wizard mb-2">
+                                                        <ul className="twitter-bs-wizard-nav nav nav-pills nav-justified">
+                                                            <NavItem>
+                                                                <NavLink className="text-center">Diff. Percentage</NavLink>
                                                             </NavItem>
                                                         </ul>
                                                     </div>
@@ -253,35 +263,14 @@ const validateAlert = (values) => {
     }
 
     values.conditions.forEach((condition) => {
-        if (!condition.indicator || !condition.timeframe || !condition.value) {
-            errors.indicator = 'Alert condition not properly set.'
+        if (!condition.indicator1 || !condition.indicator2) {
+            errors.indicator1 = 'Alert condition not properly set.'
         }
     })
 
     !!Object.keys(errors).length && toastr.error(Object.values(errors).join('</br>'))
     return errors
 }
-
-export const GET_ALERTS = gql`
-    query getAlerts($symbol: String) {
-        getAlerts(symbol: $symbol) {
-            id
-            symbol
-            signal
-            title
-            status
-            enabled
-            conditions {
-                order
-                operator
-                indicator
-                timeframe
-                value
-                valueText
-            }
-        }
-    }
-`
 
 export const ADD_ALERT_MUTATION = gql`
     mutation addAlert($alertInput: AlertInput!) {

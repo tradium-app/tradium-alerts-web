@@ -6,12 +6,10 @@ import Pages500 from '../pages/Utility/pages-500'
 
 import Stock from '../pages/Stock/Stock'
 import Alert from '../pages/Alert'
-import Alert2 from '../pages/Alert2'
 
 const userRoutes = [
     { path: '/symbol/:symbol/alert', component: Alert },
     { path: '/symbol/:symbol/alert/:alertId', component: Alert },
-    { path: '/symbol/:symbol/alert2', component: Alert2 },
 ]
 
 const publicRoutes = [

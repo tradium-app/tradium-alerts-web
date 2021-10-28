@@ -155,9 +155,14 @@ const Stock = () => {
                                                                             <div key={index}>
                                                                                 {toProperCase(condition.timeframe) +
                                                                                     ' ' +
-                                                                                    condition.indicator.toUpperCase() +
-                                                                                    (condition.operator == 'Not' ? ' ≠ ' : ' = ') +
-                                                                                    condition.valueText}
+                                                                                    toProperCase(condition.indicator1) +
+                                                                                    (condition.operator == 'above' ? ' > ' : ' < ') +
+                                                                                    (condition.indicator2
+                                                                                        ? toProperCase(condition.indicator2)
+                                                                                        : condition.valueText) +
+                                                                                    (condition.diff_percent > 0
+                                                                                        ? ' (+' + condition.diff_percent + '%)'
+                                                                                        : '')}
                                                                             </div>
                                                                         ))}
                                                                     </div>
@@ -347,9 +352,11 @@ export const GET_STOCK_PROFILE = gql`
                 status
                 conditions {
                     order
-                    operator
-                    indicator
                     timeframe
+                    indicator1
+                    operator
+                    indicator2
+                    diff_percent
                     value
                     valueText
                 }
