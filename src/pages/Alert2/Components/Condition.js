@@ -37,7 +37,7 @@ const Condition = ({ condition, index, removeOption, totalOptions, addOption, ha
                 </select>
             </Col>
             <Col xl="3" lg="3" sm="3">
-                <SecondIndicatorSelect indicator1={condition.indicator1} valueField={`conditions.${index}.indicator2`} value={condition.indicator2} />
+                <SecondIndicatorSelect name={`conditions.${index}.indicator2`} value={condition.indicator2} indicator1={condition.indicator1} />
             </Col>
             <Col xl="2" lg="2" sm="2">
                 <select

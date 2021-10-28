@@ -2,16 +2,9 @@ import React, { useEffect } from 'react'
 import { useField } from 'formik'
 import IndicatorValues from './IndicatorValues'
 
-// const SecondIndicatorSelect = ({ indicator1, valueField, value, valueTextField, valueConfigField }) => {
-const SecondIndicatorSelect = ({ indicator1, valueField, value }) => {
-    const [, , valueHelpers] = useField(valueField)
+const SecondIndicatorSelect = ({ name, value, indicator1 }) => {
+    const [, , valueHelpers] = useField(name)
     const { setValue: setValueField, setTouched: setValueTouched } = valueHelpers
-
-    // const [, , valueTextHelpers] = useField(valueTextField)
-    // const { setValue: setValueTextField } = valueTextHelpers
-
-    // const [, , valueConfigHelpers] = useField(valueConfigField)
-    // const { setValue: setValueConfigField } = valueConfigHelpers
 
     useEffect(() => {
         setValueField(value)
@@ -22,7 +15,6 @@ const SecondIndicatorSelect = ({ indicator1, valueField, value }) => {
     const handleChange = (event) => {
         setValueTouched(true)
         setValueField(event.target.value)
-        // setValueFieldsBasedOnValue(event.target.value)
     }
 
     return (
