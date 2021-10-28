@@ -1,6 +1,6 @@
 import React from 'react'
 import { Col, Row } from 'reactstrap'
-import ConditionValueSelect from './ConditionValueSelect'
+import SecondIndicatorSelect from './SecondIndicatorSelect'
 import IndicatorValues from './IndicatorValues'
 
 const Condition = ({ condition, index, removeOption, totalOptions, addOption, handleChange, handleBlur }) => {
@@ -17,7 +17,7 @@ const Condition = ({ condition, index, removeOption, totalOptions, addOption, ha
                     onChange={handleChange}
                     onBlur={handleBlur}
                 >
-                    <option value="">--Please Select--</option>
+                    <option value="">-- Please Select --</option>
                     {IndicatorValues.map(({ name, text }) => (
                         <option key={name} value={name}>
                             {text}
@@ -27,19 +27,17 @@ const Condition = ({ condition, index, removeOption, totalOptions, addOption, ha
             </Col>
             <Col xl="2" lg="2" sm="2">
                 <select
-                    name={`conditions.${index}.timeframe`}
-                    value={condition.timeframe}
+                    name={`conditions.${index}.operator`}
+                    value={condition.operator}
                     className="form-control"
                     onChange={handleChange}
                     onBlur={handleBlur}
                 >
-                    <option value="above">Above</option>
-                    <option value="below">Below</option>
-                    <option value="na">N/A</option>
+                    <OperatorSelectOptions indicator={condition.indicator} />
                 </select>
             </Col>
             <Col xl="3" lg="3" sm="3">
-                <ConditionValueSelect
+                <SecondIndicatorSelect
                     indicator={condition.indicator}
                     valueField={`conditions.${index}.value`}
                     value={condition.value}
@@ -49,13 +47,13 @@ const Condition = ({ condition, index, removeOption, totalOptions, addOption, ha
             </Col>
             <Col xl="2" lg="2" sm="2">
                 <select
-                    name={`conditions.${index}.timeframe`}
-                    value={condition.timeframe}
+                    name={`conditions.${index}.diff_percent`}
+                    value={condition.diff_percent}
                     className="form-control"
                     onChange={handleChange}
                     onBlur={handleBlur}
                 >
-                    <option value="daily">By 10%</option>
+                    <DiffPercentSelectOptions indicator={condition.indicator} />
                 </select>
             </Col>
             <Col xl="1" lg="1" sm="1" className="d-flex">
@@ -71,6 +69,40 @@ const Condition = ({ condition, index, removeOption, totalOptions, addOption, ha
                 )}
             </Col>
         </Row>
+    )
+}
+
+const OperatorSelectOptions = ({ indicator }) => {
+    const operatorValues = IndicatorValues.find((element) => element.name === indicator)?.operators
+
+    return (
+        <>
+            {!operatorValues && <option value="">N/A</option>}
+            {operatorValues && <option value="">-- Please Select --</option>}
+            {operatorValues &&
+                operatorValues.map((operator) => (
+                    <option key={operator} value={operator}>
+                        {operator}
+                    </option>
+                ))}
+        </>
+    )
+}
+
+const DiffPercentSelectOptions = ({ indicator }) => {
+    const diffValues = IndicatorValues.find((element) => element.name === indicator)?.difference_percentage
+
+    return (
+        <>
+            {!diffValues && <option value="">N/A</option>}
+            {diffValues && <option value="">-- Please Select --</option>}
+            {diffValues &&
+                diffValues.map((diffValue) => (
+                    <option key={diffValue} value={diffValue}>
+                        {`More than ${diffValue}%`}
+                    </option>
+                ))}
+        </>
     )
 }
 

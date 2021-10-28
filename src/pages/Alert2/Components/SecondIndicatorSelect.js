@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useField } from 'formik'
 import IndicatorValues from './IndicatorValues'
 
-const ConditionValueSelect = ({ indicator, valueField, value, valueTextField, valueConfigField }) => {
+const SecondIndicatorSelect = ({ indicator, valueField, value, valueTextField, valueConfigField }) => {
     const [, , valueHelpers] = useField(valueField)
     const { setValue: setValueField, setTouched: setValueTouched } = valueHelpers
 
@@ -16,6 +16,8 @@ const ConditionValueSelect = ({ indicator, valueField, value, valueTextField, va
         setValueFieldsBasedOnValue(value)
     }, [value])
 
+    const indicatorConfig = IndicatorValues.find((element) => element.name === indicator)
+
     const handleChange = (event) => {
         setValueTouched(true)
         setValueFieldsBasedOnValue(event.target.value)
@@ -23,7 +25,7 @@ const ConditionValueSelect = ({ indicator, valueField, value, valueTextField, va
 
     const setValueFieldsBasedOnValue = (newValue) => {
         if (newValue == null) return
-        const valueObj = IndicatorValues.find((element) => element.name === indicator)?.values?.find((element) => element.value === newValue)
+        const valueObj = indicatorConfig?.values?.find((element) => element.value === newValue)
         if (valueObj != null) {
             setValueField(valueObj.value)
             setValueTextField(valueObj.valueText)
@@ -33,19 +35,30 @@ const ConditionValueSelect = ({ indicator, valueField, value, valueTextField, va
 
     return (
         <select className="form-control" onChange={handleChange} onBlur={handleChange} value={value}>
-            <option>--Please Select--</option>
-            {IndicatorValues.find((element) => element.name === indicator)?.values?.map(({ value, valueText }) => (
+            <option value="">-- Please Select --</option>
+            {indicatorConfig?.values?.map(({ value, valueText }) => (
                 <option key={value} value={value}>
                     {valueText || value}
                 </option>
             ))}
-            {IndicatorValues.find((element) => element.name === indicator)?.comparable_to?.map((indicator2) => (
-                <option key={indicator2} value={indicator2}>
-                    {indicator2}
-                </option>
-            ))}
+            <Indicator2SelectOptions indicators={indicatorConfig?.comparable_to} />
         </select>
     )
 }
 
-export default ConditionValueSelect
+const Indicator2SelectOptions = ({ indicators }) => {
+    const indicatorConfigs = IndicatorValues.filter((element) => indicators?.includes(element.name))
+
+    return (
+        <>
+            {indicatorConfigs &&
+                indicatorConfigs.map(({ name, text }) => (
+                    <option key={name} value={name}>
+                        {text}
+                    </option>
+                ))}
+        </>
+    )
+}
+
+export default SecondIndicatorSelect
