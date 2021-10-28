@@ -11,8 +11,8 @@ const Condition = ({ condition, index, removeOption, totalOptions, addOption, ha
             <Col xl="1" lg="1" sm="1" className="d-flex"></Col>
             <Col xl="3" lg="3" sm="3">
                 <select
-                    name={`conditions.${index}.indicator`}
-                    value={condition.indicator}
+                    name={`conditions.${index}.indicator1`}
+                    value={condition.indicator1}
                     className="form-control"
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -33,17 +33,11 @@ const Condition = ({ condition, index, removeOption, totalOptions, addOption, ha
                     onChange={handleChange}
                     onBlur={handleBlur}
                 >
-                    <OperatorSelectOptions indicator={condition.indicator} />
+                    <OperatorSelectOptions indicator={condition.indicator1} />
                 </select>
             </Col>
             <Col xl="3" lg="3" sm="3">
-                <SecondIndicatorSelect
-                    indicator={condition.indicator}
-                    valueField={`conditions.${index}.value`}
-                    value={condition.value}
-                    valueTextField={`conditions.${index}.valueText`}
-                    valueConfigField={`conditions.${index}.valueConfig`}
-                />
+                <SecondIndicatorSelect indicator1={condition.indicator1} valueField={`conditions.${index}.indicator2`} value={condition.indicator2} />
             </Col>
             <Col xl="2" lg="2" sm="2">
                 <select
@@ -53,7 +47,7 @@ const Condition = ({ condition, index, removeOption, totalOptions, addOption, ha
                     onChange={handleChange}
                     onBlur={handleBlur}
                 >
-                    <DiffPercentSelectOptions indicator={condition.indicator} />
+                    <DiffPercentSelectOptions indicator={condition.indicator1} />
                 </select>
             </Col>
             <Col xl="1" lg="1" sm="1" className="d-flex">

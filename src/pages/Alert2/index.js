@@ -262,8 +262,8 @@ const validateAlert = (values) => {
     }
 
     values.conditions.forEach((condition) => {
-        if (!condition.indicator || !condition.timeframe || !condition.value) {
-            errors.indicator = 'Alert condition not properly set.'
+        if (!condition.indicator1 || !condition.timeframe || !condition.value) {
+            errors.indicator1 = 'Alert condition not properly set.'
         }
     })
 

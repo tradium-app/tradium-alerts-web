@@ -2,46 +2,38 @@ import React, { useEffect } from 'react'
 import { useField } from 'formik'
 import IndicatorValues from './IndicatorValues'
 
-const SecondIndicatorSelect = ({ indicator, valueField, value, valueTextField, valueConfigField }) => {
+// const SecondIndicatorSelect = ({ indicator1, valueField, value, valueTextField, valueConfigField }) => {
+const SecondIndicatorSelect = ({ indicator1, valueField, value }) => {
     const [, , valueHelpers] = useField(valueField)
     const { setValue: setValueField, setTouched: setValueTouched } = valueHelpers
 
-    const [, , valueTextHelpers] = useField(valueTextField)
-    const { setValue: setValueTextField } = valueTextHelpers
+    // const [, , valueTextHelpers] = useField(valueTextField)
+    // const { setValue: setValueTextField } = valueTextHelpers
 
-    const [, , valueConfigHelpers] = useField(valueConfigField)
-    const { setValue: setValueConfigField } = valueConfigHelpers
+    // const [, , valueConfigHelpers] = useField(valueConfigField)
+    // const { setValue: setValueConfigField } = valueConfigHelpers
 
     useEffect(() => {
-        setValueFieldsBasedOnValue(value)
+        setValueField(value)
     }, [value])
 
-    const indicatorConfig = IndicatorValues.find((element) => element.name === indicator)
+    const indicator1Config = IndicatorValues.find((element) => element.name === indicator1)
 
     const handleChange = (event) => {
         setValueTouched(true)
-        setValueFieldsBasedOnValue(event.target.value)
-    }
-
-    const setValueFieldsBasedOnValue = (newValue) => {
-        if (newValue == null) return
-        const valueObj = indicatorConfig?.values?.find((element) => element.value === newValue)
-        if (valueObj != null) {
-            setValueField(valueObj.value)
-            setValueTextField(valueObj.valueText)
-            setValueConfigField(valueObj.valueConfig)
-        }
+        setValueField(event.target.value)
+        // setValueFieldsBasedOnValue(event.target.value)
     }
 
     return (
         <select className="form-control" onChange={handleChange} onBlur={handleChange} value={value}>
-            <option value="">-- Please Select --</option>
-            {indicatorConfig?.values?.map(({ value, valueText }) => (
+            <option value="1">-- Please Select --</option>
+            {indicator1Config?.values?.map(({ value, valueText }) => (
                 <option key={value} value={value}>
                     {valueText || value}
                 </option>
             ))}
-            <Indicator2SelectOptions indicators={indicatorConfig?.comparable_to} />
+            <Indicator2SelectOptions indicators={indicator1Config?.comparable_to} />
         </select>
     )
 }
