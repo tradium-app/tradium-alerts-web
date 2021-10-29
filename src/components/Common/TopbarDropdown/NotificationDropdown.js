@@ -66,7 +66,7 @@ const NotificationDropdown = () => {
                                                 {toProperCase(alert.conditions[0].timeframe) +
                                                     ' ' +
                                                     toProperCase(alert.conditions[0].indicator1) +
-                                                    (alert.conditions[0].operator == 'above' ? ' > ' : ' < ') +
+                                                    getOperatorSymbol(alert.conditions[0].operator, alert.conditions[0].isNegative) +
                                                     (alert.conditions[0].indicator2
                                                         ? toProperCase(alert.conditions[0].indicator2)
                                                         : alert.conditions[0].valueText) +
@@ -96,6 +96,12 @@ const NotificationDropdown = () => {
             </DropdownMenu>
         </Dropdown>
     )
+}
+
+function getOperatorSymbol(operator, isNegative) {
+    if (!operator) return '   '
+    else if (isNegative) return operator == 'above' ? '  ≯  ' : '  ≮  '
+    else return operator == 'above' ? '  >  ' : '  <  '
 }
 
 function toProperCase(text) {

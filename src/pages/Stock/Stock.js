@@ -156,7 +156,7 @@ const Stock = () => {
                                                                                 {toProperCase(condition.timeframe) +
                                                                                     ' ' +
                                                                                     toProperCase(condition.indicator1) +
-                                                                                    (condition.operator == 'above' ? ' > ' : ' < ') +
+                                                                                    getOperatorSymbol(condition.operator, condition.isNegative) +
                                                                                     (condition.indicator2
                                                                                         ? toProperCase(condition.indicator2)
                                                                                         : condition.valueText || condition.value) +
@@ -306,6 +306,12 @@ const Stock = () => {
             </div>
         </React.Fragment>
     )
+}
+
+function getOperatorSymbol(operator, isNegative) {
+    if (!operator) return '   '
+    else if (isNegative) return operator == 'above' ? '  ≯  ' : '  ≮  '
+    else return operator == 'above' ? '  >  ' : '  <  '
 }
 
 function toProperCase(text) {
