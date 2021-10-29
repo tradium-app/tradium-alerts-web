@@ -19,4 +19,16 @@ function getOperatorSymbol(operator, isNegative) {
     else return operator == 'above' ? '  >  ' : '  <  '
 }
 
-export { formatAlertCondition, toProperCase }
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+}
+
+function formatMarketCap(x) {
+    if (x > 1000) {
+        return numberWithCommas(Math.floor(x / 1000)) + 'B'
+    } else {
+        return numberWithCommas(Math.floor(x)) + 'M'
+    }
+}
+
+export { formatAlertCondition, toProperCase, formatMarketCap }

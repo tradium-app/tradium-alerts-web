@@ -5,7 +5,7 @@ import toastr from 'toastr'
 import SweetAlert from 'react-bootstrap-sweetalert'
 import { Link } from 'react-router-dom'
 import { DELETE_ALERT_MUTATION } from '../../Stock/Stock'
-import { getRelativeTime } from '../../../components/Common/time'
+import { getRelativeTime } from '../../../lib/Time'
 import { formatAlertCondition } from '../../../lib/Utilities'
 
 toastr.options = {

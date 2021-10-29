@@ -3,8 +3,8 @@ import { useQuery } from '@apollo/client'
 import gql from 'graphql-tag'
 import { Dropdown, DropdownToggle, DropdownMenu, Row, Col } from 'reactstrap'
 import SimpleBar from 'simplebar-react'
-import { getRelativeTime } from '../time'
 import stockImg from '../../../assets/images/stock-default-icon.png'
+import { getRelativeTime } from '../../../lib/Time'
 
 const NewsDropdown = () => {
     const [menu, setMenu] = useState(false)

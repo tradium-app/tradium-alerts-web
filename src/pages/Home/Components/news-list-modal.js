@@ -1,6 +1,6 @@
 import React from 'react'
 import { Modal, ModalHeader, Card, CardBody, Table } from 'reactstrap'
-import { getRelativeTime } from '../../../components/Common/time'
+import { getRelativeTime } from '../../../lib/Time'
 
 const NewsListModal = ({ news, isShowing, toggle }) => {
     return isShowing ? (

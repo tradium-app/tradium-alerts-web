@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import stockImg from '../../../assets/images/stock-default-icon.png'
-import { getFormattedDate } from '../../../components/Common/time'
 import MiniChart from 'react-mini-chart'
+import stockImg from '../../../assets/images/stock-default-icon.png'
+import { getFormattedDate } from '../../../lib/Time'
 
 const WatchListRow = ({ stock, showAlertList, showNewsList }) => {
     return (

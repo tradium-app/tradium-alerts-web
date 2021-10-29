@@ -10,7 +10,8 @@ import gql from 'graphql-tag'
 import SweetAlert from 'react-bootstrap-sweetalert'
 import stockImg from '../../assets/images/stock-default-icon.png'
 import AddRemoveStock from './Components/AddRemoveStock'
-import { formatAlertCondition } from '../../lib/Utilities'
+import { formatAlertCondition, formatMarketCap } from '../../lib/Utilities'
+import { getFormattedDate } from '../../lib/Time'
 
 const Stock = () => {
     let { symbol } = useParams()
@@ -206,7 +207,7 @@ const Stock = () => {
                         <Col xl="4">
                             <Card className="overflow-hidden">
                                 <CardBody>
-                                    <CardTitle className="mb-3">Capital Structure</CardTitle>
+                                    <CardTitle className="mb-3">Financials</CardTitle>
 
                                     <div className="table-responsive">
                                         <Table className="table mb-0">
@@ -216,16 +217,36 @@ const Stock = () => {
                                                     <td>{formatMarketCap(stockProfile?.marketCap)}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Total Debt</td>
-                                                    <td>-</td>
+                                                    <td>Rev. Growth Quaterly</td>
+                                                    <td>{stockProfile?.revenueGrowthQuarterlyYoy.toFixed(0)}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Cash</td>
-                                                    <td>-</td>
+                                                    <td>Rev. Growth TTM</td>
+                                                    <td>{stockProfile?.revenueGrowthTTMYoy.toFixed(0)}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Estimated Tax : </td>
-                                                    <td>-</td>
+                                                    <td>Price / Sales TTM</td>
+                                                    <td>{stockProfile?.priceToSalesTTM.toFixed(0)}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Price / Earnings TTM</td>
+                                                    <td>{stockProfile?.priceToEarningsTTM.toFixed(0)}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Beta</td>
+                                                    <td>{stockProfile?.beta.toFixed(2)}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>TipRanks PriceTarget</td>
+                                                    <td>{stockProfile?.tipranksPriceTarget.toFixed(0)}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Reddit Rank</td>
+                                                    <td>{stockProfile?.redditRank.toFixed(0)}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Next Earnings Date</td>
+                                                    <td>{getFormattedDate(stockProfile?.nextEarningsDate)}</td>
                                                 </tr>
                                             </tbody>
                                         </Table>
@@ -241,6 +262,10 @@ const Stock = () => {
                                     <div className="table-responsive">
                                         <Table className="table mb-0">
                                             <tbody>
+                                                <tr>
+                                                    <td>Gross Margin</td>
+                                                    <td>{stockProfile?.grossMargin && (stockProfile.grossMargin * 100).toFixed(0)}</td>
+                                                </tr>
                                                 <tr>
                                                     <td>Supports</td>
                                                     <td>
@@ -269,22 +294,6 @@ const Stock = () => {
                                                     <td>RSI</td>
                                                     <td>{stockProfile?.rsi.toFixed(0)}</td>
                                                 </tr>
-                                                <tr>
-                                                    <td>MACD</td>
-                                                    <td>{stockProfile?.macd}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Beta</td>
-                                                    <td>{stockProfile?.beta.toFixed(2)}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>TipRanks PriceTarget</td>
-                                                    <td>{stockProfile?.tipranksPriceTarget.toFixed(0)}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Reddit Rank</td>
-                                                    <td>{stockProfile?.redditRank.toFixed(0)}</td>
-                                                </tr>
                                             </tbody>
                                         </Table>
                                     </div>
@@ -296,24 +305,6 @@ const Stock = () => {
             </div>
         </React.Fragment>
     )
-}
-
-function getOperatorSymbol(operator, isNegative) {
-    if (!operator) return '   '
-    else if (isNegative) return operator == 'above' ? '  ≯  ' : '  ≮  '
-    else return operator == 'above' ? '  >  ' : '  <  '
-}
-
-function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-}
-
-function formatMarketCap(x) {
-    if (x > 1000) {
-        return numberWithCommas(Math.floor(x / 1000)) + 'B'
-    } else {
-        return numberWithCommas(Math.floor(x)) + 'M'
-    }
 }
 
 export const GET_STOCK_PROFILE = gql`
@@ -330,6 +321,12 @@ export const GET_STOCK_PROFILE = gql`
             beta
             revenueGrowthQuarterlyYoy
             revenueGrowthTTMYoy
+            priceToSalesTTM
+            priceToEarningsTTM
+            nextEarningsDate
+            revenueGrowthQuarterlyYoy
+            revenueGrowthTTMYoy
+            grossMargin
             rsi
             redditRank
             tipranksPriceTarget
