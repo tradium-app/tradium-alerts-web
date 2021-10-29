@@ -53,7 +53,7 @@ const IndicatorValues = [
         ],
     },
     {
-        name: 'earningsdate',
+        name: 'earningsDate',
         text: 'Next Earnings Date',
         values: [
             { value: 'in_10_days', valueText: 'In 10 days' },

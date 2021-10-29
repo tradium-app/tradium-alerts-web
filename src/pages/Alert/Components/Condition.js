@@ -39,10 +39,11 @@ const Condition = ({ condition, index, removeOption, totalOptions, addOption, ha
             <Col xl="3" lg="3" sm="3">
                 <CompareToSelect
                     indicator1={condition.indicator1}
-                    name1={`conditions.${index}.indicator2`}
-                    value1={condition.indicator2}
-                    name2={`conditions.${index}.value`}
-                    value2={condition.value}
+                    indicator2Name={`conditions.${index}.indicator2`}
+                    indicator2Value={condition.indicator2}
+                    indicator2ConfigName={`conditions.${index}.config2`}
+                    valueField={`conditions.${index}.value`}
+                    value={condition.value}
                 />
             </Col>
             <Col xl="2" lg="2" sm="2">
