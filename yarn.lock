@@ -10298,7 +10298,7 @@ react-lifecycles-compat@^3.0.4:
 
 "react-mini-chart@https://github.com/tradium-app/react-mini-chart#fix-y-value":
   version "0.1.3"
-  resolved "https://github.com/tradium-app/react-mini-chart#3379f4bc9edfeff8e498b68c8de9e1270e939bad"
+  resolved "https://github.com/tradium-app/react-mini-chart#061bda86915caf876bbbba6145fe096901a2d59a"
   dependencies:
     prop-types "^15.6.0"
     react "^16.0.0"

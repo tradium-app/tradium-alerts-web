@@ -263,8 +263,11 @@ const validateAlert = (values) => {
     }
 
     values.conditions.forEach((condition) => {
-        if (!condition.indicator1 || !condition.indicator2) {
-            errors.indicator1 = 'Alert condition not properly set.'
+        if (!condition.indicator1) {
+            errors.indicator1 = 'Condition Indicator not selected.'
+        }
+        if (!condition.indicator2 && !condition.value) {
+            errors.indicator2 = 'Condition Value not selected.'
         }
     })
 
