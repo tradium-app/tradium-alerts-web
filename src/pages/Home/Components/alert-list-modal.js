@@ -6,6 +6,7 @@ import SweetAlert from 'react-bootstrap-sweetalert'
 import { Link } from 'react-router-dom'
 import { DELETE_ALERT_MUTATION } from '../../Stock/Stock'
 import { getRelativeTime } from '../../../components/Common/time'
+import { formatAlertCondition } from '../../../lib/Utilities'
 
 toastr.options = {
     positionClass: 'toast-top-center',
@@ -62,13 +63,7 @@ const AlertListModal = ({ symbol, alertSignal, alerts, isShowing, toggle }) => {
                                                         <div className="media-body">
                                                             <h5>{alert.signal + ' : ' + alert.title}</h5>
                                                             {alert.conditions.map((condition, index) => (
-                                                                <div key={index}>
-                                                                    {toProperCase(condition.timeframe) +
-                                                                        ' ' +
-                                                                        condition.indicator.toUpperCase() +
-                                                                        (condition.operator == 'Not' ? ' ≠ ' : ' = ') +
-                                                                        condition.valueText}
-                                                                </div>
+                                                                <div key={index}>{formatAlertCondition(condition)}</div>
                                                             ))}
                                                             {alert.alertOnDate != null && (
                                                                 <div className="font-size-11 text-muted mt-1 mb-1">
@@ -125,10 +120,6 @@ const AlertListModal = ({ symbol, alertSignal, alerts, isShowing, toggle }) => {
             </div>
         </Modal>
     ) : null
-}
-
-function toProperCase(text) {
-    return text[0].toUpperCase() + text.substring(1)
 }
 
 export default AlertListModal

@@ -7,6 +7,7 @@ import SimpleBar from 'simplebar-react'
 import { getRelativeTime } from '../time'
 import stockImg from '../../../assets/images/stock-default-icon.png'
 import classnames from 'classnames'
+import { formatAlertCondition } from '../../../lib/Utilities'
 
 const NotificationDropdown = () => {
     const [menu, setMenu] = useState(false)
@@ -63,15 +64,7 @@ const NotificationDropdown = () => {
                                                 {alert.signal + ' ' + alert.symbol + ' : ' + alert.title}
                                             </h5>
                                             <div key={index} className="text-muted font-size-11 mb-1">
-                                                {toProperCase(alert.conditions[0].timeframe) +
-                                                    ' ' +
-                                                    toProperCase(alert.conditions[0].indicator1) +
-                                                    getOperatorSymbol(alert.conditions[0].operator, alert.conditions[0].isNegative) +
-                                                    (alert.conditions[0].indicator2
-                                                        ? toProperCase(alert.conditions[0].indicator2)
-                                                        : alert.conditions[0].valueText) +
-                                                    (alert.conditions[0].diff_percent > 0 ? ' (+' + alert.conditions[0].diff_percent + '%)' : '') +
-                                                    ' ..'}
+                                                {formatAlertCondition(alert.conditions[0]) + ' ..'}
                                             </div>
                                             <p className="font-size-11 text-muted mb-0">
                                                 <i className="mdi mdi-clock-outline"></i> {getRelativeTime(alert.alertOnDate)}{' '}
@@ -96,16 +89,6 @@ const NotificationDropdown = () => {
             </DropdownMenu>
         </Dropdown>
     )
-}
-
-function getOperatorSymbol(operator, isNegative) {
-    if (!operator) return '   '
-    else if (isNegative) return operator == 'above' ? '  ≯  ' : '  ≮  '
-    else return operator == 'above' ? '  >  ' : '  <  '
-}
-
-function toProperCase(text) {
-    return text[0].toUpperCase() + text.substring(1)
 }
 
 export const GET_ALERTS_QUERY = gql`

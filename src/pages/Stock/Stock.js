@@ -10,6 +10,7 @@ import gql from 'graphql-tag'
 import SweetAlert from 'react-bootstrap-sweetalert'
 import stockImg from '../../assets/images/stock-default-icon.png'
 import AddRemoveStock from './Components/AddRemoveStock'
+import { formatAlertCondition } from '../../lib/Utilities'
 
 const Stock = () => {
     let { symbol } = useParams()
@@ -152,18 +153,7 @@ const Stock = () => {
                                                                     <div className="media-body">
                                                                         <h5>{alert.signal + ' : ' + alert.title}</h5>
                                                                         {alert.conditions.map((condition, index) => (
-                                                                            <div key={index}>
-                                                                                {toProperCase(condition.timeframe) +
-                                                                                    ' ' +
-                                                                                    toProperCase(condition.indicator1) +
-                                                                                    getOperatorSymbol(condition.operator, condition.isNegative) +
-                                                                                    (condition.indicator2
-                                                                                        ? toProperCase(condition.indicator2)
-                                                                                        : condition.valueText || condition.value) +
-                                                                                    (condition.diff_percent > 0
-                                                                                        ? ' (+' + condition.diff_percent + '%)'
-                                                                                        : '')}
-                                                                            </div>
+                                                                            <div key={index}>{formatAlertCondition(condition)}</div>
                                                                         ))}
                                                                     </div>
                                                                     <div className="col-form-label ml-1">
@@ -312,10 +302,6 @@ function getOperatorSymbol(operator, isNegative) {
     if (!operator) return '   '
     else if (isNegative) return operator == 'above' ? '  ≯  ' : '  ≮  '
     else return operator == 'above' ? '  >  ' : '  <  '
-}
-
-function toProperCase(text) {
-    return text[0].toUpperCase() + text.substring(1)
 }
 
 function numberWithCommas(x) {
