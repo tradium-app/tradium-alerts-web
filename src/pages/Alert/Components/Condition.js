@@ -2,6 +2,7 @@ import React from 'react'
 import { Col, Row } from 'reactstrap'
 import CompareToSelect from './CompareToSelect'
 import IndicatorValues from './IndicatorValues'
+import ValueSelect from './ValueSelect'
 
 const Condition = ({ condition, index, removeOption, totalOptions, addOption, handleChange, handleBlur }) => {
     const isLastOption = index === totalOptions - 1
@@ -10,20 +11,17 @@ const Condition = ({ condition, index, removeOption, totalOptions, addOption, ha
         <Row className="mb-4">
             <Col xl="1" lg="1" sm="1" className="d-flex"></Col>
             <Col xl="3" lg="3" sm="3">
-                <select
+                <ValueSelect
                     name={`conditions.${index}.indicator1`}
                     value={condition.indicator1}
-                    className="form-control"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                >
-                    <option value="">-- Please Select --</option>
-                    {IndicatorValues.map(({ name, text }) => (
-                        <option key={name} value={name}>
-                            {text}
-                        </option>
-                    ))}
-                </select>
+                    configField={`conditions.${index}.config1`}
+                    configValue={condition.config1}
+                    availableValues={IndicatorValues.map(({ name, text, config }) => ({
+                        value: name,
+                        valueText: text,
+                        config,
+                    }))}
+                />
             </Col>
             <Col xl="2" lg="2" sm="2">
                 <select

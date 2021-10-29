@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useField } from 'formik'
 
-const ValueSelect = ({ name, value, configField, configValue, availableValues }) => {
+const IndicatorSelect = ({ name, value, configField, availableValues }) => {
     const [, , valueHelpers] = useField(name)
     const { setValue, setTouched } = valueHelpers
 
@@ -10,8 +10,7 @@ const ValueSelect = ({ name, value, configField, configValue, availableValues })
 
     useEffect(() => {
         setValue(value)
-        setConfigValue(configValue)
-    }, [value, configValue])
+    }, [value])
 
     const handleChange = (event) => {
         setTouched(true)
@@ -31,4 +30,4 @@ const ValueSelect = ({ name, value, configField, configValue, availableValues })
     )
 }
 
-export default ValueSelect
+export default IndicatorSelect
