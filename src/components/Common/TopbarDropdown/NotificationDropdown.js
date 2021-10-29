@@ -115,11 +115,17 @@ export const GET_ALERTS_QUERY = gql`
                 order
                 timeframe
                 indicator1
+                config1 {
+                    length
+                }
                 operator
                 indicator2
+                config2 {
+                    length
+                }
                 value
-                diff_percent
                 valueText
+                diff_percent
             }
         }
     }

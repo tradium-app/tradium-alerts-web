@@ -40,6 +40,7 @@ const Condition = ({ condition, index, removeOption, totalOptions, addOption, ha
                     indicator2Name={`conditions.${index}.indicator2`}
                     indicator2Value={condition.indicator2}
                     indicator2ConfigName={`conditions.${index}.config2`}
+                    indicator2ConfigValue={condition.config2}
                     valueField={`conditions.${index}.value`}
                     value={condition.value}
                 />
