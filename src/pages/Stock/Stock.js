@@ -159,7 +159,7 @@ const Stock = () => {
                                                                                     (condition.operator == 'above' ? ' > ' : ' < ') +
                                                                                     (condition.indicator2
                                                                                         ? toProperCase(condition.indicator2)
-                                                                                        : condition.valueText) +
+                                                                                        : condition.valueText || condition.value) +
                                                                                     (condition.diff_percent > 0
                                                                                         ? ' (+' + condition.diff_percent + '%)'
                                                                                         : '')}
@@ -353,6 +353,7 @@ export const GET_STOCK_PROFILE = gql`
                 conditions {
                     order
                     timeframe
+                    isNegative
                     indicator1
                     operator
                     indicator2

@@ -46,7 +46,7 @@ const AlertPage = () => {
         symbol,
         signal: initialAlert?.signal || 'Buy',
         title: initialAlert?.title || '',
-        conditions: initialAlert?.conditions || [{ order: 1, operator: 'And', timeframe: 'daily' }],
+        conditions: initialAlert?.conditions || [{ order: 1, timeframe: 'daily', isNegative: false }],
         enabled: initialAlert?.enabled == undefined ? true : initialAlert?.enabled,
     }
 
@@ -85,7 +85,7 @@ const AlertPage = () => {
     const addOption = (values, setValues) => {
         const conditions = [...values.conditions]
         const lastOrder = conditions[conditions.length - 1].order
-        conditions.push({ timeframe: 'daily', operator: 'And', order: lastOrder + 1 })
+        conditions.push({ timeframe: 'daily', isNegative: false, order: lastOrder + 1 })
         setValues({ ...values, conditions: conditions })
     }
 

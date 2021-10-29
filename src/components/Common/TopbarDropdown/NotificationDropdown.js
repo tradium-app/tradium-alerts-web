@@ -114,6 +114,7 @@ export const GET_ALERTS_QUERY = gql`
             conditions {
                 order
                 timeframe
+                isNegative
                 indicator1
                 config1 {
                     length
