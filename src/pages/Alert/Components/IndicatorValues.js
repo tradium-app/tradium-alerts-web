@@ -4,7 +4,7 @@ const IndicatorValues = [
         text: 'Price',
         operators: ['above', 'below'],
         comparable_to: ['sma', 'ema', 'week52High', 'week52Low'],
-        difference_percentage: [0, 5, 10, 20, 30, 40],
+        difference_percentage: [0, 5, 10, 20, 30, 40, -5, -10, -20, -30, -40],
     },
     {
         name: 'rsi',
@@ -28,7 +28,7 @@ const IndicatorValues = [
         config: { length: 20 },
         operators: ['above', 'below'],
         comparable_to: ['price', 'ema', 'week52High', 'week52Low'],
-        difference_percentage: [0, 5, 10, 20, 30, 40],
+        difference_percentage: [0, 5, 10, 20, 30, 40, -5, -10, -20, -30, -40],
     },
     {
         name: 'ema',
@@ -36,21 +36,21 @@ const IndicatorValues = [
         config: { length: 20 },
         operators: ['above', 'below'],
         comparable_to: ['price', 'sma', 'week52High', 'week52Low'],
-        difference_percentage: [0, 5, 10, 20, 30, 40],
+        difference_percentage: [0, 5, 10, 20, 30, 40, -5, -10, -20, -30, -40],
     },
     {
         name: 'week52High',
         text: '52 week high',
         operators: ['above', 'below'],
         comparable_to: ['sma', 'price', 'ema', 'week52Low'],
-        difference_percentage: [0, 5, 10, 20, 30, 40],
+        difference_percentage: [0, 5, 10, 20, 30, 40, -5, -10, -20, -30, -40],
     },
     {
         name: 'week52Low',
         text: '52 week low',
         operators: ['above', 'below'],
         comparable_to: ['sma', 'price', 'ema', 'week52High'],
-        difference_percentage: [0, 5, 10, 20, 30, 40],
+        difference_percentage: [0, 5, 10, 20, 30, 40, -5, -10, -20, -30, -40],
     },
     {
         name: 'reddit',

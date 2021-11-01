@@ -182,7 +182,6 @@ const AlertPage = () => {
                                                 </Col>
                                             </Row>
                                             <Row className="mb-2">
-                                                <Col xl="1" lg="1" sm="1"></Col>
                                                 <Col xl="3" lg="3" sm="3">
                                                     <div id="basic-pills-wizard" className="twitter-bs-wizard mb-2">
                                                         <ul className="twitter-bs-wizard-nav nav nav-pills nav-justified">
@@ -210,7 +209,7 @@ const AlertPage = () => {
                                                         </ul>
                                                     </div>
                                                 </Col>
-                                                <Col xl="2" lg="2" sm="2">
+                                                <Col xl="3" lg="3" sm="3">
                                                     <div id="basic-pills-wizard" className="twitter-bs-wizard mb-2">
                                                         <ul className="twitter-bs-wizard-nav nav nav-pills nav-justified">
                                                             <NavItem>

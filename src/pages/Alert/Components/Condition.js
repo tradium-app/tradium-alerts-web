@@ -9,20 +9,6 @@ const Condition = ({ condition, index, removeOption, totalOptions, addOption, ha
 
     return (
         <Row className="mb-4">
-            <Col xl="1" lg="1" sm="1" className="d-flex">
-                {index > 0 && (
-                    <select
-                        name={`conditions.${index}.isNegative`}
-                        value={condition.isNegative}
-                        className="form-control"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                    >
-                        <option value="false">And</option>
-                        <option value="true">Not</option>
-                    </select>
-                )}
-            </Col>
             <Col xl="3" lg="3" sm="3">
                 <ValueSelect
                     name={`conditions.${index}.indicator1`}
@@ -58,7 +44,7 @@ const Condition = ({ condition, index, removeOption, totalOptions, addOption, ha
                     value={condition.value}
                 />
             </Col>
-            <Col xl="2" lg="2" sm="2">
+            <Col xl="3" lg="3" sm="3">
                 <select
                     name={`conditions.${index}.diff_percent`}
                     value={condition.diff_percent}
@@ -109,12 +95,23 @@ const DiffPercentSelectOptions = ({ indicator }) => {
         <>
             {!diffValues && <option value="">N/A</option>}
             {diffValues && <option value="">-- Please Select --</option>}
+            {diffValues && <option value="0">by any %</option>}
             {diffValues &&
-                diffValues.map((diffValue) => (
-                    <option key={diffValue} value={diffValue}>
-                        {diffValue > 0 ? `by more than ${diffValue}%` : `by any %`}
-                    </option>
-                ))}
+                diffValues
+                    .filter((d) => d > 0)
+                    .map((diffValue) => (
+                        <option key={diffValue} value={diffValue}>
+                            {`by more than ${diffValue}%`}
+                        </option>
+                    ))}
+            {diffValues &&
+                diffValues
+                    .filter((d) => d < 0)
+                    .map((diffValue) => (
+                        <option key={diffValue} value={diffValue}>
+                            {`by less than ${-diffValue}%`}
+                        </option>
+                    ))}
         </>
     )
 }
