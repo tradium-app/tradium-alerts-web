@@ -1,11 +1,12 @@
 const formatAlertCondition = (condition) => {
     return (
-        toProperCase(condition.timeframe) +
-        ' ' +
         toProperCase(condition.indicator1) +
+        ' ' +
         getOperatorSymbol(condition.operator, condition.isNegative) +
         (condition.indicator2 ? toProperCase(condition.indicator2) : condition.valueText || condition.value) +
-        (condition.diff_percent > 0 ? ' (+' + condition.diff_percent + '%)' : '')
+        (condition.diff_percent != 0
+            ? (condition.diff_percent > 0 ? ' by more than ' : ' by less than ') + Math.abs(condition.diff_percent) + '% '
+            : '')
     )
 }
 
