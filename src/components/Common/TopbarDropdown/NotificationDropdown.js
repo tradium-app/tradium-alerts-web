@@ -99,6 +99,7 @@ export const GET_ALERTS_QUERY = gql`
             signal
             title
             status
+            enabled
             alertOnDate
             conditions {
                 order
