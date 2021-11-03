@@ -61,7 +61,7 @@ const NotificationDropdown = () => {
                                                     'text-danger': alert.signal == 'Sell',
                                                 })}
                                             >
-                                                {alert.signal + ' ' + alert.symbol + ' : ' + alert.title}
+                                                {alert.signal + ' ' + alert.symbol + '(' + alert.price.toFixed(0) + ') : ' + alert.title}
                                             </h5>
                                             <div key={index} className="text-muted font-size-11 mb-1">
                                                 {formatAlertCondition(alert.conditions[0]) + ' ..'}
@@ -96,6 +96,7 @@ export const GET_ALERTS_QUERY = gql`
         getAlerts {
             id
             symbol
+            price
             signal
             title
             status
