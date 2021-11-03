@@ -27,7 +27,7 @@ const WatchListRow = ({ stock, showAlertList, showNewsList }) => {
                             if (e.target.src != stockImg) e.target.src = stockImg
                         }}
                     />
-                    <h5 className="font-size-13 d-inline-block">{stock.symbol.toUpperCase()}</h5>
+                    <h5 className="font-size-13 d-inline-block text-decoration-underline">{stock.symbol.toUpperCase()}</h5>
                 </Link>
             </td>
             <td className={stock.changePercent < 0 ? 'text-danger' : 'text-success'}>{Math.abs(stock.changePercent).toFixed(2)}</td>
@@ -92,7 +92,16 @@ const WatchListRow = ({ stock, showAlertList, showNewsList }) => {
             <td>{stock.revenueGrowthTTMYoy == 0 ? '' : stock.revenueGrowthTTMYoy.toFixed(0)}</td>
             <td>{stock.priceToSalesTTM == 0 ? '' : stock.priceToSalesTTM.toFixed(0)}</td>
             <td>{stock.priceToEarningsTTM == 0 ? '' : stock.priceToEarningsTTM.toFixed(0)}</td>
-            <td>{stock.redditRank < 999 ? stock.redditRank : ''}</td>
+            <td>
+                <a
+                    href={`https://apewisdom.io/stocks/${stock.symbol}/`}
+                    className="text-muted text-decoration-underline"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    {stock.redditRank < 999 ? stock.redditRank : '-'}
+                </a>
+            </td>
             <td>{getFormattedDate(stock.nextEarningsDate, 'MM-DD')}</td>
             <td>{stock.rsi != 100 && stock.rsi != 0 && stock.rsi.toFixed(0)}</td>
             <td>{stock.beta == 0 ? '' : stock.beta.toFixed(1)}</td>
