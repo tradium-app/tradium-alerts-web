@@ -102,7 +102,7 @@ const HomePage = ({ authUser }) => {
             <Helmet>
                 <title>{'Tradium Alerts : for swing traders'}</title>
             </Helmet>
-            <div className="main-table table-responsive">
+            <div className="table-responsive">
                 <Table className="table-centered table-nowrap">
                     <thead>
                         <tr>

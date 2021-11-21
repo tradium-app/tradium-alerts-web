@@ -40,15 +40,3 @@
         white-space: nowrap;
     }
 }
-
-.main-table thead,
-.main-table tbody {
-    display: block;
-}
-
-$table-top-margin: calc(100vh - 200px);
-
-.main-table tbody {
-    max-height: $table-top-margin;
-    overflow: auto;
-}
