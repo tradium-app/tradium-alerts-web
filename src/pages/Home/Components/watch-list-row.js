@@ -77,10 +77,21 @@ const WatchListRow = ({ stock, showAlertList, showNewsList }) => {
                     {stock.tipranksUpside == 0 ? '-' : stock.tipranksUpside.toFixed(0)}
                 </a>
             </td>
-            <td className="p-0 d-flex justify-content-center align-items-center" style={{ width: 80, height: 40 }}>
+            <td className="p-0 justify-content-center align-items-center" style={{ width: 80, height: 40 }}>
                 {stock.nextPredictions && (
                     <MiniChart
                         dataSet={stock.nextPredictions.map((s) => s.toFixed(1))}
+                        width={80}
+                        height={40}
+                        strokeWidth={1}
+                        strokeColor="#D3A299"
+                    />
+                )}
+            </td>
+            <td className="p-0 justify-content-center align-items-center" style={{ width: 80, height: 40 }}>
+                {stock.nextPredictions2 && (
+                    <MiniChart
+                        dataSet={stock.nextPredictions2.map((s) => s.toFixed(1))}
                         width={80}
                         height={40}
                         strokeWidth={1}
