@@ -23,6 +23,8 @@ const colNames = {
     news: 'News',
     marketCap: 'Mar Cap.',
     week52DrawDown: '52 Week Range',
+    trend: 'Trend',
+    rewardRiskRatio: 'Reward/Risk',
     tipranksUpside: 'TR Upside (1yr%)',
     prediction: 'Prediction',
     prediction2: 'Prediction2',
@@ -34,9 +36,6 @@ const colNames = {
     nextEarningsDate: 'Next Earnings',
     rsi: 'Rsi',
     beta: 'Beta',
-    trend: 'Trend',
-    nextSupport: 'Support distance(%)',
-    nextResistance: 'Resistance distance(%)',
 }
 
 const initialSortConfig = {
@@ -77,8 +76,8 @@ const HomePage = ({ authUser }) => {
         nextPredictions: trendData?.getWatchListStockTrendlines.find((a) => a.symbol == s.symbol)?.nextPredictions,
         nextPredictions2: trendData?.getWatchListStockTrendlines.find((a) => a.symbol == s.symbol)?.nextPredictions2,
         news: newsData?.getWatchListNews.filter((a) => a.symbol == s.symbol).length,
-        nextSupport: s.sr && ((s.price - Math.max(...s.sr.filter((sp) => sp < s.price))) * 100) / s.price,
-        nextResistance: s.sr && ((Math.min(...s.sr.filter((sp) => sp > s.price)) - s.price) * 100) / s.price,
+        rewardRiskRatio:
+            s.sr && (Math.min(...s.sr.filter((sp) => sp > s.price)) - s.price) / (s.price - Math.max(...s.sr.filter((sp) => sp < s.price))),
     }))
 
     const { items, requestSort, sortConfig } = useSortableData(watchList, initialSortConfig)

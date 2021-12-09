@@ -68,6 +68,12 @@ const WatchListRow = ({ stock, showAlertList, showNewsList }) => {
                 <div className="text-muted font-size-10 d-inline-block ml-2">{Math.floor(stock.week52High)}</div>
             </td>
             <td>
+                <div className="font-size-16">
+                    <i className={stock.trend == 'Up' ? 'bx bx-trending-up text-success' : 'bx bx-trending-down text-danger'}></i>
+                </div>
+            </td>
+            <td>{!isFinite(stock.rewardRiskRatio) ? '' : stock.rewardRiskRatio?.toFixed(1)}</td>
+            <td>
                 <a
                     href={`https://www.tipranks.com/stocks/${stock.symbol}/forecast`}
                     className="text-muted text-decoration-underline"
@@ -116,13 +122,6 @@ const WatchListRow = ({ stock, showAlertList, showNewsList }) => {
             <td>{getFormattedDate(stock.nextEarningsDate, 'MM-DD')}</td>
             <td>{stock.rsi != 100 && stock.rsi != 0 && stock.rsi.toFixed(0)}</td>
             <td>{stock.beta == 0 ? '' : stock.beta.toFixed(1)}</td>
-            <td>
-                <div className="font-size-16">
-                    <i className={stock.trend == 'Up' ? 'bx bx-trending-up text-success' : 'bx bx-trending-down text-danger'}></i>
-                </div>
-            </td>
-            <td>{!isFinite(stock.nextSupport) ? '' : stock.nextSupport?.toFixed(1)}</td>
-            <td>{!isFinite(stock.nextResistance) ? '' : stock.nextResistance?.toFixed(1)}</td>
         </tr>
     )
 }
