@@ -37,6 +37,12 @@ const IndicatorValues = [
         ],
     },
     {
+        name: 'reward_risk_ratio',
+        text: 'Reward Risk Ratio',
+        operators: ['above', 'below'],
+        values: [{ value: '1' }, { value: '1.2' }, { value: '1.5' }, { value: '2' }, { value: '2.5' }, { value: '3' }],
+    },
+    {
         name: 'rsi',
         text: 'RSI (14)',
         config: { length: 14 },
