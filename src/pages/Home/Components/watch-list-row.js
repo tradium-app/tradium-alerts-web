@@ -72,7 +72,7 @@ const WatchListRow = ({ stock, showAlertList, showNewsList }) => {
                     <i className={stock.trend == 'Up' ? 'bx bx-trending-up text-success' : 'bx bx-trending-down text-danger'}></i>
                 </div>
             </td>
-            <td>{!isFinite(stock.rewardRiskRatio) ? '' : stock.rewardRiskRatio?.toFixed(1)}</td>
+            <td>{!isFinite(stock.rewardRiskRatio) || parseInt(stock.rewardRiskRatio) == 0 ? '' : stock.rewardRiskRatio?.toFixed(1)}</td>
             <td>
                 <a
                     href={`https://www.tipranks.com/stocks/${stock.symbol}/forecast`}
